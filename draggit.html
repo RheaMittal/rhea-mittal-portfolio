@@ -76,10 +76,9 @@ nav {
 }
 .cs-hero-kicker {
   font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(255,255,255,.72); margin-bottom: 20px;
+  color: rgba(255,255,255,.95); margin-bottom: 20px;
   display: flex; align-items: center; gap: 10px;
 }
-.cs-hero-kicker::before { content: ''; width: 20px; height: 1px; background: rgba(255,255,255,.2); }
 .cs-hero-h1 {
   font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
   font-size: clamp(40px, 6vw, 76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase;
@@ -282,6 +281,16 @@ nav {
   .cs-ov-cell:first-child { border-top: none; }
   .cs-hero-kicker { justify-content: center; }
 }
+
+/* ─── CHECKMARK POP ANIMATION ─── */
+@keyframes checkPop {
+  0%   { opacity: 0; transform: scale(0) rotate(-20deg); }
+  65%  { transform: scale(1.3) rotate(0deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.check-icon.check-visible {
+  animation: checkPop 0.4s cubic-bezier(.34,1.56,.64,1) forwards;
+}
 </style>
 </head>
 <body>
@@ -313,7 +322,7 @@ nav {
   <div class="cs-hero-inner">
     <div class="cs-hero-kicker"><span class="live-dot"></span> Solo Built &amp; Shipped · LinkedIn Chrome Extension · Nov 2025</div>
     <h1 class="cs-hero-h1">I noticed a friction.<br>I built the fix.</h1>
-    <p class="cs-hero-desc">Built and shipped a LinkedIn Chrome Extension in 2 weeks, solo, end to end. Identified a UX friction on LinkedIn that everyone was silently dealing with, and fixed it using AI-powered tools: Claude, Cursor, and Figma Make.</p>
+    <p class="cs-hero-desc">Built and shipped a LinkedIn Chrome Extension in 2 weeks, solo end-to-end. Built using AI-powered tools: Claude, Cursor, and Figma Make.</p>
     <video class="cs-hero-video vid-zoom" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:36px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);">
       <source src="assets/Draggit.mp4" type="video/mp4">
     </video>
@@ -366,16 +375,6 @@ nav {
     </div>
   </div>
 
-  <!-- GOAL -->
-  <div class="cs-section cs-reveal" style="margin-top:80px;">
-    <div class="cs-sec-label"><span class="n">00</span> The Goal</div>
-    <h2 class="cs-sec-title">Find a fix that anyone could use.</h2>
-    <div style="background:var(--green-bg);border:1px solid rgba(37,99,235,.18);border-radius:18px;padding:28px 32px;margin-top:8px;">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:12px;">Goal</div>
-      <p style="font-size:16px;line-height:1.75;color:var(--ink);margin:0;">Fix the UX friction on LinkedIn's "Add Note" modal and ship a solution anyone could install. Not just a prototype. A real product on the Chrome Web Store, built without reading or recording any personal data from the person receiving the connection request.</p>
-    </div>
-  </div>
-
   <!-- 01 PROBLEM -->
   <div class="cs-section cs-reveal" style="margin-top:80px;">
     <div class="cs-sec-label"><span class="n">01</span> Problem</div>
@@ -418,6 +417,16 @@ nav {
     </div>
   </div>
 
+  <!-- GOAL -->
+  <div class="cs-section cs-reveal" style="margin-top:80px;">
+    <div class="cs-sec-label">The Goal</div>
+    <h2 class="cs-sec-title">Find a fix that anyone could use.</h2>
+    <div style="background:var(--green-bg);border:1px solid rgba(37,99,235,.18);border-radius:18px;padding:28px 32px;margin-top:8px;">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:12px;">Goal</div>
+      <p style="font-size:16px;line-height:1.75;color:var(--ink);margin:0;">Fix the UX friction on LinkedIn's "Add Note" modal and ship a solution anyone could use publicly.</p>
+    </div>
+  </div>
+
   <!-- 02 DESIGN PROCESS -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">02</span> Design Process</div>
@@ -438,7 +447,7 @@ nav {
 
     <!-- Why drag handle -->
     <div style="margin-top:36px;">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px;">Why the final concept was selected for the build</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(22px,2.5vw,32px);text-transform:uppercase;letter-spacing:-.5px;margin-bottom:8px;">Why the final concept was selected for the build</h3>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
         <div style="background:#EEF2FF;border-radius:16px;padding:24px 22px;">
           <div style="font-size:28px;margin-bottom:14px;">⚡</div>
@@ -476,7 +485,7 @@ nav {
     <!-- AI vertical timeline -->
     <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
-        <div style="width:48px;height:48px;border-radius:50%;background:#10A37F;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
           <img src="assets/Chat GPT logo.jpg" alt="ChatGPT" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
@@ -495,7 +504,7 @@ nav {
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
         <div style="width:48px;height:48px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
-          <img src="assets/Cursor_logo.png" alt="Cursor" style="width:32px;height:32px;object-fit:contain;">
+          <img src="assets/Cursor_logo.png" alt="Cursor" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
           <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);margin-bottom:6px;">Cursor: Built the Product</div>
@@ -503,8 +512,8 @@ nav {
         </div>
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
-        <div style="width:48px;height:48px;border-radius:50%;background:#7B2FBE;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
-          <img src="assets/Figma Make Logo.png" alt="Figma Make" style="width:32px;height:32px;object-fit:contain;">
+        <div style="width:48px;height:48px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
+          <img src="assets/Figma Make Logo.png" alt="Figma Make" style="width:72%;height:72%;object-fit:contain;">
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
           <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);margin-bottom:6px;">Figma Make: Iterated the Icon</div>
@@ -518,25 +527,25 @@ nav {
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">04</span> The Product</div>
     <h2 class="cs-sec-title">One drag. Full context restored.</h2>
-    <p class="cs-body">Draggit adds a single drag handle to LinkedIn's "Add Note" modal. That's it. No settings, no onboarding, no permissions beyond what's needed.</p>
+    <p class="cs-body" style="font-size:15px;font-weight:500;letter-spacing:.01em;">The Product: Connect with Convenience</p>
 
     <video autoplay loop muted playsinline class="vid-zoom" style="width:72%;border-radius:20px;display:block;margin:32px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);">
       <source src="assets/Draggit.mp4" type="video/mp4">
     </video>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
+    <div class="product-features" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
       <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:rgba(0,0,0,0.06);margin-bottom:8px;">01</div>
-        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">Drag to reveal</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Move the modal out of the way to clearly see the name, title, and company you're writing to, without closing anything.</p>
+        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:14px;opacity:0;">✓</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">Drag the modal</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Move it to clearly see the hidden profile information: name, title, company, while you write.</p>
       </div>
       <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:rgba(0,0,0,0.06);margin-bottom:8px;">02</div>
+        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:14px;opacity:0;">✓</div>
         <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">No more close-and-reopen</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Reference the profile while you're writing. No need to close the modal, re-read, and reopen just to double-check a spelling.</p>
       </div>
       <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:rgba(0,0,0,0.06);margin-bottom:8px;">03</div>
+        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:14px;opacity:0;">✓</div>
         <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">More confident networking</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Write a personalised note knowing you have the full context in front of you. Fewer generic notes. More genuine first impressions.</p>
       </div>
@@ -583,23 +592,9 @@ nav {
     <div class="cs-sec-label"><span class="n">07</span> Reflection</div>
     <h2 class="cs-sec-title">What shipping taught me.</h2>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;">
-      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">Community &gt; Research sprints</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">A single LinkedIn post replaced weeks of formal user research. Real people told me what interviews would have taken much longer to surface.</p>
-      </div>
-      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">PRD first, even with AI</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">Clear requirements before touching Cursor meant fewer misaligned outputs. Every time something went wrong, it traced back to something I hadn't specified.</p>
-      </div>
-      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">Rejection = the best brief</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">The Chrome Store rejection forced me to actually understand the permissions model. I carry that knowledge into every future build. It was the most educational moment of the whole project.</p>
-      </div>
-      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">AI executes. I decide.</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">I used AI to accelerate execution, never to make product decisions. Direction, UX calls, iteration judgment, those stayed mine throughout.</p>
-      </div>
+    <div style="border:1px solid var(--border);border-radius:18px;padding:32px 36px;background:var(--white);max-width:680px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:12px;">Build fast. Ship fast. Learn faster.</div>
+      <p style="font-size:15px;line-height:1.8;color:rgba(12,12,12,0.65);margin:0;">This project taught me the value of building fast and failing fast. Simply animating the concept in Figma before writing a line of code gave me two things: the validation I needed to move forward, and feedback on what other features people would actually want. Speed of execution is a design skill.</p>
     </div>
   </div>
 
@@ -753,6 +748,23 @@ vidEls.forEach(function(el) { vidObserver.observe(el); });
   }, { threshold: 0.6 });
   confettiObserver.observe(approvedCard);
 })();
+
+// ─── PRODUCT FEATURE CHECKMARKS ───
+var productFeatures = document.querySelector('.product-features');
+if (productFeatures) {
+  var checkObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var checks = entry.target.querySelectorAll('.check-icon');
+        checks.forEach(function(check, i) {
+          setTimeout(function() { check.classList.add('check-visible'); }, i * 800);
+        });
+        checkObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  checkObserver.observe(productFeatures);
+}
 </script>
 </body>
 </html>
