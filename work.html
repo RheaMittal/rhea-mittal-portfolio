@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Rhea Mittal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F4F0;
+  --ink: #0C0C0C;
+  --muted: rgba(12,12,12,0.42);
+  --border: rgba(12,12,12,0.1);
+  --green: #1DA855;
+  --white: #FAFAF8;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 18px 56px; display: flex; align-items: center; justify-content: space-between;
+  background: rgba(245,244,240,0.88); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a.active::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:1px; background:var(--ink); }
+.nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--ink); transition:width .3s; }
+.nav-links a:hover::after { width:100%; }
+.nav-cta { background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; transition: transform .2s; }
+.nav-cta:hover { transform: scale(1.04); }
+.nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+.nav-burger span { display:block; width:22px; height:2px; background:var(--ink); border-radius:2px; }
+.nav-mobile { display:none; position:fixed; inset:0; background:var(--bg); z-index:998; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+.nav-mobile.open { display:flex; }
+.nav-mobile a { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(36px,8vw,64px); text-transform:uppercase; letter-spacing:-1px; color:var(--ink); text-decoration:none; }
+.nav-mobile a:hover { color:var(--green); }
+.nav-mobile-close { position:absolute; top:20px; right:24px; background:none; border:none; font-size:24px; cursor:pointer; color:var(--muted); }
+
+/* PAGE */
+.page-wrap { max-width: 1240px; margin: 0 auto; padding: 140px 56px 120px; }
+
+/* HEADER */
+.work-header { display:flex; align-items:center; border-bottom:1px solid var(--border); padding-bottom:20px; margin-bottom:20px; }
+.work-label { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.work-display { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(52px,7vw,100px); letter-spacing:-2px; line-height:.92; text-transform:uppercase; color:var(--ink); margin:16px 0 36px; }
+.work-display em { color:var(--green); font-style:normal; }
+
+/* FILTER TABS */
+.work-tabs { display:flex; gap:8px; margin-bottom:40px; flex-wrap:wrap; }
+.work-tab { padding:8px 20px; border-radius:100px; font-size:13px; font-weight:500; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:background .2s,color .2s,border-color .2s; font-family:inherit; }
+.work-tab:hover { border-color:rgba(0,0,0,.25); color:var(--ink); }
+.work-tab.active { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+
+/* GRID */
+.work-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.wk-card { background:#fff; border:1px solid rgba(0,0,0,.07); border-radius:20px; overflow:hidden; cursor:pointer; display:flex; flex-direction:column; transition:transform .25s cubic-bezier(.25,.46,.45,.94),box-shadow .25s; will-change:transform; text-decoration:none; box-shadow:0 2px 12px rgba(0,0,0,.05); }
+.wk-card:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.1); }
+.wk-card.wk-hidden { display:none !important; }
+
+/* Card visual header */
+.wk-visual { width:100%; aspect-ratio:16/9; overflow:hidden; position:relative; flex-shrink:0; }
+.wk-visual video, .wk-visual img { width:100%; height:100%; object-fit:cover; display:block; }
+.wk-visual-brand { width:100%; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; }
+.wk-brand-name { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(36px,5vw,64px); letter-spacing:-1px; text-transform:uppercase; color:rgba(255,255,255,.95); position:relative; z-index:1; }
+.wk-visual-brand::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.18) 100%); }
+
+/* Card body */
+.wk-body { padding:32px 36px 36px; display:flex; flex-direction:column; flex:1; }
+.wk-tag { font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:14px; font-weight:500; color:var(--muted); }
+.wk-title { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(28px,2.8vw,40px); letter-spacing:-1px; line-height:1.0; text-transform:uppercase; margin-bottom:12px; color:var(--ink); }
+.wk-title em { font-style:normal; }
+.wk-desc { font-size:14px; line-height:1.7; color:var(--muted); flex:1; margin-bottom:22px; }
+.wk-metrics { display:flex; gap:24px; padding-top:18px; border-top:1px solid var(--border); margin-bottom:22px; }
+.wk-stat-n { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(20px,1.8vw,26px); letter-spacing:1px; color:var(--ink); line-height:1; }
+.wk-stat-l { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-top:4px; }
+.wk-cta { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding:11px 24px; border-radius:100px; align-self:flex-start; transition:opacity .2s,transform .2s; text-decoration:none; }
+.wk-cta:hover { opacity:.8; }
+
+/* Reveal */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .6s cubic-bezier(.25,.46,.45,.94), transform .6s cubic-bezier(.25,.46,.45,.94); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* FOOTER */
+.work-footer { border-top:1px solid var(--border); padding:24px 56px; display:flex; align-items:center; justify-content:space-between; font-size:12px; color:var(--muted); max-width:100%; }
+
+@media(max-width:900px){
+  nav { padding:14px 24px; }
+  .nav-links { display:none; }
+  .nav-burger { display:flex; }
+  .page-wrap { padding:100px 24px 80px; }
+  .work-grid { grid-template-columns:1fr; }
+  .work-display { font-size:clamp(44px,10vw,72px); }
+  .work-footer { padding:20px 24px; flex-direction:column; gap:6px; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
+  <ul class="nav-links">
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="playground.html">Play</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <a href="work.html">Work</a>
+  <a href="playground.html">Play</a>
+  <a href="about.html">About</a>
+  <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
+</div>
+
+<div class="page-wrap">
+
+  <div class="work-header">
+    <span class="work-label">All Work · 2021 to Present</span>
+  </div>
+  <h1 class="work-display">Designed.<br><em>Shipped.</em> Real.</h1>
+
+  <!-- Filter tabs -->
+  <div class="work-tabs">
+    <button class="work-tab active" data-filter="all">All <span style="opacity:.45;font-size:11px;margin-left:4px;">8</span></button>
+    <button class="work-tab" data-filter="visual">Visual Design</button>
+    <button class="work-tab" data-filter="product">Product Design</button>
+    <button class="work-tab" data-filter="research">User Research</button>
+    <button class="work-tab" data-filter="industrial">Industrial Design</button>
+  </div>
+
+  <!-- 2-col grid -->
+  <div class="work-grid">
+
+    <!-- ROW 1: Draggit + CliquePrize -->
+
+    <!-- DRAGGIT -->
+    <a class="wk-card reveal" data-cats="all product" href="draggit.html">
+      <div class="wk-visual">
+        <video autoplay loop muted playsinline preload="none" class="wk-vid">
+          <source src="assets/Draggit.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">LinkedIn Chrome Extension · Built &amp; Shipped</div>
+        <h2 class="wk-title">So networking would be <em style="color:#2563EB;">more convenient</em></h2>
+        <p class="wk-desc">A Chrome extension that makes LinkedIn's connect modal draggable. Designed, built, and shipped solo in 2 weeks.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">20+</div><div class="wk-stat-l">Active Users</div></div>
+          <div><div class="wk-stat-n">5★</div><div class="wk-stat-l">Chrome Store</div></div>
+          <div><div class="wk-stat-n">Solo</div><div class="wk-stat-l">End-to-End</div></div>
+        </div>
+        <span class="wk-cta" style="background:#2563EB;color:#fff;">Explore Case Study ↗</span>
+      </div>
+    </a>
+
+    <!-- CLIQUEPRIZE -->
+    <a class="wk-card reveal" data-cats="all visual product" href="cliqueprize.html">
+      <div class="wk-visual">
+        <video loop muted playsinline preload="none" class="wk-vid" style="width:100%;height:100%;object-fit:cover;">
+          <source src="assets/CliquePrize Card Video.mov" type="video/mp4">
+        </video>
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">B2B SaaS Platform · Live in Production</div>
+        <h2 class="wk-title">Small businesses deserved a page that <em style="color:#7D1A2E;">spoke their language.</em></h2>
+        <p class="wk-desc">The company wasn't getting through to their target users. I rebuilt the site's IA and UX writing around 4 core questions SMBs were looking to be answered.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">24%</div><div class="wk-stat-l">CTR Lift</div></div>
+          <div><div class="wk-stat-n">15+</div><div class="wk-stat-l">Components</div></div>
+          <div><div class="wk-stat-n">60%</div><div class="wk-stat-l">Faster Handoff</div></div>
+        </div>
+        <span class="wk-cta" style="background:#7D1A2E;color:#fff;">Explore Case Study ↗</span>
+      </div>
+    </a>
+
+    <!-- ROW 2: OpsIQ + Freetown Village -->
+
+    <!-- OPSIQ -->
+    <a class="wk-card reveal" data-cats="all product" href="opsiq.html">
+      <div class="wk-visual">
+        <video loop muted playsinline preload="none" class="wk-vid" style="width:100%;height:100%;object-fit:cover;">
+          <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mov" type="video/mp4">
+        </video>
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">AI Dashboard [NDA] · Client Project</div>
+        <h2 class="wk-title">The data was there. <em style="color:#1A1DB3;">They couldn't use it.</em></h2>
+        <p class="wk-desc">AI-powered ops dashboard turning fragmented SMB data into one clear view and one next move. Research-led, systems-built.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">4</div><div class="wk-stat-l">Person Team</div></div>
+          <div><div class="wk-stat-n">15+</div><div class="wk-stat-l">Screens</div></div>
+          <div><div class="wk-stat-n">AI</div><div class="wk-stat-l">Powered</div></div>
+        </div>
+        <span class="wk-cta" style="background:#1A1DB3;color:#fff;">Explore Case Study ↗</span>
+      </div>
+    </a>
+
+    <!-- FREETOWN VILLAGE -->
+    <a class="wk-card reveal" data-cats="all visual product" href="https://rheamittalportfolio.framer.website/freetown-village" target="_blank">
+      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#8B3A1A 0%,#D4845A 100%);">
+        <span class="wk-brand-name">Freetown Village</span>
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">Visual Design · Brand Identity</div>
+        <h2 class="wk-title">A historic village's story, <em style="color:#D4845A;">told visually.</em></h2>
+        <p class="wk-desc">Visual design and brand identity for Freetown Village, an African American living history museum in Indianapolis.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">Brand</div><div class="wk-stat-l">Identity</div></div>
+          <div><div class="wk-stat-n">Visual</div><div class="wk-stat-l">Design</div></div>
+          <div><div class="wk-stat-n">2024</div><div class="wk-stat-l">Project</div></div>
+        </div>
+        <span class="wk-cta" style="background:#D4845A;color:#fff;">View Project ↗</span>
+      </div>
+    </a>
+
+    <!-- ROW 3: Havells + Accenture -->
+
+    <!-- HAVELLS -->
+    <a class="wk-card reveal" data-cats="all research industrial" href="havells.html">
+      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#6B0008 0%,#BA151B 100%);">
+        <img src="assets/Havells Logo.png" alt="Havells" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;">
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">User Research · Industrial Design</div>
+        <h2 class="wk-title">I spent a semester in Indian kitchens. <em style="color:#BA151B;">Then redesigned the fan.</em></h2>
+        <p class="wk-desc">50+ field studies across 8 states, 150+ concepts iterated, and 2 prototypes accepted by Havells' CXD team for further development.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">50+</div><div class="wk-stat-l">Field Studies</div></div>
+          <div><div class="wk-stat-n">150+</div><div class="wk-stat-l">Concepts</div></div>
+          <div><div class="wk-stat-n">2/10+</div><div class="wk-stat-l">Accepted</div></div>
+        </div>
+        <span class="wk-cta" style="background:#BA151B;color:#fff;">View Case Study ↗</span>
+      </div>
+    </a>
+
+    <!-- ACCENTURE -->
+    <a class="wk-card reveal" data-cats="all industrial" href="accenture.html">
+      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#2E0050 0%,#7B2FBE 100%);">
+        <img src="assets/accenture.png" alt="Accenture" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;">
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">Industrial Design · Urban Mobility</div>
+        <h2 class="wk-title">I designed for a mobility future <em style="color:#7B2FBE;">that didn't exist yet.</em></h2>
+        <p class="wk-desc">Accenture-partnered brief at BESIGN — 50+ interviews, 25+ AI-assisted concepts, shortlisted in top 10 from the cohort.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">50+</div><div class="wk-stat-l">Interviews</div></div>
+          <div><div class="wk-stat-n">Top 10</div><div class="wk-stat-l">Shortlisted</div></div>
+          <div><div class="wk-stat-n">SDG 11</div><div class="wk-stat-l">Focus Area</div></div>
+        </div>
+        <span class="wk-cta" style="background:#7B2FBE;color:#fff;">View Case Study ↗</span>
+      </div>
+    </a>
+
+    <!-- ROW 4: Canvas + TechGuy -->
+
+    <!-- CANVAS -->
+    <a class="wk-card reveal" data-cats="all research" href="https://rheamittalportfolio.framer.website/canvas" target="_blank">
+      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#6B0000 0%,#CC0000 100%);">
+        <img src="assets/canvas-white.png" alt="Canvas" style="max-width:48%;max-height:52%;object-fit:contain;position:relative;z-index:1;">
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">User Research · AI Integration</div>
+        <h2 class="wk-title">Integrating AI into the <em style="color:#B30000;">world's most-used LMS.</em></h2>
+        <p class="wk-desc">Research and design for integrating AI features into Canvas, the learning management system used by millions of students worldwide.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">AI</div><div class="wk-stat-l">Integration</div></div>
+          <div><div class="wk-stat-n">User</div><div class="wk-stat-l">Research</div></div>
+          <div><div class="wk-stat-n">2024</div><div class="wk-stat-l">Project</div></div>
+        </div>
+        <span class="wk-cta" style="background:#B30000;color:#fff;">View Project ↗</span>
+      </div>
+    </a>
+
+    <!-- TECHGUY -->
+    <a class="wk-card reveal" data-cats="all visual research" href="https://rheamittalportfolio.framer.website/techguy" target="_blank">
+      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#0A1628 0%,#1E40AF 100%);">
+        <span class="wk-brand-name">TechGuy</span>
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag">Interaction Design · Visual Design</div>
+        <h2 class="wk-title">Making the complex <em style="color:#1E40AF;">feel simple.</em></h2>
+        <p class="wk-desc">Interaction and visual design at TechGuy, creating intuitive user experiences for complex digital products used daily.</p>
+        <div class="wk-metrics">
+          <div><div class="wk-stat-n">Interaction</div><div class="wk-stat-l">Design</div></div>
+          <div><div class="wk-stat-n">Visual</div><div class="wk-stat-l">Systems</div></div>
+          <div><div class="wk-stat-n">2023</div><div class="wk-stat-l">Project</div></div>
+        </div>
+        <span class="wk-cta" style="background:#1E40AF;color:#fff;">View Project ↗</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer class="work-footer">
+  <span>Rhea Mittal · 2025</span>
+  <a href="mailto:rheamittal0401@gmail.com" style="color:var(--muted);text-decoration:none;">rheamittal0401@gmail.com</a>
+</footer>
+
+<script>
+/* Filter tabs */
+document.querySelectorAll('.work-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const filter = this.dataset.filter;
+    document.querySelectorAll('.wk-card').forEach(card => {
+      const cats = card.dataset.cats || '';
+      card.classList.toggle('wk-hidden', filter !== 'all' && !cats.includes(filter));
+    });
+  });
+});
+
+/* Video play on visibility */
+const vidObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.play().catch(()=>{});
+    else e.target.pause();
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.wk-vid').forEach(v => vidObs.observe(v));
+
+/* Scroll reveal */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* Hamburger */
+document.getElementById('navBurger').addEventListener('click', () => document.getElementById('navMobile').classList.add('open'));
+document.getElementById('navMobileClose').addEventListener('click', () => document.getElementById('navMobile').classList.remove('open'));
+</script>
+</body>
+</html>

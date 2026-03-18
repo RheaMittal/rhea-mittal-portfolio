@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v '^$')",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python3 -c \":*)",
+      "Bash(python3:*)",
+      "Bash(gh auth:*)",
+      "Bash(git --version)"
+    ]
+  }
+}

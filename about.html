@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About: Rhea Mittal</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #F5F4F0;
+  --ink: #0C0C0C;
+  --muted: rgba(12,12,12,0.45);
+  --border: rgba(0,0,0,0.08);
+  --green: #1DA855;
+  --green-bg: rgba(29,168,85,0.08);
+  --orange: #E8521A;
+  --orange-bg: rgba(232,82,26,0.08);
+  --card-r: 20px;
+  --white: #FFFFFF;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 18px 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(245,244,240,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: border-color .3s;
+}
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none;
+  position: relative; padding-bottom: 2px;
+  transition: color .2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+  background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94);
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--ink); }
+.nav-links a.active::after { width: 100%; }
+.nav-cta {
+  background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px;
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover { transform: scale(1.04); }
+.nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+.nav-burger span { display:block; width:22px; height:2px; background:var(--ink); border-radius:2px; transition:transform .3s,opacity .3s; }
+.nav-mobile { display:none; position:fixed; inset:0; background:var(--bg); z-index:998; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+.nav-mobile.open { display:flex; }
+.nav-mobile a { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(36px,8vw,64px); text-transform:uppercase; letter-spacing:-1px; color:var(--ink); text-decoration:none; transition:color .2s; }
+.nav-mobile a:hover { color:var(--green); }
+.nav-mobile-close { position:absolute; top:20px; right:24px; background:none; border:none; font-size:24px; cursor:pointer; color:var(--muted); }
+
+/* ─── PAGE WRAP ─── */
+.page { padding-top: 73px; }
+
+/* ─── SECTION LABEL ─── */
+.sec-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--muted); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ──────────────────────────────────
+   1. HERO
+────────────────────────────────── */
+.hero-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 73px);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-left {
+  padding: 80px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-kicker {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--muted); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-kicker::before { content: ''; width: 24px; height: 1px; background: var(--muted); }
+
+.hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: clamp(64px, 7vw, 104px);
+  line-height: .92; letter-spacing: -3px; text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.hero-h1 em { font-style: italic; color: var(--green); }
+
+.hero-bio {
+  font-size: 17px; line-height: 1.75; color: var(--muted);
+  max-width: 480px; margin-bottom: 40px;
+}
+
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.hero-tag {
+  background: var(--white); border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 100px;
+  font-size: 12px; font-weight: 500; color: var(--muted);
+  transition: border-color .2s, color .2s;
+}
+.hero-tag:hover { border-color: var(--ink); color: var(--ink); }
+
+.hero-right {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  padding: 56px 48px;
+}
+
+.hero-photo-wrap {
+  position: relative;
+  width: 100%; max-width: 420px;
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.18);
+  transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  aspect-ratio: 3/4;
+}
+.hero-photo-wrap:hover {
+  transform: perspective(1000px) rotateY(-1deg) rotateX(0deg);
+}
+.hero-photo-wrap img,
+.hero-photo-wrap video {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+.hero-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+.hero-photo-ph {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #ECEAE4 0%, #D8D4CA 100%);
+}
+.hero-photo-ph-ico { font-size: 64px; opacity: .3; }
+.hero-photo-ph-txt { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); opacity: .6; }
+
+/* Floating stat pills */
+.hero-float {
+  position: absolute; bottom: 40px; left: -20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.hero-pill {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 100px; padding: 10px 20px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 500; color: var(--ink);
+  box-shadow: 0 4px 24px rgba(0,0,0,.09);
+}
+.hero-pill-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(29,168,85,.5);
+  animation: lp 2s infinite; flex-shrink: 0;
+}
+@keyframes lp { 0%,100%{opacity:1}50%{opacity:.35} }
+
+/* ──────────────────────────────────
+   2. ACHIEVEMENTS / COLLAGE
+────────────────────────────────── */
+.achievements {
+  padding: 100px 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ach-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 56px;
+}
+
+.ach-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: clamp(40px, 5vw, 64px);
+  line-height: 1; letter-spacing: -2px; text-transform: uppercase;
+}
+.ach-h2 em { font-style: italic; color: var(--green); }
+
+.ach-sub {
+  font-size: 15px; color: var(--muted); max-width: 280px;
+  text-align: right; line-height: 1.55;
+}
+
+/* Collage grid */
+.collage {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: 12px;
+}
+
+.col-item {
+  position: relative; overflow: hidden;
+  border-radius: 16px; cursor: pointer;
+  border: 1px solid var(--border);
+  transition: transform .3s ease;
+}
+.col-item:hover { transform: scale(1.01); }
+
+.col-item:nth-child(1) { grid-column: span 4; grid-row: span 1; background: #E5EDF5; }
+.col-item:nth-child(2) { grid-column: span 3; grid-row: span 1; background: #F0EBE2; }
+.col-item:nth-child(3) { grid-column: span 5; grid-row: span 2; background: #E9F0E8; }
+.col-item:nth-child(4) { grid-column: span 3; grid-row: span 1; background: #F5EDE5; }
+.col-item:nth-child(5) { grid-column: span 4; grid-row: span 1; background: #EDE8F0; }
+
+.col-img {
+  width: 100%; height: 100%;
+  object-fit: contain; display: block;
+  transition: transform .5s ease;
+  padding: 8px;
+}
+
+.col-ph {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; color: var(--muted);
+  font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+  transition: transform .5s ease;
+}
+.col-ph-ico { font-size: 32px; opacity: .35; }
+.col-ph-lbl { opacity: .45; }
+
+.col-item:hover .col-img,
+.col-item:hover .col-ph { transform: scale(1.05); }
+
+/* Hover overlay */
+.col-overlay {
+  position: absolute; inset: 0;
+  background: rgba(12,12,12,.88);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  opacity: 0; transition: opacity .3s ease;
+  border-radius: 16px;
+}
+.col-item:hover .col-overlay { opacity: 1; }
+
+.col-ov-tag {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .12em;
+  color: rgba(255,255,255,.4); margin-bottom: 6px;
+}
+.col-ov-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 18px; color: #fff;
+  line-height: 1.2; margin-bottom: 6px;
+}
+.col-ov-desc {
+  font-size: 12px; color: rgba(255,255,255,.6);
+  line-height: 1.55;
+}
+
+/* ──────────────────────────────────
+   3. QUOTES
+────────────────────────────────── */
+.quotes-section {
+  padding: 100px 56px;
+  border-bottom: 1px solid var(--border);
+  background: #071A0E;
+}
+
+.quotes-kicker {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .14em;
+  color: rgba(255,255,255,.65); margin-bottom: 48px;
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+}
+
+.quote-card {
+  padding: 48px 40px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 2px;
+  position: relative;
+  transition: background .25s;
+}
+.quote-card:hover { background: rgba(255,255,255,.03); }
+.quote-card:first-child { border-radius: 16px 2px 2px 16px; }
+.quote-card:last-child { border-radius: 2px 16px 16px 2px; }
+
+.q-mark {
+  font-family: 'Instrument Serif', serif;
+  font-size: 80px; line-height: 1;
+  color: rgba(255,255,255,.07);
+  position: absolute; top: 16px; left: 32px;
+}
+
+.q-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: 21px; line-height: 1.6;
+  color: rgba(255,255,255,.88);
+  margin-bottom: 24px;
+  font-style: normal;
+  position: relative; z-index: 1;
+}
+
+.q-author {
+  font-size: 12px; color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .1em;
+  position: relative; z-index: 1;
+}
+
+/* ──────────────────────────────────
+   4. DESIGN JOURNEY
+────────────────────────────────── */
+.journey {
+  padding: 100px 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.journey-header { margin-bottom: 56px; }
+
+.journey-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: clamp(40px, 5vw, 64px);
+  line-height: 1; letter-spacing: -2px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.journey-h2 em { font-style: italic; color: var(--green); }
+
+.journey-sub { font-size: 16px; color: var(--muted); max-width: 440px; line-height: 1.65; }
+
+/* Accordion */
+.accordion { display: flex; flex-direction: column; gap: 2px; }
+
+.acc-item {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.acc-item.open { border-color: rgba(0,0,0,.18); }
+
+.acc-trigger {
+  width: 100%; background: none; border: none;
+  padding: 28px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; text-align: left;
+  background: var(--white);
+  transition: background .2s;
+}
+.acc-trigger:hover { background: #F0EFE9; }
+.acc-item.open .acc-trigger { background: var(--ink); }
+
+.acc-left { display: flex; align-items: center; gap: 20px; }
+
+.acc-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 15px;
+  color: var(--muted); letter-spacing: .05em;
+  transition: color .2s;
+}
+.acc-item.open .acc-num { color: rgba(255,255,255,.3); }
+
+.acc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 26px; letter-spacing: -.5px;
+  color: var(--ink); transition: color .2s;
+}
+.acc-item.open .acc-title { color: #fff; }
+
+.acc-meta {
+  font-size: 13px; color: var(--muted); margin-top: 3px;
+  transition: color .2s;
+}
+.acc-item.open .acc-meta { color: rgba(255,255,255,.4); }
+
+.acc-arrow {
+  font-size: 22px; color: var(--muted);
+  transition: transform .3s ease, color .2s;
+  flex-shrink: 0;
+}
+.acc-item.open .acc-arrow { transform: rotate(45deg); color: rgba(255,255,255,.45); }
+
+.acc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .45s ease;
+  background: var(--white);
+}
+.acc-item.open .acc-body { max-height: 720px; }
+
+.acc-inner {
+  padding: 40px 36px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.acc-desc {
+  font-size: 16px; line-height: 1.78; color: rgba(0,0,0,.55);
+  max-width: 640px; margin-bottom: 32px;
+}
+
+.acc-imgs { display: grid; gap: 12px; }
+.acc-imgs.cols-2 { grid-template-columns: 1fr 1fr; }
+.acc-imgs.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.acc-img-ph {
+  height: 160px; border-radius: 12px;
+  background: #EDE9E3;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; color: var(--muted);
+  font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+  border: 1.5px dashed var(--border);
+}
+.acc-img-ph-ico { font-size: 24px; opacity: .4; }
+
+.acc-tag {
+  display: inline-block; padding: 4px 12px;
+  background: var(--green-bg); color: var(--green);
+  border-radius: 100px; font-size: 12px; font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* ──────────────────────────────────
+   5. BEYOND DESIGN
+────────────────────────────────── */
+.beyond {
+  padding: 100px 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.beyond-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+
+.beyond-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: clamp(40px, 5vw, 64px);
+  line-height: 1; letter-spacing: -2px; text-transform: uppercase;
+}
+.beyond-h2 em { font-style: italic; color: var(--green); }
+
+.beyond-intro { font-size: 16px; color: var(--muted); line-height: 1.7; }
+
+.beyond-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: 12px;
+}
+
+.beyond-item {
+  border-radius: 16px; overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+  transition: transform .3s ease;
+}
+.beyond-item:hover { transform: scale(1.02); }
+
+.beyond-item:nth-child(1) { grid-column: span 2; background: #E2EAE0; }
+.beyond-item:nth-child(2) { background: #E8E0D5; }
+.beyond-item:nth-child(3) { background: #DDE5F0; }
+.beyond-item:nth-child(4) { grid-column: span 2; background: #F0E8E0; }
+.beyond-item:nth-child(5) { background: #E5DFF0; }
+.beyond-item:nth-child(6) { background: #E8F0E2; }
+
+.beyond-ph {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px;
+}
+.beyond-ph-ico { font-size: 36px; opacity: .35; }
+
+.beyond-label {
+  position: absolute; bottom: 16px; left: 16px;
+  background: rgba(12,12,12,.7); color: #fff;
+  padding: 5px 12px; border-radius: 100px;
+  font-size: 12px; font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+
+/* ──────────────────────────────────
+   CONTACT — same as homepage
+────────────────────────────────── */
+.contact-section {
+  margin: 0 56px 0;
+  border-top: 1px solid var(--border);
+  padding: 120px 0 80px;
+}
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+.contact-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.contact-h {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(40px, 5.5vw, 72px); letter-spacing: -2px; text-transform: uppercase;
+  line-height: .92; margin-bottom: 32px;
+}
+.contact-h em { font-style: italic; color: var(--green); }
+.contact-email {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 17px; font-weight: 500; color: var(--ink);
+  text-decoration: none; border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  transition: border-color .2s, color .2s;
+}
+.contact-email:hover { color: var(--green); border-color: var(--green); }
+.contact-right {}
+.contact-socials { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 32px; }
+.social-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 24px; border-bottom: 1px solid var(--border);
+  text-decoration: none; color: var(--ink);
+  background: var(--white);
+  transition: background .2s, padding-left .2s;
+}
+.social-row:last-child { border-bottom: none; }
+.social-row:hover { background: #F0EFE9; padding-left: 30px; }
+.social-row-name { font-size: 14px; font-weight: 500; }
+.social-row-arrow { font-size: 18px; color: var(--muted); transition: transform .2s, color .2s; }
+.social-row:hover .social-row-arrow { transform: translate(3px,-3px); color: var(--ink); }
+
+.footer-bar {
+  border-top: 1px solid var(--border); padding: 24px 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: var(--muted);
+}
+
+/* ── COLLAGE LIGHTBOX ── */
+.col-lb {
+  position: fixed; inset: 0; z-index: 900;
+  background: rgba(6,6,6,.97); backdrop-filter: blur(20px);
+  display: flex; align-items: stretch;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s cubic-bezier(.25,.46,.45,.94);
+}
+.col-lb.open { opacity: 1; pointer-events: all; }
+.col-lb-media {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  background: #080808; border-right: 1px solid rgba(255,255,255,.07);
+  padding: 48px; position: relative; overflow: hidden;
+}
+.col-lb-media img {
+  max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 12px;
+}
+.col-lb-info {
+  width: 400px; flex-shrink: 0; padding: 64px 48px;
+  display: flex; flex-direction: column; justify-content: center;
+  overflow-y: auto; position: relative;
+}
+.col-lb-close {
+  position: absolute; top: 24px; right: 24px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; cursor: pointer; color: #fff;
+  transition: background .2s;
+}
+.col-lb-close:hover { background: rgba(255,255,255,.2); }
+.col-lb-tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.4); margin-bottom: 16px; }
+.col-lb-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(28px,3vw,44px); line-height: .95; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 20px; color: #fff; }
+.col-lb-body { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.55); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+
+/* Hero fade-up */
+.fade-up {
+  opacity: 0; transform: translateY(28px);
+  animation: fadeUp .65s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.fd1 { animation-delay: .05s; }
+.fd2 { animation-delay: .15s; }
+.fd3 { animation-delay: .27s; }
+.fd4 { animation-delay: .40s; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px) {
+  nav { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .hero-about { grid-template-columns: 1fr; }
+  .hero-right { min-height: 360px; }
+  .hero-left { padding: 56px 24px; }
+  .achievements { padding: 72px 24px; }
+  .quotes-section { padding: 72px 24px; }
+  .journey { padding: 72px 24px; }
+  .beyond { padding: 72px 24px; }
+  .collage { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .col-item { grid-column: span 1 !important; grid-row: span 1 !important; height: 200px; }
+  .quotes-grid { grid-template-columns: 1fr; }
+  .beyond-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .beyond-item:nth-child(1), .beyond-item:nth-child(4) { grid-column: span 1; }
+  .beyond-item { height: 180px; }
+  .ach-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .ach-sub { text-align: left; max-width: 100%; }
+  .beyond-header { grid-template-columns: 1fr; }
+  .contact-section { margin: 0 24px; padding: 72px 0 60px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bar { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  .acc-trigger { padding: 20px 24px; }
+  .acc-inner { padding: 28px 24px 36px; }
+  .acc-imgs.cols-3 { grid-template-columns: 1fr; }
+  .acc-imgs.cols-2 { grid-template-columns: 1fr; }
+}
+@media(max-width:640px) {
+  .beyond-grid { grid-template-columns: 1fr; }
+  .beyond-item { height: 160px; }
+  .collage { grid-template-columns: 1fr; }
+  .col-item { height: 180px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="playground.html">Play</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <a href="work.html">Work</a>
+  <a href="playground.html">Play</a>
+  <a href="about.html">About</a>
+  <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
+</div>
+
+<div class="page">
+
+  <!-- ──────────────────────────────────
+       1. HERO
+  ────────────────────────────────── -->
+  <section class="hero-about">
+    <div class="hero-left">
+      <p class="hero-kicker fade-up fd1">MS-HCI · Indiana University · Product Designer</p>
+      <h1 class="hero-h1 fade-up fd2">Hi, I'm<br><em>Rhea.</em></h1>
+      <p class="hero-bio fade-up fd3">From pretty early on in my career I believed that designers are everywhere, and what that means to me is that you don't stop being a designer when you close your laptop. You don't stop observing, noticing friction, asking why things are the way they are. Being a designer is a personality trait. It's how I move through the world, not just how I work in it.</p>
+      <div class="hero-tags fade-up fd4">
+        <span class="hero-tag">UX Research</span>
+        <span class="hero-tag">Product Design</span>
+        <span class="hero-tag">Design Systems</span>
+        <span class="hero-tag">Vibe Coding</span>
+        <span class="hero-tag">Motion Graphics</span>
+        <span class="hero-tag">3D Modelling</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+          <source src="assets/About me hero section.MOV" type="video/mp4">
+        </video>
+      </div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Inter',sans-serif;">Always open to exploring</div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────
+       2. ACHIEVEMENTS / COLLAGE
+  ────────────────────────────────── -->
+  <section class="achievements reveal">
+    <div class="ach-header">
+      <div>
+        <div class="sec-label">Communities & Milestones</div>
+        <h2 class="ach-h2">Things I've<br>been part <em>of.</em></h2>
+      </div>
+      <p class="ach-sub">Hover over each to learn the story behind it.</p>
+    </div>
+
+    <div class="collage">
+
+      <!-- Card 1: SIGCHI -->
+      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+        data-img="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png"
+        data-tag="Club Leadership"
+        data-title="SIGCHI, Creative Lead, Srishti Chapter"
+        data-body="I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter's online presence and community engagement.">
+        <img class="col-img" src="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png" alt="SIGCHI Creative Lead">
+        <div class="col-overlay">
+          <div class="col-ov-tag">Club Leadership</div>
+          <div class="col-ov-title">SIGCHI, Creative Lead, Srishti Chapter</div>
+          <div class="col-ov-desc">I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter's online presence and community engagement.</div>
+        </div>
+      </div>
+
+      <!-- Card 2: SETH Lab -->
+      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+        data-img="assets/About Me/Thingspart of./SETH Lab.png"
+        data-tag="Research Lab · Indiana University"
+        data-title="SETH Lab"
+        data-body="I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level. [Placeholder: add Sethlab metrics — e.g. # studies reviewed, publications supported, research duration]">
+        <img class="col-img" src="assets/About Me/Thingspart of./SETH Lab.png" alt="SETH Lab">
+        <div class="col-overlay">
+          <div class="col-ov-tag">Research Lab · Indiana University</div>
+          <div class="col-ov-title">SETH Lab</div>
+          <div class="col-ov-desc">I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.</div>
+          <div style="display:flex;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
+            <div style="text-align:center;flex:1;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:#fff;">—</div><div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Metric 1</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:#fff;">—</div><div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Metric 2</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:#fff;">—</div><div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Metric 3</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: ADGE Podcast (tall, spans 2 rows) -->
+      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+        data-img="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png"
+        data-tag="Podcast Guest · Unlearning by Design"
+        data-title="Aedge Podcast, Adeptic Creative Labs"
+        data-body="In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field.">
+        <img class="col-img" src="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png" alt="Aedge Podcast">
+        <div class="col-overlay">
+          <div class="col-ov-tag">Podcast Guest · Unlearning by Design</div>
+          <div class="col-ov-title">Aedge Podcast, Adeptic Creative Labs</div>
+          <div class="col-ov-desc">In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field.</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Medium Blog -->
+      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+        data-img="assets/About Me/Thingspart of./Medium Blog.png"
+        data-tag="Writing"
+        data-title="Medium Blog"
+        data-body="I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud.">
+        <img class="col-img" src="assets/About Me/Thingspart of./Medium Blog.png" alt="Medium Blog">
+        <div class="col-overlay">
+          <div class="col-ov-tag">Writing</div>
+          <div class="col-ov-title">Medium Blog</div>
+          <div class="col-ov-desc">I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud.</div>
+        </div>
+      </div>
+
+      <!-- Card 5: The Period Society -->
+      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+        data-img="assets/About Me/Thingspart of./The Period Society — Bangalore.png"
+        data-tag="Non-Profit · Product Designer"
+        data-title="The Period Society, Bangalore"
+        data-body="I designed for a non-profit working to remove stigma around menstruation, creating their Myths and Facts campaign and social media content supporting sanitary napkin distribution drives in rural Maharashtra.">
+        <img class="col-img" src="assets/About Me/Thingspart of./The Period Society — Bangalore.png" alt="The Period Society">
+        <div class="col-overlay">
+          <div class="col-ov-tag">Non-Profit · Product Designer</div>
+          <div class="col-ov-title">The Period Society, Bangalore</div>
+          <div class="col-ov-desc">I designed for a non-profit working to remove stigma around menstruation, creating their Myths and Facts campaign and social media content supporting sanitary napkin distribution drives in rural Maharashtra.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────
+       3. QUOTES
+  ────────────────────────────────── -->
+  <section class="quotes-section">
+    <div class="quotes-kicker reveal" style="transition-delay:.0s;">Words I keep coming back to</div>
+    <div class="quotes-grid">
+
+      <div class="quote-card reveal" style="transition-delay:.1s;">
+        <div class="q-mark">"</div>
+        <p class="q-text">Design is not just what it looks like and feels like. Design is how it works.</p>
+        <div class="q-author">Steve Jobs</div>
+      </div>
+
+      <div class="quote-card reveal" style="transition-delay:.2s;">
+        <div class="q-mark">"</div>
+        <p class="q-text">If you're not embarrassed by the first version of your product, you've launched too late.</p>
+        <div class="q-author">Reid Hoffman</div>
+      </div>
+
+      <div class="quote-card reveal" style="transition-delay:.3s;">
+        <div class="q-mark">"</div>
+        <p class="q-text">The details are not the details. They make the design.</p>
+        <div class="q-author">Charles Eames</div>
+      </div>
+
+      <div class="quote-card reveal" style="transition-delay:.4s;">
+        <div class="q-mark">"</div>
+        <p class="q-text">[Placeholder — add Allisya Liu quote here before launch]</p>
+        <div class="q-author">Allisya Liu</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────
+       4. DESIGN JOURNEY
+  ────────────────────────────────── -->
+  <section class="journey reveal">
+    <div class="journey-header">
+      <div class="sec-label">Education</div>
+      <h2 class="journey-h2">The making of<br>a <em>designer.</em></h2>
+      <p class="journey-sub">Three chapters that shaped how I design, research, and think.</p>
+    </div>
+
+    <div class="accordion">
+
+      <!-- Bachelor's -->
+      <div class="acc-item" id="acc-1">
+        <button class="acc-trigger" onclick="toggleAcc('acc-1')">
+          <div class="acc-left">
+            <span class="acc-num">01</span>
+            <div>
+              <div class="acc-title">Bachelor's in Design</div>
+              <div class="acc-meta">Srishti Institute of Art, Design and Technology · Bangalore, India</div>
+            </div>
+          </div>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-tag">Foundation</div>
+            <p class="acc-desc">Srishti was beautifully chaotic, and exactly what I needed. My degree was genuinely transdisciplinary. I didn't just learn to design interfaces. I designed through the lens of transport design, public space, filmmaking, game design, fabric, and code. The variety wasn't random; it cemented something that became core to how I work: design is everywhere. Not just on screens, not just in products, everywhere. I left with a portfolio and a philosophy.</p>
+            <div class="acc-imgs cols-3">
+              <img src="assets/About Me/HowIgothere/Bachelor's/1000029828.JPG" alt="Srishti studio work" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+              <img src="assets/About Me/HowIgothere/Bachelor's/Presentation.png" alt="Srishti presentation" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+              <img src="assets/About Me/HowIgothere/Bachelor's/Product sketching.jpg" alt="Srishti product sketching" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MS-HCI -->
+      <div class="acc-item" id="acc-2">
+        <button class="acc-trigger" onclick="toggleAcc('acc-2')">
+          <div class="acc-left">
+            <span class="acc-num">02</span>
+            <div>
+              <div class="acc-title">MS in Human-Computer Interaction</div>
+              <div class="acc-meta">Indiana University · Indianapolis, USA</div>
+            </div>
+          </div>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-tag" style="background:var(--green-bg);color:var(--green);">Current</div>
+            <p class="acc-desc">Indiana pushed me into research properly: how to ask better questions, conduct rigorous qualitative studies, and communicate design decisions to people from completely different disciplines. But equally valuable was everything outside the classroom: building and shipping live projects with AI tools, winning a hackathon, attending CES, spending time in the SETH Lab doing deep qualitative work. I came in knowing how to design. I left knowing how to think.</p>
+            <div class="acc-imgs cols-2">
+              <img src="assets/About Me/HowIgothere/Masters/IMG_8732.JPG" alt="Indiana University campus" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+              <img src="assets/About Me/HowIgothere/Masters/View recent photos 2.png" alt="Indiana University moments" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exchange -->
+      <div class="acc-item" id="acc-3">
+        <button class="acc-trigger" onclick="toggleAcc('acc-3')">
+          <div class="acc-left">
+            <span class="acc-num">03</span>
+            <div>
+              <div class="acc-title">Student Exchange</div>
+              <div class="acc-meta">BESIGN, The Sustainable Design School</div>
+            </div>
+          </div>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-tag" style="background:#EEF3FF;color:#3B6FD4;">Exchange · France</div>
+            <p class="acc-desc">A semester in France changed how I see scale. I worked on a partnership project with Accenture, explored transport design across different cities, and navigated a culture and language completely outside my comfort zone. Collaborating with people from entirely different backgrounds, genuinely being out of my depth, accelerated my growth in ways a classroom never could. I came back with a more global lens, a sharper ability to adapt, and a deep belief that the best design thinking happens when you're somewhere unfamiliar.</p>
+            <div class="acc-imgs cols-3">
+              <img src="assets/About Me/HowIgothere/Exchange Program/1000014950.JPG" alt="BESIGN exchange fieldwork" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+              <img src="assets/About Me/HowIgothere/Exchange Program/Ethnographic Research in Public.jpg" alt="BESIGN exchange ethnographic research" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+              <img src="assets/About Me/HowIgothere/Exchange Program/Screenshot 2026-03-10 at 7.39.00 PM.png" alt="BESIGN exchange" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;" onerror="this.style.background='rgba(59,111,212,.12)';this.removeAttribute('src');">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────
+       5. BEYOND DESIGN
+  ────────────────────────────────── -->
+  <section class="beyond reveal">
+    <div class="beyond-header">
+      <div>
+        <div class="sec-label">Life outside the screen</div>
+        <h2 class="beyond-h2">Beyond<br><em>design.</em></h2>
+      </div>
+      <p class="beyond-intro">I crochet, I travel, I take photos of things that probably no one else finds interesting. I believe the best designers are curious about everything, not just interfaces.</p>
+    </div>
+
+    <div class="beyond-grid">
+      <div class="beyond-item">
+        <img src="assets/About Me/Beyond Design/Crochet Business.png" alt="Crochet" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="beyond-label">Crochet & Making</div>
+      </div>
+      <div class="beyond-item">
+        <img src="assets/About Me/Beyond Design/Travel.jpg" alt="Travel" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="beyond-label">Travel</div>
+      </div>
+      <div class="beyond-item">
+        <img src="assets/About Me/Beyond Design/Adventure Sports.JPG" alt="Adventure Sports" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="beyond-label">Adventure Sports</div>
+      </div>
+      <div class="beyond-item">
+        <img src="assets/About Me/Beyond Design/Reading.png" alt="Reading" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="beyond-label">Reading</div>
+      </div>
+      <div class="beyond-item">
+        <img src="assets/About Me/Beyond Design/Formula 1.jpg" alt="Formula 1" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="beyond-label">Formula 1</div>
+      </div>
+      <div class="beyond-item">
+        <img src="assets/About Me/Beyond Design/Music.jpeg" alt="Music" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="beyond-label">Music</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<!-- ──────────────────────────────────
+     CONTACT — identical to homepage
+────────────────────────────────── -->
+<div style="max-width:1240px;margin:0 auto;">
+<section class="contact-section reveal">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="contact-kicker">Open to full-time roles · Indianapolis → Everywhere</div>
+      <h2 class="contact-h">Got an idea?<br><em>Let's chat.</em></h2>
+      <a href="mailto:rheamittal0401@gmail.com" class="contact-email">
+        rheamittal0401@gmail.com ↗
+      </a>
+    </div>
+    <div class="contact-right">
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/rhea-mittal/" target="_blank" class="social-row">
+          <span class="social-row-name">LinkedIn</span>
+          <span class="social-row-arrow">↗</span>
+        </a>
+        <a href="https://github.com/RheaMittal" target="_blank" class="social-row">
+          <span class="social-row-name">GitHub</span>
+          <span class="social-row-arrow">↗</span>
+        </a>
+        <a href="https://medium.com/@rheamittal0401" target="_blank" class="social-row">
+          <span class="social-row-name">Medium</span>
+          <span class="social-row-arrow">↗</span>
+        </a>
+        <a href="https://www.behance.net/rheadmittal" target="_blank" class="social-row">
+          <span class="social-row-name">Behance</span>
+          <span class="social-row-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer-bar">
+  <span>© 2025 Rhea Mittal</span>
+  <span>Made with love and energy drinks ✨</span>
+  <span style="opacity:.4;">Indianapolis → Everywhere</span>
+</footer>
+</div>
+
+<!-- ── COLLAGE LIGHTBOX ── -->
+<div class="col-lb" id="colLb">
+  <div class="col-lb-media">
+    <img id="colLbImg" src="" alt="">
+  </div>
+  <div class="col-lb-info">
+    <button class="col-lb-close" onclick="closeColLb()">×</button>
+    <div class="col-lb-tag" id="colLbTag"></div>
+    <div class="col-lb-title" id="colLbTitle"></div>
+    <div class="col-lb-body" id="colLbBody"></div>
+  </div>
+</div>
+
+<script>
+/* ── ACCORDION ── */
+function toggleAcc(id) {
+  const item = document.getElementById(id);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── SCROLL REVEAL ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── COLLAGE LIGHTBOX ── */
+function openColLb(el) {
+  const lb = document.getElementById('colLb');
+  document.getElementById('colLbImg').src = el.dataset.img;
+  document.getElementById('colLbTag').textContent = el.dataset.tag;
+  document.getElementById('colLbTitle').textContent = el.dataset.title;
+  document.getElementById('colLbBody').textContent = el.dataset.body;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeColLb() {
+  document.getElementById('colLb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('colLb').addEventListener('click', function(e) {
+  if (e.target === this) closeColLb();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeColLb();
+});
+
+/* Hamburger */
+document.getElementById('navBurger').addEventListener('click', () => {
+  document.getElementById('navMobile').classList.add('open');
+});
+document.getElementById('navMobileClose').addEventListener('click', () => {
+  document.getElementById('navMobile').classList.remove('open');
+});
+</script>
+</body>
+</html>

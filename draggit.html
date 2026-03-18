@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draggit — Rhea Mittal</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #F5F4F0;
+  --ink: #0C0C0C;
+  --muted: rgba(12,12,12,0.45);
+  --border: rgba(0,0,0,0.08);
+  --green: #2563EB;
+  --green-bg: rgba(37,99,235,0.08);
+  --orange: #E8521A;
+  --orange-bg: rgba(232,82,26,0.08);
+  --white: #FFFFFF;
+}
+
+body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 18px 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(245,244,240,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94); }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--ink); }
+.nav-links a.active::after { width: 100%; }
+.nav-cta { background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; transition: transform .2s; }
+.nav-cta:hover { transform: scale(1.04); }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .3s, opacity .3s; }
+.nav-mobile { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+.nav-mobile.open { display: flex; }
+.nav-mobile a { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px,8vw,64px); text-transform: uppercase; letter-spacing: -1px; color: var(--ink); text-decoration: none; transition: color .2s; }
+.nav-mobile a:hover { color: var(--green); }
+.nav-mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted); }
+
+/* ─── SCROLL REVEAL ─── */
+.cs-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94); }
+.cs-reveal.cs-visible { opacity: 1; transform: translateY(0); }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ─── LIVE DOT ─── */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px rgba(34,197,94,.5); animation: lp 2s infinite; display: inline-block; vertical-align: middle; }
+@keyframes lp { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+/* ─── HERO BAND ─── */
+.cs-hero-band {
+  width: 100%;
+  padding-top: 130px;
+  padding-right: 56px;
+  padding-bottom: 80px;
+  padding-left: 56px;
+  margin-bottom: 0;
+}
+.cs-hero-band.green-band { background: linear-gradient(160deg, #071228 0%, #0E1E5A 60%, #1535A0 100%); }
+.cs-hero-inner {
+  max-width: 888px; margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.cs-hero-kicker {
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.72); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cs-hero-kicker::before { content: ''; width: 20px; height: 1px; background: rgba(255,255,255,.2); }
+.cs-hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(40px, 6vw, 76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase;
+  color: #fff; margin-bottom: 28px;
+}
+.cs-hero-desc {
+  font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.82);
+  max-width: 600px; margin-bottom: 48px; text-align: center;
+}
+.cs-hero-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+  border: 1px solid rgba(255,255,255,.1); border-radius: 16px;
+  overflow: hidden; width: fit-content;
+}
+.cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
+.cs-hs:last-child { border-right: none; }
+.cs-hs-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -2px; color: #fff; line-height: 1; }
+.cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
+
+/* ─── CONTENT LAYOUT ─── */
+.cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
+
+/* ─── OVERVIEW ─── */
+.cs-overview {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  margin: 56px 0 80px;
+}
+.cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
+.cs-ov-cell:last-child { border-right: none; }
+.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
+
+/* ─── SECTION ─── */
+.cs-section { margin-bottom: 96px; }
+.cs-sec-label {
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.cs-sec-label .n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.cs-sec-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(28px,3.5vw,44px); line-height: 1.06; letter-spacing: -1px; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); max-width: 720px; margin-bottom: 24px; }
+.cs-body + .cs-body { margin-top: -8px; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: .02em; }
+
+/* ─── SPLITS ─── */
+.sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; margin-bottom: 0; }
+.sec-split-left { display: flex; flex-direction: column; gap: 20px; }
+.sec-split-right { position: relative; }
+.sec-split-body { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+/* ─── BEFORE/AFTER ─── */
+.ba-row { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 16px; align-items: center; margin: 32px 0; }
+.ba-card { border-radius: 16px; padding: 32px; }
+.ba-red { background: rgba(201,58,82,.06); border: 1px solid rgba(201,58,82,.2); }
+.ba-green { background: var(--green-bg); border: 1px solid rgba(39,194,100,.2); }
+.ba-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+.ba-red .ba-label { color: #C93A52; }
+.ba-green .ba-label { color: var(--green); }
+.ba-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: -.5px; margin-bottom: 8px; }
+.ba-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.ba-arrow { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; color: var(--border); text-align: center; }
+
+/* ─── CARDS ─── */
+.cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+.cards-g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+.c-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px;
+  display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
+}
+.c-card:hover { border-color: rgba(0,0,0,.18); }
+.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; color: var(--ink); }
+.c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ─── TOOL CARDS ─── */
+.tool-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 32px;
+  display: flex; gap: 20px; align-items: flex-start; transition: border-color .2s;
+}
+.tool-card:hover { border-color: rgba(0,0,0,.18); }
+.t-ico { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.ti-purple { background: rgba(124,77,255,.15); }
+.ti-warm { background: rgba(255,150,80,.1); }
+.ti-blue { background: rgba(59,130,246,.1); }
+.ti-teal { background: rgba(20,184,166,.1); }
+.t-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: -.4px; margin-bottom: 5px; }
+.t-role { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ─── IMPACT ─── */
+.impact-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0; }
+.impact-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 36px 28px; text-align: center;
+  transition: transform .25s, border-color .2s;
+}
+.impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
+.impact-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 56px; letter-spacing: .06em; line-height: 1; margin-bottom: 8px; }
+.impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
+.in-g { color: var(--green); }
+
+/* ─── LEARNINGS ─── */
+.learning {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 28px;
+  display: flex; gap: 18px; align-items: flex-start;
+  margin-bottom: 2px; transition: border-color .2s;
+}
+.learning:hover { border-color: rgba(12,12,12,0.18); }
+.l-ico { display: none; }
+.l-text { font-size: 15px; line-height: 1.7; color: rgba(12,12,12,0.65); }
+.l-text strong { color: var(--ink); font-weight: 600; }
+
+/* ─── QUOTE ─── */
+.cs-quote {
+  border-radius: 20px; padding: 44px 52px; margin: 40px 0;
+  position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.06);
+}
+.cs-quote.dark { background: #0A0A0A; }
+.cs-quote::before {
+  content: '"'; position: absolute; top: -30px; left: 32px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 200px;
+  color: rgba(0,0,0,.04); line-height: 1; pointer-events: none;
+}
+.cs-quote-text { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.55; color: rgba(255,255,255,.85); position: relative; margin-bottom: 16px; }
+.cs-quote-attr { font-size: 13px; color: rgba(255,255,255,.3); position: relative; }
+
+/* ─── DIVIDER ─── */
+.divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+/* ─── VIDEO ZOOM ─── */
+.vid-zoom {
+  display: block;
+  transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), max-width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-radius 0.8s ease;
+}
+.vid-zoom.vid-expanded { width: 100% !important; border-radius: 10px !important; }
+
+/* ─── FOOTER CTA ─── */
+.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
+.cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
+.cs-footer.green-foot { background: linear-gradient(160deg, #071228 0%, #0D1B52 60%, #1330A0 100%); }
+.cs-footer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
+.cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
+.fb-ghost { border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
+
+/* ─── IMG PLACEHOLDER ─── */
+.img-ph {
+  border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02);
+  padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 14px; margin: 32px 0;
+}
+.img-ph.h-full { min-height: 520px; }
+.img-ph.h-large { min-height: 420px; }
+.img-ph.h-medium { min-height: 320px; }
+.img-ph.h-small { min-height: 200px; }
+.img-ph.h-xs { min-height: 140px; }
+.img-ph-ico { font-size: 40px; opacity: .2; }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.img-ph-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.5px; color: rgba(0,0,0,.38); }
+.img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px) {
+  nav { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .cs-hero-band { padding-top: 110px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
+  .cs-content { padding: 0 20px 100px; }
+  .cs-overview { grid-template-columns: 1fr 1fr; }
+  .cs-ov-cell:nth-child(2) { border-right: none; }
+  .cs-ov-cell:nth-child(3) { border-top: 1px solid var(--border); }
+  .cs-ov-cell:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+  .cards-g3 { grid-template-columns: 1fr 1fr; }
+  .cards-g2 { grid-template-columns: 1fr; }
+  .impact-row { grid-template-columns: 1fr 1fr; }
+  .cs-footer-inner { padding: 40px 24px; }
+  .cs-footer-title { font-size: 36px; }
+  .sec-split { grid-template-columns: 1fr; gap: 28px; }
+  .ba-row { grid-template-columns: 1fr; }
+  .ba-arrow { display: none; }
+}
+@media(max-width:600px) {
+  .cards-g3 { grid-template-columns: 1fr; }
+  .cs-hero-stats { flex-direction: column; width: 100%; border: none; gap: 0; }
+  .cs-hs { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); padding: 20px 0; }
+  .cs-overview { grid-template-columns: 1fr; }
+  .cs-ov-cell { border-right: none !important; border-top: 1px solid var(--border); }
+  .cs-ov-cell:first-child { border-top: none; }
+  .cs-hero-kicker { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
+  <ul class="nav-links">
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="playground.html">Play</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <a href="work.html">Work</a>
+  <a href="playground.html">Play</a>
+  <a href="about.html">About</a>
+  <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
+</div>
+
+<!-- HERO BAND -->
+<div class="cs-hero-band green-band">
+  <div class="cs-hero-inner">
+    <div class="cs-hero-kicker"><span class="live-dot"></span> Solo Built &amp; Shipped · LinkedIn Chrome Extension · Nov 2025</div>
+    <h1 class="cs-hero-h1">I noticed a friction.<br>I built the fix.</h1>
+    <p class="cs-hero-desc">Built and shipped a LinkedIn Chrome Extension in 2 weeks — solo, end to end. Identified a UX friction on LinkedIn that everyone was silently dealing with, and fixed it using AI-powered tools: Claude, Cursor, and Figma Make.</p>
+    <video class="cs-hero-video vid-zoom" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:36px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);">
+      <source src="assets/Draggit.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="cs-content">
+
+  <!-- OVERVIEW META -->
+  <div class="cs-overview cs-reveal">
+    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">Product Designer &amp; Builder (Solo)</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Timeline</div><div class="cs-ov-val">2 weeks, Nov 2025</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Platform</div><div class="cs-ov-val">Chrome Extension (Web)</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Tools</div><div class="cs-ov-val">Figma, ChatGPT, Claude, Cursor, Figma Make</div></div>
+  </div>
+
+
+  <!-- VISUAL PROCESS STRIP -->
+  <div style="margin-bottom:80px;" class="cs-reveal reveal-d2">
+    <div style="padding:36px 0 40px;border-bottom:1px solid var(--border);">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:24px;">How this went from frustration to live product</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
+          <div style="font-size:28px;margin-bottom:10px;">😤</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Spot Friction</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">Personal frustration, modal hides name while I'm writing a note</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
+          <div style="font-size:28px;margin-bottom:10px;">🗣</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Validate</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">LinkedIn community post, 5+ people confirm same frustration</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
+          <div style="font-size:28px;margin-bottom:10px;">✏️</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Design</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">6 options explored in Figma, drag handle chosen for zero learning curve</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
+          <div style="font-size:28px;margin-bottom:10px;">🤖</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Build with AI</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">PRD → Cursor → Figma Make. I directed, AI executed</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;background:var(--green-bg);">
+          <div style="font-size:28px;margin-bottom:10px;">🚀</div>
+          <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px;">Ship</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">Rejected once, debugged permissions, resubmitted as Draggit. Live.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOAL -->
+  <div class="cs-section cs-reveal" style="margin-top:80px;">
+    <div class="cs-sec-label"><span class="n">00</span> The Goal</div>
+    <h2 class="cs-sec-title">Fix the friction. Ship it publicly.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+      <p class="cs-body" style="margin:0;">LinkedIn's "Add Note" modal opens directly over the profile you're trying to reference — hiding the name, title, and company at the exact moment you need them. The goal wasn't just to solve it for myself. It was to build something lightweight enough to be technically feasible, fast enough to ship with AI tools, and safe enough to be used publicly — with zero personal data being parsed or recorded.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="border:1px solid var(--border);border-radius:14px;padding:18px 22px;background:var(--white);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;color:var(--green);margin-bottom:4px;">Fix the UX friction</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">Make it possible to reference the profile while writing the connection note — without closing and reopening the modal.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:14px;padding:18px 22px;background:var(--white);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;color:var(--green);margin-bottom:4px;">Ship it publicly</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">Get it live on the Chrome Web Store — not just a prototype. A real product that real users can install.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:14px;padding:18px 22px;background:var(--white);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;color:var(--green);margin-bottom:4px;">Zero personal data</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">Any solution had to work without scraping or recording the profile being viewed. Privacy-safe by design.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 PROBLEM -->
+  <div class="cs-section cs-reveal" style="margin-top:80px;">
+    <div class="cs-sec-label"><span class="n">01</span> Problem</div>
+    <h2 class="cs-sec-title" style="font-size:clamp(28px,3.5vw,44px);margin-bottom:32px;">The modal that blocked your context.</h2>
+    <div class="sec-split">
+      <div class="sec-split-left">
+        <p class="sec-split-body">LinkedIn's "Add Note" modal opens directly on top of the person's profile, hiding their name, title, and company at the exact moment you need it to write something personal. So you close the modal, re-read the profile, reopen the modal, try to hold the details in working memory, and start writing. Every time. For every connection.</p>
+        <p class="sec-split-body">A small friction, but one that compounds fast when you're actively networking. And for a platform built around meaningful connection, it was a surprisingly avoidable problem.</p>
+      </div>
+      <div class="sec-split-right">
+        <figure style="margin:0;">
+          <img src="assets/Draggit case study/The problem modal covering profile info.png" alt="The LinkedIn Add Note modal covering the profile" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.12);border:1px solid var(--border);">
+          <figcaption class="img-caption">LinkedIn's "Add Note" modal blocking the profile info you need to write the message</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Validated callout -->
+    <div style="margin-top:36px;border:1px solid rgba(37,99,235,.2);border-radius:20px;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#071228 0%,#0E1E5A 100%);padding:28px 36px 20px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,0.4);margin-bottom:10px;">Validated before writing a single line of code</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;color:#fff;letter-spacing:-1px;line-height:1.1;">5+ product designers &amp; engineers<br>confirmed the same pain.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:20px 24px;border-right:1px solid rgba(255,255,255,0.07);background:#040D1E;">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:12px;color:#fff;margin-bottom:10px;">SL</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.6;margin:0 0 6px;">"Faced similar issues myself. This is something I deal with every single day."</p>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);">Engineer at Apple</div>
+        </div>
+        <div style="padding:20px 24px;border-right:1px solid rgba(255,255,255,0.07);background:#040D1E;">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:12px;color:#fff;margin-bottom:10px;">PG</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.6;margin:0 0 6px;">"Pretty cool solution. I would even like it if LinkedIn starts adding a template which I can modify."</p>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);">MS ECE · Carnegie Mellon</div>
+        </div>
+        <div style="padding:20px 24px;background:#040D1E;">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:12px;color:#fff;margin-bottom:10px;">AM</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.6;margin:0 0 6px;">"So relatable! Love the speed of your brainstorming."</p>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);">Sr Product Designer · Fintech AI SaaS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 DESIGN PROCESS -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">02</span> Design Process</div>
+    <h2 class="cs-sec-title">Two decisions. Both tested.</h2>
+
+    <div class="sec-split" style="margin-bottom:32px;align-items:start;">
+      <div class="sec-split-left">
+        <p class="sec-split-body">I started by sketching on paper — not Figma. Six approaches for the same constraint: how do you expose profile context without creating a new interaction pattern? Each one tested against three questions: does it feel native? Does it break LinkedIn's layout? Can it be built safely without reading personal data?</p>
+        <p class="sec-split-body">One concept cleared all three. Then the icon needed two tries.</p>
+      </div>
+      <div class="sec-split-right">
+        <figure style="margin:0;">
+          <img src="assets/Draggit case study/Figma Explorationsolution iterations.png" alt="Hand-drawn UI iterations" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);">
+          <figcaption class="img-caption">Hand-drawn explorations across 6 UI approaches before picking up Figma</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Why drag handle -->
+    <div style="margin-top:36px;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--white);">
+      <div style="padding:24px 28px;border-bottom:1px solid var(--border);">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px;">Why this concept won</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:26px;letter-spacing:-.5px;">The drag handle was the only answer that met all three constraints.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;">
+        <div style="padding:22px 24px;border-right:1px solid var(--border);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:rgba(0,0,0,0.07);margin-bottom:8px;">01</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px;">Lightweight &amp; feasible</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">A drag handle is a single injected DOM element. No new UI surface, no new modal state, no layout interference.</p>
+        </div>
+        <div style="padding:22px 24px;border-right:1px solid var(--border);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:rgba(0,0,0,0.07);margin-bottom:8px;">02</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px;">Buildable with AI</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Drag logic is a well-understood pattern. Clear enough to PRD, clear enough for Cursor to build correctly — no ambiguous edge cases to hallucinate around.</p>
+        </div>
+        <div style="padding:22px 24px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:rgba(0,0,0,0.07);margin-bottom:8px;">03</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px;">Zero personal data</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">The extension only moves the modal. It doesn't read, scrape, or record anything about the person you're connecting with. Privacy-safe from day one.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Icon iterations -->
+    <div style="margin-top:28px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:20px;">The icon · two iterations, one clear winner</div>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start;">
+        <div class="img-ph img-ph--icon-iterations" style="min-height:260px;margin:0;">
+          <div class="img-ph-ico">🎨</div>
+          <div class="img-ph-badge">PLACEHOLDER</div>
+          <div class="img-ph-title">Icon Iteration Explorations</div>
+          <div class="img-ph-desc">Image of the logo/icon iterations for the modal drag handle — replace with real asset</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="border:1px solid var(--border);border-radius:14px;padding:18px 20px;background:var(--white);">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#C93A52;margin-bottom:6px;">Option A</div>
+            <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Arrow-based icon</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">Directional arrows pointing outward. Tested with two people — neither immediately understood it communicated "drag".</p>
+          </div>
+          <div style="border:1px solid rgba(37,99,235,.25);border-radius:14px;padding:18px 20px;background:var(--green-bg);">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:6px;">Option B · Chosen ✓</div>
+            <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Six-dot grip handle</div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">The six dots instantly communicate "this can be dragged" — a pattern users already know from reorderable lists. When tested with the same two people, they both picked this one without hesitation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 BUILD PROCESS -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">03</span> Build Process</div>
+    <h2 class="cs-sec-title">Vibecoded with AI tools.</h2>
+    <p class="cs-body">I didn't just prompt-and-paste. I treated AI as a specialized collaborator on each phase of the build, with a different tool playing a different role. The design and product decisions stayed mine throughout.</p>
+
+    <div class="cards-g2">
+      <div class="tool-card">
+        <div class="t-ico ti-purple">🤖</div>
+        <div>
+          <div class="t-name">ChatGPT</div>
+          <p class="t-role">Before writing code, used ChatGPT to evaluate technical feasibility of all six solution options I'd designed in Figma. Key question: <em>what can a Chrome extension actually do to LinkedIn's DOM?</em> Answer confirmed that injecting a drag handle via content script was viable.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="t-ico ti-warm">✳️</div>
+        <div>
+          <div class="t-name">Claude</div>
+          <p class="t-role">Wrote the full PRD, translating interaction specs, edge cases, and design decisions into structured engineering requirements. Having a PRD meant Cursor had clear context and constraints to work within, not just vibes.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="t-ico ti-blue">⬛</div>
+        <div>
+          <div class="t-name">Cursor</div>
+          <p class="t-role">Built the Chrome extension: manifest, content script, drag logic, position memory. I directed the build, reviewed every output, debugged failures, and iterated when LinkedIn's dynamic DOM caused issues. Cursor wrote code; I owned the product.</p>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="t-ico ti-teal">💠</div>
+        <div>
+          <div class="t-name">Figma Make</div>
+          <p class="t-role">After the extension worked functionally, used Figma Make to rapidly explore UI variations of the drag handle, color, size, shape, and hover states without touching code each time. Landed on the purple gradient circle that feels distinct from LinkedIn's blue.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI timeline -->
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+      <div style="padding:20px 22px;border-right:1px solid var(--border);background:var(--white);">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px;">Step 01</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;color:var(--ink);margin-bottom:4px;">ChatGPT</div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:0;">Evaluated technical feasibility of all solution options against what Chrome extensions can actually do to the DOM.</p>
+      </div>
+      <div style="padding:20px 22px;border-right:1px solid var(--border);background:var(--white);">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px;">Step 02</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;color:var(--ink);margin-bottom:4px;">Claude</div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:0;">Built the full PRD — translating design decisions and edge cases into structured engineering requirements.</p>
+      </div>
+      <div style="padding:20px 22px;border-right:1px solid var(--border);background:var(--white);">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px;">Step 03</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;color:var(--ink);margin-bottom:4px;">Cursor</div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:0;">Built the extension: manifest, content script, drag logic, position memory. I directed every output and debugged failures.</p>
+      </div>
+      <div style="padding:20px 22px;background:var(--green-bg);border-left:none;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:6px;">Step 04</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;color:var(--green);margin-bottom:4px;">Figma Make</div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:0;">Rapid UI variations for the drag handle — colour, size, icon — without touching code between iterations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE PRODUCT -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">04</span> The Product</div>
+    <h2 class="cs-sec-title">One drag. Full context restored.</h2>
+    <p class="cs-body">Draggit adds a single drag handle to LinkedIn's "Add Note" modal. That's it. No settings, no onboarding, no permissions beyond what's needed.</p>
+
+    <video autoplay loop muted playsinline class="vid-zoom" style="width:72%;border-radius:20px;display:block;margin:32px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);">
+      <source src="assets/Draggit.mp4" type="video/mp4">
+    </video>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
+      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:rgba(0,0,0,0.06);margin-bottom:8px;">01</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">Drag to reveal</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Move the modal out of the way to clearly see the name, title, and company you're writing to — without closing anything.</p>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:rgba(0,0,0,0.06);margin-bottom:8px;">02</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">No more close-and-reopen</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Reference the profile while you're writing. No need to close the modal, re-read, and reopen just to double-check a spelling.</p>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:rgba(0,0,0,0.06);margin-bottom:8px;">03</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">More confident networking</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Write a personalised note knowing you have the full context in front of you. Fewer generic notes. More genuine first impressions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 CHALLENGES -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">05</span> Challenges</div>
+    <h2 class="cs-sec-title">Rejected by Chrome. Debugged. Resubmitted.</h2>
+
+    <p class="cs-body" style="margin-top:24px;margin-bottom:32px;">After submitting, I received a rejection email. I was gutted — I'd put real work into this. But I decided to sit with it, read through the manifest carefully, understand exactly why Chrome had flagged it, and fix it properly. I'd gotten this far. I wasn't stopping at the finish line.</p>
+
+    <div class="ba-row">
+      <div class="ba-card ba-red">
+        <div class="ba-label">❌ Submission 1: Rejected</div>
+        <div class="ba-title">ConnectRight</div>
+        <p class="ba-text">Overly broad manifest permission flagged by Chrome. No appeal. Fix and resubmit.</p>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-card ba-green" id="draggit-approved-v2" style="position:relative;overflow:hidden;">
+        <canvas id="confetti-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
+        <div class="ba-label">✅ Submission 2: Approved</div>
+        <div class="ba-title">Draggit</div>
+        <p class="ba-text">Scoped permission to minimum needed. Rewrote manifest fields. Approved within 72 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 IMPACT -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">06</span> Impact</div>
+    <h2 class="cs-sec-title">Goal met. Then some.</h2>
+    <p class="cs-body" style="margin-bottom:32px;">From a personal frustration to a live product with real users — the goal of fixing the friction and shipping it publicly was fully realised.</p>
+    <div class="impact-row" style="grid-template-columns:repeat(3,1fr);">
+      <div class="impact-card"><div class="impact-n in-g">✓</div><div class="impact-l">Live on Chrome Web Store</div></div>
+      <div class="impact-card"><div class="impact-n in-g">20+</div><div class="impact-l">Active Users</div></div>
+      <div class="impact-card"><div class="impact-n">5★</div><div class="impact-l">Chrome Store Rating</div></div>
+    </div>
+  </div>
+
+  <!-- 07 REFLECTION -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">07</span> Reflection</div>
+    <h2 class="cs-sec-title">What shipping taught me.</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;">
+      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">Community &gt; Research sprints</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">A single LinkedIn post replaced weeks of formal user research. Real people told me what interviews would have taken much longer to surface.</p>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">PRD first, even with AI</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">Clear requirements before touching Cursor meant fewer misaligned outputs. Every time something went wrong, it traced back to something I hadn't specified.</p>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">Rejection = the best brief</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">The Chrome Store rejection forced me to actually understand the permissions model. I carry that knowledge into every future build. It was the most educational moment of the whole project.</p>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:18px;padding:28px 30px;background:var(--white);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:10px;">AI executes. I decide.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.65);margin:0;">I used AI to accelerate execution, never to make product decisions. Direction, UX calls, iteration judgment — those stayed mine throughout.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER CTA -->
+  <div class="cs-footer green-foot">
+    <div class="cs-footer-inner">
+      <h3 class="cs-footer-title">Try Draggit yourself.</h3>
+      <p class="cs-footer-sub">Live on the Chrome Web Store · Free · No account needed · Works immediately</p>
+      <div class="cs-footer-btns">
+        <a href="https://chromewebstore.google.com/detail/camjmipgnifjhidhbjpabpniojioeojf?utm_source=item-share-cb" target="_blank" class="fb-primary">↗ Open on Chrome Web Store</a>
+        <a href="mailto:rheamittal0401@gmail.com" class="fb-ghost">✉ Say hello to Rhea</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW MORE PROJECTS -->
+  <div style="padding:48px 0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div onclick="window.location='cliqueprize.html'" style="background:#160810;border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">CliquePrize</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+      </div>
+      <div onclick="window.location='opsiq.html'" style="background:#0F1A2E;border:1px solid rgba(59,111,212,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(59,111,212,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,111,212,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#7EB8FF;margin-bottom:12px;">AI Dashboard [NDA]</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">OpsIQ</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">Small businesses had the data. They couldn't use it. We built the tool that changes that.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /cs-content -->
+
+<script>
+// ─── HAMBURGER ───
+const burger = document.getElementById('navBurger');
+const mobileMenu = document.getElementById('navMobile');
+const closeBtn = document.getElementById('navMobileClose');
+
+burger.addEventListener('click', function() {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+closeBtn.addEventListener('click', function() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+});
+mobileMenu.querySelectorAll('a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── SCROLL REVEAL ───
+var revealEls = document.querySelectorAll('.cs-reveal');
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('cs-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+revealEls.forEach(function(el) { revealObserver.observe(el); });
+
+// ─── VIDEO ZOOM (expand to 100% width when in viewport) ───
+var vidEls = document.querySelectorAll('.vid-zoom');
+var vidObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('vid-expanded');
+    } else {
+      entry.target.classList.remove('vid-expanded');
+    }
+  });
+}, { threshold: 0.3 });
+
+vidEls.forEach(function(el) { vidObserver.observe(el); });
+
+// ─── CONFETTI on Draggit Approved card ───
+(function() {
+  var confettiFired = false;
+  var approvedCard = document.getElementById('draggit-approved-v2');
+  if (!approvedCard) return;
+  var canvas = document.getElementById('confetti-canvas');
+  if (!canvas) return;
+
+  function fireConfetti() {
+    if (confettiFired) return;
+    confettiFired = true;
+    var ctx = canvas.getContext('2d');
+    canvas.width = approvedCard.offsetWidth;
+    canvas.height = approvedCard.offsetHeight;
+
+    var pieces = [];
+    var colors = ['#2563EB','#22C55E','#F59E0B','#EC4899','#8B5CF6','#fff'];
+    for (var i = 0; i < 60; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height * -1,
+        r: Math.random() * 5 + 3,
+        d: Math.random() * 60 + 20,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.random() * 10 - 5,
+        tiltAngle: 0,
+        tiltAngleInc: (Math.random() * 0.07) + 0.05
+      });
+    }
+
+    var frameCount = 0;
+    var maxFrames = 90;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(function(p) {
+        p.tiltAngle += p.tiltAngleInc;
+        p.y += (Math.cos(p.d) + 2);
+        p.tilt = Math.sin(p.tiltAngle) * 12;
+        ctx.beginPath();
+        ctx.lineWidth = p.r;
+        ctx.strokeStyle = p.color;
+        ctx.moveTo(p.x + p.tilt + p.r / 3, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 5);
+        ctx.stroke();
+      });
+      frameCount++;
+      if (frameCount < maxFrames) {
+        requestAnimationFrame(draw);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+    draw();
+  }
+
+  var confettiObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        setTimeout(fireConfetti, 300);
+        confettiObserver.unobserve(approvedCard);
+      }
+    });
+  }, { threshold: 0.6 });
+  confettiObserver.observe(approvedCard);
+})();
+</script>
+</body>
+</html>
