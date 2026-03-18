@@ -420,10 +420,26 @@ nav {
   <!-- GOAL -->
   <div class="cs-section cs-reveal" style="margin-top:80px;">
     <div class="cs-sec-label">The Goal</div>
-    <h2 class="cs-sec-title">Find a fix that anyone could use.</h2>
-    <div style="background:var(--green-bg);border:1px solid rgba(37,99,235,.18);border-radius:18px;padding:28px 32px;margin-top:8px;">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:12px;">Goal</div>
-      <p style="font-size:16px;line-height:1.75;color:var(--ink);margin:0;">Fix the UX friction on LinkedIn's "Add Note" modal and ship a solution anyone could use publicly.</p>
+    <h2 class="cs-sec-title" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,56px);text-transform:uppercase;letter-spacing:-.5px;color:var(--ink);margin-bottom:32px;">Find a fix that anyone could use.</h2>
+
+    <!-- Single blue-tinted card -->
+    <div style="background:var(--green-bg);border:1px solid rgba(37,99,235,0.15);border-radius:20px;padding:36px 40px;">
+      <!-- Goal label + statement -->
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:16px;">Goal</div>
+      <p style="font-size:clamp(18px,2.2vw,22px);font-weight:600;color:var(--ink);line-height:1.5;margin:0 0 36px;">Fix the UX friction on LinkedIn's "Add Note" modal and ship a solution anyone could use publicly, not just a personal workaround.</p>
+      <!-- Divider -->
+      <div style="height:1px;background:rgba(37,99,235,0.15);margin-bottom:32px;"></div>
+      <!-- Two columns -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:12px;">The Friction</div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">LinkedIn's modal covers the person's profile at the exact moment you need to read it to write something personal.</p>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:12px;">The Constraint</div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Lightweight, Chrome-compatible, no personal data parsed or recorded, and simple enough to ship publicly on the Chrome Web Store.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -468,14 +484,19 @@ nav {
     </div>
 
     <!-- Icon iterations -->
-    <div style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
-      <div>
-        <img src="assets/Icon Ideation.png" alt="Icon iteration explorations for Draggit" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
-        <p class="img-caption" style="margin-top:10px;">Icon ideation sketches, exploring drag metaphors before landing on the 6-dot grip</p>
-      </div>
-      <div style="border-left:3px solid var(--green);background:#EEF2FF;border-radius:0 14px 14px 0;padding:20px 24px;">
-        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:10px;">Informal Test</div>
-        <p style="font-size:14px;color:var(--ink);line-height:1.7;margin:0;">Showed two icon options to two friends. Both picked the 6 dots. Both guessed "drag" without prompting.</p>
+    <div style="margin-top:36px;">
+      <!-- Image centered, constrained width -->
+      <div style="display:flex;gap:24px;align-items:flex-start;">
+        <figure style="margin:0;flex:0 0 340px;max-width:340px;">
+          <img src="assets/Icon Ideation.png" alt="Icon iteration explorations for Draggit" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <p class="img-caption" style="margin-top:10px;">Icon ideation sketches, exploring drag metaphors before landing on the 6-dot grip</p>
+        </figure>
+        <div style="flex:1;display:flex;flex-direction:column;gap:16px;padding-top:4px;">
+          <div style="border-left:3px solid var(--green);background:#EEF2FF;border-radius:0 14px 14px 0;padding:24px 28px;">
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:12px;">Informal Test</div>
+            <p style="font-size:15px;color:var(--ink);line-height:1.7;margin:0;">Showed two icon options to two friends. Both picked the 6 dots. Both guessed "drag" without prompting.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -594,11 +615,21 @@ nav {
   <!-- 07 REFLECTION -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">07</span> Reflection</div>
-    <h2 class="cs-sec-title">What shipping taught me.</h2>
+    <h2 class="cs-sec-title" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,56px);text-transform:uppercase;letter-spacing:-.5px;color:var(--ink);margin-bottom:32px;">What I took away.</h2>
 
-    <div style="border:1px solid var(--border);border-radius:18px;padding:32px 36px;background:var(--white);max-width:680px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:12px;">Build fast. Ship fast. Learn faster.</div>
-      <p style="font-size:15px;line-height:1.8;color:rgba(12,12,12,0.65);margin:0;">This project taught me the value of building fast and failing fast. Simply animating the concept in Figma before writing a line of code gave me two things: the validation I needed to move forward, and feedback on what other features people would actually want. Speed of execution is a design skill.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <!-- Card 1 -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
+        <div style="font-size:28px;margin-bottom:20px;">⚡</div>
+        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Build fast. Fail fast. Learn faster.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Simply animating a concept in Figma gave me everything I needed: validation that the pain was real, and early feedback on what features people actually wanted. I didn't need a polished prototype, a rough animation was enough to get signal.</p>
+      </div>
+      <!-- Card 2 -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
+        <div style="font-size:28px;margin-bottom:20px;">🔄</div>
+        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Rejection is a debugging task.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">The Chrome Store rejection forced me to understand the permission model properly. Highest-value moment of the whole build.</p>
+      </div>
     </div>
   </div>
 
