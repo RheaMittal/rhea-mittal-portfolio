@@ -52,16 +52,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 .page-desc{font-size:17px;line-height:1.75;color:var(--muted);max-width:560px;}
 
 /* TABS */
-.tabs-wrap{max-width:1240px;margin:0 auto;padding:0 56px;position:sticky;top:65px;z-index:100;background:rgba(245,244,240,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.tabs-wrap{max-width:1240px;margin:0 auto;padding:16px 56px;position:sticky;top:65px;z-index:100;background:rgba(245,244,240,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap;}
 .tabs::-webkit-scrollbar{display:none;}
-.tab-btn{padding:18px 28px;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;cursor:pointer;white-space:nowrap;position:relative;transition:color .2s, transform .2s;}
-.tab-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--ink);transform:scaleX(0);transition:transform .3s cubic-bezier(.25,.46,.45,.94);transform-origin:left;}
-.tab-btn:hover{color:var(--ink);transform:translateY(-1px);}
-.tab-btn:hover::after{transform:scaleX(.4);opacity:.4;}
-.tab-btn.active{color:var(--ink);}
-.tab-btn.active::after{transform:scaleX(1);opacity:1;}
-.tab-count{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;background:rgba(0,0,0,.07);border-radius:100px;padding:2px 7px;margin-left:6px;}
+.tab-btn{padding:8px 18px;font-size:13px;font-weight:500;color:var(--ink);background:none;border:1.5px solid rgba(12,12,12,0.18);border-radius:100px;cursor:pointer;white-space:nowrap;transition:background .2s, color .2s, border-color .2s;}
+.tab-btn:hover{border-color:var(--ink);background:rgba(12,12,12,0.05);}
+.tab-btn.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.tab-count{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;margin-left:5px;opacity:0.7;}
 
 /* GRID */
 .pg-content{max-width:1240px;margin:0 auto;padding:48px 56px 120px;}
