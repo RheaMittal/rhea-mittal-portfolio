@@ -81,7 +81,7 @@ nav {
   font-size: clamp(40px, 6vw, 76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase;
   color: #fff; margin-bottom: 28px;
 }
-.cs-hero-h1 em { font-style: normal; color: #FF7B71; }
+.cs-hero-h1 em { font-style: normal; color: #fff; }
 .cs-hero-desc {
   font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72);
   max-width: 600px; margin-bottom: 48px; text-align: center;
@@ -158,7 +158,7 @@ nav {
   display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.18); }
-.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: var(--red); line-height: 1; opacity: .7; }
 .c-card-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
@@ -188,16 +188,16 @@ nav {
 /* ─── QUOTE ─── */
 .cs-quote {
   border-radius: 20px; padding: 44px 52px; margin: 40px 0;
-  position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.06);
+  position: relative; overflow: hidden;
+  background: rgba(230,59,46,.06); border: 1px solid rgba(230,59,46,.18);
 }
-.cs-quote.dark { background: #0A0A0A; }
 .cs-quote::before {
   content: '"'; position: absolute; top: -30px; left: 32px;
   font-family: 'Barlow Condensed', sans-serif; font-size: 200px;
-  color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+  color: rgba(230,59,46,.07); line-height: 1; pointer-events: none;
 }
-.cs-quote-text { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.55; color: rgba(255,255,255,.85); position: relative; margin-bottom: 16px; }
-.cs-quote-attr { font-size: 13px; color: rgba(255,255,255,.3); position: relative; }
+.cs-quote-text { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.55; color: var(--ink); position: relative; margin-bottom: 16px; }
+.cs-quote-attr { font-size: 13px; color: var(--muted); position: relative; }
 
 /* ─── DIVIDER ─── */
 .divider { height: 1px; background: var(--border); margin: 48px 0; }
@@ -213,6 +213,15 @@ nav {
 .fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
 .fb-ghost { border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
+
+/* ─── IMG ZOOM (same as Draggit vid-zoom) ─── */
+.img-zoom {
+  display: block; margin: 48px auto 0;
+  width: 72%; border-radius: 20px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.08), 0 0 60px rgba(230,59,46,.18);
+  transition: width 1s cubic-bezier(0.25,0.46,0.45,0.94), border-radius 0.8s ease, box-shadow 1s ease;
+}
+.img-zoom.img-expanded { width: 92%; border-radius: 14px; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.1), 0 0 80px rgba(230,59,46,.22); }
 
 /* ─── IMG PLACEHOLDER ─── */
 .img-ph {
@@ -273,7 +282,7 @@ nav {
     <li><a href="about.html">About</a></li>
     <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
   </ul>
-  <a class="nav-cta" href="mailto:rheamittalaiuesu@gmail.com">Contact me</a>
+  <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -293,41 +302,12 @@ nav {
       <span class="team-dot"></span>
       UX Research + Feature Design &nbsp;·&nbsp; Canvas LMS &nbsp;·&nbsp; Team of 4 &nbsp;·&nbsp; 2024
     </div>
-    <h1 class="cs-hero-h1">Millions rely on it.<br><em>Nobody should dread it.</em></h1>
+    <h1 class="cs-hero-h1">Integrating AI into the<br><em>world's most-used LMS.</em></h1>
     <p class="cs-hero-desc">We redesigned Canvas's quiz creation flow for educators, adding AI-powered generation, autosave, and progress indicators. Research-backed across 3 fidelity levels, validated with 8+ faculty.</p>
 
-    <!-- STATS STRIP -->
-    <div class="cs-hero-stats">
-      <div class="cs-hs">
-        <div class="cs-hs-n red">62%</div>
-        <div class="cs-hs-l">Faster Task Time</div>
-      </div>
-      <div class="cs-hs">
-        <div class="cs-hs-n red">30%</div>
-        <div class="cs-hs-l">Fewer Clicks</div>
-      </div>
-      <div class="cs-hs">
-        <div class="cs-hs-n">8+</div>
-        <div class="cs-hs-l">Educators Interviewed</div>
-      </div>
-      <div class="cs-hs">
-        <div class="cs-hs-n">4</div>
-        <div class="cs-hs-l">Person Team</div>
-      </div>
-      <div class="cs-hs">
-        <div class="cs-hs-n">2.5</div>
-        <div class="cs-hs-l">Months</div>
-      </div>
-    </div>
 
-    <!-- HERO IMAGE — swap with real Figma export -->
-    <div style="width:80%;border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.08);">
-      <div class="img-ph h-large" style="margin:0;border-radius:0;border:none;background:rgba(255,255,255,.04);">
-        <div class="img-ph-ico" style="opacity:.35;">🖥</div>
-        <div class="img-ph-title" style="color:rgba(255,255,255,.25);">Final Design: Canvas Quiz Builder</div>
-        <div class="img-ph-desc" style="color:rgba(255,255,255,.15);">Replace with Figma export of the AI quiz generation screen</div>
-      </div>
-    </div>
+    <!-- HERO IMAGE -->
+    <img src="assets/Canvas/Landing Page Img.png" alt="Canvas quiz creation redesign" class="img-zoom">
 
   </div>
 </div>
@@ -359,53 +339,314 @@ nav {
     </div>
   </div>
 
-  <!-- PROCESS STRIP -->
-  <div style="margin-bottom:80px;" class="cs-reveal reveal-d2">
-    <div style="padding:36px 0 40px;border-bottom:1px solid var(--border);">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:24px;">How we went from broken flow to 62% faster task time</div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;">
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
-          <div style="font-size:28px;margin-bottom:10px;">🎓</div>
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Spot the Gap</div>
-          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">8+ educator interviews surface 3 systemic pain points in quiz creation</div>
+
+
+  <!-- ══ SECTION 1: THE BRIEF ══ -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">01</span> The Brief</div>
+    <h2 class="cs-sec-title">A Tool 40 Million People Use Every Day With Frustration</h2>
+    <p class="cs-body">Canvas is the learning management system used by universities across North America. Faculty use it to build courses, manage students, and create assessments. It is deeply embedded in how education runs.</p>
+    <p class="cs-body">And it is genuinely painful to use.</p>
+    <p class="cs-body">Our brief was focused: <strong>redesign the quiz creation experience for educators.</strong> Not a rebrand. Not a full overhaul. One high-friction workflow, fixed. We had 2.5 months, a team of four, and real faculty to test with.</p>
+
+    <div class="cs-quote" style="margin-top:40px;">
+      <div class="cs-quote-text">"The system hasn't been updated in years. There is the general feeling that the world has passed it by."</div>
+      <div class="cs-quote-attr">- Professor, Teaching Faculty</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 2: RESEARCH ══ -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">02</span> Research</div>
+    <h2 class="cs-sec-title">We Asked. They Had a Lot to Say.</h2>
+    <p class="cs-body">We interviewed 8+ educators and faculty to understand where time was being lost and where frustration ran highest. We also ran observation sessions - watching faculty actually build quizzes - and measured time on task, click count, error rate, and task completion.</p>
+
+    <div class="cards-g3" style="margin-top:36px;">
+      <div class="c-card">
+        <div class="c-card-n">8+</div>
+        <div class="c-card-t">Faculty Interviewed</div>
+        <div class="c-card-b">Educators across disciplines, from first-year lecturers to tenured professors building complex assessments.</div>
+      </div>
+      <div class="c-card">
+        <div class="c-card-n">3</div>
+        <div class="c-card-t">Fidelity Levels Tested</div>
+        <div class="c-card-b">Lo-fi, mid-fi, and hi-fi - each round measured against the same four metrics to track real progress.</div>
+      </div>
+      <div class="c-card">
+        <div class="c-card-n">4</div>
+        <div class="c-card-t">Metrics Tracked</div>
+        <div class="c-card-b">Time on task, click count, error rate, and task completion rate - consistent across every round.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:20px;font-weight:500;">Baseline - before we touched anything</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;color:var(--red);line-height:1;">273s</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Avg Task Time</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
-          <div style="font-size:28px;margin-bottom:10px;">📊</div>
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Measure</div>
-          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Baseline established: 273s avg task time, 245 clicks, 0% error rate</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;color:var(--red);line-height:1;">24.5</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Avg Click Count</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
-          <div style="font-size:28px;margin-bottom:10px;">💡</div>
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Ideate</div>
-          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Multiple concepts per pain point explored across Lo and Mid fi</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;color:var(--red);line-height:1;">0%</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Error Rate</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:rgba(230,59,46,.04);">
-          <div style="font-size:28px;margin-bottom:10px;">❌</div>
-          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:6px;">First AI Build Failed</div>
-          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Initial AI design overwhelmed users: too many inputs, too much choice</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;color:var(--red);line-height:1;">100%</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Task Completion</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;background:rgba(230,59,46,.06);">
-          <div style="font-size:28px;margin-bottom:10px;">✅</div>
-          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:6px;">Simplify + Ship</div>
-          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Leaner AI flow, progress bar, streamlined nav. 62% faster in Hi-fi testing.</div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6;">Tasks <em>completed</em> - but not easily. 273 seconds and 24.5 clicks to build a single quiz. That's the problem.</p>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 3: PROBLEM ══ -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">03</span> The Problem</div>
+    <h2 class="cs-sec-title">Three Problems. One Broken Flow.</h2>
+    <p class="cs-body">Faculty weren't failing to complete quizzes - they were succeeding slowly, anxiously, and with too much effort. The research surfaced three systemic issues driving it all.</p>
+
+    <div class="cards-g3" style="margin-top:36px;">
+      <div class="c-card" style="border-top:3px solid var(--red);">
+        <div class="c-card-n" style="color:rgba(230,59,46,.12);">01</div>
+        <div class="c-card-t">No Progress Visibility</div>
+        <div class="c-card-b">Faculty had no indication of how far through a quiz they were. Every session felt like starting from zero. The anxiety of lost work was constant.</div>
+      </div>
+      <div class="c-card" style="border-top:3px solid var(--red);">
+        <div class="c-card-n" style="color:rgba(230,59,46,.12);">02</div>
+        <div class="c-card-t">Redundant Manual Actions</div>
+        <div class="c-card-b">Creating similar question types required fully manual re-entry each time. Settings couldn't be copied or templated. Save had to be hit repeatedly - or risk losing work.</div>
+      </div>
+      <div class="c-card" style="border-top:3px solid var(--red);">
+        <div class="c-card-n" style="color:rgba(230,59,46,.12);">03</div>
+        <div class="c-card-t">Poor Feedback Mechanisms</div>
+        <div class="c-card-b">The interface gave no confirmation, no error states that helped, and no signal that anything was working. Faculty had to hold the whole quiz in their head.</div>
+      </div>
+    </div>
+
+    <div class="cs-quote" style="margin-top:40px;">
+      <div class="cs-quote-text">"There are so many things I have to specify, I have to type everything - it never remembers what I did last time."</div>
+      <div class="cs-quote-attr">- Faculty member, during observation session</div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 4: PROCESS ══ -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">04</span> Design Process</div>
+    <h2 class="cs-sec-title">We Tested at Every Fidelity. The Data Told Us What to Cut.</h2>
+    <p class="cs-body">We ran structured usability tests at lo-fi, mid-fi, and hi-fi - measuring the same four metrics each time. This gave us a consistent signal across the full process, not just at the end.</p>
+    <p class="cs-body">The key question for each round wasn't "does this look good?" It was: does this reduce time, reduce clicks, and reduce cognitive load - without introducing new errors?</p>
+
+    <div style="border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:36px 0;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);">
+        <div style="padding:24px 28px;border-right:1px solid var(--border);">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:10px;">Lo-Fi</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Diverge: explore the space</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Multiple directions per pain point. Quick sketches and flows. Tested with 3 faculty - looking for directional signal, not polish.</div>
         </div>
+        <div style="padding:24px 28px;border-right:1px solid var(--border);background:var(--white);">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:10px;">Mid-Fi</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Converge: kill what doesn't work</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Narrowed to strongest concepts. First test of AI integration - initial version added complexity, not removed it. We pulled it back.</div>
+        </div>
+        <div style="padding:24px 28px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:10px;">Hi-Fi</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Validate: measure the delta</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Full interactive prototype. Simpler AI flow, progress bar, restructured nav. Measured against the same baseline metrics.</div>
+        </div>
+      </div>
+      <div style="padding:20px 28px;background:rgba(230,59,46,.04);">
+        <div style="font-size:13px;color:rgba(12,12,12,0.6);line-height:1.6;"><strong style="color:var(--ink);">The mid-fi learning:</strong> our first attempt at AI generation asked too many questions upfront. Faculty felt overwhelmed. We stripped it to a single prompt input - topic, level, and a reference upload. That's it.</div>
+      </div>
+    </div>
+
+    <figure class="cs-reveal reveal-d2" style="margin:32px 0 0;">
+      <img src="assets/Canvas/Low to High fid.png" alt="Lo to Hi fidelity progression" style="width:100%;border-radius:16px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);">
+      <figcaption class="img-caption">Lo-fi wireframes to hi-fi prototype - how the quiz builder evolved across testing rounds</figcaption>
+    </figure>
+  </div>
+
+  <!-- ══ SECTION 5: SOLUTIONS ══ -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">05</span> Solutions</div>
+    <h2 class="cs-sec-title">Three Fixes. All Grounded in the Data.</h2>
+    <p class="cs-body">Every solution maps directly to a pain point from research. Nothing added for aesthetics. We focused on reducing cognitive load at each step of the quiz creation flow.</p>
+
+    <!-- Solution 1 -->
+    <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:40px 0;">
+      <div style="padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
+        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;letter-spacing:.05em;color:var(--red);text-transform:uppercase;">Solution 01</div>
+        <div style="font-size:12px;color:var(--muted);">Addresses: Redundant manual actions</div>
+      </div>
+      <img src="assets/Canvas/Solution 1.png" alt="Build with AI - final screen" style="width:100%;display:block;">
+      <div style="padding:28px 36px;border-top:1px solid var(--border);">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:30px;letter-spacing:-1px;text-transform:uppercase;margin-bottom:12px;">Build with AI</h3>
+        <p class="cs-body" style="margin-bottom:0;">Faculty enter a topic prompt, difficulty level, and optional reference material. Canvas generates a full quiz - editable, reviewable, not locked in. The AI doesn't replace the educator's judgment; it handles the typing and structuring so they can focus on content quality.</p>
+      </div>
+    </div>
+
+    <!-- Solution 2 -->
+    <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:40px 0;">
+      <div style="padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
+        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;letter-spacing:.05em;color:var(--red);text-transform:uppercase;">Solution 02</div>
+        <div style="font-size:12px;color:var(--muted);">Addresses: No progress visibility</div>
+      </div>
+      <img src="assets/Canvas/Solution 2.png" alt="Progress bar and autosave - final screen" style="width:100%;display:block;">
+      <div style="padding:28px 36px;border-top:1px solid var(--border);">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:30px;letter-spacing:-1px;text-transform:uppercase;margin-bottom:12px;">Progress Bar + Autosave</h3>
+        <p class="cs-body" style="margin-bottom:0;">A persistent progress indicator shows educators exactly where they are in the quiz creation flow. Combined with autosave, the anxiety of losing work disappears. Faculty can stop mid-session and return without fear.</p>
+      </div>
+    </div>
+
+    <!-- Solution 3 -->
+    <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:40px 0;">
+      <div style="padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
+        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;letter-spacing:.05em;color:var(--red);text-transform:uppercase;">Solution 03</div>
+        <div style="font-size:12px;color:var(--muted);">Addresses: Navigation friction</div>
+      </div>
+      <img src="assets/Canvas/Solution 3.png" alt="Direct access from courses tab - final screen" style="width:100%;display:block;">
+      <div style="padding:28px 36px;border-top:1px solid var(--border);">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:30px;letter-spacing:-1px;text-transform:uppercase;margin-bottom:12px;">Direct Access from Courses Tab</h3>
+        <p class="cs-body" style="margin-bottom:0;">Faculty can now access quiz creation directly from their course tab - no multi-step navigation to find it. A cleaner, less cluttered question interface reduces the visual noise that slowed decision-making in every test session.</p>
       </div>
     </div>
   </div>
 
-  <!-- placeholder for sections to be built -->
+  <!-- ══ SECTION 6: IMPACT ══ -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">06</span> Impact</div>
+    <h2 class="cs-sec-title">62% Faster. 30% Less Effort.</h2>
+    <p class="cs-body">Hi-fi usability testing against the same four metrics we set at baseline. The numbers moved in every category that mattered.</p>
+
+    <div class="ba-row" style="margin-top:40px;">
+      <div class="ba-card ba-red">
+        <div class="ba-label">Before</div>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(230,59,46,.1);">
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Task Time</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;letter-spacing:-1px;color:var(--red);">273s</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(230,59,46,.1);">
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Click Count</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;letter-spacing:-1px;color:var(--red);">24.5</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Task Completion</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;letter-spacing:-1px;color:var(--red);">100%</div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-card ba-green">
+        <div class="ba-label">After</div>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(34,197,94,.15);">
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Task Time</div>
+            <div style="display:flex;align-items:baseline;gap:10px;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;letter-spacing:-1px;color:#16A34A;">104s</div>
+              <div style="font-size:12px;font-weight:600;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 10px;border-radius:100px;">↓ 62%</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(34,197,94,.15);">
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Click Count</div>
+            <div style="display:flex;align-items:baseline;gap:10px;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;letter-spacing:-1px;color:#16A34A;">17</div>
+              <div style="font-size:12px;font-weight:600;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 10px;border-radius:100px;">↓ 30%</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Task Completion</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;letter-spacing:-1px;color:#16A34A;">100%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="impact-row cs-reveal reveal-d2" style="margin-top:40px;">
+      <div class="impact-card">
+        <div class="impact-n in-r">62%</div>
+        <div class="impact-l">Faster Task Time</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-n in-r">30%</div>
+        <div class="impact-l">Fewer Clicks</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-n">8+</div>
+        <div class="impact-l">Educators Tested</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-n">0%</div>
+        <div class="impact-l">Error Rate (maintained)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 7: REFLECTION ══ -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">07</span> Reflection</div>
+    <h2 class="cs-sec-title">What I took away.</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
+        <div style="font-size:28px;margin-bottom:20px;">🤖</div>
+        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">AI works best when it feels optional.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Our first attempt at AI integration failed because it was front and centre - mandatory, heavy, intimidating. Faculty responded positively only when it felt like a tool they could pick up or ignore. Assistive, not prescriptive.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
+        <div style="font-size:28px;margin-bottom:20px;">📐</div>
+        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Small changes move big numbers.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Autosave, a progress bar, and a reorganised entry point didn't feel like major features - but together they cut task time by 62%. Cognitive load reduction compounds.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
+        <div style="font-size:28px;margin-bottom:20px;">📊</div>
+        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Consistent metrics across fidelity levels are underrated.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Testing with the same four metrics at every stage meant we could see the impact of each decision - not just whether the final product worked, but which specific change moved the needle.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
+        <div style="font-size:28px;margin-bottom:20px;">🔄</div>
+        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">What I'd do differently.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">I'd push for real Canvas access earlier - prototyping alongside the live product would have surfaced technical constraints sooner and shaped our solutions more practically from day one.</p>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 <!-- ══ FOOTER CTA ══ -->
-<div class="cs-content" style="padding-bottom:80px;">
+<div class="cs-content" style="padding-bottom:0;">
   <div class="cs-footer red-foot cs-reveal">
     <div class="cs-footer-inner">
       <div class="cs-footer-title">Want to see more?</div>
       <div class="cs-footer-sub">Browse other case studies or reach out directly.</div>
       <div class="cs-footer-btns">
         <a class="fb-primary" href="portfolio-v2.html">← Back to Work</a>
-        <a class="fb-ghost" href="mailto:rheamittalaiuesu@gmail.com">Let's talk ↗</a>
+        <a class="fb-ghost" href="mailto:rheamittal0401@gmail.com">Let's talk ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW MORE PROJECTS -->
+  <div style="padding:48px 0 80px;" class="cs-reveal">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div onclick="window.location='cliqueprize.html'" style="background:#160810;border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">CliquePrize</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+      </div>
+      <div onclick="window.location='draggit.html'" style="background:#071228;border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.35)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#60A5FA;margin-bottom:12px;">LinkedIn Chrome Extension</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">Draggit</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">I noticed a friction. I built the fix. Solo end-to-end, shipped in 2 weeks.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
       </div>
     </div>
   </div>
@@ -418,6 +659,19 @@ const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('cs-visible'); revealObs.unobserve(e.target); } });
 }, { threshold: 0.1 });
 reveals.forEach(el => revealObs.observe(el));
+
+// ─── Img zoom (same behaviour as Draggit vid-zoom) ───
+var imgZoomEls = document.querySelectorAll('.img-zoom');
+var imgZoomObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('img-expanded');
+    } else {
+      entry.target.classList.remove('img-expanded');
+    }
+  });
+}, { threshold: 0.3 });
+imgZoomEls.forEach(function(el) { imgZoomObserver.observe(el); });
 
 // ─── Mobile nav ───
 document.getElementById('navBurger').addEventListener('click', () => document.getElementById('navMobile').classList.add('open'));
