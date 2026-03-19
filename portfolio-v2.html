@@ -166,6 +166,8 @@ nav {
 /* Work 2-col grid */
 .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 .wk-card { border-radius:20px; padding:40px; cursor:pointer; display:flex; flex-direction:column; min-height:380px; transition:transform .25s cubic-bezier(.25,.46,.45,.94),box-shadow .25s; will-change:transform; text-decoration:none; }
+.wk-visual { width:calc(100% + 80px); margin:-40px -40px 32px; aspect-ratio:16/9; overflow:hidden; position:relative; flex-shrink:0; border-radius:20px 20px 0 0; }
+.wk-visual video { width:100%; height:100%; object-fit:cover; display:block; }
 .wk-card:hover { transform:translateY(-4px); }
 .wk-card.wk-hidden { display:none !important; }
 .wk-tag { font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:20px; font-weight:500; }
@@ -1259,8 +1261,13 @@ body.locked { overflow: hidden; }
 
       <!-- TECHGUY -->
       <a class="wk-card" data-cats="all product research" href="techguy.html" style="background:#091828;">
-        <div class="wk-tag" style="color:#6FC492;">UI/UX Design · Team Lead · 2021</div>
-        <h3 class="wk-title" style="color:#fff;">Three products.<br><em style="color:#6FC492;">One design language.</em></h3>
+        <div class="wk-visual">
+          <video autoplay loop muted playsinline preload="none">
+            <source src="assets/TechGuy/Techguy Hero page.mov" type="video/mp4">
+          </video>
+        </div>
+        <div class="wk-tag" style="color:#405EAB;">UI/UX Design · Team Lead · 2021</div>
+        <h3 class="wk-title" style="color:#fff;">Three products.<br><em style="color:#405EAB;">One design language.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">Led a 4-person team designing 3 products simultaneously for an on-demand electronics repair platform: customer app, technician app, and operations dashboard. Built on a shared design system.</p>
         <div class="wk-metrics">
           <div><div class="wk-stat-n" style="color:#fff;">3</div><div class="wk-stat-l" style="color:rgba(255,255,255,.45);">Products Shipped</div></div>

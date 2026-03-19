@@ -96,13 +96,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .ins-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:22px; text-transform:uppercase; letter-spacing:-.5px; margin-bottom:8px; }
 .ins-body { font-size:14px; color:var(--muted); line-height:1.65; }
 
+/* IMAGE CAPTION */
+.cs-img-cap { font-size:12px; color:var(--muted); margin-top:10px; text-align:center; letter-spacing:.01em; }
+
 /* STEP FLOW */
-.step-flow { display:flex; flex-direction:column; gap:0; border:1px solid var(--border); border-radius:16px; overflow:hidden; margin:32px 0; }
-.step-row { display:grid; grid-template-columns:60px 1fr; border-bottom:1px solid var(--border); background:var(--white); }
-.step-row:last-child { border-bottom:none; }
-.step-num-col { display:flex; align-items:center; justify-content:center; border-right:1px solid var(--border); font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px; color:rgba(0,0,0,.12); padding:24px 0; }
-.step-content { padding:24px 28px; }
-.step-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:19px; text-transform:uppercase; letter-spacing:-.4px; margin-bottom:6px; }
+.step-flow { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--border); border-radius:16px; overflow:hidden; margin:32px 0; }
+.step-row { background:var(--white); padding:28px 32px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+.step-row:nth-child(2n) { border-right:none; }
+.step-row:nth-last-child(-n+2) { border-bottom:none; }
+.step-num-col { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:22px; color:rgba(0,0,0,.18); margin-bottom:16px; }
+.step-content { }
+.step-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:18px; text-transform:uppercase; letter-spacing:-.3px; margin-bottom:8px; color:var(--ink); }
 .step-body { font-size:13px; color:var(--muted); line-height:1.65; }
 
 /* QUOTE */
@@ -244,18 +248,21 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">00</span> Context</div>
     <h2 class="cs-sec-title">Design a kitchen fan for Indian homemakers.</h2>
-    <p class="cs-body">Havells India is one of the country's largest FMEG companies, moving from industrial roots toward their "Deeper Into Homes" consumer strategy. For my Bachelor's thesis, I was partnered with Havells to design a new kitchen fan concept from scratch: research to prototype.</p>
-    <p class="cs-body">My hypothesis going in: most kitchen appliances are designed for how kitchens look in product catalogues, not how they're actually used. I needed to find out if that was true.</p>
-    <div class="callout-strip green-strip">
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;margin-top:24px;">
+      <div>
+        <p class="cs-body">Havells India is one of the country's largest FMEG companies, moving from industrial roots toward their "Deeper Into Homes" consumer strategy. For my Bachelor's thesis, I was partnered with Havells to design a new kitchen fan concept from scratch: research to prototype.</p>
+        <p class="cs-body">My hypothesis going in: most kitchen appliances are designed for how kitchens look in product catalogues, not how they're actually used. I needed to find out if that was true.</p>
+      </div>
+      <div>
+        <div style="border-radius:16px;overflow:hidden;height:340px;">
+          <img src="assets/Me at the Havells office.jpeg" alt="Rhea at the Havells office" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:16px;">
+        </div>
+        <p class="cs-img-cap">Me at the Havells office during the project kick-off</p>
+      </div>
+    </div>
+    <div class="callout-strip green-strip" style="margin-top:24px;">
       <span class="callout-strip-ico">🏭</span>
       <div class="callout-strip-text"><strong>Havells India</strong> is one of India's largest FMEG companies. This project was part of their "Deeper Into Homes" consumer strategy, a push to design products that actually fit how Indian families live.</div>
-    </div>
-    <div style="margin-top:32px;background:rgba(0,0,0,.04);border-radius:16px;overflow:hidden;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;border:2px dashed rgba(0,0,0,.1);">
-      <div style="text-align:center;color:rgba(0,0,0,.28);">
-        <div style="font-size:36px;margin-bottom:10px;">📸</div>
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;">Photo placeholder</div>
-        <div style="font-size:11px;margin-top:4px;opacity:.8;">Havells office / field research context image</div>
-      </div>
     </div>
   </div>
 
@@ -263,33 +270,21 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">01</span> Discover</div>
     <h2 class="cs-sec-title">8 states. 50+ kitchens. One clear gap.</h2>
-    <p class="cs-body">I ran the entire research phase solo: 50+ interviews and observational field studies across 8 Indian states. The geographic spread was intentional: cooking habits, kitchen layouts, and climate conditions vary drastically between Punjab and Tamil Nadu. A fan designed for one wouldn't work for the other.</p>
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;margin-top:24px;">
+      <div>
+        <p class="cs-body">I ran the entire research phase solo: 50+ interviews and observational field studies across 8 Indian states. The geographic spread was intentional: cooking habits, kitchen layouts, and climate conditions vary drastically between Punjab and Tamil Nadu. A fan designed for one wouldn't work for the other.</p>
+        <div class="cs-quote">
+          <div class="cs-quote-text">"The kitchen is where most cooking happens. Almost no appliance is designed for it."</div>
+        </div>
+      </div>
+      <div>
+        <div style="border-radius:16px;overflow:hidden;">
+          <img src="assets/Havells states in india interviewed.png" alt="Map of India showing states where interviews were conducted" style="width:100%;display:block;border-radius:16px;">
+        </div>
+        <p class="cs-img-cap">States covered during field research, 50+ interviews across 8 regions</p>
+      </div>
+    </div>
 
-    <div class="cs-quote">
-      <div class="cs-quote-text">"The kitchen is where most cooking happens. Almost no appliance is designed for it."</div>
-    </div>
-
-    <div class="insight-row cs-reveal">
-      <div class="ins-num">01</div>
-      <div>
-        <div class="ins-title">Most fans are designed for rooms, not kitchens</div>
-        <div class="ins-body">Standard ceiling fans assume a stable, standing user in a fixed location. Indian home cooks move constantly, between stove, counter, and sink, at varying heights and heat zones. A static fan serves almost none of those moments well.</div>
-      </div>
-    </div>
-    <div class="insight-row cs-reveal">
-      <div class="ins-num">02</div>
-      <div>
-        <div class="ins-title">Regional climate makes one-size-fits-all impossible</div>
-        <div class="ins-body">In North India, the primary need is cooling and air circulation. In coastal regions, it's humidity control. In South India, heat dissipation during high-heat cooking. One fan, one function. Doesn't work across geographies.</div>
-      </div>
-    </div>
-    <div class="insight-row cs-reveal">
-      <div class="ins-num">03</div>
-      <div>
-        <div class="ins-title">Homemakers cook 10 to 12 hours daily. Ergonomics matter.</div>
-        <div class="ins-body">Many homemakers spend 10 to 12 hours in the kitchen, an occupational exposure level. But kitchen appliance design rarely accounts for the long-term physical environment the way workplace design does.</div>
-      </div>
-    </div>
   </div>
 
   <!-- 02 DEFINE + DEVELOP -->
@@ -301,64 +296,47 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <div class="step-flow">
       <div class="step-row">
         <div class="step-num-col">01</div>
-        <div class="step-content">
-          <div class="step-title">Affinity Mapping + Competitive Analysis</div>
-          <div class="step-body">Clustered insights from 50+ field studies. Benchmarked existing kitchen fan products against the gaps my research uncovered, identifying where the entire category was failing.</div>
-        </div>
+        <div class="step-title">Affinity Mapping + Competitive Analysis</div>
+        <div class="step-body">Clustered insights from 50+ field studies. Benchmarked existing kitchen fan products against the gaps my research uncovered, identifying where the entire category was failing.</div>
       </div>
       <div class="step-row">
         <div class="step-num-col">02</div>
-        <div class="step-content">
-          <div class="step-title">150+ Hand-Sketched Concepts</div>
-          <div class="step-body">Rapid ideation covering height adaptability, directional airflow, ambient temperature response, and regional configurability. Volume was the method. Exhausting the obvious to reach the unexpected.</div>
-        </div>
+        <div class="step-title">150+ Hand-Sketched Concepts</div>
+        <div class="step-body">Rapid ideation covering height adaptability, directional airflow, ambient temperature response, and regional configurability. Volume was the method. Exhausting the obvious to reach the unexpected.</div>
       </div>
       <div class="step-row">
         <div class="step-num-col">03</div>
-        <div class="step-content">
-          <div class="step-title">10+ High-Fidelity Prototypes</div>
-          <div class="step-body">Built high-fidelity prototypes in Fusion 360 and Blender, translating the strongest sketch concepts into 3D models ready for CXD stakeholder review.</div>
-        </div>
+        <div class="step-title">10+ High-Fidelity Prototypes</div>
+        <div class="step-body">Built high-fidelity prototypes in Fusion 360 and Blender, translating the strongest sketch concepts into 3D models ready for CXD stakeholder review.</div>
       </div>
       <div class="step-row">
         <div class="step-num-col">04</div>
-        <div class="step-content">
-          <div class="step-title">CXD Review + Submission</div>
-          <div class="step-body">Presented final prototypes to Havells' CXD team. 2 of 10+ concepts were accepted for further development, directly addressing the three core gaps identified in research.</div>
-        </div>
+        <div class="step-title">CXD Review + Submission</div>
+        <div class="step-body">Presented final prototypes to Havells' CXD team. 2 of 10+ concepts were accepted for further development, directly addressing the three core gaps identified in research.</div>
       </div>
     </div>
 
-    <!-- TIMELINE PROGRESS UI (placeholder) -->
-    <div style="margin-top:40px;">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:20px;">Project Timeline · Jan to May 2024</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border:1px solid var(--border);border-radius:14px;overflow:hidden;">
-        <div style="background:var(--white);padding:20px 20px 16px;border-right:1px solid var(--border);">
-          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Jan · Feb</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-.3px;color:var(--ink);">Discover</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">Field research · 50+ interviews · 8 states</div>
-          <div style="margin-top:12px;height:3px;background:var(--green);border-radius:2px;opacity:.6;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;">
+      <div>
+        <div style="border-radius:16px;overflow:hidden;">
+          <img src="assets/HAvells Process Pictures.jpeg" alt="Havells design process sketches" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:16px;">
         </div>
-        <div style="background:var(--white);padding:20px 20px 16px;border-right:1px solid var(--border);">
-          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Mar</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-.3px;color:var(--ink);">Define</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">Affinity mapping · Insight synthesis</div>
-          <div style="margin-top:12px;height:3px;background:var(--green);border-radius:2px;opacity:.45;"></div>
-        </div>
-        <div style="background:var(--white);padding:20px 20px 16px;border-right:1px solid var(--border);">
-          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Mar · Apr</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-.3px;color:var(--ink);">Develop</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">150+ concepts · 10+ 3D prototypes</div>
-          <div style="margin-top:12px;height:3px;background:var(--green);border-radius:2px;opacity:.3;"></div>
-        </div>
-        <div style="background:var(--white);padding:20px 20px 16px;">
-          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">May</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-.3px;color:var(--ink);">Deliver</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5;">CXD presentation · 2 accepted</div>
-          <div style="margin-top:12px;height:3px;background:var(--green);border-radius:2px;opacity:.2;"></div>
-        </div>
+        <p class="cs-img-cap">Physical prototyping and model iteration</p>
       </div>
-      <div style="margin-top:10px;font-size:11px;color:var(--muted);opacity:.7;font-style:italic;">Placeholder: replace with real timeline/progress art before launch</div>
+      <div>
+        <div style="border-radius:16px;overflow:hidden;">
+          <img src="assets/Havells Process Pics.jpeg" alt="Havells prototyping process" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:16px;">
+        </div>
+        <p class="cs-img-cap">Physical prototyping and model iteration</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px;">Project Timeline · Jan to May 2024</div>
+      <div style="border-radius:16px;overflow:hidden;">
+        <img src="assets/Havells Calendar for Thesis.png" alt="Project calendar for the thesis semester" style="width:100%;display:block;border-radius:16px;">
+      </div>
+      <p class="cs-img-cap">Semester calendar mapping the Jan to May 2024 project timeline</p>
     </div>
   </div>
 
@@ -414,9 +392,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <div class="learning cs-reveal reveal-d2">
       <div class="l-text"><strong>Geographic diversity changes everything.</strong> Designing for "Indian homemakers" as a monolith would have produced a mediocre fan. Designing for the gap between Punjab and Tamil Nadu produced something that actually had a reason to exist.</div>
     </div>
-    <div class="learning cs-reveal reveal-d3">
-      <div class="l-text"><strong>Volume unlocks the unexpected.</strong> <span style="opacity:.4;font-style:italic;">[Placeholder: new copy to be written. Current: "The 2 accepted concepts came from sketch #94 and #112, not the first dozen ideas. Iterating 150+ concepts wasn't wasteful; it was the method. You can't find the non-obvious answer without exhausting the obvious ones first."]</span></div>
-    </div>
   </div>
 
   <!-- FOOTER CTA -->
@@ -427,6 +402,28 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
       <div class="cs-footer-btns">
         <a href="mailto:rheamittal0401@gmail.com" class="fb-primary">Get in touch ↗</a>
         <a href="work.html" class="fb-ghost">View all work</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW MORE PROJECTS -->
+  <div style="padding:48px 0 80px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div onclick="window.location='accenture.html'" style="background:#1A0033;border:1px solid rgba(123,47,190,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(123,47,190,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(123,47,190,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#A855F7;margin-bottom:12px;">Mobility Design [NDA]</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">Accenture</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">I designed for a mobility future that didn't exist yet.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+      </div>
+      <div onclick="window.location='cliqueprize.html'" style="background:#160810;border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">CliquePrize</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
       </div>
     </div>
   </div>

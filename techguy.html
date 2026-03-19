@@ -22,13 +22,7 @@ html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
 /* ─── NAV ─── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 18px 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(245,244,240,0.92); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56px; display: flex; align-items: center; justify-content: space-between; background: rgba(245,244,240,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
 .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
@@ -52,51 +46,21 @@ nav {
 .cs-reveal.cs-visible { opacity: 1; transform: translateY(0); }
 .reveal-d2 { transition-delay: .2s; }
 .reveal-d3 { transition-delay: .3s; }
-.reveal-d4 { transition-delay: .4s; }
 
 /* ─── HERO BAND ─── */
-.cs-hero-band {
-  width: 100%;
-  padding: 130px 56px 80px;
-  background: linear-gradient(160deg, #060C1A 0%, #0C1828 60%, #0F2234 100%);
-  margin-bottom: 0;
-}
-.cs-hero-inner {
-  max-width: 888px; margin: 0 auto;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-}
-.cs-hero-kicker {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(111,196,146,.7); margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
-}
-.cs-hero-h1 {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(40px,6vw,76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase;
-  color: #fff; margin-bottom: 28px;
-}
-.cs-hero-desc {
-  font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72);
-  max-width: 600px; margin-bottom: 48px; text-align: center;
-}
-.cs-hero-stats {
-  display: flex; gap: 0; flex-wrap: wrap;
-  border: 1px solid rgba(255,255,255,.1); border-radius: 16px; overflow: hidden; width: fit-content;
-}
-.cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
-.cs-hs:last-child { border-right: none; }
-.cs-hs-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -2px; color: #6FC492; line-height: 1; }
-.cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
+.cs-hero-band { width: 100%; padding: 130px 56px 0; background: linear-gradient(160deg, #060C1A 0%, #0C1828 60%, #0F2234 100%); }
+.cs-hero-inner { max-width: 888px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.cs-hero-video-wrap { width: 100%; max-width: 1100px; margin: 56px auto 0; position: relative; }
+.cs-hero-video-wrap video { width: 100%; display: block; border-radius: 16px 16px 0 0; box-shadow: 0 -4px 60px rgba(64,94,171,0.25); }
+.cs-hero-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(64,94,171,.7); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.cs-hero-h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(40px,6vw,76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 28px; }
+.cs-hero-desc { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72); max-width: 600px; text-align: center; }
 
 /* ─── CONTENT WRAPPER ─── */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
 
 /* ─── OVERVIEW ─── */
-.cs-overview {
-  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-  margin: 56px 0 80px;
-}
+.cs-overview { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 56px 0 80px; }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
 .cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
@@ -104,45 +68,24 @@ nav {
 
 /* ─── SECTION ─── */
 .cs-section { margin-bottom: 96px; }
-.cs-sec-label {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 16px;
-  display: flex; align-items: center; gap: 12px;
-}
+.cs-sec-label { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
 .cs-sec-label .n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.cs-sec-title {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(28px,3.5vw,44px); line-height: 1.06; letter-spacing: -1px; text-transform: uppercase;
-  margin-bottom: 28px;
-}
+.cs-sec-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(28px,3.5vw,44px); line-height: 1.06; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 28px; }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: .02em; }
-
-/* ─── PROCESS STRIP ─── */
-.proc-strip-wrap { padding: 36px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 80px; }
-.proc-strip-label { font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin-bottom: 24px; }
-.proc-strip {
-  display: grid; grid-template-columns: repeat(5,1fr);
-  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-}
-.proc-step { padding: 20px 16px; text-align: center; border-right: 1px solid var(--border); background: var(--white); }
-.proc-step:last-child { border-right: none; background: var(--accent-bg); }
-.proc-step:nth-child(even) { background: var(--bg); }
-.proc-step:last-child .proc-label { color: var(--accent); }
-.proc-ico { font-size: 28px; margin-bottom: 8px; }
-.proc-label { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.proc-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
 
 /* ─── SPLITS ─── */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; }
 .sec-split-left { display: flex; flex-direction: column; gap: 20px; }
-.sec-split-right { position: relative; }
 .sec-split-body { font-size: 14px; line-height: 1.7; color: var(--muted); }
 
 /* ─── CALLOUT BAR ─── */
-.callout-bar { padding: 14px 18px; background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 13px; color: var(--ink); line-height: 1.55; }
+.callout-bar { padding: 16px 20px; background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 13px; color: var(--ink); line-height: 1.65; margin-top: 16px; }
+
+/* ─── PAIN TAGS ─── */
+.pain-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
+.pain-tag { background: rgba(201,58,82,0.07); border: 1px solid rgba(201,58,82,0.15); color: #B53B4F; padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; }
 
 /* ─── CONTEXT CARDS ─── */
 .context-cards { display: flex; flex-direction: column; gap: 12px; }
@@ -151,82 +94,67 @@ nav {
 .ctx-card-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
 .ctx-card-body { font-size: 13px; color: var(--muted); line-height: 1.55; }
 
-/* ─── INSIGHT GRID ─── */
-.insight-grid {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-  margin-top: 28px; gap: 0;
-}
-.insight-cell { background: var(--white); padding: 22px 20px; border-right: 1px solid var(--border); }
-.insight-cell:last-child { border-right: none; background: var(--bg); }
-.insight-cell:nth-child(2) { background: var(--bg); }
-.insight-tag { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
-.insight-quote { font-size: 22px; font-weight: 800; font-family: 'Barlow Condensed', sans-serif; color: var(--ink); margin-bottom: 8px; line-height: 1.1; }
-.insight-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
+/* ─── SAID VS OBSERVED ─── */
+.said-obs { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 28px 0 16px; }
+.said-col { padding: 28px 32px; background: var(--white); border-right: 1px solid var(--border); }
+.obs-col { padding: 28px 32px; background: var(--bg); }
+.said-obs-header { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.3px; color: var(--ink); margin-bottom: 4px; }
+.said-obs-sub { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.said-obs ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.said-obs li { font-size: 14px; line-height: 1.6; padding-left: 20px; position: relative; }
+.said-col li { color: rgba(0,0,0,.42); font-style: italic; }
+.said-col li::before { content: '▸'; position: absolute; left: 0; font-size: 9px; top: 4px; color: rgba(0,0,0,.18); }
+.obs-col li { color: var(--ink); font-weight: 500; }
+.obs-col li::before { content: '▸'; position: absolute; left: 0; font-size: 9px; top: 4px; color: var(--accent); }
 
-/* ─── DECISION TABLE ─── */
-.dec-table { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 28px 0; }
-.dec-row { display: grid; grid-template-columns: 44px 2fr 1fr 2fr; }
-.dec-row.header { background: rgba(0,0,0,.02); border-bottom: 1px solid var(--border); }
-.dec-row:not(.header) { border-bottom: 1px solid var(--border); }
-.dec-row:last-child { border-bottom: none; }
-.dec-cell { padding: 14px 18px; font-size: 13px; color: var(--muted); display: flex; align-items: center; border-right: 1px solid var(--border); }
-.dec-cell:last-child { border-right: none; }
-.dec-row.header .dec-cell { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
-.dec-id { justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18px; color: rgba(0,0,0,.15); }
-.dec-reason { font-size: 12px; line-height: 1.5; }
-.dec-verdict-no { background: rgba(201,58,82,.08); color: #B53B4F; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-.dec-verdict-yes { background: var(--accent-bg); color: var(--accent); padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+/* ─── HMW ─── */
+.hmw-block { background: var(--accent); border-radius: 16px; padding: 36px 40px; text-align: center; margin: 32px 0; }
+.hmw-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.55); margin-bottom: 12px; }
+.hmw-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(20px,2.8vw,32px); letter-spacing: -.5px; color: #fff; line-height: 1.2; margin: 0; text-transform: uppercase; }
 
-/* ─── PROCESS CARDS ─── */
-.process-cards { display: flex; flex-direction: column; gap: 10px; }
-.proc-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; }
-.proc-card-ico { font-size: 20px; flex-shrink: 0; }
-.proc-card-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.proc-card-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
+/* ─── ARCHETYPE CARDS ─── */
+.archetype-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 28px 0; }
+.archetype-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 28px 24px; }
+.archetype-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 10px; }
+.archetype-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 13px; line-height: 1.65; color: rgba(0,0,0,.55); margin-bottom: 16px; padding: 12px 14px; background: var(--bg); border-radius: 8px; border-left: 2px solid rgba(64,94,171,0.2); }
+.archetype-pains { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.archetype-pain { font-size: 12px; color: rgba(0,0,0,.55); line-height: 1.5; padding-left: 14px; position: relative; }
+.archetype-pain::before { content: '-'; position: absolute; left: 0; color: rgba(0,0,0,.2); }
+
+/* ─── DESIGN PRINCIPLES ─── */
+.design-principles { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 28px 0; }
+.design-principle { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+.dp-user { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 8px; }
+.dp-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.35; }
+.dp-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
 /* ─── IMG PLACEHOLDER ─── */
-.img-ph {
-  border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02);
-  padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; gap: 14px; margin: 32px 0;
-}
-.img-ph.h-full { min-height: 520px; }
+.img-ph { border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02); padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; margin: 16px 0 32px; }
 .img-ph.h-large { min-height: 420px; }
 .img-ph.h-medium { min-height: 320px; }
-.img-ph.h-small { min-height: 200px; }
 .img-ph-ico { font-size: 40px; opacity: .2; }
 .img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .img-ph-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.5px; color: rgba(0,0,0,.38); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
 .img-2up { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.img-sub-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin-bottom: 12px; }
 
 /* ─── IMPACT ─── */
 .impact-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0; }
-.impact-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 20px; padding: 36px 28px; text-align: center;
-  transition: transform .25s, border-color .2s;
-}
+.impact-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; text-align: center; transition: transform .25s, border-color .2s; }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
 .impact-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 56px; letter-spacing: -3px; line-height: 1; margin-bottom: 8px; color: var(--accent); }
 .impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
 
 /* ─── LEARNINGS ─── */
-.learning {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 14px; padding: 22px 28px;
-  display: flex; gap: 18px; align-items: flex-start;
-  margin-bottom: 2px; transition: border-color .2s;
-}
+.learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 28px; margin-bottom: 2px; transition: border-color .2s; }
 .learning:hover { border-color: rgba(12,12,12,0.18); }
 .l-text { font-size: 15px; line-height: 1.7; color: rgba(12,12,12,0.65); }
 .l-text strong { color: var(--ink); font-weight: 600; }
 
 /* ─── FOOTER CTA ─── */
-.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
-.cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
-.cs-footer { background: linear-gradient(160deg, #060C1A 0%, #0C1828 60%, #0F2234 100%); }
+.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); background: linear-gradient(160deg, #060C1A 0%, #0C1828 60%, #0F2234 100%); }
+.cs-footer-inner { padding: 64px 56px; text-align: center; }
 .cs-footer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
@@ -246,24 +174,22 @@ nav {
   .cs-ov-cell:nth-child(2) { border-right: none; }
   .cs-ov-cell:nth-child(3) { border-top: 1px solid var(--border); }
   .cs-ov-cell:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
-  .proc-strip { grid-template-columns: repeat(2,1fr); }
   .sec-split { grid-template-columns: 1fr; gap: 28px; }
-  .insight-grid { grid-template-columns: 1fr; }
-  .insight-cell { border-right: none !important; border-bottom: 1px solid var(--border); }
-  .dec-row { grid-template-columns: 44px 1fr; }
-  .dec-cell:nth-child(3), .dec-cell:nth-child(4) { display: none; }
+  .said-obs { grid-template-columns: 1fr; }
+  .said-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .archetype-grid { grid-template-columns: 1fr; }
+  .design-principles { grid-template-columns: 1fr; }
   .impact-row { grid-template-columns: 1fr 1fr; }
   .img-2up { grid-template-columns: 1fr; }
   .cs-footer-inner { padding: 40px 24px; }
   .cs-footer-title { font-size: 36px; }
 }
 @media(max-width:600px) {
-  .cs-hero-stats { flex-direction: column; width: 100%; border: none; gap: 0; }
-  .cs-hs { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); padding: 20px 0; }
   .cs-overview { grid-template-columns: 1fr; }
   .cs-ov-cell { border-right: none !important; border-top: 1px solid var(--border); }
   .cs-ov-cell:first-child { border-top: none; }
   .cs-hero-kicker { justify-content: center; }
+  .hmw-block { padding: 28px 24px; }
 }
 </style>
 </head>
@@ -294,57 +220,45 @@ nav {
 <!-- HERO BAND -->
 <div class="cs-hero-band">
   <div class="cs-hero-inner">
-    <div class="cs-hero-kicker">UI/UX Design · Team Lead · Customer · Technician · Operations</div>
+    <div class="cs-hero-kicker">UI/UX Design · Team Lead · Customer · Engineer · Operations</div>
     <h1 class="cs-hero-h1">Three products.<br>One team.<br>No playbook.</h1>
-    <p class="cs-hero-desc">TechGuy brings electronics repair to your doorstep. I led a 4-person design team shipping three interfaces simultaneously: for customers booking jobs, technicians fulfilling them, and operations managing everything in between.</p>
-    <div class="cs-hero-stats">
-      <div class="cs-hs"><div class="cs-hs-n">3</div><div class="cs-hs-l">Products Shipped</div></div>
-      <div class="cs-hs"><div class="cs-hs-n">4</div><div class="cs-hs-l">Person Team</div></div>
-      <div class="cs-hs"><div class="cs-hs-n">30%</div><div class="cs-hs-l">Faster Dev Cycles</div></div>
-      <div class="cs-hs"><div class="cs-hs-n">20%</div><div class="cs-hs-l">Task Speed Uplift</div></div>
-    </div>
+    <p class="cs-hero-desc">TechGuy is a B2C tech startup making electronics repair customer-friendly. Everything ran through WhatsApp. Customers, engineers, and operations all managed work across fragmented group chats. I led a 4-person design team to build three purpose-built interfaces that replaced it entirely.</p>
+  </div>
+  <div class="cs-hero-video-wrap">
+    <video autoplay loop muted playsinline>
+      <source src="assets/TechGuy/Techguy Hero page.mov" type="video/mp4">
+    </video>
   </div>
 </div>
 
 <!-- CONTENT -->
 <div class="cs-content">
 
-  <!-- OVERVIEW META -->
+  <!-- OVERVIEW -->
   <div class="cs-overview cs-reveal">
-    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">UI/UX Designer &amp; Team Lead: Operations dashboard (end-to-end); UX lead across all 3</div></div>
-    <div class="cs-ov-cell"><div class="cs-ov-label">Duration</div><div class="cs-ov-val">3 months</div></div>
-    <div class="cs-ov-cell"><div class="cs-ov-label">Team</div><div class="cs-ov-val">4 designers (led by me)</div></div>
-    <div class="cs-ov-cell"><div class="cs-ov-label">Tools</div><div class="cs-ov-val">Figma · Adobe XD · Miro · Notion</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">UI/UX Designer &amp; Team Lead: Operations dashboard end-to-end; UX lead across all 3</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Duration</div><div class="cs-ov-val">6 months</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Team</div><div class="cs-ov-val">4-person design team</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Deliverables</div><div class="cs-ov-val">Customer portal · Engineer app · Operations dashboard · Design system</div></div>
   </div>
 
-  <!-- PROCESS STRIP -->
-  <div class="proc-strip-wrap cs-reveal reveal-d2">
-    <div class="proc-strip-label">How we went from three briefs to three shipped products</div>
-    <div class="proc-strip">
-      <div class="proc-step">
-        <div class="proc-ico">🗂</div>
-        <div class="proc-label">Map the Users</div>
-        <div class="proc-desc">10+ interviews across all three contexts: consumer, operator, enterprise client</div>
-      </div>
-      <div class="proc-step">
-        <div class="proc-ico">🧩</div>
-        <div class="proc-label">Build Foundation</div>
-        <div class="proc-desc">Shared component library first, before any product frame was opened</div>
-      </div>
-      <div class="proc-step">
-        <div class="proc-ico">✏️</div>
-        <div class="proc-label">Design in Parallel</div>
-        <div class="proc-desc">Each designer owned a surface, all within shared guidelines</div>
-      </div>
-      <div class="proc-step">
-        <div class="proc-ico">🔁</div>
-        <div class="proc-label">Test &amp; Iterate</div>
-        <div class="proc-desc">Usability testing with real users after every major design round</div>
-      </div>
-      <div class="proc-step">
-        <div class="proc-ico">🤝</div>
-        <div class="proc-label">Hand Off</div>
-        <div class="proc-desc">Annotated specs to engineering. 30% fewer revision cycles.</div>
+  <!-- GOAL -->
+  <div class="cs-section cs-reveal" style="margin-top:0;">
+    <div class="cs-sec-label">The Goal</div>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,56px);text-transform:uppercase;letter-spacing:-.5px;color:var(--ink);margin-bottom:32px;">Build for all three users. Measure it in time saved.</h2>
+    <div style="background:var(--accent-bg);border:1px solid rgba(64,94,171,0.15);border-radius:20px;padding:36px 40px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:16px;">Goal</div>
+      <p style="font-size:clamp(17px,2.2vw,21px);font-weight:600;color:var(--ink);line-height:1.55;margin:0 0 36px;">Design purpose-built interfaces for all three end user types that replace WhatsApp chaos with structured, trustworthy workflows and measurably reduce time on task.</p>
+      <div style="height:1px;background:rgba(64,94,171,0.15);margin-bottom:32px;"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">The Problem</div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Everything ran through WhatsApp. Three user types, 15+ concurrent conversations, no structure. What appeared to "work" was hiding serious friction users had stopped noticing.</p>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">The Constraint</div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Three completely different users (customers on mobile, engineers in the field, operations at a desk) each with different contexts, devices, and information needs. One connected service ecosystem.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -354,11 +268,15 @@ nav {
     <div class="cs-sec-label"><span class="n">00</span> Problem</div>
     <div class="sec-split">
       <div class="sec-split-left">
-        <h2 class="cs-sec-title">Three user types.<br>Three mental models.<br>One brief.</h2>
-        <p class="sec-split-body">TechGuy connects customers with technicians for at-home electronics repairs: laptops, printers, IT services. Three very different people needed to use this platform simultaneously: a customer booking a job, a technician showing up to fix it, and an operations team coordinating everything in between.</p>
-        <p class="sec-split-body">The brief gave us the products but not the constraints. No shared design language, no component library, no established process for a 4-person team working in parallel. The first decision wasn't a design decision; it was a systems decision.</p>
-        <div class="callout-bar">
-          <strong>The real risk:</strong> Three designers working independently would produce three inconsistent products. We needed a shared foundation before anyone opened a new frame.
+        <h2 class="cs-sec-title">Three user types. One fragmented experience.</h2>
+        <p class="sec-split-body">TechGuy's operations ran entirely through WhatsApp. Customers messaged to book repairs. Engineers received work orders via text. Operations coordinated 15+ conversations across customer and engineer group chats simultaneously.</p>
+        <p class="sec-split-body">The result: lost messages, no status visibility, no structured workflow. And the deeper problem: nobody thought it was a problem.</p>
+        <div class="pain-tags">
+          <span class="pain-tag">Lost messages in busy group chats</span>
+          <span class="pain-tag">No clear status visibility</span>
+          <span class="pain-tag">Manually searching for contacts</span>
+          <span class="pain-tag">Information scattered across conversations</span>
+          <span class="pain-tag">No structured workflow</span>
         </div>
       </div>
       <div class="sec-split-right">
@@ -366,23 +284,23 @@ nav {
           <div class="ctx-card">
             <div class="ctx-card-head">
               <span style="font-size:18px;">📱</span>
-              <span class="ctx-card-tag">Customer App</span>
+              <span class="ctx-card-tag">Customer</span>
             </div>
-            <p class="ctx-card-body">People booking at-home electronics repairs. Mobile-first, low context. They want to book a job and track it: fast, simple, no friction. Task completion over feature depth.</p>
+            <p class="ctx-card-body">Booking repairs through informal WhatsApp messages. No visibility into repair status. No way to verify TechGuy's credentials. Handing over a high-value device to a contact they can't verify.</p>
           </div>
           <div class="ctx-card">
             <div class="ctx-card-head">
               <span style="font-size:18px;">🔧</span>
-              <span class="ctx-card-tag">Technician App</span>
+              <span class="ctx-card-tag">Engineer</span>
             </div>
-            <p class="ctx-card-body">Field workers showing up to fix things. Job-focused, on the move. They need to see their schedule, job details, and status updates without stopping to think. Speed and clarity are everything.</p>
+            <p class="ctx-card-body">Receiving work orders via text in mixed personal and work group chats. Spending 3-4 minutes per job scrolling to find the right customer context before being able to act.</p>
           </div>
           <div class="ctx-card">
             <div class="ctx-card-head">
               <span style="font-size:18px;">🖥️</span>
-              <span class="ctx-card-tag">Operations Dashboard</span>
+              <span class="ctx-card-tag">Operations</span>
             </div>
-            <p class="ctx-card-body">Internal team managing job allocation, tracking, and platform health. High context, data-dense. I personally designed this end-to-end: it's where the most complexity lives.</p>
+            <p class="ctx-card-body">Juggling 15+ fragmented conversations simultaneously. No workload visibility, no data, no way to prioritize urgent vs routine requests. I designed this dashboard end-to-end.</p>
           </div>
         </div>
       </div>
@@ -392,158 +310,145 @@ nav {
   <!-- 01 RESEARCH -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">01</span> Research</div>
-    <h2 class="cs-sec-title">10+ interviews.<br>Three completely<br>different users.</h2>
-    <p class="cs-body">Before any wireframes, I ran observational interviews across all three contexts. The goal wasn't to generate a single persona; it was to map how differently each user type thought about the same platform. I conducted research, testing, and feedback cycles for all three products throughout the project.</p>
+    <h2 class="cs-sec-title">What they said vs what we observed.</h2>
+    <p class="cs-body">Before designing anything, I conducted user interviews and usability testing with 10+ users across all three user types. The initial findings were surprising. Then the observational study changed everything.</p>
 
-    <div class="img-ph h-medium">
-      <div class="img-ph-ico">🗣</div>
-      <div class="img-ph-badge">Add Screenshot</div>
-      <div class="img-ph-title">Research synthesis: Miro affinity map</div>
-      <div class="img-ph-desc">Miro board showing interview notes and affinity clusters across the three user types.</div>
+    <div class="said-obs">
+      <div class="said-col">
+        <div class="said-obs-header">What they told us</div>
+        <div class="said-obs-sub">Initial interviews</div>
+        <ul>
+          <li>"WhatsApp works fine, just some minor inconveniences"</li>
+          <li>"I can find what I need eventually"</li>
+          <li>"The current system isn't really a problem"</li>
+        </ul>
+      </div>
+      <div class="obs-col">
+        <div class="said-obs-header">What we observed</div>
+        <div class="said-obs-sub">Observational study</div>
+        <ul>
+          <li>Admins spent 3-5 minutes searching chat history for a single update</li>
+          <li>Engineers made audible frustrated sounds while typing contact names in search</li>
+          <li>Customers messaged the wrong number 40% of the time due to misspelled names</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="insight-grid">
-      <div class="insight-cell">
-        <div class="insight-tag">Customer</div>
-        <div class="insight-quote">"Just make it work."</div>
-        <p class="insight-body">They don't read instructions. They tap, get confused, tap again. The interface had to be self-evident at every step. Anything requiring memory was a failure.</p>
+    <div class="callout-bar">
+      <strong>The turning point:</strong> People adapt to broken systems without realizing it. In initial interviews, everyone said WhatsApp was fine. The moment I watched an admin spend 4 minutes scrolling to find one customer update, the story changed completely. Observational research reveals what interviews cannot.
+    </div>
+  </div>
+
+  <!-- 02 USERS -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">02</span> Users</div>
+    <h2 class="cs-sec-title">Three users. Three completely different unmet needs.</h2>
+    <p class="cs-body">The same platform, three completely different mental models and failure points. Designing for one without understanding the others would have produced something that technically shipped but solved nothing.</p>
+
+    <div class="archetype-grid">
+      <div class="archetype-card">
+        <div class="archetype-tag">Customer</div>
+        <div class="archetype-quote">"My friend told me about TechGuy, but when I contacted them on WhatsApp, it felt too casual. I'm handing over my ₹60,000 MacBook. I need to know this is legitimate."</div>
+        <ul class="archetype-pains">
+          <li class="archetype-pain">No way to verify TechGuy's authorization credentials</li>
+          <li class="archetype-pain">Couldn't track repair status, causing constant anxiety about device safety</li>
+          <li class="archetype-pain">Messages lost in personal chat history</li>
+          <li class="archetype-pain">No history to reference past repairs or warranties</li>
+        </ul>
       </div>
-      <div class="insight-cell">
-        <div class="insight-tag">Technician</div>
-        <div class="insight-quote">"Tell me what I need, nothing more."</div>
-        <p class="insight-body">Field workers are in transit and under time pressure. They need their next job, location, and details immediately. Anything buried in a menu is a problem they'll ignore.</p>
+      <div class="archetype-card">
+        <div class="archetype-tag">Engineer</div>
+        <div class="archetype-quote">"During initial interviews, engineers insisted WhatsApp was easy to manage. Then I shadowed them and asked them to find a specific customer's status."</div>
+        <ul class="archetype-pains">
+          <li class="archetype-pain">3-4 min per job scrolling mixed personal and work chats</li>
+          <li class="archetype-pain">No clarity on job status (pending / waiting for parts / done)</li>
+          <li class="archetype-pain">Parts information buried across multiple WhatsApp threads</li>
+          <li class="archetype-pain">No structured way to update customers on progress</li>
+        </ul>
       </div>
-      <div class="insight-cell">
-        <div class="insight-tag">Operations</div>
-        <div class="insight-quote">"I need it fast."</div>
-        <p class="insight-body">The ops team was managing jobs through WhatsApp, scrolling for 4 minutes just to get context on a single job. Efficiency wasn't a nice-to-have. It was the whole problem.</p>
+      <div class="archetype-card">
+        <div class="archetype-tag">Operations</div>
+        <div class="archetype-quote">"Right now we're managing everything on WhatsApp with customers and engineers. It works, but things get missed and there's no real way to track or stay organized."</div>
+        <ul class="archetype-pains">
+          <li class="archetype-pain">Manually tracking jobs across 15+ conversations</li>
+          <li class="archetype-pain">No visibility into engineer workload for smart assignments</li>
+          <li class="archetype-pain">No data to analyze patterns, peak times, or bottlenecks</li>
+          <li class="archetype-pain">Can't prioritize urgent vs routine requests at a glance</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- 02 KEY DECISION -->
+  <!-- 03 DESIGN DIRECTION -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">02</span> The Key Decision</div>
-    <h2 class="cs-sec-title">Build the system<br>before building<br>the products.</h2>
-    <p class="cs-body">The obvious move was to start designing immediately: one designer per product, ship fast. I pushed back. Three designers working independently would produce three inconsistent interfaces with no shared logic. I proposed spending the first week building a shared component library before any of us opened a product frame.</p>
+    <div class="cs-sec-label"><span class="n">03</span> Design Direction</div>
+    <h2 class="cs-sec-title">From WhatsApp chaos to a connected ecosystem.</h2>
 
-    <div class="dec-table">
-      <div class="dec-row header">
-        <div class="dec-cell dec-id"></div>
-        <div class="dec-cell">Approach</div>
-        <div class="dec-cell">Verdict</div>
-        <div class="dec-cell">Why</div>
-      </div>
-      <div class="dec-row">
-        <div class="dec-cell dec-id">A</div>
-        <div class="dec-cell" style="font-weight:500;color:var(--ink);">Design all three in parallel, separately</div>
-        <div class="dec-cell"><span class="dec-verdict-no">✕ Rejected</span></div>
-        <div class="dec-cell dec-reason">Fast in week one, slow forever after. Inconsistent patterns would require reconciliation at every handoff.</div>
-      </div>
-      <div class="dec-row" style="background:#FAFAF8;">
-        <div class="dec-cell dec-id">B</div>
-        <div class="dec-cell" style="font-weight:500;color:var(--ink);">Design B2C first, adapt for others</div>
-        <div class="dec-cell"><span class="dec-verdict-no">✕ Rejected</span></div>
-        <div class="dec-cell dec-reason">B2C patterns are too different from admin and enterprise needs. Would require undoing later.</div>
-      </div>
-      <div class="dec-row">
-        <div class="dec-cell dec-id">C</div>
-        <div class="dec-cell" style="font-weight:500;color:var(--ink);">Adopt Material or another existing system</div>
-        <div class="dec-cell"><span class="dec-verdict-no">✕ Rejected</span></div>
-        <div class="dec-cell dec-reason">Generic systems wouldn't reflect TechGuy's brand or product-specific interaction patterns.</div>
-      </div>
-      <div class="dec-row" style="background:var(--accent-bg);">
-        <div class="dec-cell dec-id" style="color:var(--accent);">D</div>
-        <div class="dec-cell" style="font-weight:600;color:var(--accent);">Build a shared component library first ✓</div>
-        <div class="dec-cell"><span class="dec-verdict-yes">✓ Chosen</span></div>
-        <div class="dec-cell dec-reason">One week upfront. Typography, color, spacing, core components. All three products draw from the same source: consistency without coordination overhead.</div>
-      </div>
+    <div class="hmw-block">
+      <div class="hmw-label">How might we</div>
+      <div class="hmw-text">Build a professional repair platform that creates trust in a market where 88% of people rely on word-of-mouth recommendations?</div>
     </div>
 
-    <div class="img-ph h-medium">
-      <div class="img-ph-ico">🧩</div>
-      <div class="img-ph-badge">Add Screenshot</div>
-      <div class="img-ph-title">Figma: shared component library</div>
-      <div class="img-ph-desc">The shared component library. Show buttons, cards, inputs, type scale, color tokens: the foundation built in week one.</div>
-    </div>
-  </div>
+    <p class="cs-body">I translated user insights into clear design principles for each interface. Before touching any screens, I mapped the complete service flow, every decision point and information handoff between users, to ensure all three interfaces would function as one connected ecosystem rather than three isolated tools.</p>
 
-  <!-- 03 TEAM PROCESS -->
-  <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">03</span> How I Led the Team</div>
-    <div class="sec-split">
-      <div class="sec-split-left">
-        <h2 class="cs-sec-title">I didn't just design.<br>I built the process<br>that made it ship.</h2>
-        <p class="sec-split-body">Leading a 4-person design team meant doing two jobs: I personally designed the Operations Dashboard end-to-end while setting the conditions for the rest of the team to own their surfaces. I also ran research, usability testing, and feedback cycles across all three products; the process was mine to define, not just the output.</p>
-        <p class="sec-split-body">The structure I built (daily standups, bi-weekly critiques, a shared decision log, and annotated handoffs) cut design-to-engineering cycles by 30%. Not by moving faster, but by eliminating the back-and-forth that slows every team down.</p>
-      </div>
-      <div class="sec-split-right">
-        <div class="process-cards">
-          <div class="proc-card">
-            <span class="proc-card-ico">📅</span>
-            <div>
-              <div class="proc-card-title">Daily Standups</div>
-              <div class="proc-card-body">15 minutes. Three questions: What shipped? What's blocked? What decision needs a call today? Kept alignment without killing design flow.</div>
-            </div>
-          </div>
-          <div class="proc-card">
-            <span class="proc-card-ico">👁</span>
-            <div>
-              <div class="proc-card-title">Bi-Weekly Critique</div>
-              <div class="proc-card-body">All three product surfaces reviewed together every two weeks. Inconsistency surfaced here, before engineering ever saw it.</div>
-            </div>
-          </div>
-          <div class="proc-card">
-            <span class="proc-card-ico">📝</span>
-            <div>
-              <div class="proc-card-title">Decision Log</div>
-              <div class="proc-card-body">Shared Notion doc tracking every design decision and its rationale. No repeated debates. Gave engineering a source of truth during handoff.</div>
-            </div>
-          </div>
-          <div class="proc-card">
-            <span class="proc-card-ico">🤝</span>
-            <div>
-              <div class="proc-card-title">Annotated Handoffs</div>
-              <div class="proc-card-body">Every spec included interaction notes, edge cases, and component references. Engineers stopped chasing designers for clarifications.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <figure style="margin:40px 0 0;">
+      <img src="assets/TechGuy/TechGuy Appflow.jpg" alt="TechGuy app flow diagram" style="width:100%;border-radius:16px;border:1px solid var(--border);display:block;">
+      <figcaption style="font-size:12px;color:var(--muted);margin-top:12px;text-align:center;letter-spacing:.04em;">Complete service flow across all three interfaces</figcaption>
+    </figure>
 
-    <div class="img-ph h-medium" style="margin-top:32px;">
-      <div class="img-ph-ico">🗂</div>
-      <div class="img-ph-badge">Add Screenshot</div>
-      <div class="img-ph-title">Team workflow: Notion / Miro planning board</div>
-      <div class="img-ph-desc">The team's shared planning board or decision log. Show how 4 designers stayed coordinated across 3 products.</div>
+    <div class="design-principles">
+      <div class="design-principle">
+        <div class="dp-user">Customer</div>
+        <div class="dp-title">Build trust through professional brand and constant visibility</div>
+        <p class="dp-body">In a market where 88% trust personal recommendations, the interface itself had to feel as trustworthy as one. Testimonials front and center. Repair status always visible without asking.</p>
+      </div>
+      <div class="design-principle">
+        <div class="dp-user">Engineer</div>
+        <div class="dp-title">Replace fragmented chats with visual job management</div>
+        <p class="dp-body">Three-tab dashboard: Ongoing, Completed, Needs Parts. Every job at a glance, no scrolling. The 3-4 minute WhatsApp search problem becomes a 3-second tap.</p>
+      </div>
+      <div class="design-principle">
+        <div class="dp-user">Operations</div>
+        <div class="dp-title">Create a centralized command center with workload visibility</div>
+        <p class="dp-body">Real-time view of each engineer's active request count. Answer "Who should I assign this to?" instantly. Instant filters for urgent vs routine. No more scrolling 15 conversations.</p>
+      </div>
     </div>
   </div>
 
   <!-- 04 FINAL DESIGNS -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">04</span> Final Designs</div>
-    <h2 class="cs-sec-title">Same language.<br>Three completely<br>different products.</h2>
-    <p class="cs-body">The shared design system meant that despite three different surfaces, the experience felt coherent. Users moving between them wouldn't feel lost; the visual logic was consistent even when the information architecture wasn't.</p>
+    <h2 class="cs-sec-title">Three connected interfaces. One service ecosystem.</h2>
+    <p class="cs-body">Before shipping high-fidelity designs, I tested low-fidelity prototypes with real users to catch critical gaps early. Key iterations: engineers needed part status visible directly on job cards (not buried in menus); customers wanted quick access to request history; operations needed instant filters for urgent requests. These directly shaped the final interfaces.</p>
 
-    <div class="img-ph h-large">
-      <div class="img-ph-ico">📱</div>
-      <div class="img-ph-badge">Add Screenshot</div>
-      <div class="img-ph-title">Customer App: key screens</div>
-      <div class="img-ph-desc">High-fidelity mobile screens. Show core booking and job-tracking flows: emphasize simplicity and mobile-first hierarchy.</div>
+    <div style="margin-bottom:48px;">
+      <div class="img-sub-label">Customer website: Testimonials and transparency build trust</div>
+      <div class="img-ph h-large">
+        <div class="img-ph-ico">📱</div>
+        <div class="img-ph-badge">Add Screenshot</div>
+        <div class="img-ph-title">Customer Portal: key screens</div>
+        <div class="img-ph-desc">Homepage with testimonials prominently featured, service booking flow, and repair status tracking. Show the professional credibility signals that replace informal WhatsApp.</div>
+      </div>
     </div>
 
     <div class="img-2up">
-      <div class="img-ph h-medium" style="margin:0;">
-        <div class="img-ph-ico">🖥️</div>
-        <div class="img-ph-badge">Add Screenshot</div>
-        <div class="img-ph-title">Operations Dashboard</div>
-        <div class="img-ph-desc">The interface I designed end-to-end. Show job management, technician allocation, and how the dense data view replaced the WhatsApp workflow.</div>
+      <div>
+        <div class="img-sub-label">Engineer app: Three tabs replace 3-4 min of searching</div>
+        <div class="img-ph h-medium" style="margin:0;">
+          <div class="img-ph-ico">🔧</div>
+          <div class="img-ph-badge">Add Screenshot</div>
+          <div class="img-ph-title">Engineer App</div>
+          <div class="img-ph-desc">Three-tab dashboard: Ongoing, Completed, Needs Parts. Job cards surface all critical context immediately.</div>
+        </div>
       </div>
-      <div class="img-ph h-medium" style="margin:0;">
-        <div class="img-ph-ico">🔧</div>
-        <div class="img-ph-badge">Add Screenshot</div>
-        <div class="img-ph-title">Technician App</div>
-        <div class="img-ph-desc">Field worker interface. Show job schedule, job details, and status update flows: optimised for quick reads on the move.</div>
+      <div>
+        <div class="img-sub-label">Operations dashboard: Workload visibility enables smart assignments</div>
+        <div class="img-ph h-medium" style="margin:0;">
+          <div class="img-ph-ico">🖥️</div>
+          <div class="img-ph-badge">Add Screenshot</div>
+          <div class="img-ph-title">Operations Dashboard</div>
+          <div class="img-ph-desc">Real-time engineer workload view, job allocation, and filters that replaced 15+ concurrent WhatsApp conversations with one screen.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -551,38 +456,33 @@ nav {
   <!-- 05 IMPACT -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">05</span> Impact</div>
-    <h2 class="cs-sec-title">What changed<br>when we shipped.</h2>
+    <h2 class="cs-sec-title">What changed when we shipped.</h2>
     <div class="impact-row">
-      <div class="impact-card"><div class="impact-n">20%</div><div class="impact-l">Task Completion Speed Increase</div></div>
-      <div class="impact-card"><div class="impact-n">30%</div><div class="impact-l">Faster Design–Dev Cycles</div></div>
-      <div class="impact-card"><div class="impact-n">3</div><div class="impact-l">Products Shipped in 3 Months</div></div>
+      <div class="impact-card"><div class="impact-n">20%</div><div class="impact-l">Reduction in Task Completion Time</div></div>
+      <div class="impact-card"><div class="impact-n">30%</div><div class="impact-l">Faster Design to Dev Cycles</div></div>
+      <div class="impact-card"><div class="impact-n">3</div><div class="impact-l">Products Shipped for All Stakeholders</div></div>
     </div>
-    <div class="impact-row" style="margin-top:0;">
-      <div class="impact-card"><div class="impact-n" style="color:var(--ink);font-size:40px;">10+</div><div class="impact-l">User Interviews Conducted</div></div>
-      <div class="impact-card"><div class="impact-n" style="color:var(--ink);font-size:40px;">4</div><div class="impact-l">Designers Coordinated</div></div>
-      <div class="impact-card"><div class="impact-n" style="color:var(--ink);font-size:40px;">1</div><div class="impact-l">Shared Design System Built</div></div>
-    </div>
-    <p class="cs-body" style="margin-top:24px;">The 30% faster dev cycles didn't come from working faster; it came from the annotated handoffs and shared component library. Engineers weren't guessing at edge cases or chasing designers for spec clarifications. The documentation answered the questions before they were asked.</p>
-    <p class="cs-body">The 20% task speed uplift was grounded in a specific observation: during research, the ops team was using WhatsApp to manage jobs, spending around 4 minutes per job just scrolling to find context before responding. The Operations Dashboard replaced that workflow and cut that time by more than 20%.</p>
+    <p class="cs-body" style="margin-top:24px;">The 20% reduction in task completion time was grounded in direct observation. Engineers who spent 3-4 minutes per job scrolling through WhatsApp completed the same task in under a minute with the three-tab interface. The structure answered the question before they had to ask it.</p>
+    <p class="cs-body">The 30% faster design-to-dev cycles came from the shared design system and annotated handoffs built across the team. Engineers weren't guessing at edge cases. The documentation answered questions before they were asked.</p>
   </div>
 
   <!-- 06 REFLECTION -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">06</span> Reflection</div>
-    <h2 class="cs-sec-title">What leading<br>a team taught me<br>about design.</h2>
-    <p class="cs-body">Running a team changes how you design. Every choice has to be legible, defensible, and replicable by three other people. That constraint made me a sharper designer, not a slower one.</p>
+    <h2 class="cs-sec-title">What this project taught me about design.</h2>
+    <p class="cs-body">Leading a team across three interconnected products changes how you think. Every design decision had to hold up across three different user contexts and function as one ecosystem when they came together.</p>
 
     <div class="learning">
-      <div class="l-text"><strong>Systems thinking is the highest-leverage skill in a team context.</strong> The week we spent building a shared component library before touching any product frame saved us four times that in revision cycles. Upfront cost was real. Downstream savings were compounding.</div>
+      <div class="l-text"><strong>People adapt to broken systems without realizing it.</strong> The "WhatsApp is fine" moment in initial interviews was the most important lesson of this project. Observational research reveals what interviews cannot: friction users have normalized is still friction, and it's still the design problem to solve.</div>
     </div>
     <div class="learning">
-      <div class="l-text"><strong>Different users need genuinely different things, not reskinned versions of the same solution.</strong> Consumer, operator, and enterprise clients had fundamentally different relationships with the product. Holding three mental models simultaneously is harder than it sounds, and worth it.</div>
+      <div class="l-text"><strong>Systems thinking is the highest-leverage skill in a multi-product context.</strong> Designing for one user in isolation would have failed. The value came from understanding how all three interfaces connected: a job created in the customer portal had to be immediately visible to the engineer and operations simultaneously.</div>
     </div>
     <div class="learning">
-      <div class="l-text"><strong>The decision log was the most underrated artifact we made.</strong> Every design decision written down with its rationale meant we never relitigated the same debate twice. It gave engineers something to read instead of someone to chase: the real reason handoffs got faster.</div>
+      <div class="l-text"><strong>Strategic decisions in ambiguity require holding competing priorities without rushing.</strong> Working in a startup with evolving requirements meant balancing user needs, business objectives, and technical constraints simultaneously, and making fast decisions while maintaining design quality.</div>
     </div>
     <div class="learning">
-      <div class="l-text"><strong>Leading means explaining your reasoning, not just your outcomes.</strong> I couldn't just show the team a design that "felt right." I had to articulate why: the user insight, the alternatives, the constraint that ruled them out. That discipline made my own design thinking sharper.</div>
+      <div class="l-text"><strong>Data is how designers advocate for users.</strong> When I presented the visual dashboard concept that contradicted the "WhatsApp is fine" feedback, the observational data was what made the case. Designers who can show what they observed, not just what they designed, are far more effective at influencing product direction.</div>
     </div>
   </div>
 
@@ -598,16 +498,36 @@ nav {
     </div>
   </div>
 
+  <!-- VIEW MORE PROJECTS -->
+  <div style="padding:48px 0 80px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all ↗</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div onclick="window.location='draggit.html'" style="background:#0A1628;border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome Extension</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">Draggit</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">I noticed a friction. I built the fix.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+      </div>
+      <div onclick="window.location='cliqueprize.html'" style="background:#160810;border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">CliquePrize</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+      </div>
+    </div>
+  </div>
+
 </div><!-- /cs-content -->
 
 <script>
-// Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('cs-visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.cs-reveal').forEach(el => observer.observe(el));
 
-// Mobile nav
 document.getElementById('navBurger').addEventListener('click', () => document.getElementById('navMobile').classList.add('open'));
 document.getElementById('navMobileClose').addEventListener('click', () => document.getElementById('navMobile').classList.remove('open'));
 </script>
