@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas LMS | Rhea Mittal</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #F5F4F0;
+  --ink: #0C0C0C;
+  --muted: rgba(12,12,12,0.45);
+  --border: rgba(0,0,0,0.08);
+  --red: #E63B2E;
+  --red-bg: rgba(230,59,46,0.08);
+  --white: #FFFFFF;
+}
+
+body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 18px 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(245,244,240,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94); }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--ink); }
+.nav-links a.active::after { width: 100%; }
+.nav-cta { background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; transition: transform .2s; }
+.nav-cta:hover { transform: scale(1.04); }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .3s, opacity .3s; }
+.nav-mobile { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+.nav-mobile.open { display: flex; }
+.nav-mobile a { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px,8vw,64px); text-transform: uppercase; letter-spacing: -1px; color: var(--ink); text-decoration: none; transition: color .2s; }
+.nav-mobile a:hover { color: var(--red); }
+.nav-mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted); }
+
+/* ─── SCROLL REVEAL ─── */
+.cs-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94); }
+.cs-reveal.cs-visible { opacity: 1; transform: translateY(0); }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ─── TEAM DOT ─── */
+.team-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); display: inline-block; vertical-align: middle; }
+
+/* ─── HERO BAND ─── */
+.cs-hero-band {
+  width: 100%;
+  padding-top: 130px;
+  padding-right: 56px;
+  padding-bottom: 80px;
+  padding-left: 56px;
+  margin-bottom: 0;
+}
+.cs-hero-band.red-band { background: linear-gradient(160deg, #1A0404 0%, #2D0808 55%, #450E0E 100%); }
+.cs-hero-inner {
+  max-width: 888px; margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.cs-hero-kicker {
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.75); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cs-hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(40px, 6vw, 76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase;
+  color: #fff; margin-bottom: 28px;
+}
+.cs-hero-h1 em { font-style: normal; color: #FF7B71; }
+.cs-hero-desc {
+  font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72);
+  max-width: 600px; margin-bottom: 48px; text-align: center;
+}
+
+/* ─── HERO STATS STRIP ─── */
+.cs-hero-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+  border: 1px solid rgba(255,255,255,.1); border-radius: 16px;
+  overflow: hidden; width: fit-content; margin-bottom: 48px;
+}
+.cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
+.cs-hs:last-child { border-right: none; }
+.cs-hs-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -2px; color: #fff; line-height: 1; }
+.cs-hs-n.red { color: #FF7B71; }
+.cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
+
+/* ─── CONTENT LAYOUT ─── */
+.cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
+
+/* ─── OVERVIEW ─── */
+.cs-overview {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  margin: 56px 0 80px;
+}
+.cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
+.cs-ov-cell:last-child { border-right: none; }
+.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
+
+/* ─── SECTION ─── */
+.cs-section { margin-bottom: 96px; }
+.cs-sec-label {
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.cs-sec-label .n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.cs-sec-title {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(28px,3.5vw,44px); line-height: 1.06; letter-spacing: -1px; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); max-width: 720px; margin-bottom: 24px; }
+.cs-body + .cs-body { margin-top: -8px; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: .02em; }
+
+/* ─── SPLITS ─── */
+.sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; margin-bottom: 0; }
+.sec-split-left { display: flex; flex-direction: column; gap: 20px; }
+.sec-split-right { position: relative; }
+.sec-split-body { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+/* ─── BEFORE/AFTER ─── */
+.ba-row { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 16px; align-items: center; margin: 32px 0; }
+.ba-card { border-radius: 16px; padding: 32px; }
+.ba-red { background: rgba(230,59,46,.06); border: 1px solid rgba(230,59,46,.2); }
+.ba-green { background: rgba(34,197,94,.06); border: 1px solid rgba(34,197,94,.2); }
+.ba-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+.ba-red .ba-label { color: var(--red); }
+.ba-green .ba-label { color: #16A34A; }
+.ba-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: -.5px; margin-bottom: 8px; }
+.ba-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.ba-arrow { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; color: var(--border); text-align: center; }
+
+/* ─── CARDS ─── */
+.cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+.cards-g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+.c-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px;
+  display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
+}
+.c-card:hover { border-color: rgba(0,0,0,.18); }
+.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; color: var(--ink); }
+.c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ─── IMPACT ─── */
+.impact-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 32px 0; }
+.impact-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 36px 28px; text-align: center;
+  transition: transform .25s, border-color .2s;
+}
+.impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
+.impact-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 56px; letter-spacing: .06em; line-height: 1; margin-bottom: 8px; }
+.impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
+.in-r { color: var(--red); }
+
+/* ─── LEARNINGS ─── */
+.learning {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 28px;
+  display: flex; gap: 18px; align-items: flex-start;
+  margin-bottom: 2px; transition: border-color .2s;
+}
+.learning:hover { border-color: rgba(12,12,12,0.18); }
+.l-text { font-size: 15px; line-height: 1.7; color: rgba(12,12,12,0.65); }
+.l-text strong { color: var(--ink); font-weight: 600; }
+
+/* ─── QUOTE ─── */
+.cs-quote {
+  border-radius: 20px; padding: 44px 52px; margin: 40px 0;
+  position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.06);
+}
+.cs-quote.dark { background: #0A0A0A; }
+.cs-quote::before {
+  content: '"'; position: absolute; top: -30px; left: 32px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 200px;
+  color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+}
+.cs-quote-text { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.55; color: rgba(255,255,255,.85); position: relative; margin-bottom: 16px; }
+.cs-quote-attr { font-size: 13px; color: rgba(255,255,255,.3); position: relative; }
+
+/* ─── DIVIDER ─── */
+.divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+/* ─── FOOTER CTA ─── */
+.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
+.cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
+.cs-footer.red-foot { background: linear-gradient(160deg, #1A0404 0%, #2D0808 55%, #450E0E 100%); }
+.cs-footer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
+.cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
+.fb-ghost { border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
+
+/* ─── IMG PLACEHOLDER ─── */
+.img-ph {
+  border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02);
+  padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 14px; margin: 32px 0;
+}
+.img-ph.h-full { min-height: 520px; }
+.img-ph.h-large { min-height: 420px; }
+.img-ph.h-medium { min-height: 320px; }
+.img-ph.h-small { min-height: 200px; }
+.img-ph-ico { font-size: 40px; opacity: .2; }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.img-ph-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.5px; color: rgba(0,0,0,.38); }
+.img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px) {
+  nav { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .cs-hero-band { padding-top: 110px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
+  .cs-content { padding: 0 20px 100px; }
+  .cs-overview { grid-template-columns: 1fr 1fr; }
+  .cs-ov-cell:nth-child(2) { border-right: none; }
+  .cs-ov-cell:nth-child(3) { border-top: 1px solid var(--border); }
+  .cs-ov-cell:nth-child(4) { border-top: 1px solid var(--border); }
+  .cs-ov-cell:nth-child(5) { border-top: 1px solid var(--border); border-right: none; }
+  .cards-g3 { grid-template-columns: 1fr 1fr; }
+  .cards-g2 { grid-template-columns: 1fr; }
+  .impact-row { grid-template-columns: 1fr 1fr; }
+  .cs-footer-inner { padding: 40px 24px; }
+  .cs-footer-title { font-size: 36px; }
+  .sec-split { grid-template-columns: 1fr; gap: 28px; }
+  .ba-row { grid-template-columns: 1fr; }
+  .ba-arrow { display: none; }
+}
+@media(max-width:600px) {
+  .cards-g3 { grid-template-columns: 1fr; }
+  .cs-hero-stats { flex-direction: column; width: 100%; border: none; gap: 0; }
+  .cs-hs { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); padding: 20px 0; }
+  .cs-overview { grid-template-columns: 1fr; }
+  .cs-ov-cell { border-right: none !important; border-top: 1px solid var(--border); }
+  .cs-ov-cell:first-child { border-top: none; }
+  .cs-hero-kicker { justify-content: center; flex-wrap: wrap; text-align: center; }
+  .impact-row { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
+  <ul class="nav-links">
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="playground.html">Play</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:rheamittalaiuesu@gmail.com">Contact me</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <a href="work.html">Work</a>
+  <a href="playground.html">Play</a>
+  <a href="about.html">About</a>
+  <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
+</div>
+
+<!-- ══ HERO BAND ══ -->
+<div class="cs-hero-band red-band">
+  <div class="cs-hero-inner">
+    <div class="cs-hero-kicker">
+      <span class="team-dot"></span>
+      UX Research + Feature Design &nbsp;·&nbsp; Canvas LMS &nbsp;·&nbsp; Team of 4 &nbsp;·&nbsp; 2024
+    </div>
+    <h1 class="cs-hero-h1">Millions rely on it.<br><em>Nobody should dread it.</em></h1>
+    <p class="cs-hero-desc">We redesigned Canvas's quiz creation flow for educators, adding AI-powered generation, autosave, and progress indicators. Research-backed across 3 fidelity levels, validated with 8+ faculty.</p>
+
+    <!-- STATS STRIP -->
+    <div class="cs-hero-stats">
+      <div class="cs-hs">
+        <div class="cs-hs-n red">62%</div>
+        <div class="cs-hs-l">Faster Task Time</div>
+      </div>
+      <div class="cs-hs">
+        <div class="cs-hs-n red">30%</div>
+        <div class="cs-hs-l">Fewer Clicks</div>
+      </div>
+      <div class="cs-hs">
+        <div class="cs-hs-n">8+</div>
+        <div class="cs-hs-l">Educators Interviewed</div>
+      </div>
+      <div class="cs-hs">
+        <div class="cs-hs-n">4</div>
+        <div class="cs-hs-l">Person Team</div>
+      </div>
+      <div class="cs-hs">
+        <div class="cs-hs-n">2.5</div>
+        <div class="cs-hs-l">Months</div>
+      </div>
+    </div>
+
+    <!-- HERO IMAGE — swap with real Figma export -->
+    <div style="width:80%;border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.08);">
+      <div class="img-ph h-large" style="margin:0;border-radius:0;border:none;background:rgba(255,255,255,.04);">
+        <div class="img-ph-ico" style="opacity:.35;">🖥</div>
+        <div class="img-ph-title" style="color:rgba(255,255,255,.25);">Final Design: Canvas Quiz Builder</div>
+        <div class="img-ph-desc" style="color:rgba(255,255,255,.15);">Replace with Figma export of the AI quiz generation screen</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="cs-content">
+
+  <!-- OVERVIEW META -->
+  <div class="cs-overview cs-reveal">
+    <div class="cs-ov-cell">
+      <div class="cs-ov-label">My Role</div>
+      <div class="cs-ov-val">UX Research + Feature Design</div>
+    </div>
+    <div class="cs-ov-cell">
+      <div class="cs-ov-label">Team</div>
+      <div class="cs-ov-val">4-Person Design Team</div>
+    </div>
+    <div class="cs-ov-cell">
+      <div class="cs-ov-label">Timeline</div>
+      <div class="cs-ov-val">2.5 months, 2024</div>
+    </div>
+    <div class="cs-ov-cell">
+      <div class="cs-ov-label">Platform</div>
+      <div class="cs-ov-val">Canvas LMS (Web)</div>
+    </div>
+    <div class="cs-ov-cell">
+      <div class="cs-ov-label">Tools</div>
+      <div class="cs-ov-val">Figma, Adobe Illustrator</div>
+    </div>
+  </div>
+
+  <!-- PROCESS STRIP -->
+  <div style="margin-bottom:80px;" class="cs-reveal reveal-d2">
+    <div style="padding:36px 0 40px;border-bottom:1px solid var(--border);">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:24px;">How we went from broken flow to 62% faster task time</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
+          <div style="font-size:28px;margin-bottom:10px;">🎓</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Spot the Gap</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">8+ educator interviews surface 3 systemic pain points in quiz creation</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
+          <div style="font-size:28px;margin-bottom:10px;">📊</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Measure</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Baseline established: 273s avg task time, 245 clicks, 0% error rate</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
+          <div style="font-size:28px;margin-bottom:10px;">💡</div>
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Ideate</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Multiple concepts per pain point explored across Lo and Mid fi</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:rgba(230,59,46,.04);">
+          <div style="font-size:28px;margin-bottom:10px;">❌</div>
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:6px;">First AI Build Failed</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Initial AI design overwhelmed users: too many inputs, too much choice</div>
+        </div>
+        <div style="padding:22px 18px;text-align:center;background:rgba(230,59,46,.06);">
+          <div style="font-size:28px;margin-bottom:10px;">✅</div>
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:6px;">Simplify + Ship</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.55);line-height:1.5;">Leaner AI flow, progress bar, streamlined nav. 62% faster in Hi-fi testing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- placeholder for sections to be built -->
+
+</div>
+
+<!-- ══ FOOTER CTA ══ -->
+<div class="cs-content" style="padding-bottom:80px;">
+  <div class="cs-footer red-foot cs-reveal">
+    <div class="cs-footer-inner">
+      <div class="cs-footer-title">Want to see more?</div>
+      <div class="cs-footer-sub">Browse other case studies or reach out directly.</div>
+      <div class="cs-footer-btns">
+        <a class="fb-primary" href="portfolio-v2.html">← Back to Work</a>
+        <a class="fb-ghost" href="mailto:rheamittalaiuesu@gmail.com">Let's talk ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── Scroll reveal ───
+const reveals = document.querySelectorAll('.cs-reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('cs-visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => revealObs.observe(el));
+
+// ─── Mobile nav ───
+document.getElementById('navBurger').addEventListener('click', () => document.getElementById('navMobile').classList.add('open'));
+document.getElementById('navMobileClose').addEventListener('click', () => document.getElementById('navMobile').classList.remove('open'));
+</script>
+</body>
+</html>
