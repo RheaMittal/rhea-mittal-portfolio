@@ -103,7 +103,6 @@ nav {
   color: var(--muted); margin-bottom: 28px;
   display: flex; align-items: center; gap: 12px;
 }
-.hero-kicker::before { content: ''; width: 24px; height: 1px; background: var(--muted); }
 
 .hero-h1 {
   font-family: 'Barlow Condensed', sans-serif;
@@ -219,14 +218,13 @@ nav {
 .collage {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 240px 240px;
+  grid-template-rows: 340px 340px;
   gap: 12px;
 }
 
 .col-item {
   position: relative; overflow: hidden;
   border-radius: 16px; cursor: pointer;
-  border: 1px solid var(--border);
   transition: transform .3s ease;
 }
 .col-item:hover { transform: scale(1.01); }
@@ -239,9 +237,8 @@ nav {
 
 .col-img {
   width: 100%; height: 100%;
-  object-fit: contain; display: block;
+  object-fit: cover; display: block;
   transition: transform .5s ease;
-  padding: 8px;
 }
 
 .col-ph {
@@ -476,7 +473,7 @@ nav {
 .beyond-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 240px 240px;
+  grid-template-rows: 340px 340px;
   gap: 12px;
 }
 
@@ -736,17 +733,12 @@ nav {
         data-img="assets/About Me/Thingspart of./SETH Lab.png"
         data-tag="Research Lab · Indiana University"
         data-title="SETH Lab"
-        data-body="I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level. [Placeholder: add Sethlab metrics, e.g. # studies reviewed, publications supported, research duration]">
+        data-body="I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.">
         <img class="col-img" src="assets/About Me/Thingspart of./SETH Lab.png" alt="SETH Lab">
         <div class="col-overlay">
           <div class="col-ov-tag">Research Lab · Indiana University</div>
           <div class="col-ov-title">SETH Lab</div>
           <div class="col-ov-desc">I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.</div>
-          <div style="display:flex;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
-            <div style="text-align:center;flex:1;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:#fff;">-</div><div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Metric 1</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:#fff;">-</div><div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Metric 2</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:#fff;">-</div><div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Metric 3</div></div>
-          </div>
         </div>
       </div>
 

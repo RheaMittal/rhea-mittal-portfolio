@@ -245,9 +245,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 <div class="tabs-wrap">
   <div class="tabs" role="tablist">
     <button class="tab-btn active" data-tab="all" role="tab">All <span class="tab-count">7</span></button>
-    <button class="tab-btn" data-tab="motion" role="tab">Motion &amp; Visual <span class="tab-count">1</span></button>
-    <button class="tab-btn" data-tab="ai" role="tab">AI Shipped · Vibecoding <span class="tab-count">3</span></button>
-    <button class="tab-btn" data-tab="mediums" role="tab">Exploring Design Mediums <span class="tab-count">3</span></button>
+    <button class="tab-btn" data-tab="motion" role="tab">Motion &amp; Visual</button>
+    <button class="tab-btn" data-tab="ai" role="tab">AI Shipped · Vibecoding</button>
+    <button class="tab-btn" data-tab="mediums" role="tab">Exploring Design Mediums</button>
   </div>
 </div>
 
@@ -582,27 +582,7 @@ document.getElementById('lightbox').addEventListener('click',function(e){
   if(e.target===this)closeLightbox();
 });
 
-/* ── MAGNETIC TABS ── */
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('mousemove',function(e){
-    const r=this.getBoundingClientRect();
-    const dx=(e.clientX-r.left-r.width/2)*.15;
-    const dy=(e.clientY-r.top-r.height/2)*.15;
-    this.style.transform=`translate(${dx}px,${dy}px)`;
-  });
-  btn.addEventListener('mouseleave',function(){this.style.transform='';});
-});
 
-/* ── CARD TILT ── */
-document.querySelectorAll('.media-card').forEach(card=>{
-  card.addEventListener('mousemove',function(e){
-    const r=this.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    this.style.transform=`scale(1.02) rotateX(${-y*3}deg) rotateY(${x*3}deg)`;
-  });
-  card.addEventListener('mouseleave',function(){this.style.transform='';});
-});
 
 /* Hamburger */
 document.getElementById('navBurger').addEventListener('click', () => {
