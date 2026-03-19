@@ -104,7 +104,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
 
 /* LEARNINGS */
-.learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 28px; display: flex; gap: 18px; align-items: flex-start; margin-bottom: 2px; transition: border-color .2s; }
+.learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; display: flex; flex-direction: column; gap: 4px; margin-bottom: 2px; transition: border-color .2s; }
 .learning:hover { border-color: rgba(12,12,12,0.18); }
 .l-text { font-size: 15px; line-height: 1.7; color: rgba(12,12,12,0.65); }
 .l-text strong { color: var(--ink); font-weight: 600; }
@@ -122,11 +122,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .company-avatar { border-radius: 16px; background: var(--accent-bg); border: 1px solid var(--accent-border); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; min-height: 260px; }
 
 /* PAIN CARDS */
-.pain-cards { display: flex; flex-direction: column; gap: 2px; margin: 32px 0; }
-.pain-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 28px; display: grid; grid-template-columns: 44px 1fr; gap: 20px; align-items: start; transition: border-color .2s; }
+.pain-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0; }
+.pain-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 0; align-items: start; transition: border-color .2s; }
 .pain-card:hover { border-color: var(--accent-border); }
-.pain-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; color: rgba(64,94,171,0.18); line-height: 1; letter-spacing: -1px; padding-top: 2px; }
-.pain-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.pain-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--accent-bg); border: 1px solid var(--accent-border); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; flex-shrink: 0; }
+.pain-icon img { width: 18px; height: 18px; object-fit: contain; opacity: 0.75; }
+.pain-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
 .pain-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* SERVICE FLOWCHART */
@@ -154,23 +155,29 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .svc-vendor-desc { font-size: 11px; color: rgba(0,0,0,.35); margin-top: 2px; }
 
 /* SAID VS OBSERVED */
-/* SVO 3-COL GRID */
-.svo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 28px 0; }
-.svo-col-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
-.svo-user-tag { background: var(--accent-bg); border-bottom: 1px solid var(--accent-border); padding: 10px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
-.svo-quote-block { padding: 18px 20px; border-bottom: 1px solid var(--border); background: var(--white); }
-.svo-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 10px; }
-.svo-quote { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 13px; line-height: 1.65; color: rgba(0,0,0,.45); margin: 0; }
-.svo-obs-block { padding: 18px 20px; background: var(--bg); flex: 1; }
-.svo-obs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.svo-obs-list li { font-size: 12.5px; font-weight: 500; color: var(--ink); line-height: 1.55; padding-left: 14px; position: relative; }
-.svo-obs-list li::before { content: '▸'; position: absolute; left: 0; font-size: 8px; top: 4px; color: var(--accent); }
+/* SVO single card */
+.svo-single { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+.svo-user-tag { display: flex; align-items: center; gap: 8px; background: var(--accent-bg); border-bottom: 1px solid var(--accent-border); padding: 10px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); grid-column: 1 / -1; }
+.svo-user-tag img { width: 16px; height: 16px; object-fit: contain; opacity: 0.75; }
+.svo-quote-block { padding: 22px 24px; border-right: 1px solid var(--border); background: var(--white); }
+.svo-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 12px; }
+.svo-quote { font-size: 14px; line-height: 1.7; color: rgba(0,0,0,.65); margin: 0; font-style: normal; }
+.svo-obs-block { padding: 22px 24px; background: var(--bg); }
+.svo-obs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.svo-obs-list li { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.6; padding-left: 16px; position: relative; }
+.svo-obs-list li::before { content: '▸'; position: absolute; left: 0; font-size: 8px; top: 5px; color: var(--accent); }
+.svo-highlight { background: rgba(64,94,171,0.12); color: var(--accent); font-weight: 700; padding: 1px 5px; border-radius: 4px; font-style: normal; }
 
 /* KEY FINDINGS */
-.kf-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 28px 0; }
-.kf-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; }
-.kf-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 12px; }
-.kf-body { font-size: 13px; color: rgba(0,0,0,.55); line-height: 1.65; }
+.kf-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 28px 0; }
+.kf-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 24px 28px; display: flex; flex-direction: column; }
+.kf-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.kf-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--accent-bg); border: 1px solid var(--accent-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.kf-icon img { width: 16px; height: 16px; object-fit: contain; opacity: 0.75; }
+.kf-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.kf-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.kf-list li { font-size: 13px; color: rgba(0,0,0,.6); line-height: 1.6; padding-left: 16px; position: relative; }
+.kf-list li::before { content: '·'; position: absolute; left: 4px; color: var(--accent); font-weight: 900; font-size: 16px; line-height: 1.2; }
 
 /* VIDEO ZOOM */
 .vid-zoom { display: block; transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), max-width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-radius 0.8s ease; }
@@ -188,15 +195,16 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .flow-btn:hover { border-color: var(--accent-border); color: var(--accent); }
 
 /* SOLUTION SECTIONS */
-.sol-section { margin-bottom: 48px; }
+.sol-section { margin-bottom: 56px; }
 .sol-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.sol-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border); padding: 5px 12px; border-radius: 100px; }
-.sol-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: -.3px; color: var(--ink); margin-bottom: 16px; }
-.sol-features { display: flex; flex-direction: column; gap: 2px; margin: 16px 0; }
-.sol-feature { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; display: flex; align-items: baseline; gap: 12px; }
-.sol-feature-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 5px; }
-.sol-feature-text { font-size: 13px; color: rgba(0,0,0,.6); line-height: 1.55; }
-.sol-feature-text strong { color: var(--ink); font-weight: 600; }
+.sol-tag { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border); padding: 6px 14px; border-radius: 100px; }
+.sol-tag img { width: 14px; height: 14px; object-fit: contain; opacity: 0.8; }
+.sol-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: -.3px; color: var(--ink); margin-bottom: 20px; }
+.sol-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 16px 0; }
+.sol-features.single-col { grid-template-columns: repeat(3, 1fr); }
+.sol-feature { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+.sol-feature-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+.sol-feature-text { font-size: 13px; color: rgba(0,0,0,.55); line-height: 1.6; }
 
 /* FOOTER */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); background: linear-gradient(160deg, #0E1830 0%, #152340 60%, #1A2E50 100%); }
@@ -235,11 +243,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
   .cs-footer-title { font-size: 36px; }
   .footer-bar { padding: 16px 20px; flex-direction: column; gap: 6px; text-align: center; }
 }
+@media(max-width:768px) {
+  .pain-cards { grid-template-columns: 1fr; }
+  .sol-features { grid-template-columns: 1fr; }
+  .sol-features.single-col { grid-template-columns: 1fr; }
+  .svo-single { grid-template-columns: 1fr; }
+  .svo-quote-block { border-right: none; border-bottom: 1px solid var(--border); }
+  .kf-grid { grid-template-columns: 1fr; }
+}
 @media(max-width:600px) {
   .cs-overview { grid-template-columns: 1fr; }
   .cs-ov-cell { border-right: none !important; border-top: 1px solid var(--border); }
   .cs-ov-cell:first-child { border-top: none; }
-  .pain-card { grid-template-columns: 1fr; gap: 8px; }
   .cards-g3 { grid-template-columns: 1fr; }
   .impact-row { grid-template-columns: 1fr; }
 }
@@ -302,9 +317,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
         <img src="assets/TechGuy/techguy mascot.png" alt="TechGuy mascot" style="width:100%;height:100%;object-fit:contain;border-radius:16px;">
       </div>
       <div>
-        <h2 class="cs-sec-title" style="margin-bottom:16px;">At-home electronics repair, on demand.</h2>
-        <p class="cs-body" style="margin-bottom:16px;">TechGuy is a B2C tech startup making electronics repair customer-friendly. Book online, a certified technician arrives at your door, fixes your device on-site. No dropping it off, no waiting, no uncertainty about where your device is.</p>
-        <p class="cs-body" style="margin-bottom:0;">When we joined, TechGuy was growing fast. But every touchpoint, from customer bookings to technician job assignments to operations coordination, was running through WhatsApp group chats. I led a 4-person design team to build three purpose-built interfaces that replaced it entirely.</p>
+        <h2 class="cs-sec-title" style="margin-bottom:12px;">At-home electronics repair, on demand.</h2>
+        <p class="cs-body" style="margin-bottom:0;">Book a repair online, a certified technician arrives at your door. I joined as Founding Product Designer and led a 4-person team to replace a WhatsApp-based system with three purpose-built interfaces: customer, technician, and operations. Shipped from scratch in six months.</p>
       </div>
     </div>
   </div>
@@ -318,25 +332,19 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 
     <div class="pain-cards">
       <div class="pain-card">
-        <div class="pain-n">01</div>
-        <div>
-          <div class="pain-title">Personal and professional chats mixed</div>
-          <p class="pain-body">Technicians were managing 20+ customer conversations in the same app as their personal messages. A client update could get buried under family messages in seconds. No separation, no context switching, no way to prioritise what matters.</p>
-        </div>
+        <div class="pain-icon"><img src="assets/TechGuy/engineer.png" alt="Technician"></div>
+        <div class="pain-title">Personal and professional chats mixed</div>
+        <p class="pain-body">Technicians managed 20+ customer conversations in the same app as personal messages. A client update could get buried in seconds. No separation, no way to prioritise.</p>
       </div>
       <div class="pain-card">
-        <div class="pain-n">02</div>
-        <div>
-          <div class="pain-title">Unsaved contacts, impossible to find the right person</div>
-          <p class="pain-body">Every new customer required saving their number manually. Finding a specific client meant scrolling through a list of partially-remembered names. Operations maintained a contact list by hand that never stayed current. Technicians searched by typing partial names and hoped for the best.</p>
-        </div>
+        <div class="pain-icon"><img src="assets/TechGuy/Customer.png" alt="Customer"></div>
+        <div class="pain-title">Unsaved contacts, impossible to find anyone</div>
+        <p class="pain-body">Finding a specific customer meant scrolling through partially-remembered names. Operations kept a contact list by hand that never stayed current.</p>
       </div>
       <div class="pain-card">
-        <div class="pain-n">03</div>
-        <div>
-          <div class="pain-title">No way to track communications across the board</div>
-          <p class="pain-body">For operations, tracking where each job stood meant reading through entirely separate threads: one for customers, one for technicians, one for parts vendors. No single view existed. One missed message could delay an entire repair job. And this was the operations team's entire day.</p>
-        </div>
+        <div class="pain-icon"><img src="assets/TechGuy/Admin Icon.png" alt="Operations"></div>
+        <div class="pain-title">No view of where any job stood</div>
+        <p class="pain-body">Tracking a single job required reading across three separate threads: customers, technicians, and vendors. One missed message could delay an entire repair.</p>
       </div>
     </div>
   </div>
@@ -377,62 +385,29 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     </figure>
 
     <!-- Interviews: said vs observed -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">Interviews &middot; What they said vs what we observed <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">What they said vs what we observed <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
-    <div class="svo-grid">
-
-      <div class="svo-col-card">
-        <div class="svo-user-tag" style="display:flex;align-items:center;gap:8px;"><img src="assets/TechGuy/Admin Icon.png" alt="" style="width:16px;height:16px;object-fit:contain;opacity:0.7;filter:invert(0);">Technician</div>
-        <div class="svo-quote-block">
-          <div class="svo-col-label">What they said</div>
-          <p class="svo-quote">"WhatsApp is easy, I don't think there's really a problem with how it works for us."</p>
-        </div>
-        <div class="svo-obs-block">
-          <div class="svo-col-label">What we observed</div>
-          <ul class="svo-obs-list">
-            <li>4 min to find a specific chat and get job context</li>
-            <li>Mixed client and personal messages twice in one session</li>
-            <li>Audible frustration searching for unsaved contacts</li>
-          </ul>
-        </div>
+    <div class="svo-single" style="margin:0 0 16px;">
+      <div class="svo-user-tag"><img src="assets/TechGuy/engineer.png" alt="">Technician</div>
+      <div class="svo-quote-block">
+        <div class="svo-col-label">What they said</div>
+        <p class="svo-quote">"WhatsApp is easy. I don't think there's really a problem with how it works for us."</p>
       </div>
-
-      <div class="svo-col-card">
-        <div class="svo-user-tag">Customer</div>
-        <div class="svo-quote-block">
-          <div class="svo-col-label">What they said</div>
-          <p class="svo-quote">"It's a bit informal but it works. I just wish I knew more about what was happening with my device."</p>
-        </div>
-        <div class="svo-obs-block">
-          <div class="svo-col-label">What we observed</div>
-          <ul class="svo-obs-list">
-            <li>Couldn't find TechGuy in contacts without scrolling past 10+ names</li>
-            <li>Asked about repair status twice, no visibility into progress</li>
-            <li>Clear anxiety handing over a high-value device with no credentials visible</li>
-          </ul>
-        </div>
+      <div class="svo-obs-block">
+        <div class="svo-col-label">What we observed</div>
+        <ul class="svo-obs-list">
+          <li><span class="svo-highlight">4 minutes</span> to find a specific chat and get job context</li>
+          <li>Mixed client and personal messages <span class="svo-highlight">twice in one session</span></li>
+          <li><span class="svo-highlight">Audible frustration</span> searching for unsaved contacts</li>
+        </ul>
       </div>
-
-      <div class="svo-col-card">
-        <div class="svo-user-tag">Operations</div>
-        <div class="svo-quote-block">
-          <div class="svo-col-label">What they said</div>
-          <p class="svo-quote">"We manage everything through WhatsApp. It works for now, but things do get missed sometimes."</p>
-        </div>
-        <div class="svo-obs-block">
-          <div class="svo-col-label">What we observed</div>
-          <ul class="svo-obs-list">
-            <li>4+ min scrolling threads to get status of a single job</li>
-            <li>Cross-referencing 3 separate threads simultaneously</li>
-            <li>Urgent and routine tickets looked identical, no priority signal</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
 
-    <div class="callout-bar">
-      <strong>The turning point:</strong> People adapt to broken systems without realising it. In initial interviews, everyone said WhatsApp was fine. The moment we watched an operations team member spend 4 minutes scrolling to find one customer update, the story changed completely. Observational research reveals what interviews cannot.
+    <!-- Turning point: visually prominent -->
+    <div style="background:linear-gradient(135deg,rgba(64,94,171,0.1) 0%,rgba(64,94,171,0.05) 100%);border:1px solid var(--accent-border);border-radius:16px;padding:28px 32px;margin:24px 0 0;">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:12px;">The Turning Point</div>
+      <p style="font-size:17px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 10px;">People adapt to broken systems without realising it.</p>
+      <p style="font-size:14px;color:rgba(12,12,12,0.6);line-height:1.75;margin:0;">Everyone said WhatsApp was fine. Until we sat with them. Watching an operations team member spend <strong style="color:var(--ink);">4 minutes scrolling</strong> to find a single customer update changed everything. What interviews miss, observation reveals.</p>
     </div>
 
     <!-- Key findings -->
@@ -440,16 +415,37 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 
     <div class="kf-grid">
       <div class="kf-card">
-        <div class="kf-tag">Customer</div>
-        <p class="kf-body">Handing over expensive electronics via WhatsApp felt informal and unverified. A structured platform with visible credentials and repair tracking would signal the legitimacy needed to earn trust and convert hesitant customers.</p>
+        <div class="kf-header">
+          <div class="kf-icon"><img src="assets/TechGuy/Customer.png" alt="Customer"></div>
+          <div class="kf-tag">Customer</div>
+        </div>
+        <ul class="kf-list">
+          <li>Handing over expensive electronics via WhatsApp felt informal and unverified</li>
+          <li>Needed visible credentials and real-time tracking to feel safe</li>
+          <li>Trust was the primary barrier to conversion, not price or speed</li>
+        </ul>
       </div>
       <div class="kf-card">
-        <div class="kf-tag">Technician</div>
-        <p class="kf-body">Finding the right chat, reading back for context, and separating personal and work messages was genuinely unproductive. The friction had been normalised. But the time loss was measurable and consistent across every session we observed.</p>
+        <div class="kf-header">
+          <div class="kf-icon"><img src="assets/TechGuy/engineer.png" alt="Technician"></div>
+          <div class="kf-tag">Technician</div>
+        </div>
+        <ul class="kf-list">
+          <li>Context-switching between personal and work chats created measurable delays</li>
+          <li>Normalised friction; they didn't realise the time loss until we measured it</li>
+          <li>Needed a dedicated work space, not another WhatsApp conversation</li>
+        </ul>
       </div>
       <div class="kf-card">
-        <div class="kf-tag">Operations</div>
-        <p class="kf-body">Coordinating customers, technicians, and vendors across separate threads with no status overview was operationally brittle. One missed message could delay an entire repair. Everyone knew the system did not scale. Nobody had said it out loud before.</p>
+        <div class="kf-header">
+          <div class="kf-icon"><img src="assets/TechGuy/Admin Icon.png" alt="Operations"></div>
+          <div class="kf-tag">Operations</div>
+        </div>
+        <ul class="kf-list">
+          <li>Coordinating 3 separate threads with no overview was operationally brittle</li>
+          <li>Urgent and routine tickets were indistinguishable in WhatsApp</li>
+          <li>One missed message could delay an entire repair job</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -483,17 +479,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <!-- Customer -->
     <div class="sol-section">
       <div class="sol-header">
-        <span class="sol-tag">Customer &middot; Mobile App</span>
+        <span class="sol-tag"><img src="assets/TechGuy/Customer.png" alt="">Customer &middot; Mobile App</span>
       </div>
       <div class="sol-title">Repair tracking and trust-building from the first tap.</div>
       <div class="sol-features">
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Live repair tracking</strong> so customers see exactly where their job is at any point, without needing to message anyone.</div>
+          <div class="sol-feature-title">Live repair tracking</div>
+          <div class="sol-feature-text">Customers see exactly where their job is at any point, without needing to message anyone.</div>
         </div>
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Testimonials at booking</strong> so social proof and TechGuy credentials surface when the customer is deciding to hand over their device.</div>
+          <div class="sol-feature-title">Testimonials at booking</div>
+          <div class="sol-feature-text">Social proof and credentials surface right when the customer decides to hand over their device.</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
@@ -515,25 +511,25 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <!-- Technician -->
     <div class="sol-section">
       <div class="sol-header">
-        <span class="sol-tag">Technician &middot; Mobile App</span>
+        <span class="sol-tag"><img src="assets/TechGuy/engineer.png" alt="">Technician &middot; Mobile App</span>
       </div>
       <div class="sol-title">Everything they need. None of the noise.</div>
       <div class="sol-features">
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Personal metrics dashboard</strong> with active, completed, and pending tickets visible at a glance. The 4-minute WhatsApp scroll becomes a 3-second tap.</div>
+          <div class="sol-feature-title">Personal metrics dashboard</div>
+          <div class="sol-feature-text">Active, completed, and pending tickets at a glance. The 4-minute WhatsApp scroll becomes a 3-second tap.</div>
         </div>
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Live ticket updates</strong> with real-time status changes visible without checking WhatsApp, and push notifications for new assignments.</div>
+          <div class="sol-feature-title">Live ticket updates</div>
+          <div class="sol-feature-text">Real-time status changes and push notifications. No WhatsApp checking required.</div>
         </div>
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>In-app client communication</strong> with a dedicated chat per client, fully separated from personal messages.</div>
+          <div class="sol-feature-title">In-app client communication</div>
+          <div class="sol-feature-text">A dedicated chat per client, fully separated from personal messages.</div>
         </div>
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Quick-access client info</strong> including device details, repair address, job history, and progress all on one screen.</div>
+          <div class="sol-feature-title">Quick-access client info</div>
+          <div class="sol-feature-text">Device details, repair address, job history, and progress all on one screen.</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
@@ -555,24 +551,24 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <!-- Operations -->
     <div class="sol-section">
       <div class="sol-header">
-        <span class="sol-tag">Operations &middot; Dashboard</span>
+        <span class="sol-tag"><img src="assets/TechGuy/Admin Icon.png" alt="">Operations &middot; Dashboard</span>
       </div>
       <div class="sol-title">One screen for everything that used to need fifteen tabs.</div>
-      <div class="sol-features">
+      <div class="sol-features single-col">
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Unified view</strong> with all technicians, clients, and vendors visible from a single dashboard. No more tab-switching or thread-scrolling.</div>
+          <div class="sol-feature-title">Unified view</div>
+          <div class="sol-feature-text">All technicians, clients, and vendors visible from a single dashboard. No thread-scrolling.</div>
         </div>
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Ticket assignment</strong> showing which technicians are assigned to open jobs, so workload is visible before assigning new tickets.</div>
+          <div class="sol-feature-title">Ticket assignment</div>
+          <div class="sol-feature-text">Workload visible before assigning. See who's free and who's already at capacity.</div>
         </div>
         <div class="sol-feature">
-          <div class="sol-feature-dot"></div>
-          <div class="sol-feature-text"><strong>Live status overview</strong> so the operations team knows where every job stands across the board, with urgent and routine tickets clearly differentiated.</div>
+          <div class="sol-feature-title">Live status overview</div>
+          <div class="sol-feature-text">Every job's status across the board, with urgent tickets clearly differentiated from routine ones.</div>
         </div>
       </div>
-      <figure style="margin:24px 0 0;">
+      <figure style="margin:20px 0 0;">
         <img src="assets/TechGuy/Admin dashboard.png" alt="Operations dashboard" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
         <figcaption class="img-caption">Operations dashboard with unified ticket management and technician assignment</figcaption>
       </figure>
@@ -623,9 +619,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <p class="cs-body">This was 2021, and I have learned a lot since then. Looking back with four years of experience, two things stand out clearly.</p>
 
     <div class="learning">
+      <div style="font-size:28px;line-height:1;margin-bottom:12px;">📊</div>
       <div class="l-text"><strong>More visualisation in the operations dashboard.</strong> The operations role communicates with the highest number of people simultaneously: customers, technicians, and vendors. The dashboard handled this, but it was primarily list-based. Today I'd push for richer data visualisation, technician workload as a chart, vendor lead times over time, ticket volume by day. Operations needs to see patterns, not just lists. A list tells you what is happening. A chart tells you why it keeps happening.</div>
     </div>
     <div class="learning">
+      <div style="font-size:28px;line-height:1;margin-bottom:12px;">🧠</div>
       <div class="l-text"><strong>AI-assisted planning for operations and technicians.</strong> For operations: smart ticket assignment based on each technician's current job locations, active ticket count, and how far existing repairs have progressed. For technicians: an AI-assisted daily schedule that clusters jobs by area, prioritises by urgency, and adapts as tickets update throughout the day. These are the natural next step for a service platform at this scale.</div>
     </div>
   </div>
