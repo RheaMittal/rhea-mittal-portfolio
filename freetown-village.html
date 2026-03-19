@@ -31,7 +31,7 @@ nav {
   background: rgba(245,244,240,0.92); backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: 0.12em; text-decoration: none; color: #1DB855; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
 .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94); }
@@ -237,6 +237,8 @@ nav {
   .cs-ov-cell:first-child { border-top: none; }
   .cs-hero-kicker { justify-content: center; }
 }
+
+.footer-bar { border-top: 1px solid var(--border); padding: 20px 56px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -879,5 +881,10 @@ var revealObserver = new IntersectionObserver(function(entries) {
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 revealEls.forEach(function(el) { revealObserver.observe(el); });
 </script>
+<footer class="footer-bar">
+  <span>© 2025 Rhea Mittal</span>
+  <span>Made with love and energy drinks ✨</span>
+  <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
+</footer>
 </body>
 </html>
