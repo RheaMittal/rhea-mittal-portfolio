@@ -16,12 +16,13 @@ html { scroll-behavior: smooth; }
   --border: rgba(0,0,0,0.08);
   --accent: #405EAB;
   --accent-bg: rgba(64,94,171,0.08);
+  --accent-border: rgba(64,94,171,0.15);
   --white: #FFFFFF;
 }
 
 body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-/* ─── NAV ─── */
+/* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56px; display: flex; align-items: center; justify-content: space-between; background: rgba(245,244,240,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
 .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
 .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -41,32 +42,32 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .nav-mobile a:hover { color: var(--accent); }
 .nav-mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted); }
 
-/* ─── SCROLL REVEAL ─── */
+/* SCROLL REVEAL */
 .cs-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94); }
 .cs-reveal.cs-visible { opacity: 1; transform: translateY(0); }
 .reveal-d2 { transition-delay: .2s; }
 .reveal-d3 { transition-delay: .3s; }
 
-/* ─── HERO BAND ─── */
-.cs-hero-band { width: 100%; padding: 130px 56px 0; background: linear-gradient(160deg, #060C1A 0%, #0C1828 60%, #0F2234 100%); }
+/* HERO */
+.cs-hero-band { width: 100%; padding: 130px 56px 0; background: linear-gradient(160deg, #0E1830 0%, #152340 60%, #1A2E50 100%); }
 .cs-hero-inner { max-width: 888px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.cs-hero-video-wrap { width: 100%; max-width: 1100px; margin: 56px auto 0; position: relative; }
-.cs-hero-video-wrap video { width: 100%; display: block; border-radius: 16px 16px 0 0; box-shadow: 0 -4px 60px rgba(64,94,171,0.25); }
-.cs-hero-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(64,94,171,.7); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.cs-hero-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .cs-hero-h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(40px,6vw,76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 28px; }
-.cs-hero-desc { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72); max-width: 600px; text-align: center; }
+.cs-hero-desc { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72); max-width: 600px; text-align: center; margin-bottom: 0; }
+.cs-hero-video-wrap { width: 100%; max-width: 1100px; margin: 56px auto 0; }
+.cs-hero-video-wrap video { width: 100%; display: block; border-radius: 16px 16px 0 0; box-shadow: 0 -4px 60px rgba(64,94,171,0.25); }
 
-/* ─── CONTENT WRAPPER ─── */
+/* CONTENT */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
 
-/* ─── OVERVIEW ─── */
+/* OVERVIEW */
 .cs-overview { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 56px 0 80px; }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
 .cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
 
-/* ─── SECTION ─── */
+/* SECTION */
 .cs-section { margin-bottom: 96px; }
 .cs-sec-label { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
 .cs-sec-label .n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
@@ -74,86 +75,130 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .cs-sec-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(28px,3.5vw,44px); line-height: 1.06; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 28px; }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; text-align: center; letter-spacing: .03em; }
 
-/* ─── SPLITS ─── */
+/* SPLITS */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; }
 .sec-split-left { display: flex; flex-direction: column; gap: 20px; }
+.sec-split-right { position: relative; }
 .sec-split-body { font-size: 14px; line-height: 1.7; color: var(--muted); }
 
-/* ─── CALLOUT BAR ─── */
-.callout-bar { padding: 16px 20px; background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 13px; color: var(--ink); line-height: 1.65; margin-top: 16px; }
+/* CARDS */
+.cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+.cards-g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+.c-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; transition: border-color .2s; }
+.c-card:hover { border-color: rgba(0,0,0,.18); }
+.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; color: var(--ink); }
+.c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-/* ─── PAIN TAGS ─── */
-.pain-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
-.pain-tag { background: rgba(201,58,82,0.07); border: 1px solid rgba(201,58,82,0.15); color: #B53B4F; padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; }
+/* CALLOUT */
+.callout-bar { background: var(--accent-bg); border: 1px solid var(--accent-border); border-radius: 14px; padding: 20px 28px; font-size: 14px; line-height: 1.75; color: rgba(12,12,12,0.65); margin: 32px 0; }
+.callout-bar strong { color: var(--ink); font-weight: 600; }
 
-/* ─── CONTEXT CARDS ─── */
-.context-cards { display: flex; flex-direction: column; gap: 12px; }
-.ctx-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
-.ctx-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.ctx-card-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
-.ctx-card-body { font-size: 13px; color: var(--muted); line-height: 1.55; }
-
-/* ─── SAID VS OBSERVED ─── */
-.said-obs { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 28px 0 16px; }
-.said-col { padding: 28px 32px; background: var(--white); border-right: 1px solid var(--border); }
-.obs-col { padding: 28px 32px; background: var(--bg); }
-.said-obs-header { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.3px; color: var(--ink); margin-bottom: 4px; }
-.said-obs-sub { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-.said-obs ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-.said-obs li { font-size: 14px; line-height: 1.6; padding-left: 20px; position: relative; }
-.said-col li { color: rgba(0,0,0,.42); font-style: italic; }
-.said-col li::before { content: '▸'; position: absolute; left: 0; font-size: 9px; top: 4px; color: rgba(0,0,0,.18); }
-.obs-col li { color: var(--ink); font-weight: 500; }
-.obs-col li::before { content: '▸'; position: absolute; left: 0; font-size: 9px; top: 4px; color: var(--accent); }
-
-/* ─── HMW ─── */
-.hmw-block { background: var(--accent); border-radius: 16px; padding: 36px 40px; text-align: center; margin: 32px 0; }
-.hmw-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.55); margin-bottom: 12px; }
-.hmw-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(20px,2.8vw,32px); letter-spacing: -.5px; color: #fff; line-height: 1.2; margin: 0; text-transform: uppercase; }
-
-/* ─── ARCHETYPE CARDS ─── */
-.archetype-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 28px 0; }
-.archetype-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 28px 24px; }
-.archetype-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 10px; }
-.archetype-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 13px; line-height: 1.65; color: rgba(0,0,0,.55); margin-bottom: 16px; padding: 12px 14px; background: var(--bg); border-radius: 8px; border-left: 2px solid rgba(64,94,171,0.2); }
-.archetype-pains { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-.archetype-pain { font-size: 12px; color: rgba(0,0,0,.55); line-height: 1.5; padding-left: 14px; position: relative; }
-.archetype-pain::before { content: '-'; position: absolute; left: 0; color: rgba(0,0,0,.2); }
-
-/* ─── DESIGN PRINCIPLES ─── */
-.design-principles { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 28px 0; }
-.design-principle { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
-.dp-user { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 8px; }
-.dp-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.35; }
-.dp-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-/* ─── IMG PLACEHOLDER ─── */
-.img-ph { border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02); padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; margin: 16px 0 32px; }
-.img-ph.h-large { min-height: 420px; }
-.img-ph.h-medium { min-height: 320px; }
-.img-ph-ico { font-size: 40px; opacity: .2; }
-.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.5px; color: rgba(0,0,0,.38); }
-.img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
-.img-2up { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-.img-sub-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin-bottom: 12px; }
-
-/* ─── IMPACT ─── */
+/* IMPACT */
 .impact-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0; }
 .impact-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; text-align: center; transition: transform .25s, border-color .2s; }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
 .impact-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 56px; letter-spacing: -3px; line-height: 1; margin-bottom: 8px; color: var(--accent); }
 .impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
 
-/* ─── LEARNINGS ─── */
-.learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 28px; margin-bottom: 2px; transition: border-color .2s; }
+/* LEARNINGS */
+.learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 28px; display: flex; gap: 18px; align-items: flex-start; margin-bottom: 2px; transition: border-color .2s; }
 .learning:hover { border-color: rgba(12,12,12,0.18); }
 .l-text { font-size: 15px; line-height: 1.7; color: rgba(12,12,12,0.65); }
 .l-text strong { color: var(--ink); font-weight: 600; }
 
-/* ─── FOOTER CTA ─── */
-.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); background: linear-gradient(160deg, #060C1A 0%, #0C1828 60%, #0F2234 100%); }
+/* IMG PLACEHOLDER */
+.img-ph { border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02); padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; margin: 32px 0; }
+.img-ph.h-large { min-height: 420px; }
+.img-ph.h-medium { min-height: 300px; }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.img-ph-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.5px; color: rgba(0,0,0,.3); }
+.img-ph-desc { font-size: 13px; color: rgba(0,0,0,.2); line-height: 1.65; max-width: 460px; }
+
+/* COMPANY ROW */
+.company-row { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
+.company-avatar { border-radius: 16px; background: var(--accent-bg); border: 1px solid var(--accent-border); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; min-height: 180px; }
+
+/* PAIN CARDS */
+.pain-cards { display: flex; flex-direction: column; gap: 2px; margin: 32px 0; }
+.pain-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 28px; display: grid; grid-template-columns: 44px 1fr; gap: 20px; align-items: start; transition: border-color .2s; }
+.pain-card:hover { border-color: var(--accent-border); }
+.pain-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; color: rgba(64,94,171,0.18); line-height: 1; letter-spacing: -1px; padding-top: 2px; }
+.pain-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.pain-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* SERVICE FLOWCHART */
+.svc-flow { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin: 28px 0 40px; }
+.svc-flow-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 28px; text-align: center; }
+.svc-flow-row { display: grid; grid-template-columns: 1fr 72px 1fr 72px 1fr; align-items: center; gap: 0; }
+.svc-node { border-radius: 16px; padding: 24px 20px; text-align: center; }
+.svc-node.customer { background: var(--accent-bg); border: 1px solid var(--accent-border); }
+.svc-node.operations { background: rgba(64,94,171,0.14); border: 1px solid rgba(64,94,171,0.28); }
+.svc-node.technician { background: var(--accent-bg); border: 1px solid var(--accent-border); }
+.svc-node-icon { font-size: 26px; margin-bottom: 10px; }
+.svc-node-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: -.2px; color: var(--ink); margin-bottom: 4px; }
+.svc-node-sub { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.svc-node-detail { margin-top: 12px; font-size: 11px; color: rgba(12,12,12,0.5); line-height: 1.55; }
+.svc-connector { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 0 2px; }
+.svc-conn-label { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; text-align: center; }
+.svc-conn-label.muted { color: var(--muted); }
+.svc-arrow { display: flex; align-items: center; width: 100%; }
+.svc-line { flex: 1; height: 2px; background: var(--accent-border); }
+.svc-arrowhead { font-size: 12px; color: var(--accent); font-weight: 900; }
+.svc-flow-bottom { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: center; }
+.svc-vendor { background: rgba(0,0,0,.02); border: 1px dashed rgba(0,0,0,.1); border-radius: 14px; padding: 16px 28px; text-align: center; display: flex; align-items: center; gap: 14px; }
+.svc-vendor-icon { font-size: 20px; opacity: .4; }
+.svc-vendor-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
+.svc-vendor-desc { font-size: 11px; color: rgba(0,0,0,.35); margin-top: 2px; }
+
+/* SAID VS OBSERVED */
+.svo-stack { display: flex; flex-direction: column; gap: 2px; margin: 28px 0; }
+.svo-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.svo-user-tag { background: var(--accent-bg); border-bottom: 1px solid var(--accent-border); padding: 10px 24px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.svo-cols { display: grid; grid-template-columns: 1fr 1fr; }
+.svo-said { background: var(--white); padding: 22px 28px; border-right: 1px solid var(--border); }
+.svo-obs { background: var(--bg); padding: 22px 28px; }
+.svo-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.svo-quote { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 14px; line-height: 1.65; color: rgba(0,0,0,.5); margin: 0; }
+.svo-obs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+.svo-obs-list li { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.55; padding-left: 16px; position: relative; }
+.svo-obs-list li::before { content: '▸'; position: absolute; left: 0; font-size: 8px; top: 4px; color: var(--accent); }
+
+/* KEY FINDINGS */
+.kf-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 28px 0; }
+.kf-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; }
+.kf-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 12px; }
+.kf-body { font-size: 13px; color: rgba(0,0,0,.55); line-height: 1.65; }
+
+/* VIDEO ZOOM */
+.vid-zoom { display: block; transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), max-width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-radius 0.8s ease; }
+.vid-zoom.vid-expanded { width: 100% !important; border-radius: 10px 10px 0 0 !important; }
+
+/* APP FLOW VIEWER */
+.flow-viewer-wrap { margin: 32px 0; }
+.flow-viewer { width: 100%; height: 460px; overflow: hidden; border-radius: 16px; border: 1px solid var(--border); cursor: grab; position: relative; background: #fff; user-select: none; }
+.flow-viewer.dragging { cursor: grabbing; }
+.flow-viewer img { position: absolute; top: 50%; left: 50%; transform-origin: center center; user-select: none; pointer-events: none; max-width: none; }
+.flow-viewer-hint { text-align: center; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-top: 10px; }
+.flow-viewer-controls { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.flow-btn { background: var(--white); border: 1px solid var(--border); border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer; transition: border-color .2s, color .2s; }
+.flow-btn:hover { border-color: var(--accent-border); color: var(--accent); }
+
+/* SOLUTION SECTIONS */
+.sol-section { margin-bottom: 48px; }
+.sol-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.sol-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border); padding: 5px 12px; border-radius: 100px; }
+.sol-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: -.3px; color: var(--ink); margin-bottom: 16px; }
+.sol-features { display: flex; flex-direction: column; gap: 2px; margin: 16px 0; }
+.sol-feature { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; display: flex; align-items: baseline; gap: 12px; }
+.sol-feature-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 5px; }
+.sol-feature-text { font-size: 13px; color: rgba(0,0,0,.6); line-height: 1.55; }
+.sol-feature-text strong { color: var(--ink); font-weight: 600; }
+
+/* FOOTER */
+.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); background: linear-gradient(160deg, #0E1830 0%, #152340 60%, #1A2E50 100%); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; }
 .cs-footer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
@@ -163,33 +208,40 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .fb-ghost { border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
 
-/* ─── RESPONSIVE ─── */
+.footer-bar { border-top: 1px solid var(--border); padding: 20px 56px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--muted); }
+
+/* RESPONSIVE */
 @media(max-width:900px) {
   nav { padding: 14px 24px; }
   .nav-links { display: none; }
   .nav-burger { display: flex; }
-  .cs-hero-band { padding: 110px 20px 64px; }
+  .cs-hero-band { padding: 110px 20px 0; }
   .cs-content { padding: 0 20px 100px; }
   .cs-overview { grid-template-columns: 1fr 1fr; }
   .cs-ov-cell:nth-child(2) { border-right: none; }
   .cs-ov-cell:nth-child(3) { border-top: 1px solid var(--border); }
   .cs-ov-cell:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
   .sec-split { grid-template-columns: 1fr; gap: 28px; }
-  .said-obs { grid-template-columns: 1fr; }
-  .said-col { border-right: none; border-bottom: 1px solid var(--border); }
-  .archetype-grid { grid-template-columns: 1fr; }
-  .design-principles { grid-template-columns: 1fr; }
+  .company-row { grid-template-columns: 1fr; gap: 24px; }
+  .company-avatar { aspect-ratio: auto; height: 140px; }
+  .svc-flow-row { grid-template-columns: 1fr; gap: 16px; }
+  .svc-connector { flex-direction: row; }
+  .svo-cols { grid-template-columns: 1fr; }
+  .svo-said { border-right: none; border-bottom: 1px solid var(--border); }
+  .kf-grid { grid-template-columns: 1fr; }
+  .flow-viewer { height: 280px; }
   .impact-row { grid-template-columns: 1fr 1fr; }
-  .img-2up { grid-template-columns: 1fr; }
   .cs-footer-inner { padding: 40px 24px; }
   .cs-footer-title { font-size: 36px; }
+  .footer-bar { padding: 16px 20px; flex-direction: column; gap: 6px; text-align: center; }
 }
 @media(max-width:600px) {
   .cs-overview { grid-template-columns: 1fr; }
   .cs-ov-cell { border-right: none !important; border-top: 1px solid var(--border); }
   .cs-ov-cell:first-child { border-top: none; }
-  .cs-hero-kicker { justify-content: center; }
-  .hmw-block { padding: 28px 24px; }
+  .pain-card { grid-template-columns: 1fr; gap: 8px; }
+  .cards-g3 { grid-template-columns: 1fr; }
+  .impact-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -202,7 +254,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <li><a href="work.html" class="active">Work</a></li>
     <li><a href="playground.html">Play</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
+    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume &#x2197;</a></li>
   </ul>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
@@ -210,22 +262,22 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
   </button>
 </nav>
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <button class="nav-mobile-close" id="navMobileClose">&#x2715;</button>
   <a href="work.html">Work</a>
   <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 </div>
 
-<!-- HERO BAND -->
+<!-- HERO -->
 <div class="cs-hero-band">
   <div class="cs-hero-inner">
-    <div class="cs-hero-kicker">UI/UX Design · Team Lead · Customer · Engineer · Operations</div>
-    <h1 class="cs-hero-h1">Three products.<br>One team.<br>No playbook.</h1>
-    <p class="cs-hero-desc">TechGuy is a B2C tech startup making electronics repair customer-friendly. Everything ran through WhatsApp. Customers, engineers, and operations all managed work across fragmented group chats. I led a 4-person design team to build three purpose-built interfaces that replaced it entirely.</p>
+    <div class="cs-hero-kicker">UI/UX Design &middot; Team Lead &middot; Customer &middot; Technician &middot; Operations</div>
+    <h1 class="cs-hero-h1">Shipping for an at-home<br>electronic repair service.</h1>
+    <p class="cs-hero-desc">TechGuy is a B2C electronics repair startup. Everything from customer bookings to engineer job management ran on WhatsApp. We researched, designed, and shipped three connected interfaces from scratch.</p>
   </div>
   <div class="cs-hero-video-wrap">
-    <video autoplay loop muted playsinline>
+    <video class="cs-hero-video vid-zoom" autoplay loop muted playsinline style="width:65%;border-radius:16px 16px 0 0;display:block;margin:0 auto;box-shadow:0 -4px 60px rgba(64,94,171,0.25);">
       <source src="assets/TechGuy/Techguy Hero page.mov" type="video/mp4">
     </video>
   </div>
@@ -236,220 +288,363 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 
   <!-- OVERVIEW -->
   <div class="cs-overview cs-reveal">
-    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">UI/UX Designer &amp; Team Lead: Operations dashboard end-to-end; UX lead across all 3</div></div>
-    <div class="cs-ov-cell"><div class="cs-ov-label">Duration</div><div class="cs-ov-val">6 months</div></div>
-    <div class="cs-ov-cell"><div class="cs-ov-label">Team</div><div class="cs-ov-val">4-person design team</div></div>
-    <div class="cs-ov-cell"><div class="cs-ov-label">Deliverables</div><div class="cs-ov-val">Customer portal · Engineer app · Operations dashboard · Design system</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">Founding Product Designer &amp; Team Lead</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Team</div><div class="cs-ov-val">3 designers &middot; Software engineers &middot; CEO</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Timeline</div><div class="cs-ov-val">2021 &middot; 6 months</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Deliverables</div><div class="cs-ov-val">Customer Portal &middot; Technician App &middot; Operations Dashboard &middot; Design System</div></div>
+  </div>
+
+  <!-- 00 THE COMPANY -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">00</span> The Company</div>
+    <div class="company-row">
+      <div class="company-avatar" style="padding:0;overflow:hidden;background:transparent;border:none;">
+        <img src="assets/TechGuy/techguy mascot.png" alt="TechGuy mascot" style="width:100%;height:100%;object-fit:contain;border-radius:16px;">
+      </div>
+      <div>
+        <h2 class="cs-sec-title" style="margin-bottom:16px;">The Uber of at-home electronics repair.</h2>
+        <p class="cs-body" style="margin-bottom:16px;">TechGuy is a B2C tech startup making electronics repair customer-friendly. Book online, a certified technician arrives at your door, fixes your device on-site. No dropping it off, no waiting, no uncertainty about where your device is.</p>
+        <p class="cs-body" style="margin-bottom:0;">When we joined, TechGuy was growing fast. But every touchpoint, from customer bookings to technician job assignments to operations coordination, was running through WhatsApp group chats. I led a 4-person design team to build three purpose-built interfaces that replaced it entirely.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 PROBLEM -->
+  <div class="cs-section cs-reveal">
+    <div class="cs-sec-label"><span class="n">01</span> Problem</div>
+    <div class="sec-split" style="margin-bottom:36px;">
+      <div class="sec-split-left">
+        <h2 class="cs-sec-title">Three reasons WhatsApp was not working.</h2>
+        <p class="sec-split-body">We were brought in to design an interface. The CEO already knew WhatsApp was not scaling. What we needed to understand was exactly where it was breaking and why. Three things were fundamentally broken about running a service business through group chats.</p>
+      </div>
+      <div class="sec-split-right" style="padding-top:8px;">
+        <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:14px;padding:20px 24px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px;">Three user types. One group chat.</div>
+          <p style="font-size:13px;color:rgba(12,12,12,0.6);line-height:1.7;margin:0;">Customers, technicians, and operations all communicating through the same WhatsApp threads. No separation of context, no structure, no way to scale.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pain-cards">
+      <div class="pain-card">
+        <div class="pain-n">01</div>
+        <div>
+          <div class="pain-title">Personal and professional chats mixed</div>
+          <p class="pain-body">Technicians were managing 20+ customer conversations in the same app as their personal messages. A client update could get buried under family messages in seconds. No separation, no context switching, no way to prioritise what matters.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-n">02</div>
+        <div>
+          <div class="pain-title">Unsaved contacts, impossible to find the right person</div>
+          <p class="pain-body">Every new customer required saving their number manually. Finding a specific client meant scrolling through a list of partially-remembered names. Operations maintained a contact list by hand that never stayed current. Technicians searched by typing partial names and hoped for the best.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-n">03</div>
+        <div>
+          <div class="pain-title">No way to track communications across the board</div>
+          <p class="pain-body">For operations, tracking where each job stood meant reading through entirely separate threads: one for customers, one for technicians, one for parts vendors. No single view existed. One missed message could delay an entire repair job. And this was the operations team's entire day.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- GOAL -->
   <div class="cs-section cs-reveal" style="margin-top:0;">
     <div class="cs-sec-label">The Goal</div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,56px);text-transform:uppercase;letter-spacing:-.5px;color:var(--ink);margin-bottom:32px;">Build for all three users. Measure it in time saved.</h2>
-    <div style="background:var(--accent-bg);border:1px solid rgba(64,94,171,0.15);border-radius:20px;padding:36px 40px;">
+    <h2 class="cs-sec-title" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,56px);text-transform:uppercase;letter-spacing:-.5px;color:var(--ink);margin-bottom:32px;">Simplify workflows. Build something no one needs a manual for.</h2>
+    <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:20px;padding:36px 40px;">
       <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:16px;">Goal</div>
-      <p style="font-size:clamp(17px,2.2vw,21px);font-weight:600;color:var(--ink);line-height:1.55;margin:0 0 36px;">Design purpose-built interfaces for all three end user types that replace WhatsApp chaos with structured, trustworthy workflows and measurably reduce time on task.</p>
-      <div style="height:1px;background:rgba(64,94,171,0.15);margin-bottom:32px;"></div>
+      <p style="font-size:clamp(17px,2.2vw,21px);font-weight:600;color:var(--ink);line-height:1.55;margin:0 0 36px;">Design purpose-built interfaces for customers, technicians, and operations that simplify day-to-day workflows and feel intuitive enough to use from day one, with no training required.</p>
+      <div style="height:1px;background:var(--accent-border);margin-bottom:32px;"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
         <div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">The Problem</div>
-          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Everything ran through WhatsApp. Three user types, 15+ concurrent conversations, no structure. What appeared to "work" was hiding serious friction users had stopped noticing.</p>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">Simplify</div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Replace fragmented WhatsApp chaos with structured, role-specific workflows. Each user type sees only what they need, when they need it.</p>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">The Constraint</div>
-          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Three completely different users (customers on mobile, engineers in the field, operations at a desk) each with different contexts, devices, and information needs. One connected service ecosystem.</p>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">Intuitive</div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">A customer on mobile tracking a repair, a technician in the field updating a job, an operations lead assigning tickets from a desk. All different contexts. All obvious to use.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 00 PROBLEM -->
+  <!-- 02 USER RESEARCH -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">00</span> Problem</div>
-    <div class="sec-split">
-      <div class="sec-split-left">
-        <h2 class="cs-sec-title">Three user types. One fragmented experience.</h2>
-        <p class="sec-split-body">TechGuy's operations ran entirely through WhatsApp. Customers messaged to book repairs. Engineers received work orders via text. Operations coordinated 15+ conversations across customer and engineer group chats simultaneously.</p>
-        <p class="sec-split-body">The result: lost messages, no status visibility, no structured workflow. And the deeper problem: nobody thought it was a problem.</p>
-        <div class="pain-tags">
-          <span class="pain-tag">Lost messages in busy group chats</span>
-          <span class="pain-tag">No clear status visibility</span>
-          <span class="pain-tag">Manually searching for contacts</span>
-          <span class="pain-tag">Information scattered across conversations</span>
-          <span class="pain-tag">No structured workflow</span>
+    <div class="cs-sec-label"><span class="n">02</span> User Research</div>
+    <h2 class="cs-sec-title">10+ conversations. Three completely different stories.</h2>
+    <p class="cs-body">We spoke with 10+ users across all three types, at least 3 per group. Rather than asking what people wanted, we asked them to complete real tasks on the existing WhatsApp-based system. That is where the real story started.</p>
+
+    <!-- Secondary research: system flow -->
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">Secondary Research <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+
+    <div class="svc-flow">
+      <div class="svc-flow-label">How the three user types connect to each other</div>
+      <div class="svc-flow-row">
+
+        <div class="svc-node customer">
+          <div class="svc-node-icon">&#x1F4F1;</div>
+          <div class="svc-node-name">Customer</div>
+          <div class="svc-node-sub">Mobile App</div>
+          <div class="svc-node-detail">Books repair<br>Tracks status<br>Receives updates</div>
         </div>
+
+        <div class="svc-connector">
+          <div class="svc-conn-label">Books repair</div>
+          <div class="svc-arrow">
+            <div class="svc-line"></div>
+            <div class="svc-arrowhead">&#9658;</div>
+          </div>
+          <div class="svc-arrow" style="margin-top:4px;">
+            <div class="svc-arrowhead" style="transform:scaleX(-1);">&#9658;</div>
+            <div class="svc-line"></div>
+          </div>
+          <div class="svc-conn-label muted">Status updates</div>
+        </div>
+
+        <div class="svc-node operations">
+          <div class="svc-node-icon">&#x1F5A5;&#xFE0F;</div>
+          <div class="svc-node-name">Operations</div>
+          <div class="svc-node-sub">Dashboard</div>
+          <div class="svc-node-detail">Assigns tickets<br>Manages vendors<br>Oversees all jobs</div>
+        </div>
+
+        <div class="svc-connector">
+          <div class="svc-conn-label">Assigns ticket</div>
+          <div class="svc-arrow">
+            <div class="svc-line"></div>
+            <div class="svc-arrowhead">&#9658;</div>
+          </div>
+          <div class="svc-arrow" style="margin-top:4px;">
+            <div class="svc-arrowhead" style="transform:scaleX(-1);">&#9658;</div>
+            <div class="svc-line"></div>
+          </div>
+          <div class="svc-conn-label muted">Progress updates</div>
+        </div>
+
+        <div class="svc-node technician">
+          <div class="svc-node-icon">&#x1F527;</div>
+          <div class="svc-node-name">Technician</div>
+          <div class="svc-node-sub">Mobile App</div>
+          <div class="svc-node-detail">Receives jobs<br>Updates progress<br>Manages client info</div>
+        </div>
+
       </div>
-      <div class="sec-split-right">
-        <div class="context-cards">
-          <div class="ctx-card">
-            <div class="ctx-card-head">
-              <span style="font-size:18px;">📱</span>
-              <span class="ctx-card-tag">Customer</span>
-            </div>
-            <p class="ctx-card-body">Booking repairs through informal WhatsApp messages. No visibility into repair status. No way to verify TechGuy's credentials. Handing over a high-value device to a contact they can't verify.</p>
-          </div>
-          <div class="ctx-card">
-            <div class="ctx-card-head">
-              <span style="font-size:18px;">🔧</span>
-              <span class="ctx-card-tag">Engineer</span>
-            </div>
-            <p class="ctx-card-body">Receiving work orders via text in mixed personal and work group chats. Spending 3-4 minutes per job scrolling to find the right customer context before being able to act.</p>
-          </div>
-          <div class="ctx-card">
-            <div class="ctx-card-head">
-              <span style="font-size:18px;">🖥️</span>
-              <span class="ctx-card-tag">Operations</span>
-            </div>
-            <p class="ctx-card-body">Juggling 15+ fragmented conversations simultaneously. No workload visibility, no data, no way to prioritize urgent vs routine requests. I designed this dashboard end-to-end.</p>
+
+      <div class="svc-flow-bottom">
+        <div class="svc-vendor">
+          <div class="svc-vendor-icon">&#x1F4E6;</div>
+          <div>
+            <div class="svc-vendor-label">Parts Vendors</div>
+            <div class="svc-vendor-desc">Operations coordinates parts orders separately from customer and technician communications</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- 01 RESEARCH -->
-  <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">01</span> Research</div>
-    <h2 class="cs-sec-title">What they said vs what we observed.</h2>
-    <p class="cs-body">Before designing anything, I conducted user interviews and usability testing with 10+ users across all three user types. The initial findings were surprising. Then the observational study changed everything.</p>
+    <figure style="margin:0 0 40px;">
+      <img src="assets/TechGuy/Techguy service flow.png" alt="TechGuy service flow diagram" style="width:100%;border-radius:16px;display:block;border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.07);">
+      <figcaption class="img-caption">Full service flow mapped before any screens were designed</figcaption>
+    </figure>
 
-    <div class="said-obs">
-      <div class="said-col">
-        <div class="said-obs-header">What they told us</div>
-        <div class="said-obs-sub">Initial interviews</div>
-        <ul>
-          <li>"WhatsApp works fine, just some minor inconveniences"</li>
-          <li>"I can find what I need eventually"</li>
-          <li>"The current system isn't really a problem"</li>
-        </ul>
+    <!-- Interviews: said vs observed -->
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">Interviews &middot; What they said vs what we observed <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+
+    <div class="svo-stack">
+      <div class="svo-card">
+        <div class="svo-user-tag">Technician</div>
+        <div class="svo-cols">
+          <div class="svo-said">
+            <div class="svo-col-label">What they said</div>
+            <p class="svo-quote">"WhatsApp is easy, I don't think there's really a problem with how it works for us."</p>
+          </div>
+          <div class="svo-obs">
+            <div class="svo-col-label">What we observed</div>
+            <ul class="svo-obs-list">
+              <li>4 minutes to locate a specific customer chat and read back for job context</li>
+              <li>Confused a client message with a personal message twice in one session</li>
+              <li>Audible frustration while typing partial names into search to find contacts</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="obs-col">
-        <div class="said-obs-header">What we observed</div>
-        <div class="said-obs-sub">Observational study</div>
-        <ul>
-          <li>Admins spent 3-5 minutes searching chat history for a single update</li>
-          <li>Engineers made audible frustrated sounds while typing contact names in search</li>
-          <li>Customers messaged the wrong number 40% of the time due to misspelled names</li>
-        </ul>
+
+      <div class="svo-card">
+        <div class="svo-user-tag">Customer</div>
+        <div class="svo-cols">
+          <div class="svo-said">
+            <div class="svo-col-label">What they said</div>
+            <p class="svo-quote">"It's a bit informal but it works, I guess. I just wish I knew more about what was happening with my device."</p>
+          </div>
+          <div class="svo-obs">
+            <div class="svo-col-label">What we observed</div>
+            <ul class="svo-obs-list">
+              <li>Could not locate the TechGuy contact without scrolling past 10+ saved names</li>
+              <li>Asked about repair status twice in a single session, no visibility into progress</li>
+              <li>Clear anxiety about handing a high-value device to a contact with no credentials visible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="svo-card">
+        <div class="svo-user-tag">Operations</div>
+        <div class="svo-cols">
+          <div class="svo-said">
+            <div class="svo-col-label">What they said</div>
+            <p class="svo-quote">"We manage everything through WhatsApp. It works for now, but things do get missed sometimes."</p>
+          </div>
+          <div class="svo-obs">
+            <div class="svo-col-label">What we observed</div>
+            <ul class="svo-obs-list">
+              <li>4+ minutes scrolling separate threads to piece together the status of a single job</li>
+              <li>Manually cross-referencing customer messages, technician updates, and vendor replies simultaneously</li>
+              <li>Urgent and routine tickets looked identical, no priority signal visible at a glance</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="callout-bar">
-      <strong>The turning point:</strong> People adapt to broken systems without realizing it. In initial interviews, everyone said WhatsApp was fine. The moment I watched an admin spend 4 minutes scrolling to find one customer update, the story changed completely. Observational research reveals what interviews cannot.
+      <strong>The turning point:</strong> People adapt to broken systems without realising it. In initial interviews, everyone said WhatsApp was fine. The moment we watched an operations team member spend 4 minutes scrolling to find one customer update, the story changed completely. Observational research reveals what interviews cannot.
     </div>
-  </div>
 
-  <!-- 02 USERS -->
-  <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">02</span> Users</div>
-    <h2 class="cs-sec-title">Three users. Three completely different unmet needs.</h2>
-    <p class="cs-body">The same platform, three completely different mental models and failure points. Designing for one without understanding the others would have produced something that technically shipped but solved nothing.</p>
+    <!-- Key findings -->
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">Key Findings <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
-    <div class="archetype-grid">
-      <div class="archetype-card">
-        <div class="archetype-tag">Customer</div>
-        <div class="archetype-quote">"My friend told me about TechGuy, but when I contacted them on WhatsApp, it felt too casual. I'm handing over my ₹60,000 MacBook. I need to know this is legitimate."</div>
-        <ul class="archetype-pains">
-          <li class="archetype-pain">No way to verify TechGuy's authorization credentials</li>
-          <li class="archetype-pain">Couldn't track repair status, causing constant anxiety about device safety</li>
-          <li class="archetype-pain">Messages lost in personal chat history</li>
-          <li class="archetype-pain">No history to reference past repairs or warranties</li>
-        </ul>
+    <div class="kf-grid">
+      <div class="kf-card">
+        <div class="kf-tag">Customer</div>
+        <p class="kf-body">Handing over expensive electronics via WhatsApp felt informal and unverified. A structured platform with visible credentials and repair tracking would signal the legitimacy needed to earn trust and convert hesitant customers.</p>
       </div>
-      <div class="archetype-card">
-        <div class="archetype-tag">Engineer</div>
-        <div class="archetype-quote">"During initial interviews, engineers insisted WhatsApp was easy to manage. Then I shadowed them and asked them to find a specific customer's status."</div>
-        <ul class="archetype-pains">
-          <li class="archetype-pain">3-4 min per job scrolling mixed personal and work chats</li>
-          <li class="archetype-pain">No clarity on job status (pending / waiting for parts / done)</li>
-          <li class="archetype-pain">Parts information buried across multiple WhatsApp threads</li>
-          <li class="archetype-pain">No structured way to update customers on progress</li>
-        </ul>
+      <div class="kf-card">
+        <div class="kf-tag">Technician</div>
+        <p class="kf-body">Finding the right chat, reading back for context, and separating personal and work messages was genuinely unproductive. The friction had been normalised. But the time loss was measurable and consistent across every session we observed.</p>
       </div>
-      <div class="archetype-card">
-        <div class="archetype-tag">Operations</div>
-        <div class="archetype-quote">"Right now we're managing everything on WhatsApp with customers and engineers. It works, but things get missed and there's no real way to track or stay organized."</div>
-        <ul class="archetype-pains">
-          <li class="archetype-pain">Manually tracking jobs across 15+ conversations</li>
-          <li class="archetype-pain">No visibility into engineer workload for smart assignments</li>
-          <li class="archetype-pain">No data to analyze patterns, peak times, or bottlenecks</li>
-          <li class="archetype-pain">Can't prioritize urgent vs routine requests at a glance</li>
-        </ul>
+      <div class="kf-card">
+        <div class="kf-tag">Operations</div>
+        <p class="kf-body">Coordinating customers, technicians, and vendors across separate threads with no status overview was operationally brittle. One missed message could delay an entire repair. Everyone knew the system did not scale. Nobody had said it out loud before.</p>
       </div>
     </div>
   </div>
 
-  <!-- 03 DESIGN DIRECTION -->
+  <!-- 03 ITERATION -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">03</span> Design Direction</div>
-    <h2 class="cs-sec-title">From WhatsApp chaos to a connected ecosystem.</h2>
+    <div class="cs-sec-label"><span class="n">03</span> Iteration</div>
+    <h2 class="cs-sec-title">We mapped the service before we touched a screen.</h2>
+    <p class="cs-body">Before any wireframes, we collaborated with the software engineers, the CEO, and a handful of end users to map out the complete service flow: where each user type touched the system, what triggered each action, and where the handoffs between customers, technicians, and operations happened.</p>
+    <p class="cs-body">We ran low-fidelity testing sessions to validate the app flow structure before committing to high-fidelity screens. The goal was to catch structural gaps early, not after rounds of designed screens needed to be rebuilt.</p>
 
-    <div class="hmw-block">
-      <div class="hmw-label">How might we</div>
-      <div class="hmw-text">Build a professional repair platform that creates trust in a market where 88% of people rely on word-of-mouth recommendations?</div>
-    </div>
-
-    <p class="cs-body">I translated user insights into clear design principles for each interface. Before touching any screens, I mapped the complete service flow, every decision point and information handoff between users, to ensure all three interfaces would function as one connected ecosystem rather than three isolated tools.</p>
-
-    <figure style="margin:40px 0 0;">
-      <img src="assets/TechGuy/TechGuy Appflow.jpg" alt="TechGuy app flow diagram" style="width:100%;border-radius:16px;border:1px solid var(--border);display:block;">
-      <figcaption style="font-size:12px;color:var(--muted);margin-top:12px;text-align:center;letter-spacing:.04em;">Complete service flow across all three interfaces</figcaption>
-    </figure>
-
-    <div class="design-principles">
-      <div class="design-principle">
-        <div class="dp-user">Customer</div>
-        <div class="dp-title">Build trust through professional brand and constant visibility</div>
-        <p class="dp-body">In a market where 88% trust personal recommendations, the interface itself had to feel as trustworthy as one. Testimonials front and center. Repair status always visible without asking.</p>
+    <div class="flow-viewer-wrap">
+      <div class="flow-viewer" id="flowViewer">
+        <img src="assets/TechGuy/TechGuy Appflow.jpg" id="flowImg" alt="TechGuy complete app flow diagram" draggable="false">
       </div>
-      <div class="design-principle">
-        <div class="dp-user">Engineer</div>
-        <div class="dp-title">Replace fragmented chats with visual job management</div>
-        <p class="dp-body">Three-tab dashboard: Ongoing, Completed, Needs Parts. Every job at a glance, no scrolling. The 3-4 minute WhatsApp search problem becomes a 3-second tap.</p>
+      <div class="flow-viewer-controls">
+        <button class="flow-btn" id="flowZoomIn">+ Zoom in</button>
+        <button class="flow-btn" id="flowReset">Reset</button>
+        <button class="flow-btn" id="flowZoomOut">- Zoom out</button>
       </div>
-      <div class="design-principle">
-        <div class="dp-user">Operations</div>
-        <div class="dp-title">Create a centralized command center with workload visibility</div>
-        <p class="dp-body">Real-time view of each engineer's active request count. Answer "Who should I assign this to?" instantly. Instant filters for urgent vs routine. No more scrolling 15 conversations.</p>
-      </div>
+      <p class="flow-viewer-hint">Drag to pan &middot; Scroll to zoom</p>
     </div>
   </div>
 
-  <!-- 04 FINAL DESIGNS -->
+  <!-- 04 FINAL DESIGN -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">04</span> Final Designs</div>
-    <h2 class="cs-sec-title">Three connected interfaces. One service ecosystem.</h2>
-    <p class="cs-body">Before shipping high-fidelity designs, I tested low-fidelity prototypes with real users to catch critical gaps early. Key iterations: engineers needed part status visible directly on job cards (not buried in menus); customers wanted quick access to request history; operations needed instant filters for urgent requests. These directly shaped the final interfaces.</p>
+    <div class="cs-sec-label"><span class="n">04</span> Final Design</div>
+    <h2 class="cs-sec-title">Three interfaces. One connected service.</h2>
+    <p class="cs-body">Each product was designed for a specific user context. Not three separate tools, one service ecosystem where an action in one interface automatically flows to the next.</p>
 
-    <div style="margin-bottom:48px;">
-      <div class="img-sub-label">Customer website: Testimonials and transparency build trust</div>
-      <div class="img-ph h-large">
-        <div class="img-ph-ico">📱</div>
-        <div class="img-ph-badge">Add Screenshot</div>
-        <div class="img-ph-title">Customer Portal: key screens</div>
-        <div class="img-ph-desc">Homepage with testimonials prominently featured, service booking flow, and repair status tracking. Show the professional credibility signals that replace informal WhatsApp.</div>
+    <!-- Customer -->
+    <div class="sol-section">
+      <div class="sol-header">
+        <span class="sol-tag">Customer &middot; Mobile App</span>
       </div>
-    </div>
-
-    <div class="img-2up">
-      <div>
-        <div class="img-sub-label">Engineer app: Three tabs replace 3-4 min of searching</div>
-        <div class="img-ph h-medium" style="margin:0;">
-          <div class="img-ph-ico">🔧</div>
-          <div class="img-ph-badge">Add Screenshot</div>
-          <div class="img-ph-title">Engineer App</div>
-          <div class="img-ph-desc">Three-tab dashboard: Ongoing, Completed, Needs Parts. Job cards surface all critical context immediately.</div>
+      <div class="sol-title">Repair tracking and trust-building from the first tap.</div>
+      <div class="sol-features">
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Live repair tracking</strong> so customers see exactly where their job is at any point, without needing to message anyone.</div>
+        </div>
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Testimonials at booking</strong> so social proof and TechGuy credentials surface when the customer is deciding to hand over their device.</div>
         </div>
       </div>
-      <div>
-        <div class="img-sub-label">Operations dashboard: Workload visibility enables smart assignments</div>
-        <div class="img-ph h-medium" style="margin:0;">
-          <div class="img-ph-ico">🖥️</div>
-          <div class="img-ph-badge">Add Screenshot</div>
-          <div class="img-ph-title">Operations Dashboard</div>
-          <div class="img-ph-desc">Real-time engineer workload view, job allocation, and filters that replaced 15+ concurrent WhatsApp conversations with one screen.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
+        <figure style="margin:0;">
+          <img src="assets/TechGuy/Customer testimonial.png" alt="Customer app testimonials screen" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <figcaption class="img-caption">Testimonials at the booking stage</figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="assets/TechGuy/Customer Live tracking.png" alt="Customer app live tracking screen" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <figcaption class="img-caption">Live repair status tracking</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Technician -->
+    <div class="sol-section">
+      <div class="sol-header">
+        <span class="sol-tag">Technician &middot; Mobile App</span>
+      </div>
+      <div class="sol-title">Everything they need. None of the noise.</div>
+      <div class="sol-features">
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Personal metrics dashboard</strong> with active, completed, and pending tickets visible at a glance. The 4-minute WhatsApp scroll becomes a 3-second tap.</div>
+        </div>
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Live ticket updates</strong> with real-time status changes visible without checking WhatsApp, and push notifications for new assignments.</div>
+        </div>
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>In-app client communication</strong> with a dedicated chat per client, fully separated from personal messages.</div>
+        </div>
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Quick-access client info</strong> including device details, repair address, job history, and progress all on one screen.</div>
         </div>
       </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
+        <figure style="margin:0;">
+          <img src="assets/TechGuy/Engineer personal metrics and live feed.png" alt="Technician personal metrics and live feed" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <figcaption class="img-caption">Personal metrics and live ticket feed</figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="assets/TechGuy/Engineer in app client info.png" alt="Technician in-app client info screen" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <figcaption class="img-caption">In-app client info and job details</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Operations -->
+    <div class="sol-section">
+      <div class="sol-header">
+        <span class="sol-tag">Operations &middot; Dashboard</span>
+      </div>
+      <div class="sol-title">One screen for everything that used to need fifteen tabs.</div>
+      <div class="sol-features">
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Unified view</strong> with all technicians, clients, and vendors visible from a single dashboard. No more tab-switching or thread-scrolling.</div>
+        </div>
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Ticket assignment</strong> showing which technicians are assigned to open jobs, so workload is visible before assigning new tickets.</div>
+        </div>
+        <div class="sol-feature">
+          <div class="sol-feature-dot"></div>
+          <div class="sol-feature-text"><strong>Live status overview</strong> so the operations team knows where every job stands across the board, with urgent and routine tickets clearly differentiated.</div>
+        </div>
+      </div>
+      <figure style="margin:24px 0 0;">
+        <img src="assets/TechGuy/Admin dashboard.png" alt="Operations dashboard" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+        <figcaption class="img-caption">Operations dashboard with unified ticket management and technician assignment</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -458,78 +653,158 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <div class="cs-sec-label"><span class="n">05</span> Impact</div>
     <h2 class="cs-sec-title">What changed when we shipped.</h2>
     <div class="impact-row">
-      <div class="impact-card"><div class="impact-n">20%</div><div class="impact-l">Reduction in Task Completion Time</div></div>
-      <div class="impact-card"><div class="impact-n">30%</div><div class="impact-l">Faster Design to Dev Cycles</div></div>
-      <div class="impact-card"><div class="impact-n">3</div><div class="impact-l">Products Shipped for All Stakeholders</div></div>
+      <div class="impact-card"><div class="impact-n">20%</div><div class="impact-l">Task completion uplift</div></div>
+      <div class="impact-card"><div class="impact-n">30%</div><div class="impact-l">Faster design-to-dev cycles</div></div>
+      <div class="impact-card"><div class="impact-n">3</div><div class="impact-l">Products shipped across all user types</div></div>
     </div>
-    <p class="cs-body" style="margin-top:24px;">The 20% reduction in task completion time was grounded in direct observation. Engineers who spent 3-4 minutes per job scrolling through WhatsApp completed the same task in under a minute with the three-tab interface. The structure answered the question before they had to ask it.</p>
-    <p class="cs-body">The 30% faster design-to-dev cycles came from the shared design system and annotated handoffs built across the team. Engineers weren't guessing at edge cases. The documentation answered questions before they were asked.</p>
+    <p class="cs-body" style="margin-top:24px;">The 20% task speed uplift was grounded in observation. Technicians who spent 4 minutes per job scrolling WhatsApp for context completed the same task in under a minute with the dedicated job dashboard. The structure answered the question before they needed to ask it.</p>
+    <p class="cs-body">The 30% faster design-to-dev cycles came from the shared design system built across the team. Consistent components, annotated handoffs, and documented states meant engineers were not guessing at edge cases.</p>
   </div>
 
   <!-- 06 REFLECTION -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">06</span> Reflection</div>
-    <h2 class="cs-sec-title">What this project taught me about design.</h2>
-    <p class="cs-body">Leading a team across three interconnected products changes how you think. Every design decision had to hold up across three different user contexts and function as one ecosystem when they came together.</p>
+    <div class="cs-sec-label"><span class="n">06</span> What I'd do differently</div>
+    <h2 class="cs-sec-title">What I'd build differently today.</h2>
+    <p class="cs-body">This was 2021, and I have learned a lot since then. Looking back with four years of experience, two things stand out clearly.</p>
 
     <div class="learning">
-      <div class="l-text"><strong>People adapt to broken systems without realizing it.</strong> The "WhatsApp is fine" moment in initial interviews was the most important lesson of this project. Observational research reveals what interviews cannot: friction users have normalized is still friction, and it's still the design problem to solve.</div>
+      <div class="l-text"><strong>More visualisation in the operations dashboard.</strong> The operations role communicates with the highest number of people simultaneously: customers, technicians, and vendors. The dashboard handled this, but it was primarily list-based. Today I'd push for richer data visualisation, technician workload as a chart, vendor lead times over time, ticket volume by day. Operations needs to see patterns, not just lists. A list tells you what is happening. A chart tells you why it keeps happening.</div>
     </div>
     <div class="learning">
-      <div class="l-text"><strong>Systems thinking is the highest-leverage skill in a multi-product context.</strong> Designing for one user in isolation would have failed. The value came from understanding how all three interfaces connected: a job created in the customer portal had to be immediately visible to the engineer and operations simultaneously.</div>
-    </div>
-    <div class="learning">
-      <div class="l-text"><strong>Strategic decisions in ambiguity require holding competing priorities without rushing.</strong> Working in a startup with evolving requirements meant balancing user needs, business objectives, and technical constraints simultaneously, and making fast decisions while maintaining design quality.</div>
-    </div>
-    <div class="learning">
-      <div class="l-text"><strong>Data is how designers advocate for users.</strong> When I presented the visual dashboard concept that contradicted the "WhatsApp is fine" feedback, the observational data was what made the case. Designers who can show what they observed, not just what they designed, are far more effective at influencing product direction.</div>
+      <div class="l-text"><strong>AI-assisted planning for operations and technicians.</strong> For operations: smart ticket assignment based on each technician's current job locations, active ticket count, and how far existing repairs have progressed. For technicians: an AI-assisted daily schedule that clusters jobs by area, prioritises by urgency, and adapts as tickets update throughout the day. These are the natural next step for a service platform at this scale.</div>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER CTA -->
   <div class="cs-footer cs-reveal">
     <div class="cs-footer-inner">
       <h3 class="cs-footer-title">Want to work together?</h3>
       <p class="cs-footer-sub">Open to full-time roles and select freelance projects.</p>
       <div class="cs-footer-btns">
-        <a href="mailto:rheamittal0401@gmail.com" class="fb-primary">✉ Say hello to Rhea</a>
-        <a href="https://linkedin.com/in/rhea-mittal" class="fb-ghost">↗ LinkedIn</a>
+        <a href="mailto:rheamittal0401@gmail.com" class="fb-primary">&#x2709; Say hello to Rhea</a>
+        <a href="https://linkedin.com/in/rhea-mittal" class="fb-ghost">&#x2197; LinkedIn</a>
       </div>
     </div>
   </div>
 
-  <!-- VIEW MORE PROJECTS -->
+  <!-- VIEW MORE -->
   <div style="padding:48px 0 80px;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
       <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
-      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all ↗</a>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all &#x2197;</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div onclick="window.location='draggit.html'" style="background:#0A1628;border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome Extension</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">Draggit</div>
         <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">I noticed a friction. I built the fix.</p>
-        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">&#x2192;</span>
       </div>
       <div onclick="window.location='cliqueprize.html'" style="background:#160810;border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#fff;margin-bottom:8px;">CliquePrize</div>
-        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
-        <span style="font-size:20px;color:rgba(255,255,255,.3);">→</span>
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language.</p>
+        <span style="font-size:20px;color:rgba(255,255,255,.3);">&#x2192;</span>
       </div>
     </div>
   </div>
 
 </div><!-- /cs-content -->
 
+<footer class="footer-bar">
+  <span>&copy; 2025 Rhea Mittal</span>
+  <span>Made with love and energy drinks &#x2728;</span>
+  <a href="work.html" style="color:inherit;text-decoration:none;">&#x2190; Back to Work</a>
+</footer>
+
 <script>
+// SCROLL REVEAL
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('cs-visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.cs-reveal').forEach(el => observer.observe(el));
 
+// VIDEO ZOOM
+var vidEls = document.querySelectorAll('.vid-zoom');
+var vidObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) { entry.target.classList.add('vid-expanded'); }
+    else { entry.target.classList.remove('vid-expanded'); }
+  });
+}, { threshold: 0.3 });
+vidEls.forEach(function(el) { vidObserver.observe(el); });
+
+// NAV
 document.getElementById('navBurger').addEventListener('click', () => document.getElementById('navMobile').classList.add('open'));
 document.getElementById('navMobileClose').addEventListener('click', () => document.getElementById('navMobile').classList.remove('open'));
+
+// APP FLOW PAN/ZOOM
+(function() {
+  const viewer = document.getElementById('flowViewer');
+  const img = document.getElementById('flowImg');
+  if (!viewer || !img) return;
+
+  let scale = 1, tx = 0, ty = 0;
+  let isDragging = false, startX, startY, startTx, startTy;
+
+  function applyTransform() {
+    img.style.transform = 'translate(calc(-50% + ' + tx + 'px), calc(-50% + ' + ty + 'px)) scale(' + scale + ')';
+  }
+  applyTransform();
+
+  viewer.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    var delta = e.deltaY * -0.0012;
+    scale = Math.max(0.5, Math.min(4, scale + delta * scale));
+    applyTransform();
+  }, { passive: false });
+
+  viewer.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    viewer.classList.add('dragging');
+    startX = e.clientX; startY = e.clientY;
+    startTx = tx; startTy = ty;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    tx = startTx + (e.clientX - startX);
+    ty = startTy + (e.clientY - startY);
+    applyTransform();
+  });
+  window.addEventListener('mouseup', function() {
+    isDragging = false;
+    viewer.classList.remove('dragging');
+  });
+
+  var lastTouchDist = 0;
+  viewer.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 2) {
+      lastTouchDist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
+    } else {
+      isDragging = true;
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+      startTx = tx; startTy = ty;
+    }
+  }, { passive: true });
+  viewer.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    if (e.touches.length === 2) {
+      var dist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
+      if (lastTouchDist) scale = Math.max(0.5, Math.min(4, scale * dist / lastTouchDist));
+      lastTouchDist = dist;
+    } else if (isDragging) {
+      tx = startTx + (e.touches[0].clientX - startX);
+      ty = startTy + (e.touches[0].clientY - startY);
+    }
+    applyTransform();
+  }, { passive: false });
+  viewer.addEventListener('touchend', function() { isDragging = false; lastTouchDist = 0; });
+
+  document.getElementById('flowZoomIn').addEventListener('click', function() { scale = Math.min(4, scale * 1.3); applyTransform(); });
+  document.getElementById('flowZoomOut').addEventListener('click', function() { scale = Math.max(0.5, scale / 1.3); applyTransform(); });
+  document.getElementById('flowReset').addEventListener('click', function() { scale = 1; tx = 0; ty = 0; applyTransform(); });
+})();
 </script>
 </body>
 </html>
