@@ -49,13 +49,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .reveal-d3 { transition-delay: .3s; }
 
 /* HERO */
-.cs-hero-band { width: 100%; padding: 130px 56px 0; background: linear-gradient(160deg, #0E1830 0%, #152340 60%, #1A2E50 100%); }
+.cs-hero-band { width: 100%; padding: 130px 56px 60px; background: linear-gradient(160deg, #0E1830 0%, #152340 60%, #1A2E50 100%); }
 .cs-hero-inner { max-width: 888px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .cs-hero-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .cs-hero-h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(40px,6vw,76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 28px; }
 .cs-hero-desc { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72); max-width: 600px; text-align: center; margin-bottom: 0; }
 .cs-hero-video-wrap { width: 100%; max-width: 1100px; margin: 56px auto 0; }
-.cs-hero-video-wrap video { width: 100%; display: block; border-radius: 16px 16px 0 0; box-shadow: 0 -4px 60px rgba(64,94,171,0.25); }
+.cs-hero-video-wrap video { width: 100%; display: block; border-radius: 16px; box-shadow: 0 8px 60px rgba(64,94,171,0.3); }
 
 /* CONTENT */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
@@ -118,8 +118,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.2); line-height: 1.65; max-width: 460px; }
 
 /* COMPANY ROW */
-.company-row { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
-.company-avatar { border-radius: 16px; background: var(--accent-bg); border: 1px solid var(--accent-border); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; min-height: 180px; }
+.company-row { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
+.company-avatar { border-radius: 16px; background: var(--accent-bg); border: 1px solid var(--accent-border); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; min-height: 260px; }
 
 /* PAIN CARDS */
 .pain-cards { display: flex; flex-direction: column; gap: 2px; margin: 32px 0; }
@@ -154,16 +154,16 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 .svc-vendor-desc { font-size: 11px; color: rgba(0,0,0,.35); margin-top: 2px; }
 
 /* SAID VS OBSERVED */
-.svo-stack { display: flex; flex-direction: column; gap: 2px; margin: 28px 0; }
-.svo-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-.svo-user-tag { background: var(--accent-bg); border-bottom: 1px solid var(--accent-border); padding: 10px 24px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
-.svo-cols { display: grid; grid-template-columns: 1fr 1fr; }
-.svo-said { background: var(--white); padding: 22px 28px; border-right: 1px solid var(--border); }
-.svo-obs { background: var(--bg); padding: 22px 28px; }
-.svo-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-.svo-quote { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 14px; line-height: 1.65; color: rgba(0,0,0,.5); margin: 0; }
-.svo-obs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
-.svo-obs-list li { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.55; padding-left: 16px; position: relative; }
+/* SVO 3-COL GRID */
+.svo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 28px 0; }
+.svo-col-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.svo-user-tag { background: var(--accent-bg); border-bottom: 1px solid var(--accent-border); padding: 10px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.svo-quote-block { padding: 18px 20px; border-bottom: 1px solid var(--border); background: var(--white); }
+.svo-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 10px; }
+.svo-quote { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 13px; line-height: 1.65; color: rgba(0,0,0,.45); margin: 0; }
+.svo-obs-block { padding: 18px 20px; background: var(--bg); flex: 1; }
+.svo-obs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.svo-obs-list li { font-size: 12.5px; font-weight: 500; color: var(--ink); line-height: 1.55; padding-left: 14px; position: relative; }
 .svo-obs-list li::before { content: '▸'; position: absolute; left: 0; font-size: 8px; top: 4px; color: var(--accent); }
 
 /* KEY FINDINGS */
@@ -178,9 +178,10 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
 
 /* APP FLOW VIEWER */
 .flow-viewer-wrap { margin: 32px 0; }
-.flow-viewer { width: 100%; height: 460px; overflow: hidden; border-radius: 16px; border: 1px solid var(--border); cursor: grab; position: relative; background: #fff; user-select: none; }
-.flow-viewer.dragging { cursor: grabbing; }
-.flow-viewer img { position: absolute; top: 50%; left: 50%; transform-origin: center center; user-select: none; pointer-events: none; max-width: none; }
+.flow-viewer { width: 100%; height: auto; min-height: 200px; overflow: hidden; border-radius: 16px; border: 1px solid var(--border); cursor: default; position: relative; background: #fff; user-select: none; }
+.flow-viewer.interactive { cursor: grab; }
+.flow-viewer.interactive.dragging { cursor: grabbing; }
+.flow-viewer img { display: block; width: 100%; height: auto; transform-origin: top left; transition: transform 0.2s ease; user-select: none; pointer-events: none; }
 .flow-viewer-hint { text-align: center; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-top: 10px; }
 .flow-viewer-controls { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
 .flow-btn { background: var(--white); border: 1px solid var(--border); border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer; transition: border-color .2s, color .2s; }
@@ -226,10 +227,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
   .company-avatar { aspect-ratio: auto; height: 140px; }
   .svc-flow-row { grid-template-columns: 1fr; gap: 16px; }
   .svc-connector { flex-direction: row; }
-  .svo-cols { grid-template-columns: 1fr; }
-  .svo-said { border-right: none; border-bottom: 1px solid var(--border); }
+  .svo-grid { grid-template-columns: 1fr; }
   .kf-grid { grid-template-columns: 1fr; }
-  .flow-viewer { height: 280px; }
+  .flow-viewer { min-height: 120px; }
   .impact-row { grid-template-columns: 1fr 1fr; }
   .cs-footer-inner { padding: 40px 24px; }
   .cs-footer-title { font-size: 36px; }
@@ -312,18 +312,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
   <!-- 01 PROBLEM -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">01</span> Problem</div>
-    <div class="sec-split" style="margin-bottom:36px;">
-      <div class="sec-split-left">
-        <h2 class="cs-sec-title">Three reasons WhatsApp was not working.</h2>
-        <p class="sec-split-body">We were brought in to design an interface. The CEO already knew WhatsApp was not scaling. What we needed to understand was exactly where it was breaking and why. Three things were fundamentally broken about running a service business through group chats.</p>
-      </div>
-      <div class="sec-split-right" style="padding-top:8px;">
-        <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:14px;padding:20px 24px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px;">Three user types. One group chat.</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.6);line-height:1.7;margin:0;">Customers, technicians, and operations all communicating through the same WhatsApp threads. No separation of context, no structure, no way to scale.</p>
-        </div>
-      </div>
-    </div>
+    <h2 class="cs-sec-title">Three reasons WhatsApp was not working.</h2>
+    <p class="cs-body">We were brought in to design an interface. The CEO already knew WhatsApp was not scaling. What we needed to understand was exactly where it was breaking and why.</p>
+    <div class="callout-bar" style="margin-bottom:32px;"><strong>Three user types. One group chat.</strong> Customers, technicians, and operations all communicating through the same WhatsApp threads. No separation of context, no structure, no way to scale.</div>
 
     <div class="pain-cards">
       <div class="pain-card">
@@ -388,60 +379,56 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
     <!-- Interviews: said vs observed -->
     <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">Interviews &middot; What they said vs what we observed <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
-    <div class="svo-stack">
-      <div class="svo-card">
-        <div class="svo-user-tag">Technician</div>
-        <div class="svo-cols">
-          <div class="svo-said">
-            <div class="svo-col-label">What they said</div>
-            <p class="svo-quote">"WhatsApp is easy, I don't think there's really a problem with how it works for us."</p>
-          </div>
-          <div class="svo-obs">
-            <div class="svo-col-label">What we observed</div>
-            <ul class="svo-obs-list">
-              <li>4 minutes to locate a specific customer chat and read back for job context</li>
-              <li>Confused a client message with a personal message twice in one session</li>
-              <li>Audible frustration while typing partial names into search to find contacts</li>
-            </ul>
-          </div>
+    <div class="svo-grid">
+
+      <div class="svo-col-card">
+        <div class="svo-user-tag" style="display:flex;align-items:center;gap:8px;"><img src="assets/TechGuy/Admin Icon.png" alt="" style="width:16px;height:16px;object-fit:contain;opacity:0.7;filter:invert(0);">Technician</div>
+        <div class="svo-quote-block">
+          <div class="svo-col-label">What they said</div>
+          <p class="svo-quote">"WhatsApp is easy, I don't think there's really a problem with how it works for us."</p>
+        </div>
+        <div class="svo-obs-block">
+          <div class="svo-col-label">What we observed</div>
+          <ul class="svo-obs-list">
+            <li>4 min to find a specific chat and get job context</li>
+            <li>Mixed client and personal messages twice in one session</li>
+            <li>Audible frustration searching for unsaved contacts</li>
+          </ul>
         </div>
       </div>
 
-      <div class="svo-card">
+      <div class="svo-col-card">
         <div class="svo-user-tag">Customer</div>
-        <div class="svo-cols">
-          <div class="svo-said">
-            <div class="svo-col-label">What they said</div>
-            <p class="svo-quote">"It's a bit informal but it works, I guess. I just wish I knew more about what was happening with my device."</p>
-          </div>
-          <div class="svo-obs">
-            <div class="svo-col-label">What we observed</div>
-            <ul class="svo-obs-list">
-              <li>Could not locate the TechGuy contact without scrolling past 10+ saved names</li>
-              <li>Asked about repair status twice in a single session, no visibility into progress</li>
-              <li>Clear anxiety about handing a high-value device to a contact with no credentials visible</li>
-            </ul>
-          </div>
+        <div class="svo-quote-block">
+          <div class="svo-col-label">What they said</div>
+          <p class="svo-quote">"It's a bit informal but it works. I just wish I knew more about what was happening with my device."</p>
+        </div>
+        <div class="svo-obs-block">
+          <div class="svo-col-label">What we observed</div>
+          <ul class="svo-obs-list">
+            <li>Couldn't find TechGuy in contacts without scrolling past 10+ names</li>
+            <li>Asked about repair status twice, no visibility into progress</li>
+            <li>Clear anxiety handing over a high-value device with no credentials visible</li>
+          </ul>
         </div>
       </div>
 
-      <div class="svo-card">
+      <div class="svo-col-card">
         <div class="svo-user-tag">Operations</div>
-        <div class="svo-cols">
-          <div class="svo-said">
-            <div class="svo-col-label">What they said</div>
-            <p class="svo-quote">"We manage everything through WhatsApp. It works for now, but things do get missed sometimes."</p>
-          </div>
-          <div class="svo-obs">
-            <div class="svo-col-label">What we observed</div>
-            <ul class="svo-obs-list">
-              <li>4+ minutes scrolling separate threads to piece together the status of a single job</li>
-              <li>Manually cross-referencing customer messages, technician updates, and vendor replies simultaneously</li>
-              <li>Urgent and routine tickets looked identical, no priority signal visible at a glance</li>
-            </ul>
-          </div>
+        <div class="svo-quote-block">
+          <div class="svo-col-label">What they said</div>
+          <p class="svo-quote">"We manage everything through WhatsApp. It works for now, but things do get missed sometimes."</p>
+        </div>
+        <div class="svo-obs-block">
+          <div class="svo-col-label">What we observed</div>
+          <ul class="svo-obs-list">
+            <li>4+ min scrolling threads to get status of a single job</li>
+            <li>Cross-referencing 3 separate threads simultaneously</li>
+            <li>Urgent and routine tickets looked identical, no priority signal</li>
+          </ul>
         </div>
       </div>
+
     </div>
 
     <div class="callout-bar">
@@ -511,11 +498,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
         <figure style="margin:0;">
-          <img src="assets/TechGuy/Customer testimonial.png" alt="Customer app testimonials screen" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+            <img src="assets/TechGuy/Customer testimonial.png" alt="Customer app testimonials screen" style="width:100%;height:auto;display:block;">
+          </div>
           <figcaption class="img-caption">Testimonials at the booking stage</figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="assets/TechGuy/Customer Live tracking.png" alt="Customer app live tracking screen" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+            <img src="assets/TechGuy/Customer Live tracking.png" alt="Customer app live tracking screen" style="width:100%;height:auto;display:block;">
+          </div>
           <figcaption class="img-caption">Live repair status tracking</figcaption>
         </figure>
       </div>
@@ -547,11 +538,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
         <figure style="margin:0;">
-          <img src="assets/TechGuy/Engineer personal metrics and live feed.png" alt="Technician personal metrics and live feed" style="width:100%;border-radius:32px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <div style="border-radius:40px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.08);">
+            <img src="assets/TechGuy/Engineer personal metrics and live feed.png" alt="Technician personal metrics and live feed" style="width:100%;height:auto;display:block;">
+          </div>
           <figcaption class="img-caption">Personal metrics and live ticket feed</figcaption>
         </figure>
         <figure style="margin:0;">
-          <img src="assets/TechGuy/Engineer in app client info.png" alt="Technician in-app client info screen" style="width:100%;border-radius:32px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+          <div style="border-radius:40px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.08);">
+            <img src="assets/TechGuy/Engineer in app client info.png" alt="Technician in-app client info screen" style="width:100%;height:auto;display:block;">
+          </div>
           <figcaption class="img-caption">In-app client info and job details</figcaption>
         </figure>
       </div>
@@ -587,12 +582,38 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 18px 56
   <!-- 05 IMPACT -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">05</span> Impact</div>
-    <h2 class="cs-sec-title">What changed when we shipped.</h2>
-    <div class="impact-row">
-      <div class="impact-card"><div class="impact-n">20%</div><div class="impact-l">Task completion uplift</div></div>
-      <div class="impact-card"><div class="impact-n">30%</div><div class="impact-l">Faster design-to-dev cycles</div></div>
-      <div class="impact-card"><div class="impact-n">3</div><div class="impact-l">Products shipped across all user types</div></div>
+    <h2 class="cs-sec-title">Shipped. Live. CEO-endorsed.</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:16px;align-items:stretch;">
+      <!-- Stats column -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;padding:24px;flex:1;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52px;color:var(--accent);line-height:1;">20%</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px;">Task completion uplift</div>
+        </div>
+        <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;padding:24px;flex:1;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52px;color:var(--accent);line-height:1;">30%</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px;">Faster design-to-dev cycles</div>
+        </div>
+        <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;padding:24px;flex:1;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52px;color:var(--accent);line-height:1;">3</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px;">Products shipped across all user types</div>
+        </div>
+      </div>
+      <!-- CEO quote column -->
+      <div style="background:#0D1830;border-radius:16px;padding:36px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-20px;left:24px;font-family:'Barlow Condensed',sans-serif;font-size:160px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;">"</div>
+        <p style="font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,.85);line-height:1.65;margin:0 0 24px;position:relative;">"Rhea is an extremely hard-working and passionate designer. She involved herself immensely in her work and is also a very good listener which enables her to understand the required content in depth."</p>
+        <div style="display:flex;align-items:center;gap:12px;position:relative;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;color:#fff;flex-shrink:0;">GM</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.9);">Garv Mulchandani</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;">CEO, TechGuy</div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <p class="cs-body" style="margin-top:24px;">The 20% task speed uplift was measured across all three user types after launch. The research had already signalled where the time was going: technicians spending 4 minutes per job scrolling WhatsApp for context, operations cross-referencing three separate threads to piece together a single job status. Purpose-built structure replaced improvised workarounds, and the time saved showed up in the numbers.</p>
   </div>
 
@@ -675,28 +696,81 @@ document.getElementById('navMobileClose').addEventListener('click', () => docume
 
 // APP FLOW PAN/ZOOM
 (function() {
-  const viewer = document.getElementById('flowViewer');
-  const img = document.getElementById('flowImg');
+  var viewer = document.getElementById('flowViewer');
+  var img = document.getElementById('flowImg');
   if (!viewer || !img) return;
 
-  let scale = 1, tx = 0, ty = 0;
-  let isDragging = false, startX, startY, startTx, startTy;
+  var scale = 1, tx = 0, ty = 0;
+  var isDragging = false, startX, startY, startTx, startTy;
+
+  // Always use transform-based approach. img starts width:100% height:auto (natural fit).
+  // We capture the rendered size as our baseline "fit" and work in transform space.
+
+  function getViewerSize() {
+    return { w: viewer.offsetWidth, h: viewer.offsetHeight };
+  }
 
   function applyTransform() {
-    img.style.transform = 'translate(calc(-50% + ' + tx + 'px), calc(-50% + ' + ty + 'px)) scale(' + scale + ')';
+    viewer.classList.add('interactive');
+    img.style.transformOrigin = '0 0';
+    img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
   }
-  applyTransform();
+
+  function resetToFit() {
+    scale = 1; tx = 0; ty = 0;
+    img.style.transform = '';
+    img.style.transformOrigin = '';
+    viewer.classList.remove('interactive');
+    // restore natural display
+    img.style.width = '100%';
+    img.style.height = 'auto';
+    img.style.position = '';
+  }
+
+  function initInteractive() {
+    // Capture current rendered dimensions before switching to transform mode
+    var renderedW = img.offsetWidth;
+    var renderedH = img.offsetHeight;
+    // Pin viewer height so it doesn't collapse when img goes to transform mode
+    viewer.style.height = renderedH + 'px';
+    // Switch img to absolute so transforms work predictably
+    img.style.width = renderedW + 'px';
+    img.style.height = renderedH + 'px';
+    img.style.position = 'absolute';
+    img.style.top = '0';
+    img.style.left = '0';
+    scale = 1; tx = 0; ty = 0;
+    img.style.transformOrigin = '0 0';
+    img.style.transform = 'translate(0,0) scale(1)';
+    viewer.classList.add('interactive');
+  }
+
+  var ready = false;
+  function ensureReady() {
+    if (ready) return;
+    ready = true;
+    initInteractive();
+  }
 
   viewer.addEventListener('wheel', function(e) {
     e.preventDefault();
-    var delta = e.deltaY * -0.0012;
-    scale = Math.max(0.5, Math.min(4, scale + delta * scale));
+    ensureReady();
+    var vs = getViewerSize();
+    var rect = viewer.getBoundingClientRect();
+    var mouseX = e.clientX - rect.left;
+    var mouseY = e.clientY - rect.top;
+    var delta = e.deltaY * -0.001;
+    var newScale = Math.max(0.3, Math.min(4, scale * (1 + delta)));
+    var ratio = newScale / scale;
+    tx = mouseX - ratio * (mouseX - tx);
+    ty = mouseY - ratio * (mouseY - ty);
+    scale = newScale;
     applyTransform();
   }, { passive: false });
 
   viewer.addEventListener('mousedown', function(e) {
+    ensureReady();
     isDragging = true;
-    viewer.classList.add('dragging');
     startX = e.clientX; startY = e.clientY;
     startTx = tx; startTy = ty;
     e.preventDefault();
@@ -707,15 +781,13 @@ document.getElementById('navMobileClose').addEventListener('click', () => docume
     ty = startTy + (e.clientY - startY);
     applyTransform();
   });
-  window.addEventListener('mouseup', function() {
-    isDragging = false;
-    viewer.classList.remove('dragging');
-  });
+  window.addEventListener('mouseup', function() { isDragging = false; });
 
-  var lastTouchDist = 0;
+  var lastDist = 0;
   viewer.addEventListener('touchstart', function(e) {
+    ensureReady();
     if (e.touches.length === 2) {
-      lastTouchDist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
+      lastDist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
     } else {
       isDragging = true;
       startX = e.touches[0].clientX; startY = e.touches[0].clientY;
@@ -725,20 +797,42 @@ document.getElementById('navMobileClose').addEventListener('click', () => docume
   viewer.addEventListener('touchmove', function(e) {
     e.preventDefault();
     if (e.touches.length === 2) {
-      var dist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
-      if (lastTouchDist) scale = Math.max(0.5, Math.min(4, scale * dist / lastTouchDist));
-      lastTouchDist = dist;
+      var d = Math.hypot(e.touches[1].clientX - e.touches[0].clientX, e.touches[1].clientY - e.touches[0].clientY);
+      if (lastDist) scale = Math.max(0.3, Math.min(4, scale * d / lastDist));
+      lastDist = d; applyTransform();
     } else if (isDragging) {
       tx = startTx + (e.touches[0].clientX - startX);
       ty = startTy + (e.touches[0].clientY - startY);
+      applyTransform();
     }
-    applyTransform();
   }, { passive: false });
-  viewer.addEventListener('touchend', function() { isDragging = false; lastTouchDist = 0; });
+  viewer.addEventListener('touchend', function() { isDragging = false; lastDist = 0; });
 
-  document.getElementById('flowZoomIn').addEventListener('click', function() { scale = Math.min(4, scale * 1.3); applyTransform(); });
-  document.getElementById('flowZoomOut').addEventListener('click', function() { scale = Math.max(0.5, scale / 1.3); applyTransform(); });
-  document.getElementById('flowReset').addEventListener('click', function() { scale = 1; tx = 0; ty = 0; applyTransform(); });
+  document.getElementById('flowZoomIn').addEventListener('click', function() {
+    ensureReady();
+    var vs = getViewerSize();
+    var cx = vs.w / 2, cy = vs.h / 2;
+    var newScale = Math.min(4, scale * 1.3);
+    var ratio = newScale / scale;
+    tx = cx - ratio * (cx - tx);
+    ty = cy - ratio * (cy - ty);
+    scale = newScale; applyTransform();
+  });
+  document.getElementById('flowZoomOut').addEventListener('click', function() {
+    ensureReady();
+    var vs = getViewerSize();
+    var cx = vs.w / 2, cy = vs.h / 2;
+    var newScale = Math.max(0.3, scale / 1.3);
+    var ratio = newScale / scale;
+    tx = cx - ratio * (cx - tx);
+    ty = cy - ratio * (cy - ty);
+    scale = newScale; applyTransform();
+  });
+  document.getElementById('flowReset').addEventListener('click', function() {
+    ready = false;
+    viewer.style.height = '';
+    resetToFit();
+  });
 })();
 </script>
 </body>
