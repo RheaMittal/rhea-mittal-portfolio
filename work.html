@@ -71,7 +71,7 @@ nav {
 .wk-visual video, .wk-visual img { width:100%; height:100%; object-fit:cover; display:block; }
 .wk-visual-brand { width:100%; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; }
 .wk-brand-name { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(36px,5vw,64px); letter-spacing:-1px; text-transform:uppercase; color:rgba(255,255,255,.95); position:relative; z-index:1; }
-.wk-visual-brand::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.18) 100%); }
+.wk-visual-brand::after { content:none; }
 
 /* Card body */
 .wk-body { padding:32px 36px 36px; display:flex; flex-direction:column; flex:1; }
@@ -137,7 +137,7 @@ nav {
 
   <!-- Filter tabs -->
   <div class="work-tabs">
-    <button class="work-tab active" data-filter="all">All <span style="opacity:.45;font-size:11px;margin-left:4px;">8</span></button>
+    <button class="work-tab active" data-filter="all">All <span style="opacity:.45;font-size:11px;margin-left:4px;">9</span></button>
     <button class="work-tab" data-filter="visual">Visual Design</button>
     <button class="work-tab" data-filter="product">Product Design</button>
     <button class="work-tab" data-filter="research">User Research</button>
@@ -147,7 +147,25 @@ nav {
   <!-- 2-col grid -->
   <div class="work-grid">
 
-    <!-- ROW 1: Draggit + CliquePrize -->
+    <!-- ROW 1: Salesforce + Draggit -->
+
+    <!-- SALESFORCE CAPSTONE -->
+    <a class="wk-card reveal" data-cats="all product research" href="salesforce.html" style="background:#fff;border:1px solid rgba(0,158,219,0.18);">
+      <div class="wk-visual-brand" style="background:linear-gradient(145deg,#D6EEFF 0%,#B3DAFF 100%);">
+        <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:120px;width:auto;display:block;position:relative;z-index:1;">
+      </div>
+      <div class="wk-body">
+        <div class="wk-tag" style="color:#009EDB;">Capstone · IUI × Salesforce Trailhead</div>
+        <h2 class="wk-title" style="color:#111009;">Designing Adaptive Engagement<br><em style="color:#009EDB;">for Evolving Learner Needs</em></h2>
+        <p class="wk-desc" style="color:rgba(17,16,9,.55);">10-month capstone with Salesforce Trailhead redesigning engagement for power users who plateaued. Research-driven, AI-powered, end-to-end product design across 5 global regions.</p>
+        <div class="wk-metrics" style="border-top-color:rgba(17,16,9,.1);">
+          <div><div class="wk-stat-n" style="color:#111009;">11</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Users Interviewed</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">6/8</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Prefer Solve</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">5</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Person Team</div></div>
+        </div>
+        <span class="wk-cta" style="background:#009EDB;color:#fff;">Explore Case Study ↗</span>
+      </div>
+    </a>
 
     <!-- DRAGGIT -->
     <a class="wk-card reveal" data-cats="all product" href="draggit.html" style="background:#fff;border:1px solid rgba(37,99,235,0.15);">
@@ -225,7 +243,7 @@ nav {
         <div class="wk-metrics">
           <div><div class="wk-stat-n">92%</div><div class="wk-stat-l">Recommend</div></div>
           <div><div class="wk-stat-n">3</div><div class="wk-stat-l">Core Features</div></div>
-          <div><div class="wk-stat-n">2024</div><div class="wk-stat-l">Project</div></div>
+          <div><div class="wk-stat-n">2025</div><div class="wk-stat-l">Project</div></div>
         </div>
         <span class="wk-cta" style="background:#D4845A;color:#fff;">Explore Case Study ↗</span>
       </div>

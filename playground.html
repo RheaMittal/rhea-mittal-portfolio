@@ -47,7 +47,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 /* PAGE HEADER */
 .page-header{padding:140px 56px 56px;max-width:1240px;margin:0 auto;}
 .page-kicker{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.page-kicker::before{content:'';width:24px;height:1px;background:var(--muted);}
+.page-kicker::before{display:none;}
 .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,6vw,80px);line-height:.92;letter-spacing:-2px;text-transform:uppercase;margin-bottom:24px;}
 .page-title em{font-style:italic;color:var(--green);}
 .page-desc{font-size:17px;line-height:1.75;color:var(--muted);max-width:560px;}
@@ -195,6 +195,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 .tab-panel{display:none;}
 .tab-panel.active{display:block;}
 
+/* ── CAROUSEL LIGHTBOX ── */
+.lb-carousel{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.lb-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:8px;opacity:0;transition:opacity .5s cubic-bezier(.25,.46,.45,.94);pointer-events:none;}
+.lb-carousel img.active{opacity:1;pointer-events:auto;}
+.lb-car-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2;}
+.lb-car-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .25s,transform .25s;border:none;}
+.lb-car-dot.active{background:#fff;transform:scale(1.25);}
+.lb-car-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:2;}
+.lb-car-btn:hover{background:rgba(255,255,255,.25);}
+.lb-car-prev{left:16px;}
+.lb-car-next{right:16px;}
+
+/* ── ALL-TAB BENTO GRID ── */
+.play-all-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.play-all-grid .media-card{aspect-ratio:16/10;}
+.play-all-grid .pa-tall{
+  grid-row:span 2;
+  aspect-ratio:unset;
+}
+.play-all-grid .pa-full{
+  grid-column:span 2;
+  aspect-ratio:16/6;
+}
+
 /* EMPTY STATE */
 .empty-state{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -245,8 +273,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 <!-- TABS -->
 <div class="tabs-wrap">
   <div class="tabs" role="tablist">
-    <button class="tab-btn active" data-tab="all" role="tab">All <span class="tab-count">7</span></button>
-    <button class="tab-btn" data-tab="motion" role="tab">Motion &amp; Visual</button>
+    <button class="tab-btn active" data-tab="all" role="tab">All <span class="tab-count">10</span></button>
+    <button class="tab-btn" data-tab="motion" role="tab">Motion &amp; Visual Graphics</button>
     <button class="tab-btn" data-tab="ai" role="tab">AI Shipped · Vibecoding</button>
     <button class="tab-btn" data-tab="mediums" role="tab">Exploring Design Mediums</button>
   </div>
@@ -254,11 +282,221 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 
 <div class="pg-content">
 
-  <!-- ── MOTION & VISUAL ── -->
-  <div class="tab-panel active" id="tab-motion" style="display:block;">
-    <div class="pg-grid" style="grid-template-columns:1fr;">
+  <!-- ── ALL TAB — BENTO GRID ── -->
+  <div class="tab-panel active" id="tab-all" style="display:block;">
+    <div class="play-all-grid">
 
-      <!-- Power Rangers, VIDEO (local file) -->
+      <!-- 1. ElevenLabs — tall (spans 2 grid rows) -->
+      <div class="media-card pa-tall reveal rd1"
+        data-title="ElevenLabs Hackathon Win"
+        data-cat="Conversational AI · Hackathon Winner"
+        data-body="We won the San Francisco leg of ElevenLabs' global hackathon. I led user research and shaped the interaction model for StageReady, a conversational AI tool that helps people practice public speaking before high-stakes moments. We built it using ElevenLabs, Gemini, and Claude."
+        data-link="https://www.linkedin.com/posts/rhea-mittal_hackathon-conversationalai-productdesign-activity-7406411717783519232-PkbH"
+        data-link-label="Learn More"
+        data-media-type="image"
+        data-src="assets/ElevenLabs Hackathon.png">
+        <span class="card-badge live">● 1st Place · SF</span>
+        <img src="assets/ElevenLabs Hackathon.png" alt="ElevenLabs Hackathon Win"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Conversational AI · Hackathon Winner</div>
+          <div class="card-title">ElevenLabs<br>Hackathon Win</div>
+          <div class="card-body">1st place, SF leg. StageReady: conversational AI for high-stakes public speaking practice.</div>
+          <a href="https://www.linkedin.com/posts/rhea-mittal_hackathon-conversationalai-productdesign-activity-7406411717783519232-PkbH" target="_blank" class="card-link">Learn More ↗</a>
+        </div>
+      </div>
+
+      <!-- 2. Power Rangers — top right -->
+      <div class="media-card reveal rd2"
+        data-title="Power Rangers Title Sequence"
+        data-cat="Motion Graphics · After Effects"
+        data-body="A motion graphics coursework project I built in After Effects and Illustrator. I designed title sequences, billboard animations, and cinematic storytelling from scratch. I explored typography, timing, and visual pacing as design tools in their own right."
+        data-link="https://youtu.be/56UhBMKTCLk"
+        data-link-label="Watch on YouTube"
+        data-media-type="video"
+        data-src="assets/Power Rangers Title Sequence.mp4">
+        <span class="card-badge video">▶ Motion</span>
+        <video src="assets/Power Rangers Title Sequence.mp4"
+          autoplay muted loop playsinline preload="metadata"
+          style="width:100%;height:100%;object-fit:cover;"></video>
+        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <div class="card-overlay">
+          <div class="card-cat">Motion Graphics · After Effects</div>
+          <div class="card-title">Power Rangers<br>Title Sequence</div>
+          <div class="card-body">Typography, timing, and visual pacing as design tools.</div>
+          <a href="https://youtu.be/56UhBMKTCLk" target="_blank" class="card-link">Watch on YouTube ↗</a>
+        </div>
+      </div>
+
+      <!-- 3. Draggit — bottom right (alongside ElevenLabs) -->
+      <div class="media-card reveal rd3"
+        data-title="Shipping Draggit"
+        data-cat="Chrome Extension · Solo Shipped"
+        data-body="I designed and shipped a Chrome extension with 20+ users, solo. It lets you drag the connection note modal so you never lose profile context while writing."
+        data-link="https://chromewebstore.google.com/detail/camjmipgnifjhidhbjpabpniojioeojf"
+        data-link-label="Get Extension"
+        data-media-type="video"
+        data-src="assets/Draggit.mp4">
+        <span class="card-badge live">● Live · 20+ Users</span>
+        <video src="assets/Draggit.mp4"
+          autoplay muted loop playsinline preload="metadata"
+          style="width:100%;height:100%;object-fit:cover;"></video>
+        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <div class="card-overlay">
+          <div class="card-cat">Chrome Extension · Solo Shipped</div>
+          <div class="card-title">Shipping<br>Draggit</div>
+          <div class="card-body">20+ users, shipped solo. Drag the LinkedIn modal, never lose context.</div>
+          <a href="https://chromewebstore.google.com/detail/camjmipgnifjhidhbjpabpniojioeojf" target="_blank" class="card-link">Get Extension ↗</a>
+        </div>
+      </div>
+
+      <!-- 4. Eye Care -->
+      <div class="media-card reveal rd1"
+        data-title="Shipping For Eye Care"
+        data-cat="Vibe Coded · Vercel"
+        data-body="My optometrist gave me advice: every 20 minutes, look away; every 3 hours, use eye drops. So I built an app that nudges me. I coded it with Claude and Cursor, hosted it on Vercel."
+        data-link="https://rheaeye-care-notification.vercel.app/"
+        data-link-label="View Project"
+        data-media-type="video"
+        data-src="assets/Eye Care Notification.mov">
+        <span class="card-badge video">Vibe Coded</span>
+        <video src="assets/Eye Care Notification.mov"
+          autoplay muted loop playsinline preload="metadata"
+          style="width:100%;height:100%;object-fit:cover;"></video>
+        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <div class="card-overlay">
+          <div class="card-cat">Vibe Coded · Vercel</div>
+          <div class="card-title">Shipping For<br>Eye Care</div>
+          <div class="card-body">Doctor's advice, turned into an app. Claude + Cursor + Vercel.</div>
+          <a href="https://rheaeye-care-notification.vercel.app/" target="_blank" class="card-link">View Project ↗</a>
+        </div>
+      </div>
+
+      <!-- 5. Book Design -->
+      <div class="media-card reveal rd2"
+        data-title="Book Cover Design"
+        data-cat="Print · Typography · Course Project"
+        data-body="Redesigned the cover for Nivedita Menon's feminist theory text 'Seeing Like A Feminist'. Concept to final in one week: research, iteration doodles, and a fist holding a magnifying glass that says everything the book does."
+        data-link="https://www.behance.net/gallery/203874031/Book-Cover-Design-Seeing-Like-A-Feminist"
+        data-link-label="View on Behance"
+        data-media-type="image"
+        data-src="assets/Book Design.png">
+        <span class="card-badge">Print · Typography</span>
+        <img src="assets/Book Design.png" alt="Book Cover Design — Seeing Like A Feminist"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Print · Typography · Course Project</div>
+          <div class="card-title">Book Cover<br>Design</div>
+          <div class="card-body">Redesigned Nivedita Menon's feminist theory text. Research, doodles, and a fist. Concept to final in one week.</div>
+          <a href="https://www.behance.net/gallery/203874031/Book-Cover-Design-Seeing-Like-A-Feminist" target="_blank" class="card-link">View on Behance ↗</a>
+        </div>
+      </div>
+
+      <!-- 6. Card Game (Terra Tales) -->
+      <div class="media-card reveal rd1"
+        data-title="Terra Tales Card Game"
+        data-cat="Life-Centered Design · Thesis"
+        data-body="My thesis project. I led field research around Bangalore's lakes, moved through ideation and playtesting, and designed a card and board game exploring human-animal conflict through life-centered design. Research first, game second."
+        data-link="https://moccasin-questions-214407.framer.app/terra-tales"
+        data-link-label="View Project"
+        data-media-type="image"
+        data-src="assets/Terra Tales Card Game.png">
+        <span class="card-badge">Game Design · Thesis</span>
+        <img src="assets/Terra Tales Card Game.png" alt="Terra Tales Card Game"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Life-Centered Design · Thesis</div>
+          <div class="card-title">Terra Tales<br>Card Game</div>
+          <div class="card-body">Field research → card game on human-animal conflict. Bangalore's lakes ecosystem.</div>
+          <a href="https://moccasin-questions-214407.framer.app/terra-tales" target="_blank" class="card-link">View Project ↗</a>
+        </div>
+      </div>
+
+      <!-- 7. Board Game -->
+      <div class="media-card reveal rd2"
+        data-title="Board Game Design"
+        data-cat="Game Design · Course Project"
+        data-body="Repurposed Chowka Bara, a traditional Indian board game, as a course project in game design. Researched the original rules and cultural context, then redesigned the board, pieces, and play experience for a modern audience."
+        data-link="https://www.behance.net/gallery/203877701/Repurposing-Chowka-Bara-Board-Game-Design"
+        data-link-label="View on Behance"
+        data-media-type="image"
+        data-src="assets/boardgame design.png">
+        <span class="card-badge">Game Design</span>
+        <img src="assets/boardgame design.png" alt="Board Game Design"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Game Design · Course Project</div>
+          <div class="card-title">Board Game<br>Design</div>
+          <div class="card-body">Repurposed Chowka Bara, a traditional Indian board game. Redesigned rules, board, and pieces for a modern audience.</div>
+          <a href="https://www.behance.net/gallery/203877701/Repurposing-Chowka-Bara-Board-Game-Design" target="_blank" class="card-link">View on Behance ↗</a>
+        </div>
+      </div>
+
+      <!-- 8. Crochet Business -->
+      <div class="media-card reveal rd1"
+        data-title="Ran a Crochet Business"
+        data-cat="Small Business · Making"
+        data-body="Outside of screens, I design with yarn. I owned a crochet store where I made and sold handmade pieces. It's taught me about customer empathy, pricing, and what people actually value."
+        data-link=""
+        data-link-label=""
+        data-media-type="image"
+        data-src="assets/Crochet Business.png">
+        <span class="card-badge">Making · Small Business</span>
+        <img src="assets/Crochet Business.png" alt="Crochet Business"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Small Business · Making</div>
+          <div class="card-title">Ran a Crochet<br>Business</div>
+          <div class="card-body">Customer empathy, pricing, and what people actually value — learned through yarn.</div>
+        </div>
+      </div>
+
+      <!-- 9. SMEG -->
+      <div class="media-card reveal rd2"
+        data-title="Travel Iron for Smeg"
+        data-cat="3D Design · Fusion 360"
+        data-body="I designed a compact travel iron in the visual language of SMEG, retro-industrial, considered, and built entirely in Fusion 360. I explored form, proportion, and material thinking as a 3D modelling exercise, and rendered the final product as a full concept brief."
+        data-link="https://www.behance.net/gallery/203875573/Steam-Iron-Product-Design"
+        data-link-label="View on Behance"
+        data-media-type="image"
+        data-src="assets/Smeg Iron image.jpg">
+        <span class="card-badge">3D · Fusion 360</span>
+        <img src="assets/Smeg Iron image.jpg" alt="Travel Iron for Smeg"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">3D Design · Fusion 360</div>
+          <div class="card-title">Travel Iron<br>for Smeg</div>
+          <div class="card-body">Retro-industrial form built entirely in Fusion 360. Rendered as a full concept brief.</div>
+          <a href="https://www.behance.net/gallery/203875573/Steam-Iron-Product-Design" target="_blank" class="card-link">View on Behance ↗</a>
+        </div>
+      </div>
+
+      <!-- 10. Illustrations — full width carousel -->
+      <div class="media-card pa-full reveal rd1"
+        data-title="Illustrations"
+        data-cat="Illustration · Self-Expression"
+        data-body="I got the opportunity to do self-expression through art and metaphors. It was my first time using design for self-exploration, and I haven't stopped since."
+        data-link=""
+        data-link-label=""
+        data-media-type="carousel"
+        data-srcs="assets/Illustratuion pt1.png,assets/Illustration pt2.png">
+        <span class="card-badge">Illustration</span>
+        <img src="assets/Illustratuion pt1.png" alt="Illustrations"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Illustration · Self-Expression</div>
+          <div class="card-title">Illustrations</div>
+          <div class="card-body">Self-expression through art and metaphors. My first time using design for self-exploration.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── MOTION & VISUAL GRAPHICS ── -->
+  <div class="tab-panel" id="tab-motion">
+    <div class="pg-grid two-col">
+
       <div class="media-card wide reveal rd1"
         data-title="Power Rangers Title Sequence"
         data-cat="Motion Graphics · After Effects"
@@ -280,14 +518,50 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
         </div>
       </div>
 
+      <div class="media-card reveal rd2"
+        data-title="Book Cover Design"
+        data-cat="Print · Typography · Course Project"
+        data-body="Redesigned the cover for Nivedita Menon's feminist theory text 'Seeing Like A Feminist'. Concept to final in one week: research, iteration doodles, and a fist holding a magnifying glass that says everything the book does."
+        data-link="https://www.behance.net/gallery/203874031/Book-Cover-Design-Seeing-Like-A-Feminist"
+        data-link-label="View on Behance"
+        data-media-type="image"
+        data-src="assets/Book Design.png">
+        <span class="card-badge">Print · Typography</span>
+        <img src="assets/Book Design.png" alt="Book Cover Design — Seeing Like A Feminist"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Print · Typography · Course Project</div>
+          <div class="card-title">Book Cover<br>Design</div>
+          <div class="card-body">Redesigned Nivedita Menon's feminist theory text. Research, doodles, and a fist. Concept to final in one week.</div>
+          <a href="https://www.behance.net/gallery/203874031/Book-Cover-Design-Seeing-Like-A-Feminist" target="_blank" class="card-link">View on Behance ↗</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal rd3"
+        data-title="Illustrations"
+        data-cat="Illustration · Self-Expression"
+        data-body="I got the opportunity to do self-expression through art and metaphors. It was my first time using design for self-exploration, and I haven't stopped since."
+        data-link=""
+        data-link-label=""
+        data-media-type="carousel"
+        data-srcs="assets/Illustratuion pt1.png,assets/Illustration pt2.png">
+        <span class="card-badge">Illustration</span>
+        <img src="assets/Illustratuion pt1.png" alt="Illustrations"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Illustration · Self-Expression</div>
+          <div class="card-title">Illustrations</div>
+          <div class="card-body">Self-expression through art and metaphors. My first time using design for self-exploration.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- ── AI SHIPPED · VIBECODING ── -->
-  <div class="tab-panel active" id="tab-ai" style="display:block;">
+  <div class="tab-panel" id="tab-ai">
     <div class="pg-grid two-col">
 
-      <!-- ElevenLabs Hackathon, IMAGE (full width, spans both cols) -->
       <div class="media-card wide reveal rd1"
         data-title="ElevenLabs Hackathon Win"
         data-cat="Conversational AI · Building StageReady"
@@ -307,7 +581,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
         </div>
       </div>
 
-      <!-- Draggit, VIDEO -->
       <div class="media-card reveal rd2"
         data-title="Shipping Draggit"
         data-cat="Building &amp; Shipping a LinkedIn Chrome Extension"
@@ -329,7 +602,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
         </div>
       </div>
 
-      <!-- Eye Care, VIDEO (.mov) -->
       <div class="media-card reveal rd3"
         data-title="Shipping For Eye Care"
         data-cat="Building a Webapp for Eye Care"
@@ -355,10 +627,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
   </div>
 
   <!-- ── EXPLORING DESIGN MEDIUMS ── -->
-  <div class="tab-panel active" id="tab-mediums" style="display:block;">
+  <div class="tab-panel" id="tab-mediums">
     <div class="pg-grid">
 
-      <!-- Crochet Business, IMAGE (no link) -->
       <div class="media-card reveal rd1"
         data-title="Ran a Crochet Business"
         data-cat="Small Business · Making"
@@ -377,7 +648,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
         </div>
       </div>
 
-      <!-- Terra Tales, IMAGE -->
       <div class="media-card reveal rd2"
         data-title="Terra Tales, Game Design"
         data-cat="Designing for Bangalore's Lake Ecosystem"
@@ -397,25 +667,41 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
         </div>
       </div>
 
-      <!-- Smeg 3D, VIDEO -->
       <div class="media-card reveal rd3"
         data-title="Travel Iron for Smeg"
         data-cat="Designed a Travel Iron for SMEG in Fusion 360"
         data-body="I designed a compact travel iron in the visual language of SMEG, retro-industrial, considered, and built entirely in Fusion 360. I explored form, proportion, and material thinking as a 3D modelling exercise, and rendered the final product as a full concept brief."
         data-link="https://www.behance.net/gallery/203875573/Steam-Iron-Product-Design"
         data-link-label="View on Behance"
-        data-media-type="video"
-        data-src="assets/Smeg 3D.MP4">
+        data-media-type="image"
+        data-src="assets/Smeg Iron image.jpg">
         <span class="card-badge">3D · Fusion 360</span>
-        <video src="assets/Smeg 3D.MP4"
-          autoplay muted loop playsinline preload="metadata"
-          style="width:100%;height:100%;object-fit:cover;"></video>
-        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <img src="assets/Smeg Iron image.jpg" alt="Travel Iron for Smeg"
+          style="width:100%;height:100%;object-fit:cover;">
         <div class="card-overlay">
           <div class="card-cat">3D Design · Fusion 360</div>
           <div class="card-title">Travel Iron<br>for Smeg</div>
           <div class="card-body">Retro-industrial form built entirely in Fusion 360. Rendered as a full concept brief.</div>
           <a href="https://www.behance.net/gallery/203875573/Steam-Iron-Product-Design" target="_blank" class="card-link">View on Behance ↗</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal rd4"
+        data-title="Board Game Design"
+        data-cat="Game Design · Course Project"
+        data-body="Repurposed Chowka Bara, a traditional Indian board game, as a course project in game design. Researched the original rules and cultural context, then redesigned the board, pieces, and play experience for a modern audience."
+        data-link="https://www.behance.net/gallery/203877701/Repurposing-Chowka-Bara-Board-Game-Design"
+        data-link-label="View on Behance"
+        data-media-type="image"
+        data-src="assets/boardgame design.png">
+        <span class="card-badge">Game Design</span>
+        <img src="assets/boardgame design.png" alt="Board Game Design"
+          style="width:100%;height:100%;object-fit:cover;">
+        <div class="card-overlay">
+          <div class="card-cat">Game Design · Course Project</div>
+          <div class="card-title">Board Game<br>Design</div>
+          <div class="card-body">Repurposed Chowka Bara, a traditional Indian board game. Redesigned rules, board, and pieces for a modern audience.</div>
+          <a href="https://www.behance.net/gallery/203877701/Repurposing-Chowka-Bara-Board-Game-Design" target="_blank" class="card-link">View on Behance ↗</a>
         </div>
       </div>
 
@@ -454,33 +740,16 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
   btn.addEventListener('click',function(){
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     this.classList.add('active');
-    const isAll = this.dataset.tab === 'all';
-    if(isAll){
-      // Show all panels
-      document.querySelectorAll('.tab-panel').forEach(p=>{
-        p.classList.add('active');
-        p.style.display='block';
+    document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+    const panel=document.getElementById('tab-'+this.dataset.tab);
+    if(panel){
+      panel.classList.add('active');
+      panel.style.display='block';
+      panel.querySelectorAll('.reveal').forEach((el,i)=>{
+        setTimeout(()=>el.classList.add('visible'), i*60);
       });
-      // Reveal all cards
-      document.querySelectorAll('.tab-panel .reveal').forEach((el,i)=>{
-        setTimeout(()=>el.classList.add('visible'), i*50);
-      });
-      // Autoplay all videos
-      document.querySelectorAll('.media-card video').forEach(v=>v.play().catch(()=>{}));
-    } else {
-      document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
-      const panel=document.getElementById('tab-'+this.dataset.tab);
-      if(panel){
-        panel.classList.add('active');
-        panel.style.display='block';
-        // reveal cards immediately when tab becomes active
-        panel.querySelectorAll('.reveal').forEach((el,i)=>{
-          setTimeout(()=>el.classList.add('visible'), i*60);
-        });
-        // autoplay videos in the newly active tab
-        document.querySelectorAll('.media-card video').forEach(v=>v.pause());
-        panel.querySelectorAll('.media-card video').forEach(v=>v.play().catch(()=>{}));
-      }
+      document.querySelectorAll('.media-card video').forEach(v=>v.pause());
+      panel.querySelectorAll('.media-card video').forEach(v=>v.play().catch(()=>{}));
     }
   });
 });
@@ -508,6 +777,23 @@ document.querySelectorAll('.media-card').forEach(c=>vidObs.observe(c));
 
 /* ── LIGHTBOX ── */
 let lbVideo=null;
+let lbCarouselTimer=null;
+let lbCarouselIdx=0;
+let lbCarouselImgs=[];
+
+function carouselGo(idx){
+  lbCarouselImgs.forEach((img,i)=>{img.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.lb-car-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  lbCarouselIdx=idx;
+}
+
+function startCarouselAutoplay(){
+  clearInterval(lbCarouselTimer);
+  lbCarouselTimer=setInterval(()=>{
+    carouselGo((lbCarouselIdx+1)%lbCarouselImgs.length);
+  },2500);
+}
+
 function openLightbox(card){
   const lb=document.getElementById('lightbox');
   const lbMedia=document.getElementById('lb-media');
@@ -526,11 +812,39 @@ function openLightbox(card){
     lnk.style.display='none';
   }
 
-  // fill media
-  lbMedia.querySelectorAll('video,img').forEach(el=>el.remove());
-  lbVideo=null;
+  // clear old media
+  lbMedia.querySelectorAll('video,img,.lb-carousel').forEach(el=>el.remove());
+  lbVideo=null;lbCarouselImgs=[];clearInterval(lbCarouselTimer);
+  muteBtn.style.display='none';
 
-  if(card.dataset.src){
+  if(card.dataset.mediaType==='carousel'){
+    const srcs=(card.dataset.srcs||'').split(',').map(s=>s.trim()).filter(Boolean);
+    const wrap=document.createElement('div');
+    wrap.className='lb-carousel';
+    srcs.forEach((src,i)=>{
+      const img=document.createElement('img');
+      img.src=src;if(i===0)img.classList.add('active');
+      wrap.appendChild(img);
+      lbCarouselImgs.push(img);
+    });
+    // dots
+    const dots=document.createElement('div');dots.className='lb-car-dots';
+    srcs.forEach((_,i)=>{
+      const d=document.createElement('button');d.className='lb-car-dot'+(i===0?' active':'');
+      d.onclick=()=>{carouselGo(i);startCarouselAutoplay();};
+      dots.appendChild(d);
+    });
+    wrap.appendChild(dots);
+    // prev/next
+    const prev=document.createElement('button');prev.className='lb-car-btn lb-car-prev';prev.textContent='‹';
+    prev.onclick=()=>{carouselGo((lbCarouselIdx-1+lbCarouselImgs.length)%lbCarouselImgs.length);startCarouselAutoplay();};
+    const next=document.createElement('button');next.className='lb-car-btn lb-car-next';next.textContent='›';
+    next.onclick=()=>{carouselGo((lbCarouselIdx+1)%lbCarouselImgs.length);startCarouselAutoplay();};
+    wrap.appendChild(prev);wrap.appendChild(next);
+    lbMedia.insertBefore(wrap,muteBtn);
+    lbCarouselIdx=0;
+    startCarouselAutoplay();
+  } else if(card.dataset.src){
     if(card.dataset.mediaType==='video'){
       const v=document.createElement('video');
       v.src=card.dataset.src;v.autoplay=true;v.muted=true;v.loop=true;v.playsInline=true;
@@ -542,15 +856,12 @@ function openLightbox(card){
       i.src=card.dataset.src;i.alt=card.dataset.title||'';
       i.style.maxWidth='100%';i.style.maxHeight='80vh';i.style.borderRadius='8px';
       lbMedia.insertBefore(i,muteBtn);
-      muteBtn.style.display='none';
     }
   } else {
-    // placeholder
     const ph=document.createElement('div');
     ph.style.cssText='width:100%;height:400px;display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(240,239,233,.2);letter-spacing:.1em;text-transform:uppercase;';
     ph.textContent='Add media to show here';
     lbMedia.insertBefore(ph,muteBtn);
-    muteBtn.style.display='none';
   }
 
   lb.classList.add('open');
@@ -562,6 +873,7 @@ function closeLightbox(){
   lb.classList.remove('open');
   document.body.style.overflow='';
   if(lbVideo){lbVideo.pause();lbVideo=null;}
+  clearInterval(lbCarouselTimer);lbCarouselImgs=[];
 }
 
 function toggleLbMute(){

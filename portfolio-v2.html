@@ -191,22 +191,22 @@ nav {
 .nav-mobile-close { position:absolute; top:20px; right:24px; background:none; border:none; font-size:24px; cursor:pointer; color:var(--muted); }
 
 /* Project Cards */
-.cards-stack { display: flex; flex-direction: column; gap: 16px; }
+.cards-stack { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 48px; }
 
 .p-card {
   border-radius: 24px;
   overflow: hidden; cursor: pointer;
-  display: flex; flex-direction: row;
+  display: flex; flex-direction: column;
   transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s;
   border: 1px solid rgba(0,0,0,0.07);
   background: #fff;
   transform: translateZ(0);
-  min-height: 360px;
+  min-height: 480px;
 }
 .p-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,.12); border-color: rgba(0,0,0,0.12); }
 
 /* Text side (right) */
-.pc-left { padding: 40px 48px; display: flex; flex-direction: column; justify-content: flex-start; background: #fff; flex: 1; }
+.pc-left { padding: 32px 36px 40px; display: flex; flex-direction: column; justify-content: flex-start; background: #fff; flex: 1; }
 .pc-status { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: rgba(0,0,0,.38); margin-bottom: 22px; display: flex; align-items: center; gap: 6px; }
 .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px rgba(34,197,94,.5); animation: lp 2s infinite; flex-shrink: 0; }
 @keyframes lp { 0%,100%{opacity:1}50%{opacity:.35} }
@@ -224,8 +224,8 @@ nav {
 .pc-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: 100px; font-size: 12.5px; font-weight: 700; letter-spacing: .01em; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; text-transform: uppercase; }
 .pc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
 
-/* Visual side (left) */
-.pc-right { position: relative; display: flex; align-items: center; justify-content: center; padding: 32px 28px; overflow: hidden; flex: 0 0 52%; }
+/* Visual side (top in grid layout) */
+.pc-right { position: relative; display: flex; align-items: center; justify-content: center; padding: 32px 28px; overflow: hidden; flex: 0 0 300px; }
 
 /* Draggit, LinkedIn blue */
 .card-d { background: #fff; border-color: rgba(37,99,235,0.15); }
@@ -244,6 +244,12 @@ nav {
 .card-g .pc-title em { color: #1A1DB3; }
 .card-g .pc-right { background: #1A1DB3; }
 .card-g .pc-btn { background: #1A1DB3; color: #fff; }
+
+/* Salesforce Capstone */
+.card-sf { background: #fff; border-color: rgba(0,158,219,0.18); }
+.card-sf .pc-title em { color: #009EDB; }
+.card-sf .pc-right { background: linear-gradient(145deg, #D6EEFF 0%, #B3DAFF 100%); padding: 0; overflow: hidden; }
+.card-sf .pc-btn { background: #009EDB; color: #fff; }
 
 /* Card browser mockup (for right panels) */
 .card-browser {
@@ -931,7 +937,7 @@ body.locked { overflow: hidden; }
   .hero-photo { transform: none; aspect-ratio: 4/3; }
   .hero-desc { font-size: 16px; max-width: 100%; }
   .work { padding-left: 24px; padding-right: 24px; }
-  .p-card { flex-direction: column; }
+  .cards-stack { grid-template-columns: 1fr; gap: 16px; }
   .pc-right { flex: 0 0 220px; }
   .pc-left { padding: 28px 28px 36px; }
   .pc-title { font-size: 28px; }
@@ -1042,10 +1048,9 @@ body.locked { overflow: hidden; }
         <h1 class="hero-h1">I design<br>& I <span class="accent scramble">ship.</span></h1>
         <p class="hero-desc">I'm <span class="name-hl">Rhea Mittal</span>. Product designer, researcher, builder. I take things from a vague brief to a working product, across research, systems, and code.</p>
         <div class="hero-chips">
-          <span class="hero-chip"><span class="chip-dot"></span>Currently @ Salesforce</span>
+          <span class="hero-chip"><span class="chip-dot"></span>Currently Capstone @ Salesforce</span>
           <span class="hero-chip">Vibe Coder</span>
           <span class="hero-chip">MS-HCI @ Indiana University</span>
-          <span class="hero-chip">Looking for Full-Time Roles</span>
         </div>
       </div>
       <div class="hero-photo-wrap">
@@ -1076,9 +1081,28 @@ body.locked { overflow: hidden; }
     </div>
     <div class="cards-stack">
 
+      <!-- SALESFORCE CAPSTONE CARD -->
+      <div class="p-card card-sf reveal reveal-d1" onclick="window.location='salesforce.html'">
+        <div class="pc-right" style="position:relative;align-items:center;justify-content:center;flex-direction:column;">
+          <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:120px;width:auto;display:block;">
+        </div>
+        <div class="pc-left">
+          <div class="pc-status">Capstone · IUI × Salesforce Trailhead</div>
+          <div class="pc-title">Designing Adaptive Engagement<em> for Evolving Learner Needs</em></div>
+          <div class="pc-types">User Research &nbsp;|&nbsp; Product Design &nbsp;|&nbsp; AI-Powered</div>
+          <p class="pc-desc">Redesigned re-engagement for Trailhead's power users. Two AI features. 11 interviews, 5 regions.</p>
+          <div class="pc-stats">
+            <div class="pc-stat"><span class="pc-stat-n">11</span><span class="pc-stat-l">Users Interviewed</span></div>
+            <div class="pc-stat"><span class="pc-stat-n">6/8</span><span class="pc-stat-l">Prefer Solve</span></div>
+            <div class="pc-stat"><span class="pc-stat-n">5</span><span class="pc-stat-l">Person Team</span></div>
+          </div>
+          <div class="pc-cta"><span class="pc-btn">View Case Study →</span></div>
+        </div>
+      </div>
+
       <!-- DRAGGIT CARD -->
-      <div class="p-card card-d reveal reveal-d1" onclick="openCase('draggit')">
-        <div class="pc-right" style="padding:60px 40px;">
+      <div class="p-card card-d reveal reveal-d2" onclick="openCase('draggit')">
+        <div class="pc-right" style="padding:44px 28px;">
           <video class="draggit-vid" autoplay loop muted playsinline>
             <source src="assets/Draggit.mp4" type="video/mp4">
           </video>
@@ -1087,7 +1111,7 @@ body.locked { overflow: hidden; }
           <div class="pc-status"><span class="live-dot"></span> Built &amp; Shipped · Solo</div>
           <div class="pc-title">I noticed a friction.<em>I built the fix.</em></div>
           <div class="pc-types">Product Design &nbsp;|&nbsp; UX Engineering &nbsp;|&nbsp; Chrome Store</div>
-          <p class="pc-desc">I noticed LinkedIn's connect modal couldn't be moved. A person would either write the connection note somewhere else and paste it in, or delete their progress just to copy the person's name and company to make sure they weren't misspelling it. So I built a Chrome extension to fix it. Shipped end-to-end, solo.</p>
+          <p class="pc-desc">LinkedIn's connect modal had a real friction. I built a Chrome extension to fix it. Solo, end-to-end.</p>
           <div class="pc-stats">
             <div class="pc-stat"><span class="pc-stat-n">20+</span><span class="pc-stat-l">Active Users</span></div>
             <div class="pc-stat"><span class="pc-stat-n">5★</span><span class="pc-stat-l">Chrome Store</span></div>
@@ -1098,8 +1122,8 @@ body.locked { overflow: hidden; }
       </div>
 
       <!-- CLIQUEPRIZE CARD -->
-      <div class="p-card card-c reveal reveal-d2" onclick="openCase('cliqueprize')">
-        <div class="pc-right" style="padding:60px 40px;">
+      <div class="p-card card-c reveal reveal-d3" onclick="openCase('cliqueprize')">
+        <div class="pc-right" style="padding:44px 28px;">
           <video class="card-vid" loop muted playsinline preload="none" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;">
             <source src="assets/CliquePrize Card Video.mov" type="video/mp4">
           </video>
@@ -1108,7 +1132,7 @@ body.locked { overflow: hidden; }
           <div class="pc-status"><span class="live-dot"></span> Internship · Live in Production</div>
           <div class="pc-title">Rewrote the pitch.<em>Rebuilt the page.</em></div>
           <div class="pc-types">UX Research &nbsp;|&nbsp; UX Writing &nbsp;|&nbsp; Design System</div>
-          <p class="pc-desc">Small businesses deserved a page that spoke their language. We rebuilt the site's IA around 4 core questions every small business owner was actually asking.</p>
+          <p class="pc-desc">Rebuilt a small business landing page around 4 questions owners actually ask. Shipped live.</p>
           <div class="pc-stats">
             <div class="pc-stat"><span class="pc-stat-n">24%</span><span class="pc-stat-l">CTR Lift</span></div>
             <div class="pc-stat"><span class="pc-stat-n">18%</span><span class="pc-stat-l">App Downloads</span></div>
@@ -1119,8 +1143,8 @@ body.locked { overflow: hidden; }
       </div>
 
       <!-- OPSIQ CARD -->
-      <div class="p-card card-g reveal reveal-d3" onclick="openCase('growthops')">
-        <div class="pc-right" style="padding:60px 40px;">
+      <div class="p-card card-g reveal reveal-d4" onclick="openCase('growthops')">
+        <div class="pc-right" style="padding:44px 28px;">
           <video class="card-vid" loop muted playsinline preload="none" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;">
             <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mov" type="video/mp4">
           </video>
@@ -1129,7 +1153,7 @@ body.locked { overflow: hidden; }
           <div class="pc-status">Client Project · NDA</div>
           <div class="pc-title">Small businesses had the data.<em>They couldn't use it.</em></div>
           <div class="pc-types">UX Research &nbsp;|&nbsp; AI Dashboard &nbsp;|&nbsp; Design System</div>
-          <p class="pc-desc">Small businesses had the data. They couldn't use it. We designed an AI-powered dashboard that turns fragmented business data into one clear view and a next move.</p>
+          <p class="pc-desc">Small businesses had the data but couldn't use it. We built an AI dashboard that turns it into one clear next move.</p>
           <div class="pc-stats">
             <div class="pc-stat"><span class="pc-stat-n">4</span><span class="pc-stat-l">Team Members</span></div>
             <div class="pc-stat"><span class="pc-stat-n">AI</span><span class="pc-stat-l">Powered</span></div>
