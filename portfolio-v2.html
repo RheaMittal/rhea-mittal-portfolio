@@ -983,6 +983,19 @@ body.locked { overflow: hidden; }
   /* ── NEXT PROJECT ── */
   .next-project { flex-direction: column; align-items: flex-start; gap: 16px; }
   .next-projects { grid-template-columns: 1fr; }
+
+  /* ── TOOLS ── */
+  .tools-section { padding: 0 24px; }
+  .tools-grid { grid-template-columns: repeat(2,1fr); }
+  .tool-item:nth-child(2n) { border-right: none; }
+  .tool-item:nth-child(n+3) { border-top: 1px solid var(--border); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { padding: 0 24px 60px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonial-card { border-right: none !important; border-bottom: 1px solid var(--border); }
+  .testimonial-card:last-child { border-bottom: none; }
+  .testimonial-q { font-size: 16px; }
 }
 
 /* ── Challenges cards stay horizontal until very small ── */
@@ -994,6 +1007,11 @@ body.locked { overflow: hidden; }
   .cs-ov-cell { border-right: none !important; border-top: 1px solid var(--border); }
   .cs-ov-cell:first-child { border-top: none; }
   .impact-row { grid-template-columns: 1fr; }
+}
+
+@media(max-width:640px){
+  .tools-grid { grid-template-columns: 1fr; }
+  .tool-item:nth-child(n) { border-right: none; }
 }
 
 /* Confetti canvas scoped to approved card */

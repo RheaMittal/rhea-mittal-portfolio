@@ -394,6 +394,24 @@ nav {
   .dash-callout-caption { font-size: 12px; padding: 12px 14px; }
   .sol-feat-layout { grid-template-columns: 1fr; }
 }
+
+/* ── INLINE GRID MOBILE COLLAPSE ── */
+@media(max-width:600px){
+  div[style*="grid-template-columns:repeat(3"],
+  div[style*="grid-template-columns: repeat(3"],
+  div[style*="grid-template-columns:repeat(4"],
+  div[style*="grid-template-columns: repeat(4"],
+  div[style*="grid-template-columns:repeat(5"],
+  div[style*="grid-template-columns:repeat(6"],
+  div[style*="grid-template-columns:1fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns:1fr 1."],
+  div[style*="grid-template-columns: 1fr 1."],
+  div[style*="grid-template-columns:1."],
+  div[style*="grid-template-columns:0."] {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>
 </head>
 <body>

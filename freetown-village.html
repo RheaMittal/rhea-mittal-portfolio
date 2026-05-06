@@ -240,6 +240,24 @@ nav {
 }
 
 .footer-bar { border-top: 1px solid var(--border); padding: 20px 56px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--muted); }
+
+/* ── INLINE GRID MOBILE COLLAPSE ── */
+@media(max-width:600px){
+  div[style*="grid-template-columns:repeat(3"],
+  div[style*="grid-template-columns: repeat(3"],
+  div[style*="grid-template-columns:repeat(4"],
+  div[style*="grid-template-columns: repeat(4"],
+  div[style*="grid-template-columns:repeat(5"],
+  div[style*="grid-template-columns:repeat(6"],
+  div[style*="grid-template-columns:1fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns:1fr 1."],
+  div[style*="grid-template-columns: 1fr 1."],
+  div[style*="grid-template-columns:1."],
+  div[style*="grid-template-columns:0."] {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>
 </head>
 <body>

@@ -42,7 +42,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 .nav-mobile a{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,8vw,64px);text-transform:uppercase;letter-spacing:-1px;color:var(--ink);text-decoration:none;transition:color .2s;}
 .nav-mobile a:hover{color:var(--green);}
 .nav-mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--muted);}
-@media(max-width:900px){nav{padding:14px 24px;}.nav-links{display:none;}.nav-burger{display:flex;}}
+@media(max-width:900px){
+  nav{padding:14px 24px;}
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  .pg-grid{grid-template-columns:repeat(2,1fr);}
+  .pg-grid.two-col{grid-template-columns:1fr 1fr;}
+  .pg-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+}
+@media(max-width:600px){
+  .pg-grid,.pg-grid.two-col{grid-template-columns:1fr;}
+  .pg-card-title{font-size:18px;}
+  .pg-card-meta{font-size:11px;}
+}
 
 /* PAGE HEADER */
 .page-header{padding:140px 56px 56px;max-width:1240px;margin:0 auto;}
