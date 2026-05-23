@@ -119,13 +119,17 @@ nav {
 }
 .hero-photo-wrap:hover .hero-photo { transform: rotate(0deg); }
 
-/* Logo garden */
+/* Logo garden — always full viewport width */
 .logo-garden-wrap {
   overflow: hidden;
   border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
   padding: 36px 0; margin: 0 0 80px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 .logo-track {
   display: flex; gap: 64px; align-items: center;
@@ -157,12 +161,28 @@ nav {
 /* Work display headline */
 .work-display { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(52px,7vw,100px); letter-spacing:-2px; line-height:.92; text-transform:uppercase; color:var(--ink); margin:16px 0 36px; }
 .work-display em { color:var(--green); font-style:normal; }
+.work-display-title { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(40px,5vw,68px); letter-spacing:-2px; line-height:1; text-transform:uppercase; color:var(--ink); margin:0 0 36px; }
+.work-display-title em { color:var(--green); font-style:normal; }
 
 /* Work filter tabs */
 .work-tabs { display:flex; gap:8px; margin-bottom:40px; flex-wrap:wrap; }
 .work-tab { padding:8px 20px; border-radius:100px; font-size:13px; font-weight:500; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:background .2s,color .2s,border-color .2s; font-family:inherit; }
 .work-tab:hover { border-color:rgba(0,0,0,.25); color:var(--ink); }
 .work-tab.active { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+
+/* Project category tabs */
+.proj-tabs { display:flex; gap:8px; margin-bottom:36px; flex-wrap:wrap; }
+.proj-tab {
+  padding: 9px 20px; border-radius: 100px;
+  font-size: 13px; font-weight: 500; font-family: inherit;
+  border: 1px solid var(--border);
+  background: transparent; color: var(--muted);
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, color .2s, border-color .2s;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.proj-tab:hover { border-color: rgba(0,0,0,.25); color: var(--ink); }
+.proj-tab.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
 /* Work 2-col grid */
 .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
@@ -203,7 +223,7 @@ nav {
   transform: translateZ(0);
   min-height: 480px;
 }
-.p-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,.12); border-color: rgba(0,0,0,0.12); }
+.p-card:hover { transform: translateY(-4px); box-shadow: 8px 16px 32px rgba(0,0,0,.1); border-color: rgba(0,0,0,0.12); }
 
 /* Text side (right) */
 .pc-left { padding: 32px 36px 40px; display: flex; flex-direction: column; justify-content: flex-start; background: #fff; flex: 1; }
@@ -212,9 +232,9 @@ nav {
 @keyframes lp { 0%,100%{opacity:1}50%{opacity:.35} }
 .pc-title { font-family:'Barlow Condensed',sans-serif; font-size: 32px; font-weight: 900; color: #0A0A0A; line-height: 1.05; letter-spacing: -.3px; text-transform: uppercase; margin-bottom: 14px; }
 .pc-title em { font-style: normal; display: block; }
-.pc-types { font-size: 11.5px; color: rgba(0,0,0,.38); margin-bottom: 14px; line-height: 1.6; letter-spacing: .03em; }
+.pc-types { font-size: 13px; color: rgba(0,0,0,.38); margin-bottom: 14px; line-height: 1.6; letter-spacing: .03em; }
 .pc-types strong { color: rgba(0,0,0,.6); font-weight: 700; }
-.pc-desc { font-size: 13.5px; line-height: 1.72; color: rgba(0,0,0,.5); margin: 0 0 20px; }
+.pc-desc { font-size: 15px; line-height: 1.72; color: rgba(0,0,0,.5); margin: 0 0 20px; }
 .pc-stats { display: flex; gap: 0; margin: 20px 0; padding: 18px 0; border-top: 1px solid rgba(0,0,0,.06); border-bottom: 1px solid rgba(0,0,0,.06); }
 .pc-stat { display: flex; flex-direction: column; gap: 3px; flex: 1; padding-right: 16px; border-right: 1px solid rgba(0,0,0,.06); margin-right: 16px; }
 .pc-stat:last-child { border-right: none; margin-right: 0; }
@@ -460,6 +480,9 @@ nav {
 .cs-reveal.cs-visible { opacity: 1; transform: translateY(0); }
 .reveal-d2 { transition-delay: .2s; }
 .reveal-d3 { transition-delay: .3s; }
+/* Card column stagger: left column appears first, right column ~0.8s later */
+.card-col-left { transition-delay: 0s; }
+.card-col-right { transition-delay: .8s; }
 .reveal-d4 { transition-delay: .4s; }
 
 /* ─── CASE STUDY ACCENT OVERRIDES ─── */
@@ -1037,6 +1060,7 @@ body.locked { overflow: hidden; }
     <li><a href="playground.html">Play</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
+
   </ul>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
@@ -1048,9 +1072,10 @@ body.locked { overflow: hidden; }
 <div class="nav-mobile" id="navMobile">
   <button class="nav-mobile-close" id="navMobileClose">✕</button>
   <a href="work.html">Work</a>
-  <a href="playground.html">Play</a>
+<a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
+
 </div>
 
 <!-- Custom cursor -->
@@ -1064,10 +1089,12 @@ body.locked { overflow: hidden; }
     <div class="hero-row reveal reveal-d2">
       <div class="hero-left">
         <h1 class="hero-h1">I design<br>& I <span class="accent scramble">ship.</span></h1>
-        <p class="hero-desc">I'm <span class="name-hl">Rhea Mittal</span>. Product designer, researcher, builder. I take things from a vague brief to a working product, across research, systems, and code.</p>
+        <p class="hero-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer with end-to-end experience spanning user research, analysis &amp; synthesis, iteration &amp; prototyping, and shipping &amp; testing products across design mediums.</p>
         <div class="hero-chips">
-          <span class="hero-chip"><span class="chip-dot"></span>Currently Capstone @ Salesforce</span>
+          <span class="hero-chip">Capstone @ Salesforce</span>
           <span class="hero-chip">MS-HCI @ Indiana University</span>
+          <span class="hero-chip">🏆 Hackathon Winner</span>
+          <span class="hero-chip">🏅 People's Choice Award @ IU Capstone</span>
         </div>
       </div>
       <div class="hero-photo-wrap">
@@ -1093,15 +1120,20 @@ body.locked { overflow: hidden; }
 
   <!-- Work -->
   <section id="work" class="work">
-    <div class="work-header">
-      <span class="work-label">Selected Projects</span>
+    <h2 class="work-display-title reveal">Selected <em>Work</em></h2>
+    <div class="proj-tabs">
+      <button class="proj-tab active">Product &amp; UX Design</button>
+      <a class="proj-tab" href="playground.html?tab=motion">Visual &amp; Motion Graphics ↗</a>
+      <a class="proj-tab" href="playground.html?tab=ai">AI Powered Projects ↗</a>
+      <a class="proj-tab" href="playground.html?tab=mediums">Exploring Mediums ↗</a>
     </div>
     <div class="cards-stack">
 
       <!-- SALESFORCE CAPSTONE CARD -->
-      <div class="p-card card-sf reveal reveal-d1" onclick="window.location='salesforce.html'">
+      <div class="p-card card-sf reveal card-col-left" onclick="window.location='salesforce.html'">
         <div class="pc-right" style="position:relative;align-items:center;justify-content:center;flex-direction:column;">
           <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:120px;width:auto;display:block;">
+          <div style="position:absolute;top:16px;right:16px;z-index:10;background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.1);border-radius:100px;padding:9px 20px;font-size:13px;font-weight:700;color:rgba(12,12,12,0.65);white-space:nowrap;">🏅 People's Choice Award</div>
         </div>
         <div class="pc-left">
           <div class="pc-status">Capstone · IUI × Salesforce Trailhead</div>
@@ -1118,7 +1150,7 @@ body.locked { overflow: hidden; }
       </div>
 
       <!-- DRAGGIT CARD -->
-      <div class="p-card card-d reveal reveal-d2" onclick="openCase('draggit')">
+      <div class="p-card card-d reveal card-col-right" onclick="openCase('draggit')">
         <div class="pc-right" style="padding:44px 28px;">
           <video class="draggit-vid" aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" autoplay loop muted playsinline>
             <source src="assets/Draggit.mp4" type="video/mp4">
@@ -1139,7 +1171,7 @@ body.locked { overflow: hidden; }
       </div>
 
       <!-- CLIQUEPRIZE CARD -->
-      <div class="p-card card-c reveal reveal-d3" onclick="openCase('cliqueprize')">
+      <div class="p-card card-c reveal card-col-left" onclick="openCase('cliqueprize')">
         <div class="pc-right" style="padding:44px 28px;">
           <video class="card-vid" aria-label="CliquePrize landing page walkthrough" loop muted playsinline preload="none" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;">
             <source src="assets/CliquePrize Card Video.mov" type="video/mp4">
@@ -1160,7 +1192,7 @@ body.locked { overflow: hidden; }
       </div>
 
       <!-- OPSIQ CARD -->
-      <div class="p-card card-g reveal reveal-d4" onclick="openCase('growthops')">
+      <div class="p-card card-g reveal card-col-right" onclick="openCase('growthops')">
         <div class="pc-right" style="padding:44px 28px;">
           <video class="card-vid" aria-label="OpsIQ AI dashboard walkthrough" loop muted playsinline preload="none" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;">
             <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mov" type="video/mp4">
@@ -1325,32 +1357,10 @@ body.locked { overflow: hidden; }
 
 </div><!-- /home-wrap -->
 
-<!-- ══ TOOLS SECTION ══ -->
-<div style="max-width:1240px;margin:0 auto;">
-<section class="tools-section reveal">
-  <div class="work-header">
-    <span class="work-label">My Tool Stack</span>
-    <span class="work-count">8 tools</span>
-  </div>
-  <div class="tools-grid">
-    <div class="tool-item reveal reveal-d1"><div class="tool-ico">✦</div><div class="tool-name">Figma</div><div class="tool-use">Ideation · Collaborate · Design · Prototype</div></div>
-    <div class="tool-item reveal reveal-d1"><div class="tool-ico">◈</div><div class="tool-name">Miro</div><div class="tool-use">Iteration · Collaboration · Research synthesis</div></div>
-    <div class="tool-item reveal reveal-d2"><div class="tool-ico">▲</div><div class="tool-name">Illustrator</div><div class="tool-use">Brand Design · Visual Design · Motion</div></div>
-    <div class="tool-item reveal reveal-d2"><div class="tool-ico">⬡</div><div class="tool-name">Adobe XD</div><div class="tool-use">Design · Prototype</div></div>
-    <div class="tool-item reveal reveal-d3"><div class="tool-ico">◎</div><div class="tool-name">Claude</div><div class="tool-use">Ideation · Developing PRD · Research</div></div>
-    <div class="tool-item reveal reveal-d3"><div class="tool-ico">⌥</div><div class="tool-name">Cursor</div><div class="tool-use">Vibecoding · Building · Shipping</div></div>
-    <div class="tool-item reveal reveal-d4"><div class="tool-ico">▸</div><div class="tool-name">Vercel</div><div class="tool-use">Hosting Projects · Deployment</div></div>
-    <div class="tool-item reveal reveal-d4"><div class="tool-ico">✿</div><div class="tool-name">Loveable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
-  </div>
-</section>
-</div>
-
 <!-- ══ TESTIMONIALS SECTION ══ -->
 <div style="max-width:1240px;margin:0 auto;">
 <section class="testimonials-section reveal">
-  <div class="work-header">
-    <span class="work-label">What People Say</span>
-  </div>
+  <h2 class="work-display-title">What People <em>Say</em></h2>
   <div class="testimonials-grid">
 
     <div class="testimonial-card reveal reveal-d1">
@@ -1401,6 +1411,23 @@ body.locked { overflow: hidden; }
       </div>
     </div>
 
+  </div>
+</section>
+</div>
+
+<!-- ══ TOOLS SECTION ══ -->
+<div style="max-width:1240px;margin:0 auto;">
+<section class="tools-section reveal">
+  <h2 class="work-display-title">My Tool <em>Stack</em></h2>
+  <div class="tools-grid">
+    <div class="tool-item reveal reveal-d1"><div class="tool-ico">✦</div><div class="tool-name">Figma</div><div class="tool-use">Ideation · Collaborate · Design · Prototype</div></div>
+    <div class="tool-item reveal reveal-d1"><div class="tool-ico">◈</div><div class="tool-name">Miro</div><div class="tool-use">Iteration · Collaboration · Research synthesis</div></div>
+    <div class="tool-item reveal reveal-d2"><div class="tool-ico">▲</div><div class="tool-name">Illustrator</div><div class="tool-use">Brand Design · Visual Design · Motion</div></div>
+    <div class="tool-item reveal reveal-d2"><div class="tool-ico">⬡</div><div class="tool-name">Adobe XD</div><div class="tool-use">Design · Prototype</div></div>
+    <div class="tool-item reveal reveal-d3"><div class="tool-ico">◎</div><div class="tool-name">Claude</div><div class="tool-use">Ideation · Developing PRD · Research</div></div>
+    <div class="tool-item reveal reveal-d3"><div class="tool-ico">⌥</div><div class="tool-name">Cursor</div><div class="tool-use">Vibecoding · Building · Shipping</div></div>
+    <div class="tool-item reveal reveal-d4"><div class="tool-ico">▸</div><div class="tool-name">Vercel</div><div class="tool-use">Hosting Projects · Deployment</div></div>
+    <div class="tool-item reveal reveal-d4"><div class="tool-ico">✿</div><div class="tool-name">Loveable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
   </div>
 </section>
 </div>

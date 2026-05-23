@@ -49,15 +49,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
   .pg-grid{grid-template-columns:repeat(2,1fr);}
   .pg-grid.two-col{grid-template-columns:1fr 1fr;}
   .pg-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+  .page-header{padding:88px 24px 40px;}
+  .back-btn{font-size:20px;}
 }
 @media(max-width:600px){
   .pg-grid,.pg-grid.two-col{grid-template-columns:1fr;}
   .pg-card-title{font-size:18px;}
   .pg-card-meta{font-size:11px;}
+  .page-header{padding:80px 20px 32px;}
+  .back-btn{font-size:18px;}
 }
 
 /* PAGE HEADER */
-.page-header{padding:140px 56px 56px;max-width:1240px;margin:0 auto;}
+.page-header{padding:100px 56px 56px;max-width:1240px;margin:0 auto;}
+.back-btn{display:inline-flex;align-items:center;margin-bottom:28px;font-size:22px;font-weight:400;color:var(--muted);text-decoration:none;transition:color .2s, transform .2s;}
+.back-btn:hover{color:var(--ink);transform:translateX(-4px);}
 .page-kicker{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
 .page-kicker::before{display:none;}
 .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,6vw,80px);line-height:.92;letter-spacing:-2px;text-transform:uppercase;margin-bottom:24px;}
@@ -261,6 +267,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
     <li><a href="playground.html" class="active">Play</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
+
   </ul>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
@@ -271,12 +278,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 56px;display:fl
 <div class="nav-mobile" id="navMobile">
   <button class="nav-mobile-close" id="navMobileClose">✕</button>
   <a href="work.html">Work</a>
-  <a href="playground.html">Play</a>
+<a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
+
 </div>
 
 <div class="page-header">
+  <a href="portfolio-v2.html" class="back-btn">←</a>
   <p class="page-kicker reveal">Beyond the case studies</p>
   <h1 class="page-title reveal rd1">The <em>playground.</em></h1>
   <p class="page-desc reveal rd2">Motion, code, games, 3D, the stuff I make when there's no brief, no client, just curiosity and time.</p>
@@ -916,6 +925,17 @@ document.getElementById('navBurger').addEventListener('click', () => {
 document.getElementById('navMobileClose').addEventListener('click', () => {
   document.getElementById('navMobile').classList.remove('open');
 });
+
+/* ── DEEP-LINK: activate tab from URL param ── */
+(function(){
+  const urlTab = new URLSearchParams(window.location.search).get('tab');
+  if(urlTab){
+    const btn = document.querySelector(`.tab-btn[data-tab="${urlTab}"]`);
+    if(btn) btn.click();
+    // scroll past nav so the tabs are in view
+    setTimeout(()=>{ document.querySelector('.tabs-wrap')?.scrollIntoView({behavior:'smooth',block:'start'}); }, 200);
+  }
+})();
 </script>
 </body>
 </html>
