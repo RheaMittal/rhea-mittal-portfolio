@@ -16,6 +16,12 @@
   --border: rgba(12,12,12,0.1);
   --green: #1DA855;
   --white: #FAFAF8;
+  --shadow-color: 80, 76, 68;
+  --card-ease: cubic-bezier(.25, .46, .45, .94);
+  --card-duration: .35s;
+  --card-shadow-rest: 3px 6px 12px -1px rgba(var(--shadow-color), .10);
+  --card-shadow-hover: 5px 10px 20px -1px rgba(var(--shadow-color), .14);
+  --card-shadow-active: 3px 6px 14px -1px rgba(var(--shadow-color), .11);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -62,8 +68,9 @@ nav {
 
 /* GRID */
 .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.wk-card { background:#fff; border:1px solid rgba(0,0,0,.07); border-radius:20px; overflow:hidden; cursor:pointer; display:flex; flex-direction:column; transition:transform .25s cubic-bezier(.25,.46,.45,.94),box-shadow .25s; will-change:transform; text-decoration:none; box-shadow:0 2px 12px rgba(0,0,0,.05); }
-.wk-card:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.1); }
+.wk-card { background:#fff; border:1px solid rgba(0,0,0,.07); border-radius:20px; overflow:hidden; cursor:pointer; display:flex; flex-direction:column; transition:transform var(--card-duration) var(--card-ease),box-shadow var(--card-duration) var(--card-ease),border-color var(--card-duration) var(--card-ease); text-decoration:none; box-shadow:var(--card-shadow-rest); }
+.wk-card:hover { transform:translateY(-3px); box-shadow:var(--card-shadow-hover); border-color:rgba(0,0,0,.10); }
+.wk-card:active { transform:translateY(-1px); box-shadow:var(--card-shadow-active); transition-duration:.15s; }
 .wk-card.wk-hidden { display:none !important; }
 
 /* Card visual header */
@@ -175,9 +182,7 @@ nav {
     <!-- DRAGGIT -->
     <a class="wk-card reveal" data-cats="all product" href="draggit.html" style="background:#fff;border:1px solid rgba(37,99,235,0.15);">
       <div class="wk-visual">
-        <video aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" autoplay loop muted playsinline preload="none" class="wk-vid">
-          <source src="assets/Draggit.mp4" type="video/mp4">
-        </video>
+        <video aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/Draggit Case Study/The problem modal covering profile info.png" data-src="assets/Draggit_web.mp4"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#2563EB;">LinkedIn Chrome Extension · Built &amp; Shipped</div>
@@ -195,9 +200,7 @@ nav {
     <!-- CLIQUEPRIZE -->
     <a class="wk-card reveal" data-cats="all visual product" href="cliqueprize.html" style="background:#fff;border:1px solid rgba(125,26,46,0.15);">
       <div class="wk-visual">
-        <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid" style="width:100%;height:100%;object-fit:cover;">
-          <source src="assets/CliquePrize Card Video.mov" type="video/mp4">
-        </video>
+        <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize Card Video_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#7D1A2E;">B2B SaaS Platform · Live in Production</div>
@@ -217,9 +220,7 @@ nav {
     <!-- OPSIQ -->
     <a class="wk-card reveal" data-cats="all product" href="opsiq.html" style="background:#fff;border:1px solid rgba(26,29,179,0.15);">
       <div class="wk-visual">
-        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid" style="width:100%;height:100%;object-fit:cover;">
-          <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mov" type="video/mp4">
-        </video>
+        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/ABC Company/User Testing Interface.png" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#1A1DB3;">AI Dashboard [NDA] · Client Project</div>
@@ -237,9 +238,7 @@ nav {
     <!-- FREETOWN VILLAGE -->
     <a class="wk-card reveal" data-cats="all research product visual" href="freetown-village.html" style="background:#fff;border:1px solid rgba(139,58,26,0.15);">
       <div class="wk-visual">
-        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid" style="width:100%;height:100%;object-fit:cover;">
-          <source src="assets/Freetown village/Landing Page.mp4" type="video/mp4">
-        </video>
+        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/Freetown village/freetown village context.png" data-src="assets/Freetown village/Landing Page_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#8B3A1A;">UX Research · Visual Design</div>
@@ -315,9 +314,7 @@ nav {
     <!-- TECHGUY -->
     <a class="wk-card reveal" data-cats="all product research" href="techguy.html" style="background:#fff;border:1px solid rgba(64,94,171,0.15);">
       <div class="wk-visual">
-        <video aria-label="TechGuy product suite hero walkthrough" autoplay loop muted playsinline preload="none">
-          <source src="assets/TechGuy/Techguy Hero page.mov" type="video/mp4">
-        </video>
+        <video aria-label="TechGuy product suite hero walkthrough" loop muted playsinline preload="none" class="lazy-vid" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_web.mp4"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#405EAB;">UI/UX Design · Team Lead · 2021</div>
@@ -354,14 +351,32 @@ document.querySelectorAll('.work-tab').forEach(tab => {
   });
 });
 
-/* Video play on visibility */
-const vidObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.play().catch(()=>{});
-    else e.target.pause();
-  });
-}, { threshold: 0.2 });
-document.querySelectorAll('.wk-vid').forEach(v => vidObs.observe(v));
+/* Lazy videos — load src + play only when near viewport */
+(function initLazyVideos() {
+  function loadVideo(video) {
+    if (video.dataset.loaded) return;
+    const src = video.dataset.src;
+    if (!src) return;
+    video.src = src;
+    video.dataset.loaded = 'true';
+  }
+
+  const vidObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        loadVideo(v);
+        const play = () => v.play().catch(() => {});
+        if (v.readyState >= 2) play();
+        else v.addEventListener('loadeddata', play, { once: true });
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '160px' });
+
+  document.querySelectorAll('.lazy-vid').forEach(v => vidObs.observe(v));
+})();
 
 /* Scroll reveal */
 const revealObs = new IntersectionObserver((entries) => {

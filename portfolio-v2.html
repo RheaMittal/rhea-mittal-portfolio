@@ -22,6 +22,13 @@ html { scroll-behavior: smooth; }
   --orange-bg: rgba(232,82,26,0.08);
   --card-r: 20px;
   --white: #FFFFFF;
+  --shadow-color: 80, 76, 68;
+  --card-ease: cubic-bezier(.25, .46, .45, .94);
+  --card-duration: .35s;
+  --card-shadow-rest: 3px 6px 12px -1px rgba(var(--shadow-color), .10);
+  --card-shadow-hover: 5px 10px 20px -1px rgba(var(--shadow-color), .14);
+  --card-shadow-active: 3px 6px 14px -1px rgba(var(--shadow-color), .11);
+  --card-shadow-hover-dark: 5px 10px 20px -1px rgba(0, 0, 0, .22);
 }
 
 body {
@@ -133,11 +140,15 @@ nav {
 }
 .logo-track {
   display: flex; gap: 64px; align-items: center;
-  animation: logoScroll 40s linear infinite;
+  animation: logoScroll var(--logo-scroll-duration, 40s) linear infinite;
   width: max-content;
+  will-change: transform;
 }
 .logo-track:hover { animation-play-state: paused; }
-@keyframes logoScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes logoScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--logo-scroll-distance, -50%)); }
+}
 .logo-item {
   display: flex; align-items: center;
   opacity: 0.4; transition: opacity .25s; flex-shrink: 0; cursor: default;
@@ -186,10 +197,11 @@ nav {
 
 /* Work 2-col grid */
 .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.wk-card { border-radius:20px; padding:40px; cursor:pointer; display:flex; flex-direction:column; min-height:380px; transition:transform .25s cubic-bezier(.25,.46,.45,.94),box-shadow .25s; will-change:transform; text-decoration:none; }
+.wk-card { border-radius:20px; padding:40px; cursor:pointer; display:flex; flex-direction:column; min-height:380px; transition:transform var(--card-duration) var(--card-ease),box-shadow var(--card-duration) var(--card-ease),border-color var(--card-duration) var(--card-ease); text-decoration:none; }
 .wk-visual { width:calc(100% + 80px); margin:-40px -40px 32px; aspect-ratio:16/9; overflow:hidden; position:relative; flex-shrink:0; border-radius:20px 20px 0 0; }
 .wk-visual video { width:100%; height:100%; object-fit:cover; display:block; }
-.wk-card:hover { transform:translateY(-4px); }
+.wk-card:hover { transform:translateY(-3px); box-shadow:var(--card-shadow-hover-dark); }
+.wk-card:active { transform:translateY(-1px); box-shadow:var(--card-shadow-active); transition-duration:.15s; }
 .wk-card.wk-hidden { display:none !important; }
 .wk-tag { font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:20px; font-weight:500; }
 .wk-title { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(26px,2.8vw,36px); letter-spacing:-.5px; line-height:1.1; margin-bottom:14px; }
@@ -217,13 +229,15 @@ nav {
   border-radius: 24px;
   overflow: hidden; cursor: pointer;
   display: flex; flex-direction: column;
-  transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s;
+  transition: transform var(--card-duration) var(--card-ease), box-shadow var(--card-duration) var(--card-ease), border-color var(--card-duration) var(--card-ease);
   border: 1px solid rgba(0,0,0,0.07);
   background: #fff;
   transform: translateZ(0);
   min-height: 480px;
+  box-shadow: var(--card-shadow-rest);
 }
-.p-card:hover { transform: translateY(-4px); box-shadow: 8px 16px 32px rgba(0,0,0,.1); border-color: rgba(0,0,0,0.12); }
+.p-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); border-color: rgba(0,0,0,0.10); }
+.p-card:active { transform: translateY(-1px); box-shadow: var(--card-shadow-active); transition-duration: .15s; }
 
 /* Text side (right) */
 .pc-left { padding: 32px 36px 40px; display: flex; flex-direction: column; justify-content: flex-start; background: #fff; flex: 1; }
@@ -274,9 +288,9 @@ nav {
 /* Card browser mockup (for right panels) */
 .card-browser {
   background: #fff; border-radius: 14px; overflow: hidden; width: 100%; max-width: 360px;
-  box-shadow: 0 16px 48px rgba(0,0,0,.35);
+  box-shadow: 0 6px 20px rgba(var(--shadow-color), .12);
   transform: perspective(1000px) rotateY(-7deg) rotateX(3deg);
-  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  transition: transform var(--card-duration) var(--card-ease), box-shadow var(--card-duration) var(--card-ease);
 }
 .p-card:hover .card-browser { transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); }
 .cb-bar { background: #E8E8E8; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
@@ -291,15 +305,15 @@ nav {
 .draggit-vid {
   width: 100%; display: block;
   border-radius: 12px;
-  box-shadow: 0 16px 48px rgba(37,99,235,.35);
+  box-shadow: 0 6px 20px rgba(59, 90, 180, .18);
   transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
-  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  transition: transform var(--card-duration) var(--card-ease), box-shadow var(--card-duration) var(--card-ease);
 }
 
 /* CP + OpsIQ full-bleed videos — same tilt on hover */
 .card-vid {
   transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
-  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  transition: transform var(--card-duration) var(--card-ease), box-shadow var(--card-duration) var(--card-ease);
 }
 .p-card:hover .card-vid { transform: perspective(1200px) rotateY(-1deg) rotateX(0.5deg); }
 
@@ -318,9 +332,9 @@ nav {
 /* Mini browser in card */
 .mini-browser {
   background: #1C1C1E; border-radius: 12px; overflow: hidden; width: 100%; max-width: 460px;
-  box-shadow: 0 24px 60px rgba(0,0,0,.7);
+  box-shadow: 0 8px 24px rgba(var(--shadow-color), .20);
   transform: perspective(1000px) rotateY(-7deg) rotateX(3deg);
-  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  transition: transform var(--card-duration) var(--card-ease), box-shadow var(--card-duration) var(--card-ease);
 }
 .p-card:hover .mini-browser { transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); }
 .mb-bar { background: #2C2C2E; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
@@ -351,7 +365,7 @@ nav {
 
 /* CP mockup */
 .cp-mock { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 10px; }
-.cp-screen { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 56px rgba(0,0,0,.6); transform: perspective(1000px) rotateY(-7deg) rotateX(3deg); transition: transform .5s cubic-bezier(.25,.46,.45,.94); }
+.cp-screen { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(var(--shadow-color), .18); transform: perspective(1000px) rotateY(-7deg) rotateX(3deg); transition: transform var(--card-duration) var(--card-ease), box-shadow var(--card-duration) var(--card-ease); }
 .p-card:hover .cp-screen { transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); }
 .cp-hdr { background: #111; padding: 8px 12px; display: flex; align-items: center; gap: 6px; }
 .cp-bd { background: #F7F6F2; padding: 12px; }
@@ -1152,9 +1166,7 @@ body.locked { overflow: hidden; }
       <!-- DRAGGIT CARD -->
       <div class="p-card card-d reveal card-col-right" onclick="openCase('draggit')">
         <div class="pc-right" style="padding:44px 28px;">
-          <video class="draggit-vid" aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" autoplay loop muted playsinline>
-            <source src="assets/Draggit.mp4" type="video/mp4">
-          </video>
+          <video class="draggit-vid lazy-vid" aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" poster="assets/Draggit Case Study/The problem modal covering profile info.png" data-src="assets/Draggit_web.mp4"></video>
         </div>
         <div class="pc-left">
           <div class="pc-status"><span class="live-dot"></span> Built &amp; Shipped · Solo</div>
@@ -1173,9 +1185,7 @@ body.locked { overflow: hidden; }
       <!-- CLIQUEPRIZE CARD -->
       <div class="p-card card-c reveal card-col-left" onclick="openCase('cliqueprize')">
         <div class="pc-right" style="padding:44px 28px;">
-          <video class="card-vid" aria-label="CliquePrize landing page walkthrough" loop muted playsinline preload="none" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;">
-            <source src="assets/CliquePrize Card Video.mov" type="video/mp4">
-          </video>
+          <video class="card-vid lazy-vid" aria-label="CliquePrize landing page walkthrough" loop muted playsinline preload="none" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize Card Video_web.mp4" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;"></video>
         </div>
         <div class="pc-left">
           <div class="pc-status"><span class="live-dot"></span> Internship · Live in Production</div>
@@ -1194,9 +1204,7 @@ body.locked { overflow: hidden; }
       <!-- OPSIQ CARD -->
       <div class="p-card card-g reveal card-col-right" onclick="openCase('growthops')">
         <div class="pc-right" style="padding:44px 28px;">
-          <video class="card-vid" aria-label="OpsIQ AI dashboard walkthrough" loop muted playsinline preload="none" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;">
-            <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mov" type="video/mp4">
-          </video>
+          <video class="card-vid lazy-vid" aria-label="OpsIQ AI dashboard walkthrough" loop muted playsinline preload="none" poster="assets/ABC Company/User Testing Interface.png" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;"></video>
         </div>
         <div class="pc-left">
           <div class="pc-status">Client Project · NDA</div>
@@ -1336,9 +1344,7 @@ body.locked { overflow: hidden; }
       <!-- TECHGUY -->
       <a class="wk-card" data-cats="all product research" href="techguy.html" style="background:#091828;">
         <div class="wk-visual">
-          <video aria-label="TechGuy product suite preview" autoplay loop muted playsinline preload="none">
-            <source src="assets/TechGuy/Techguy Hero page.mov" type="video/mp4">
-          </video>
+          <video class="lazy-vid" aria-label="TechGuy product suite preview" loop muted playsinline preload="none" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_web.mp4"></video>
         </div>
         <div class="wk-tag" style="color:#405EAB;">UI/UX Design · Team Lead · 2021</div>
         <h3 class="wk-title" style="color:#fff;">Three products.<br><em style="color:#405EAB;">One design language.</em></h3>
@@ -1543,11 +1549,45 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ── LOGO GARDEN ── */
-// duplicate content for seamless loop
-const track = document.querySelector('.logo-track');
-if (track) {
-  track.innerHTML += track.innerHTML;
-}
+(function initLogoGarden() {
+  const wrap = document.querySelector('.logo-garden-wrap');
+  const track = document.querySelector('.logo-track');
+  if (!wrap || !track) return;
+
+  const originals = Array.from(track.querySelectorAll('.logo-item')).map(el => el.cloneNode(true));
+  if (!originals.length) return;
+
+  function rebuild() {
+    track.innerHTML = '';
+    originals.forEach(node => track.appendChild(node.cloneNode(true)));
+
+    const oneSetWidth = track.scrollWidth;
+    const viewport = wrap.clientWidth;
+    const setsNeeded = Math.max(3, Math.ceil(viewport / oneSetWidth) + 2);
+
+    for (let i = 1; i < setsNeeded; i++) {
+      originals.forEach(node => {
+        const clone = node.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+    }
+
+    track.style.setProperty('--logo-scroll-distance', `-${oneSetWidth}px`);
+    track.style.setProperty('--logo-scroll-duration', `${oneSetWidth / 72}s`);
+  }
+
+  rebuild();
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+  window.addEventListener('load', rebuild);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(rebuild, 200);
+  });
+})();
 
 /* ── TEXT SCRAMBLE on hero headline ── */
 const heroH1 = document.querySelector('.hero-h1');
@@ -1596,25 +1636,41 @@ document.querySelectorAll('.p-card').forEach(card => {
       const rect = self.getBoundingClientRect();
       const x = (cx - rect.left) / rect.width - 0.5;
       const y = (cy - rect.top) / rect.height - 0.5;
-      self.style.transform = `translateZ(0) translateY(-6px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
-      self.style.boxShadow = `${-x * 20}px ${-y * 20}px 60px rgba(0,0,0,.5)`;
+      self.style.transform = `translateZ(0) translateY(-3px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
     });
   }, { passive: true });
   card.addEventListener('mouseleave', function() {
     if (raf) cancelAnimationFrame(raf);
-    this.style.transform = 'translateZ(0)';
-    this.style.boxShadow = '';
+    this.style.transform = '';
   });
 });
 
-/* ── CARD VIDEOS — play/pause on visibility ── */
-const cardVidObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.play().catch(() => {});
-    else e.target.pause();
-  });
-}, { threshold: 0.25 });
-document.querySelectorAll('.card-vid').forEach(v => cardVidObs.observe(v));
+/* ── LAZY VIDEOS — load src + play only when near viewport ── */
+(function initLazyVideos() {
+  function loadVideo(video) {
+    if (video.dataset.loaded) return;
+    const src = video.dataset.src;
+    if (!src) return;
+    video.src = src;
+    video.dataset.loaded = 'true';
+  }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        loadVideo(v);
+        const play = () => v.play().catch(() => {});
+        if (v.readyState >= 2) play();
+        else v.addEventListener('loadeddata', play, { once: true });
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '160px' });
+
+  document.querySelectorAll('.lazy-vid').forEach(v => obs.observe(v));
+})();
 
 /* ── WORK FILTER TABS ── */
 document.querySelectorAll('.work-tab').forEach(tab => {

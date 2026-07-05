@@ -6,7 +6,25 @@
       "Bash(python3 -c \":*)",
       "Bash(python3:*)",
       "Bash(gh auth:*)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Read(//Users/306084/**)",
+      "Bash(ssh -T git@github.com)",
+      "WebFetch(domain:rheamittalportfolio.framer.website)",
+      "Bash(brew install:*)",
+      "Bash(pdftoppm -v)",
+      "Bash(pdftotext \"/Users/306084/Downloads/screencapture-rheamittalportfolio-framer-website-freetown-village-2026-03-18-11_07_10.pdf\" -)",
+      "Bash(pip3 install:*)",
+      "Bash(ffmpeg -i \"/Users/306084/Desktop/Rhea Mittal_Portfolio/assets/Freetown Village/Landing Page.mp4\" -vf \"select=eq\\(n\\\\,90\\)\" -vframes 1 /tmp/fv_landing2.png -y)",
+      "Bash(ffmpeg -i \"/Users/306084/Desktop/Rhea Mittal_Portfolio/assets/Freetown Village/Landing Page.mp4\" -vf \"crop=1590:1054:164:12\" -c:v libx264 -crf 18 -preset fast -c:a copy /tmp/fv_landing_cropped.mp4 -y)",
+      "Bash(ffmpeg -i /tmp/fv_landing_cropped.mp4 -vf \"select=eq\\(n\\\\,30\\)\" -vframes 1 /tmp/fv_landing_cropped_check.png -y)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//Users/306084/Desktop/Rhea Mittal_Portfolio/**)",
+      "Bash(done)",
+      "Bash(do)",
+      "Bash(sed -i '' 's/letter-spacing: 0.04em; text-decoration: none; color: #1A5C35;/letter-spacing: 0.12em; text-decoration: none; color: #1DB855;/' \"$f\")",
+      "Bash(sed -i '' 's/letter-spacing:0.04em;text-decoration:none;color:#1A5C35;/letter-spacing:0.12em;text-decoration:none;color:#1DB855;/' playground.html)",
+      "Bash(git config:*)"
     ]
   }
 }
