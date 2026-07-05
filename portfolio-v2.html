@@ -379,7 +379,10 @@ nav {
 .cp-ct { display: inline-block; background: rgba(240,96,48,.1); color: #D94F18; padding: 2px 7px; border-radius: 100px; font-size: 9px; font-weight: 600; margin-top: 4px; }
 
 /* ─── TOOLS SECTION ─── */
-.tools-section { padding: 0 56px 80px; }
+.tools-section {
+  --tool-icon-size: 36px;
+  padding: 0 56px 80px;
+}
 .tools-grid {
   display: grid; grid-template-columns: repeat(4,1fr); gap: 2px;
   border: 1px solid var(--border); border-radius: var(--card-r); overflow: hidden;
@@ -395,7 +398,37 @@ nav {
 .tool-item:last-child { border-right: none; }
 .tool-item:nth-child(4n) { border-right: none; }
 .tool-item:hover { background: rgba(240,239,233,.04); }
-.tool-ico { font-size: 28px; }
+.tool-ico {
+  width: var(--tool-icon-size);
+  height: var(--tool-icon-size);
+  min-width: var(--tool-icon-size);
+  min-height: var(--tool-icon-size);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tool-ico img {
+  width: var(--tool-icon-size);
+  height: var(--tool-icon-size);
+  min-width: var(--tool-icon-size);
+  min-height: var(--tool-icon-size);
+  max-width: var(--tool-icon-size);
+  max-height: var(--tool-icon-size);
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  flex-shrink: 0;
+}
+.tool-ico--dark {
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tool-ico--dark img {
+  border-radius: 0;
+  background: #000;
+}
 .tool-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: -.3px; }
 .tool-use { font-size: 12px; color: var(--muted); line-height: 1.45; }
 
@@ -1426,14 +1459,14 @@ body.locked { overflow: hidden; }
 <section class="tools-section reveal">
   <h2 class="work-display-title">My Tool <em>Stack</em></h2>
   <div class="tools-grid">
-    <div class="tool-item reveal reveal-d1"><div class="tool-ico">✦</div><div class="tool-name">Figma</div><div class="tool-use">Ideation · Collaborate · Design · Prototype</div></div>
-    <div class="tool-item reveal reveal-d1"><div class="tool-ico">◈</div><div class="tool-name">Miro</div><div class="tool-use">Iteration · Collaboration · Research synthesis</div></div>
-    <div class="tool-item reveal reveal-d2"><div class="tool-ico">▲</div><div class="tool-name">Illustrator</div><div class="tool-use">Brand Design · Visual Design · Motion</div></div>
-    <div class="tool-item reveal reveal-d2"><div class="tool-ico">⬡</div><div class="tool-name">Adobe XD</div><div class="tool-use">Design · Prototype</div></div>
-    <div class="tool-item reveal reveal-d3"><div class="tool-ico">◎</div><div class="tool-name">Claude</div><div class="tool-use">Ideation · Developing PRD · Research</div></div>
-    <div class="tool-item reveal reveal-d3"><div class="tool-ico">⌥</div><div class="tool-name">Cursor</div><div class="tool-use">Vibecoding · Building · Shipping</div></div>
-    <div class="tool-item reveal reveal-d4"><div class="tool-ico">▸</div><div class="tool-name">Vercel</div><div class="tool-use">Hosting Projects · Deployment</div></div>
-    <div class="tool-item reveal reveal-d4"><div class="tool-ico">✿</div><div class="tool-name">Loveable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
+    <div class="tool-item reveal reveal-d1"><div class="tool-ico"><img src="assets/tools/figma.png" alt="Figma logo"></div><div class="tool-name">Figma</div><div class="tool-use">Ideation · Collaborate · Design · Prototype</div></div>
+    <div class="tool-item reveal reveal-d1"><div class="tool-ico"><img src="assets/tools/miro.png" alt="Miro logo"></div><div class="tool-name">Miro</div><div class="tool-use">Iteration · Collaboration · Research synthesis</div></div>
+    <div class="tool-item reveal reveal-d2"><div class="tool-ico"><img src="assets/tools/illustrator.png" alt="Adobe Illustrator logo"></div><div class="tool-name">Illustrator</div><div class="tool-use">Brand Design · Visual Design · Motion</div></div>
+    <div class="tool-item reveal reveal-d2"><div class="tool-ico"><img src="assets/tools/xd.png" alt="Adobe XD logo"></div><div class="tool-name">Adobe XD</div><div class="tool-use">Design · Prototype</div></div>
+    <div class="tool-item reveal reveal-d3"><div class="tool-ico"><img src="assets/tools/claude.png" alt="Claude logo"></div><div class="tool-name">Claude</div><div class="tool-use">Ideation · Developing PRD · Research</div></div>
+    <div class="tool-item reveal reveal-d3"><div class="tool-ico tool-ico--dark"><img src="assets/tools/cursor.png" alt="Cursor logo"></div><div class="tool-name">Cursor</div><div class="tool-use">Vibecoding · Building · Shipping</div></div>
+    <div class="tool-item reveal reveal-d4"><div class="tool-ico tool-ico--dark"><img src="assets/tools/vercel.png" alt="Vercel logo"></div><div class="tool-name">Vercel</div><div class="tool-use">Hosting Projects · Deployment</div></div>
+    <div class="tool-item reveal reveal-d4"><div class="tool-ico"><img src="assets/tools/lovable.png" alt="Lovable logo"></div><div class="tool-name">Loveable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
   </div>
 </section>
 </div>
