@@ -380,8 +380,7 @@ nav {
 
 /* ─── TOOLS SECTION ─── */
 .tools-section {
-  --tool-icon-size: 36px;
-  --tool-icon-size-lg: 48px;
+  --tool-icon-size: 44px;
   padding: 0 56px 80px;
 }
 .tools-grid {
@@ -408,7 +407,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
 }
 .tool-ico img {
   width: 100%;
@@ -417,30 +415,6 @@ nav {
   object-position: center;
   display: block;
   flex-shrink: 0;
-}
-.tool-ico--dark {
-  background: #000;
-  overflow: hidden;
-}
-.tool-ico--dark img {
-  background: #000;
-}
-.tool-ico--vercel img {
-  width: 62%;
-  height: 62%;
-}
-.tool-ico--lovable {
-  overflow: hidden;
-  border-radius: 6px;
-}
-.tool-ico--lovable img {
-  border-radius: 6px;
-}
-.tool-ico--lg {
-  width: var(--tool-icon-size-lg);
-  height: var(--tool-icon-size-lg);
-  min-width: var(--tool-icon-size-lg);
-  min-height: var(--tool-icon-size-lg);
 }
 .tool-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: -.3px; }
 .tool-use { font-size: 12px; color: var(--muted); line-height: 1.45; }
@@ -1212,7 +1186,7 @@ body.locked { overflow: hidden; }
       <!-- DRAGGIT CARD -->
       <div class="p-card card-d reveal card-col-right" onclick="openCase('draggit')">
         <div class="pc-right" style="padding:44px 28px;">
-          <video class="draggit-vid lazy-vid" aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" poster="assets/Draggit Case Study/The problem modal covering profile info.png" data-src="assets/Draggit_web.mp4"></video>
+          <video class="draggit-vid lazy-vid" aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" poster="assets/Draggit Case Study/The problem modal covering profile info.png" data-src="assets/Draggit.mp4"></video>
         </div>
         <div class="pc-left">
           <div class="pc-status"><span class="live-dot"></span> Built &amp; Shipped · Solo</div>
@@ -1473,13 +1447,13 @@ body.locked { overflow: hidden; }
   <h2 class="work-display-title">My Tool <em>Stack</em></h2>
   <div class="tools-grid">
     <div class="tool-item reveal reveal-d1"><div class="tool-ico"><img src="assets/tools/figma.png" alt="Figma logo"></div><div class="tool-name">Figma</div><div class="tool-use">Ideation · Collaborate · Design · Prototype</div></div>
-    <div class="tool-item reveal reveal-d1"><div class="tool-ico tool-ico--lg"><img src="assets/tools/miro.png" alt="Miro logo"></div><div class="tool-name">Miro</div><div class="tool-use">Iteration · Collaboration · Research synthesis</div></div>
-    <div class="tool-item reveal reveal-d2"><div class="tool-ico tool-ico--lg"><img src="assets/tools/illustrator.png" alt="Adobe Illustrator logo"></div><div class="tool-name">Illustrator</div><div class="tool-use">Brand Design · Visual Design · Motion</div></div>
-    <div class="tool-item reveal reveal-d2"><div class="tool-ico tool-ico--lg"><img src="assets/tools/xd.png" alt="Adobe XD logo"></div><div class="tool-name">Adobe XD</div><div class="tool-use">Design · Prototype</div></div>
-    <div class="tool-item reveal reveal-d3"><div class="tool-ico tool-ico--lg"><img src="assets/tools/claude.png" alt="Claude logo"></div><div class="tool-name">Claude</div><div class="tool-use">Ideation · Developing PRD · Research</div></div>
-    <div class="tool-item reveal reveal-d3"><div class="tool-ico tool-ico--dark"><img src="assets/tools/cursor.png" alt="Cursor logo"></div><div class="tool-name">Cursor</div><div class="tool-use">Vibecoding · Building · Shipping</div></div>
-    <div class="tool-item reveal reveal-d4"><div class="tool-ico tool-ico--dark tool-ico--vercel"><img src="assets/tools/vercel.png" alt="Vercel logo"></div><div class="tool-name">Vercel</div><div class="tool-use">Hosting Projects · Deployment</div></div>
-    <div class="tool-item reveal reveal-d4"><div class="tool-ico tool-ico--lovable tool-ico--lg"><img src="assets/tools/lovable.png" alt="Lovable logo"></div><div class="tool-name">Loveable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
+    <div class="tool-item reveal reveal-d1"><div class="tool-ico"><img src="assets/tools/miro.png" alt="Miro logo"></div><div class="tool-name">Miro</div><div class="tool-use">Iteration · Collaboration · Research synthesis</div></div>
+    <div class="tool-item reveal reveal-d2"><div class="tool-ico"><img src="assets/tools/illustrator.png" alt="Adobe Illustrator logo"></div><div class="tool-name">Illustrator</div><div class="tool-use">Brand Design · Visual Design · Motion</div></div>
+    <div class="tool-item reveal reveal-d2"><div class="tool-ico"><img src="assets/tools/xd.png" alt="Adobe XD logo"></div><div class="tool-name">Adobe XD</div><div class="tool-use">Design · Prototype</div></div>
+    <div class="tool-item reveal reveal-d3"><div class="tool-ico"><img src="assets/tools/claude.png" alt="Claude logo"></div><div class="tool-name">Claude</div><div class="tool-use">Ideation · Developing PRD · Research</div></div>
+    <div class="tool-item reveal reveal-d3"><div class="tool-ico"><img src="assets/tools/cursor.png" alt="Cursor logo"></div><div class="tool-name">Cursor</div><div class="tool-use">Vibecoding · Building · Shipping</div></div>
+    <div class="tool-item reveal reveal-d4"><div class="tool-ico"><img src="assets/tools/vercel.png" alt="Vercel logo"></div><div class="tool-name">Vercel</div><div class="tool-use">Hosting Projects · Deployment</div></div>
+    <div class="tool-item reveal reveal-d4"><div class="tool-ico"><img src="assets/tools/lovable.png" alt="Lovable logo"></div><div class="tool-name">Loveable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
   </div>
 </section>
 </div>

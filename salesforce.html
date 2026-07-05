@@ -275,23 +275,76 @@ nav {
 .gallery-item:hover img { transform: scale(1.07); }
 .gallery-item::after { content: ''; position: absolute; inset: 0; border-radius: 14px; background: rgba(0,158,219,0); transition: background .3s; pointer-events: none; }
 .gallery-item:hover::after { background: rgba(0,158,219,.07); }
+.gallery-item::before {
+  content: '⤢';
+  position: absolute; bottom: 10px; right: 10px; z-index: 2;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(255,255,255,.92); color: var(--ink);
+  font-size: 14px; line-height: 28px; text-align: center;
+  opacity: 0; transform: scale(.9);
+  transition: opacity .25s, transform .25s;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+.gallery-item:hover::before { opacity: 1; transform: scale(1); }
 .gallery-left-item { aspect-ratio: 4/3; }
 .gallery-right-item { flex: 1; min-height: 0; }
 /* ─── LIGHTBOX ─── */
-.photo-lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(5,10,25,.94); display: flex; align-items: center; justify-content: center; padding: 40px; opacity: 0; pointer-events: none; transition: opacity .28s; }
+.photo-lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(5,10,25,.94); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 56px 80px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .28s;
+}
 .photo-lightbox.lb-open { opacity: 1; pointer-events: all; }
-.photo-lightbox img { max-width: 88vw; max-height: 86vh; object-fit: contain; border-radius: 12px; box-shadow: 0 40px 100px rgba(0,0,0,.6); transform: scale(.96); transition: transform .28s cubic-bezier(.25,.46,.45,.94); display: block; }
-.photo-lightbox.lb-open img { transform: scale(1); }
-.lb-close { position: absolute; top: 24px; right: 28px; background: rgba(255,255,255,.12); border: none; color: rgba(255,255,255,.8); font-size: 26px; line-height: 1; cursor: pointer; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; transition: background .2s, color .2s; }
+.photo-lightbox .lb-stage {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  max-width: 100%; max-height: 100%;
+}
+.photo-lightbox .lb-stage img {
+  max-width: min(88vw, 1200px); max-height: 86vh;
+  object-fit: contain; border-radius: 12px;
+  box-shadow: 0 40px 100px rgba(0,0,0,.6);
+  transform: scale(.96);
+  transition: transform .28s cubic-bezier(.25,.46,.45,.94), opacity .2s;
+  display: block; user-select: none;
+}
+.photo-lightbox.lb-open .lb-stage img { transform: scale(1); }
+.lb-close {
+  position: absolute; top: 24px; right: 28px; z-index: 3;
+  background: rgba(255,255,255,.12); border: none;
+  color: rgba(255,255,255,.85); font-size: 22px; line-height: 1;
+  cursor: pointer; border-radius: 50%;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, color .2s;
+}
 .lb-close:hover { background: rgba(255,255,255,.22); color: #fff; }
-.lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.75); font-size: 26px; cursor: pointer; padding: 14px 18px; border-radius: 10px; transition: background .2s, color .2s; }
-.lb-nav:hover { background: rgba(255,255,255,.2); color: #fff; }
+.lb-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.85); font-size: 28px; line-height: 1;
+  cursor: pointer; padding: 14px 18px; border-radius: 10px;
+  transition: background .2s, color .2s;
+}
+.lb-nav:hover { background: rgba(255,255,255,.22); color: #fff; }
 .lb-prev { left: 20px; }
 .lb-next { right: 20px; }
+.lb-counter {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  font-size: 12px; font-weight: 600; letter-spacing: .08em;
+  color: rgba(255,255,255,.55); z-index: 3;
+}
 @media (max-width: 768px) {
   .photo-gallery { grid-template-columns: 1fr; }
   .photo-gallery-right { flex-direction: row; }
   .gallery-right-item { flex: 1; aspect-ratio: 4/3; }
+  .photo-lightbox { padding: 48px 16px; }
+  .lb-prev { left: 8px; }
+  .lb-next { right: 8px; }
+  .lb-nav { padding: 12px 14px; font-size: 22px; }
 }
 /* ─── DASH SHOWCASE ─── */
 /* Desktop (>1024px): full layered 3-col grid with overlapping callouts */
@@ -611,25 +664,25 @@ nav {
     <div class="photo-gallery">
       <!-- Left: 2×2 grid of whiteboard / close-up shots -->
       <div class="photo-gallery-left">
-        <div class="gallery-item gallery-left-item" data-lb-idx="0">
+        <div class="gallery-item gallery-left-item" data-lb-idx="0" role="button" tabindex="0" aria-label="View whiteboard ideation session">
           <img src="assets/salesforce/screenshots/iteration-phase/iteration-whiteboard.jpg" alt="Whiteboard ideation session">
         </div>
-        <div class="gallery-item gallery-left-item" data-lb-idx="1">
+        <div class="gallery-item gallery-left-item" data-lb-idx="1" role="button" tabindex="0" aria-label="View iteration sketch">
           <img src="assets/salesforce/screenshots/iteration-phase/iteration-01.png" alt="Iteration sketch">
         </div>
-        <div class="gallery-item gallery-left-item" data-lb-idx="2">
+        <div class="gallery-item gallery-left-item" data-lb-idx="2" role="button" tabindex="0" aria-label="View concept iteration">
           <img src="assets/salesforce/screenshots/iteration-phase/iteration-02.png" alt="Concept iteration">
         </div>
-        <div class="gallery-item gallery-left-item" data-lb-idx="3">
+        <div class="gallery-item gallery-left-item" data-lb-idx="3" role="button" tabindex="0" aria-label="View iteration wireframe">
           <img src="assets/salesforce/screenshots/iteration-phase/iteration-03.png" alt="Iteration wireframe">
         </div>
       </div>
       <!-- Right: single column with the 2 team photos -->
       <div class="photo-gallery-right">
-        <div class="gallery-item gallery-right-item" data-lb-idx="4">
+        <div class="gallery-item gallery-right-item" data-lb-idx="4" role="button" tabindex="0" aria-label="View team ideation session">
           <img src="assets/salesforce/screenshots/iteration-phase/iteration-team-01.jpg" alt="Team ideation session">
         </div>
-        <div class="gallery-item gallery-right-item" data-lb-idx="5">
+        <div class="gallery-item gallery-right-item" data-lb-idx="5" role="button" tabindex="0" aria-label="View team ideation session">
           <img src="assets/salesforce/screenshots/iteration-phase/iteration-team-02.jpg" alt="Team ideation session">
         </div>
       </div>
@@ -885,6 +938,17 @@ nav {
 
 </div><!-- /cs-content -->
 
+<!-- PHOTO LIGHTBOX (before scripts so init can bind) -->
+<div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Photo gallery">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close gallery">&#x2715;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Previous photo">&#8249;</button>
+  <div class="lb-stage">
+    <img src="" alt="" id="lbImg">
+  </div>
+  <button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Next photo">&#8250;</button>
+  <div class="lb-counter" id="lbCounter" aria-live="polite"></div>
+</div>
+
 <script>
 document.getElementById('navBurger').addEventListener('click', function() {
   document.getElementById('navMobile').classList.add('open');
@@ -962,11 +1026,18 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
   var lbCurrent = 0;
   var lb = document.getElementById('photoLightbox');
   var lbImg = document.getElementById('lbImg');
+  var lbCounter = document.getElementById('lbCounter');
+  if (!lb || !lbImg) return;
 
+  function lbRender() {
+    var item = lbImages[lbCurrent];
+    lbImg.src = item.src;
+    lbImg.alt = item.alt;
+    if (lbCounter) lbCounter.textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+  }
   function lbOpen(idx) {
     lbCurrent = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
-    lbImg.src = lbImages[lbCurrent].src;
-    lbImg.alt = lbImages[lbCurrent].alt;
+    lbRender();
     lb.classList.add('lb-open');
     document.body.style.overflow = 'hidden';
   }
@@ -977,11 +1048,17 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
   function lbGo(dir) { lbOpen(lbCurrent + dir); }
 
   document.querySelectorAll('.gallery-item[data-lb-idx]').forEach(function(el) {
-    el.addEventListener('click', function() { lbOpen(parseInt(el.dataset.lbIdx)); });
+    el.addEventListener('click', function() { lbOpen(parseInt(el.dataset.lbIdx, 10)); });
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        lbOpen(parseInt(el.dataset.lbIdx, 10));
+      }
+    });
   });
-  document.getElementById('lbClose').addEventListener('click', lbClose);
-  document.getElementById('lbPrev').addEventListener('click', function() { lbGo(-1); });
-  document.getElementById('lbNext').addEventListener('click', function() { lbGo(1); });
+  document.getElementById('lbClose').addEventListener('click', function(e) { e.stopPropagation(); lbClose(); });
+  document.getElementById('lbPrev').addEventListener('click', function(e) { e.stopPropagation(); lbGo(-1); });
+  document.getElementById('lbNext').addEventListener('click', function(e) { e.stopPropagation(); lbGo(1); });
   lb.addEventListener('click', function(e) { if (e.target === lb) lbClose(); });
   document.addEventListener('keydown', function(e) {
     if (!lb.classList.contains('lb-open')) return;
@@ -1060,14 +1137,6 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
   window.addEventListener('resize', drawConnector);
 })();
 </script>
-
-<!-- LIGHTBOX -->
-<div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true">
-  <button class="lb-close" id="lbClose" aria-label="Close">&#x2715;</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
-  <img src="" alt="" id="lbImg">
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
-</div>
 
 <footer class="footer-bar">
   <span>© 2025 Rhea Mittal</span>

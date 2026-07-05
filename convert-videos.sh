@@ -2,8 +2,8 @@
 
 ASSETS_DIR="$(dirname "$0")/assets"
 
-find "$ASSETS_DIR" \( -name "*.mov" -o -name "*.mp4" \) | while read -r input; do
-  # Skip files that are already converted (end in _web.mp4)
+find "$ASSETS_DIR" \( -name "*.mov" -o -name "*.mp4" -o -name "*.MOV" \) -print0 | while IFS= read -r -d '' input; do
+  # Skip web-optimized outputs
   if [[ "$input" == *"_web.mp4" ]]; then
     continue
   fi
@@ -12,8 +12,8 @@ find "$ASSETS_DIR" \( -name "*.mov" -o -name "*.mp4" \) | while read -r input; d
   base="$(basename "${input%.*}")"
   output="$dir/${base}_web.mp4"
 
-  if [ -f "$output" ]; then
-    echo "SKIP (already exists): $output"
+  if [ -f "$output" ] && [ "$output" -nt "$input" ]; then
+    echo "SKIP (up to date): $output"
     continue
   fi
 
