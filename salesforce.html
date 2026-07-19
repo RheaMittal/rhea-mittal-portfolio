@@ -5,12 +5,20 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Designing Adaptive Engagement for Evolving Learner Needs | Rhea Mittal</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.8);
+  --glass-edge: rgba(0,0,0,0.06);
+  --glass-blur: blur(18px) saturate(1.45);
+  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+
   --bg: #F5F4F0;
   --ink: #0C0C0C;
   --muted: rgba(12,12,12,0.45);
@@ -22,33 +30,163 @@ html { scroll-behavior: smooth; }
   --white: #FFFFFF;
 }
 
-body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+
 
 /* ─── NAV ─── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 18px 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(245,244,240,0.92); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  padding: 16px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: transparent;
+  border-bottom: none;
+  pointer-events: none;
 }
-.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
-.nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
-.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94); }
-.nav-links a:hover { color: var(--ink); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a.active { color: var(--ink); }
-.nav-links a.active::after { width: 100%; }
-.nav-cta { background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; transition: transform .2s; }
-.nav-cta:hover { transform: scale(1.04); }
-.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-.nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
-.nav-mobile { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+nav > * { pointer-events: auto; }
+.nav-logo {
+  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  letter-spacing: 0; text-decoration: none; color: var(--ink);
+  justify-self: start;
+  padding: 10px 4px;
+  transition: opacity .2s;
+}
+.nav-logo:hover { opacity: .7; }
+.nav-pill {
+  position: relative;
+  justify-self: center;
+  display: flex; align-items: center; gap: 2px;
+  padding: 5px;
+  border-radius: 100px;
+  background: var(--glass-bg, rgba(255,255,255,0.62));
+  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
+  box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
+}
+.nav-pill-indicator {
+  position: absolute;
+  top: 5px; left: 0;
+  height: calc(100% - 10px);
+  border-radius: 100px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(80,76,68,0.12);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), width .5s cubic-bezier(.22, 1, .36, 1), opacity .35s ease;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.nav-pill a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 18px;
+  min-height: 38px;
+  border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  box-shadow: none;
+  transition: color .35s ease;
+}
+.nav-pill a:hover { color: var(--ink); }
+.nav-pill a.active {
+  color: var(--green);
+  font-weight: 500;
+  background: transparent;
+  box-shadow: none;
+}
+.nav-cta {
+  justify-self: end;
+  background: var(--ink); color: var(--bg);
+  padding: 10px 20px; border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(12,12,12,0.12);
+}
+.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 8px; background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
+  justify-self: end;
+  box-shadow: 0 4px 16px rgba(80,76,68,0.08);
+}
+.nav-burger span {
+  display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px;
+}
+.nav-mobile {
+  display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
+  backdrop-filter: blur(24px); z-index: 998;
+  flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+}
 .nav-mobile.open { display: flex; }
-.nav-mobile a { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px,8vw,64px); text-transform: uppercase; letter-spacing: -1px; color: var(--ink); text-decoration: none; transition: color .2s; }
-.nav-mobile a:hover { color: var(--accent); }
-.nav-mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted); }
+.nav-mobile a {
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
+}
+.nav-mobile a:hover { color: var(--green); }
+.nav-mobile-close {
+  position: absolute; top: 20px; right: 24px; background: none; border: none;
+  font-size: 24px; cursor: pointer; color: var(--muted);
+}
+
+/* ─── GLASS SYSTEM ─── */
+.glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.glass-badge {
+  display: inline-flex; align-items: center;
+  padding: 9px 18px; border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: rgba(12,12,12,0.72);
+  white-space: nowrap;
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+}
+.hero-chip {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab, .proj-tab {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab:hover, .proj-tab:hover {
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  border-color: rgba(255,255,255,0.95);
+}
+.work-tab.active, .proj-tab.active {
+  background: rgba(255,255,255,0.92);
+  color: var(--green);
+  border-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 12px rgba(80,76,68,0.10), 0 0 0 1px var(--glass-edge);
+}
+.p-card, .wk-card {
+  border: 1px solid rgba(255,255,255,0.65) !important;
+  box-shadow: var(--card-shadow-rest, 3px 6px 12px -1px rgba(80,76,68,.10)), 0 0 0 1px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.5);
+  background-clip: padding-box;
+}
+.p-card:hover, .wk-card:hover {
+  border-color: rgba(255,255,255,0.9) !important;
+}
+
 
 /* ─── SCROLL REVEAL ─── */
 .cs-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94); }
@@ -74,15 +212,25 @@ nav {
   box-shadow: 0 2px 16px rgba(0,0,0,.2);
 }
 .cs-hero-logos img { height: 20px; width: auto; display: block; }
-.cs-hero-logo-x { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 16px; color: rgba(0,0,0,0.2); }
+.cs-hero-logo-x { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 12px; color: rgba(0,0,0,0.2); }
 .cs-hero-kicker {
   font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
   color: rgba(255,255,255,.52); margin-bottom: 20px;
 }
 .cs-hero-h1 {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(40px,6vw,76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  /* min ~25px phone / preferred scales with viewport / max 44px so title doesn't dominate hero */
+  font-size: clamp(25px, 2vw + 16px, 44px);
+  line-height: 1.02; letter-spacing: 0; text-transform: uppercase;
   color: #fff; margin-bottom: 28px;
+  max-width: 100%;
+}
+/* Keep the intentional 2-line break (via <br>) — no soft-wrap to 3+ lines on desktop/tablet */
+@media (min-width: 640px) {
+  .cs-hero-h1 { white-space: nowrap; }
+}
+@media (max-width: 639px) {
+  .cs-hero-h1 { font-size: clamp(24px, 6.2vw, 28px); line-height: 1.08; }
 }
 .cs-hero-desc {
   font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72);
@@ -111,25 +259,25 @@ nav {
   display: flex; align-items: center; gap: 12px;
 }
 .cs-sec-label .n {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px;
+  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px;
   color: rgba(0,0,0,.15); letter-spacing: 0;
 }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .cs-sec-title {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(28px,3.5vw,44px); line-height: 1.06;
-  letter-spacing: -1px; text-transform: uppercase; margin-bottom: 28px;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06;
+  letter-spacing: 0; text-transform: uppercase; margin-bottom: 28px;
 }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
 
 /* ─── IMAGE ─── */
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: .02em; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── STAT GRID ─── */
 .stat-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0; }
 .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px 20px; text-align: center; }
-.stat-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 48px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+.stat-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 37px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
 .stat-card-l { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
 /* ─── CARDS ─── */
@@ -140,8 +288,8 @@ nav {
   display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.16); }
-.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: rgba(1,118,211,.12); line-height: 1; }
-.c-card-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(1,118,211,.12); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── PROC RAIL ─── */
@@ -150,16 +298,16 @@ nav {
 .proc-step:last-child { border-right: none; }
 .proc-step:hover { background: rgba(0,0,0,.02); }
 .proc-step-ico { display:flex; align-items:center; justify-content:center; height:28px; margin-bottom:0; }
-.proc-step-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: -.2px; }
+.proc-step-label { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0; }
 .proc-step-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
 
 /* ─── DONUT FINDINGS ─── */
 .findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
 .finding-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; display: flex; align-items: center; gap: 20px; transition: border-color .2s; }
-.finding-card:hover { border-color: rgba(0,158,219,.25); }
-.donut-ring { width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; position: relative; flex-shrink: 0; background: conic-gradient(var(--accent) 0%, rgba(0,158,219,.12) 0%); }
+.finding-card:hover { border-color: rgba(0,112,210,.25); }
+.donut-ring { width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; position: relative; flex-shrink: 0; background: conic-gradient(#0070D2 0%, rgba(0,112,210,.12) 0%); }
 .donut-ring::after { content: ''; position: absolute; width: 58px; height: 58px; border-radius: 50%; background: var(--white); }
-.donut-pct { position: relative; z-index: 1; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 15px; color: var(--accent); letter-spacing: -.3px; }
+.donut-pct { position: relative; z-index: 1; font-family: 'Lato', sans-serif; font-weight: 900; font-size: 12px; color: #0070D2; letter-spacing: 0; }
 .finding-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
 .finding-text strong { color: var(--ink); font-weight: 600; }
 
@@ -167,15 +315,15 @@ nav {
 .how-steps { display: flex; flex-direction: column; gap: 0; }
 .how-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
 .how-step:last-child { border-bottom: none; }
-.step-badge { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.step-badge { width: 28px; height: 28px; border-radius: 50%; background: #0070D2; color: #fff; font-family: 'Lato', sans-serif; font-weight: 900; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
 .step-txt { font-size: 14px; color: var(--muted); line-height: 1.65; }
 .step-txt strong { color: var(--ink); font-weight: 600; }
 
 /* ─── SOLUTION FEATURE ─── */
 .sol-feature { margin-bottom: 72px; }
-.sol-feat-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.sol-feat-badge { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 900; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; }
-.sol-feat-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(28px,3.5vw,44px); text-transform: uppercase; letter-spacing: -1px; color: var(--ink); margin-bottom: 16px; line-height: 1.05; }
+.sol-feat-label { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: #0070D2; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.sol-feat-badge { width: 22px; height: 22px; border-radius: 50%; background: #0070D2; color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Lato', sans-serif; }
+.sol-feat-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: clamp(22px, 2.73vw, 34px); text-transform: uppercase; letter-spacing: 0; color: var(--ink); margin-bottom: 16px; line-height: 1.05; }
 .sol-feat-body { font-size: 15px; line-height: 1.75; color: var(--muted); background: var(--accent-bg); border: 1px solid var(--accent-border); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
 .sol-feat-layout { display: grid; grid-template-columns: 1fr 0.75fr; gap: 32px; align-items: start; }
 .sol-feat-screen { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
@@ -185,7 +333,7 @@ nav {
 .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 32px 0; }
 .res-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; transition: border-color .2s, transform .25s; }
 .res-card:hover { border-color: rgba(1,118,211,.25); transform: translateY(-3px); }
-.res-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; color: var(--accent); letter-spacing: -1px; line-height: 1; margin-bottom: 8px; }
+.res-num { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; color: var(--accent); letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
 .res-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
 
 /* ─── LEARNINGS ─── */
@@ -204,7 +352,7 @@ nav {
 /* ─── FOOTER CTA ─── */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; background: linear-gradient(160deg, #050E2A 0%, #0A1E50 60%, #009EDB 100%); }
-.cs-footer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
 .fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
@@ -216,14 +364,15 @@ nav {
 .eval-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
 .eval-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
 .eval-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 4px 10px; border-radius: 100px; background: var(--accent-bg); color: var(--accent); margin-bottom: 12px; }
-.eval-card h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: -.3px; margin-bottom: 8px; }
+.eval-card h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
 .eval-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   nav { padding: 14px 24px; }
   .cs-section { margin-bottom: 56px; }
-  .nav-links { display: none; }
+  .nav-pill { display: none; }
+  .nav-cta { display: none; }
   .nav-burger { display: flex; }
   .cs-hero-band { padding: 100px 20px 0; }
   .cs-content { padding: 0 20px 100px; }
@@ -238,7 +387,7 @@ nav {
   .results-grid { grid-template-columns: 1fr; }
   .eval-grid { grid-template-columns: 1fr; }
   .cs-footer-inner { padding: 40px 24px; }
-  .cs-footer-title { font-size: 36px; }
+  .cs-footer-title { font-size: 28px; }
 }
 @media (max-width: 600px) {
   .cards-g3 { grid-template-columns: 1fr; }
@@ -264,7 +413,7 @@ nav {
 .solve-next { right: 14px; }
 .solve-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; }
 .solve-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,.22); border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
-.solve-dot.active { background: var(--accent); transform: scale(1.3); }
+.solve-dot.active { background: #0070D2; transform: scale(1.3); }
 
 /* ─── PHOTO GALLERY ─── */
 .photo-gallery { display: grid; grid-template-columns: 1fr 0.48fr; gap: 10px; margin-bottom: 16px; }
@@ -409,7 +558,7 @@ nav {
   line-height: 1.6;
   color: #1A3A5C;
   background: #DDF0FA; /* solid light Salesforce-blue tint */
-  border: 1px solid rgba(0,158,219,.2);
+  border: 1px solid rgba(0,112,210,.2);
   border-radius: 12px;
   padding: 14px 16px;
   box-shadow: 0 4px 16px rgba(0,0,0,.07);
@@ -468,19 +617,21 @@ nav {
   }
 }
 </style>
+<link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
-  <ul class="nav-links">
-    <li><a href="work.html" class="active">Work</a></li>
-    <li><a href="playground.html">Play</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
-
-  </ul>
+<!-- ─── NAV ─── -->
+<nav class="nav-dark">
+  <a class="nav-logo" href="portfolio-v2.html">RM</a>
+  <div class="nav-pill">
+    <span class="nav-pill-indicator" aria-hidden="true"></span>
+    <a href="work.html" class="nav-pill-link active">Work</a>
+    <a href="playground.html" class="nav-pill-link">Play</a>
+    <a href="about.html" class="nav-pill-link">About</a>
+    <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" class="nav-pill-link" download>Resume ↗</a>
+  </div>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -507,7 +658,7 @@ nav {
       <img src="assets/salesforce/logos/images.png" alt="Salesforce Trailhead">
     </div>
     <div class="cs-hero-kicker">Capstone &middot; User Research &middot; Product Design &middot; AI-Powered</div>
-    <h1 class="cs-hero-h1">Millions learned.<br>Then stopped coming back.</h1>
+    <h1 class="cs-hero-h1">Designing Adaptive Engagement<br>for Evolving Learner Needs</h1>
     <p class="cs-hero-desc">A 10-month research-driven capstone with Salesforce Trailhead. We redesigned what happens after mastery, building two AI-powered features to re-engage the platform's most valuable users.</p>
     <img src="assets/salesforce/screenshots/Realistic Tablet Screen UI Mockup.png" alt="Trailhead Solve tablet mockup" style="width:100%;display:block;margin:-80px auto 0;">
   </div>
@@ -554,7 +705,7 @@ nav {
     <div style="display:grid;grid-template-columns:1.65fr 1fr;gap:16px;margin-bottom:16px;align-items:stretch;">
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 32px;">
         <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">The Platform</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.4px;margin-bottom:14px;color:var(--ink);">Free. Guided. Built for beginners to experts.</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;letter-spacing: 0;margin-bottom:14px;color:var(--ink);">Free. Guided. Built for beginners to experts.</div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin:0;">Salesforce Trailhead is a free learning platform used by millions of professionals to get certified and build careers in enterprise software. Through guided modules, hands-on challenges, and community forums, it takes beginners to certified experts. But that's exactly where it stops working. Once a user earns their certifications, the loop has nowhere to go.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
@@ -566,7 +717,7 @@ nav {
     <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;margin-bottom:16px;overflow:hidden;display:grid;grid-template-columns:1fr auto;align-items:center;">
       <div style="padding:28px 32px;">
         <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Our Focus</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(20px,2.5vw,28px);text-transform:uppercase;letter-spacing:-.5px;color:var(--ink);margin-bottom:12px;">Who were we designing for?</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(16px, 1.95vw, 22px);text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:12px;">Who were we designing for?</div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin:0;">The power user: someone who had already arrived. They had certifications, years of Salesforce experience, and had built their careers on the platform. And they had stopped logging in. The drop-off wasn't a failure of motivation. It was a failure of the product. Trailhead had no trigger for re-engagement after mastery.</p>
       </div>
       <div style="display:flex;align-items:flex-end;height:100%;overflow:hidden;border-radius:0 16px 16px 0;">
@@ -608,15 +759,15 @@ nav {
 
     <!-- Quote -->
     <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:40px;display:flex;gap:16px;align-items:flex-start;">
-      <div style="font-family:'Instrument Serif',serif;font-size:48px;color:var(--accent);line-height:.65;flex-shrink:0;opacity:.4;">"</div>
+      <div style="font-family:'Lato',sans-serif;font-size:37px;color:var(--accent);line-height:.65;flex-shrink:0;opacity:.4;">"</div>
       <div>
-        <p style="font-family:'Instrument Serif',serif;font-size:18px;font-style:italic;color:var(--ink);line-height:1.65;margin-bottom:10px;">"I used to check Trailhead every morning. Now I just open ChatGPT when I have a Salesforce question. It actually knows what I'm asking."</p>
+        <p style="font-family:'Lato',sans-serif;font-size:14px;font-style:italic;color:var(--ink);line-height:1.65;margin-bottom:10px;">"I used to check Trailhead every morning. Now I just open ChatGPT when I have a Salesforce question. It actually knows what I'm asking."</p>
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Senior Salesforce Admin, Round 1 interview</div>
       </div>
     </div>
 
     <!-- What we found -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;">What we found about advanced users <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:16px;display:flex;align-items:center;gap:10px;">What we found about advanced users <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
     <div class="findings-grid">
       <div class="finding-card">
@@ -649,8 +800,8 @@ nav {
     <h2 class="cs-sec-title">How might we bring them back?</h2>
 
     <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:44px 52px;margin-bottom:40px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:16px;">How might we</div>
-      <p style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(26px,3.2vw,42px);color:var(--accent-dark);line-height:1.15;margin:0;">Drive advanced users to keep returning to Trailhead with <span style="color:var(--accent);">deeper, relevant,</span> and <span style="color:var(--accent);">career-aligned</span> experiences?</p>
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#0070D2;margin-bottom:16px;">How might we</div>
+      <p style="font-family:'Lato',sans-serif;font-weight:600;font-size:clamp(20px, 2.5vw, 33px);color:var(--accent-dark);line-height:1.15;margin:0;">Drive advanced users to keep returning to Trailhead with <span style="color:#0070D2;">deeper, relevant,</span> and <span style="color:#0070D2;">career-aligned</span> experiences?</p>
     </div>
 
   </div>
@@ -687,17 +838,17 @@ nav {
         </div>
       </div>
     </div>
-    <p style="font-size:12px;color:var(--muted);text-align:center;margin-bottom:48px;letter-spacing:.02em;">Whiteboard synthesis, affinity mapping, and concept development across team ideation sessions</p>
+    <p style="font-size:12px;color:var(--muted);text-align:center;margin-bottom:48px;letter-spacing: 0;">Whiteboard synthesis, affinity mapping, and concept development across team ideation sessions</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div style="background:var(--white);border:2px solid var(--accent-border);border-radius:16px;padding:28px;">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;">Selected Direction 01</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:-.5px;margin-bottom:10px;color:var(--ink);">Trailhead Solve</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:12px;">Selected Direction 01</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;text-transform:uppercase;letter-spacing: 0;margin-bottom:10px;color:var(--ink);">Trailhead Solve</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;">An AI-powered workspace that answers real Salesforce problems in plain language. Addresses the "I just use ChatGPT" behavior by keeping expert knowledge inside the Trailhead ecosystem.</p>
       </div>
       <div style="background:var(--white);border:2px solid var(--accent-border);border-radius:16px;padding:28px;">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;">Selected Direction 02</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:-.5px;margin-bottom:10px;color:var(--ink);">Personalised Dashboard</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:12px;">Selected Direction 02</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;text-transform:uppercase;letter-spacing: 0;margin-bottom:10px;color:var(--ink);">Personalised Dashboard</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;">An adaptive career layer that shows what changed, where you stand, and what to do next. Creates a weekly visit habit instead of waiting for a new certification cycle.</p>
       </div>
     </div>
@@ -734,7 +885,7 @@ nav {
 
         <!-- How it works — right column -->
         <div style="display:flex;flex-direction:column;gap:14px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:4px;">How it works</div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:4px;">How it works</div>
           <div class="how-steps">
             <div class="how-step">
               <div class="step-badge">1</div>
@@ -760,19 +911,20 @@ nav {
       <p class="sol-feat-body">An adaptive career layer that tells you what changed, where you stand, and what to do next. One personalised action per visit, tied to certifications, recent Solve sessions, and Salesforce release changes. Agentforce surfaces trending skills for your role, shows your current standing in the market, and generates custom Trailmixes to close skill gaps. Each visit becomes more valuable than the last.</p>
 
       <div class="dash-showcase" id="dashShowcase">
-        <!-- SVG connector: "What's my move today?" button → left callout -->
+        <!-- SVG connectors: callout 1 (trails) + callout 2 (skills) -->
         <svg id="dashConnectorSvg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;overflow:visible;" aria-hidden="true">
           <defs>
-            <marker id="arrowPurple" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse">
-              <path d="M0,1 L5.5,3.5 L0,6 Z" fill="#8B5CF6"/>
+            <marker id="arrowBlue" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+              <path d="M0,1 L5.5,3.5 L0,6 Z" fill="#0070D2"/>
             </marker>
           </defs>
-          <path id="dashConnectorPath" fill="none" stroke="#8B5CF6" stroke-width="1.4" stroke-dasharray="5 4" stroke-linecap="round" marker-end="url(#arrowPurple)"/>
+          <path id="dashConnectorPath" fill="none" stroke="#0070D2" stroke-width="1.4" stroke-dasharray="5 4" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+          <path id="dashConnectorPathRight" fill="none" stroke="#0070D2" stroke-width="1.4" stroke-dasharray="5 4" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
         </svg>
 
         <!-- Callout 1 — top left -->
         <div class="dash-callout dash-callout-left" id="dashLeftCallout">
-          <div class="dash-callout-img">
+          <div class="dash-callout-img" id="dashLeftCalloutImg">
             <img src="assets/salesforce/screenshots/Trails recommended.png" alt="Trail recommendations">
           </div>
           <p class="dash-callout-caption">Trails recommended based on chats with Trailhead Solve.</p>
@@ -783,9 +935,9 @@ nav {
           <img src="assets/salesforce/screenshots/screencapture-localhost-5174-2026-04-28-16_43_13.png" alt="Personalised Dashboard full view">
         </div>
 
-        <!-- Callout 2 — bottom right -->
-        <div class="dash-callout dash-callout-right">
-          <div class="dash-callout-img">
+        <!-- Callout 2 — bottom right (skills) -->
+        <div class="dash-callout dash-callout-right" id="dashRightCallout">
+          <div class="dash-callout-img" id="dashRightCalloutImg">
             <img src="assets/salesforce/screenshots/trending skills .png" alt="Trending skills">
           </div>
           <p class="dash-callout-caption">Agentforce identifies trending skills for your role, shows your current standing in the market, and enables you to generate custom Trailmixes to close skill gaps.</p>
@@ -854,7 +1006,7 @@ nav {
       <div style="font-size:52px;line-height:1;flex-shrink:0;">🏅</div>
       <div>
         <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#92400E;margin-bottom:6px;">Award</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;letter-spacing:-1px;color:#0C0C0C;line-height:1;margin-bottom:6px;">People's Choice Award</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;letter-spacing: 0;color:#0C0C0C;line-height:1;margin-bottom:6px;">People's Choice Award</div>
         <div style="font-size:14px;color:rgba(12,12,12,.5);line-height:1.5;">IU Capstone Event &middot; Voted by the audience across all capstone projects</div>
       </div>
     </div>
@@ -923,13 +1075,13 @@ nav {
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div onclick="window.location='freetown-village.html'" style="background:rgba(212,132,90,.06);border:1px solid rgba(212,132,90,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(212,132,90,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(212,132,90,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#D4845A;margin-bottom:12px;">Cultural Heritage · Visual Design</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#0C0C0C;margin-bottom:8px;">Freetown Village</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Freetown Village</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Designing a gamified digital experience to make Black history accessible and engaging.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&rarr;</span>
       </div>
       <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.35)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C9547A;margin-bottom:12px;">B2B SaaS · Visual Design</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a page that spoke their language. We rebuilt it.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&rarr;</span>
       </div>
@@ -970,7 +1122,7 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
 (function() {
   function animateDonut(el, targetPct) {
     var current = 0;
-    var accent = '#009EDB', track = 'rgba(0,158,219,.12)';
+    var accent = '#0070D2', track = 'rgba(0,112,210,.12)';
     var duration = 900, fps = 60, steps = duration / (1000 / fps);
     var step = targetPct / steps;
     var interval = setInterval(function() {
@@ -1068,51 +1220,62 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
   });
 })();
 
-/* ─── DASHBOARD DOTTED CONNECTOR ─── */
+/* ─── DASHBOARD DOTTED CONNECTORS (Feature 2 callouts) ─── */
 (function() {
   function drawConnector() {
     var showcase = document.getElementById('dashShowcase');
     var centerEl = document.getElementById('dashCenterImg');
-    var leftCallout = document.getElementById('dashLeftCallout');
+    var leftImg = document.getElementById('dashLeftCalloutImg');
+    var rightImg = document.getElementById('dashRightCalloutImg');
     var svg = document.getElementById('dashConnectorSvg');
-    var path = document.getElementById('dashConnectorPath');
-    if (!showcase || !centerEl || !leftCallout || !svg || !path) return;
+    var pathLeft = document.getElementById('dashConnectorPath');
+    var pathRight = document.getElementById('dashConnectorPathRight');
+    if (!showcase || !centerEl || !leftImg || !rightImg || !svg || !pathLeft || !pathRight) return;
 
     if (window.innerWidth < 768) { svg.style.display = 'none'; return; }
     svg.style.display = '';
 
-    /* Use the showcase as the SVG coordinate origin */
     var sr = showcase.getBoundingClientRect();
     var cr = centerEl.getBoundingClientRect();
-    var lr = leftCallout.getBoundingClientRect();
+    var lir = leftImg.getBoundingClientRect();
+    var rir = rightImg.getBoundingClientRect();
 
-    /* Bail if layout hasn't happened yet */
-    if (sr.width === 0 || cr.width === 0 || lr.width === 0) return;
+    if (sr.width === 0 || cr.width === 0 || lir.width === 0 || rir.width === 0) return;
 
-    /* Start: "What's my move today?" button — ~50% across, ~70% down the centre image */
-    var sx = (cr.left - sr.left) + cr.width * 0.50;
-    var sy = (cr.top  - sr.top)  + cr.height * 0.70;
+    /* ── Arrow 1 (trails / left callout):
+       From "What's my move today?" in the main hero → tip lands
+       just under the left callout IMAGE (not mid-callout/caption). */
+    var sx1 = (cr.left - sr.left) + cr.width * 0.50;
+    var sy1 = (cr.top  - sr.top)  + cr.height * 0.17;
+    var ex1 = (lir.left - sr.left) + lir.width * 0.78;
+    var ey1 = (lir.bottom - sr.top) + 4;
 
-    /* End: right edge of the left callout, mid-height */
-    var ex = lr.right - sr.left;
-    var ey = (lr.top - sr.top) + lr.height * 0.45;
+    var cp1x = sx1 - (sx1 - ex1) * 0.2;
+    var cp1y = sy1 + Math.max(40, (ey1 - sy1) * 0.4);
+    var cp2x = ex1 + 18;
+    var cp2y = ey1 - 12;
 
-    /* Cubic bezier: arc leftward and slightly down, then arrive horizontally */
-    var dx = sx - ex;
-    var cp1x = sx - dx * 0.12;
-    var cp1y = sy + 48;
-    var cp2x = ex + 60;
-    var cp2y = ey + 10;
-
-    path.setAttribute('d',
-      'M' + sx.toFixed(1) + ',' + sy.toFixed(1) +
+    pathLeft.setAttribute('d',
+      'M' + sx1.toFixed(1) + ',' + sy1.toFixed(1) +
       ' C' + cp1x.toFixed(1) + ',' + cp1y.toFixed(1) +
       ' '  + cp2x.toFixed(1) + ',' + cp2y.toFixed(1) +
-      ' '  + ex.toFixed(1)   + ',' + ey.toFixed(1)
+      ' '  + ex1.toFixed(1)  + ',' + ey1.toFixed(1)
+    );
+
+    /* ── Arrow 2 (skills / right callout):
+       Nearly straight line from the left edge of the skills callout
+       into the "Skills employers want" region of the main image behind it. */
+    var sx2 = rir.left - sr.left + 4;
+    var sy2 = (rir.top - sr.top) + rir.height * 0.45;
+    var ex2 = (cr.left - sr.left) + cr.width * 0.56;
+    var ey2 = (cr.top  - sr.top)  + cr.height * 0.80;
+
+    pathRight.setAttribute('d',
+      'M' + sx2.toFixed(1) + ',' + sy2.toFixed(1) +
+      ' L' + ex2.toFixed(1) + ',' + ey2.toFixed(1)
     );
   }
 
-  /* Fire when showcase scrolls into view (layout is stable at that point) */
   var obs = new IntersectionObserver(function(entries) {
     if (entries[0].isIntersecting) {
       requestAnimationFrame(function() {
@@ -1125,9 +1288,10 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
     var showcase = document.getElementById('dashShowcase');
     if (showcase) {
       obs.observe(showcase);
-      /* Also wire the centre image's own load event */
-      var img = showcase.querySelector('#dashCenterImg img');
-      if (img) img.addEventListener('load', function() { setTimeout(drawConnector, 50); });
+      var imgs = showcase.querySelectorAll('#dashCenterImg img, #dashLeftCalloutImg img, #dashRightCalloutImg img');
+      imgs.forEach(function(img) {
+        img.addEventListener('load', function() { setTimeout(drawConnector, 50); });
+      });
     }
     drawConnector();
   }
@@ -1143,5 +1307,8 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
   <span>Made with love and energy drinks ✨</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
+</script>
+
+<script src="scripts/nav-pill.js" defer></script>
 </body>
 </html>

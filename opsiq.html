@@ -5,12 +5,20 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OpsIQ | Rhea Mittal</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.8);
+  --glass-edge: rgba(0,0,0,0.06);
+  --glass-blur: blur(18px) saturate(1.45);
+  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+
   --bg: #F5F4F0;
   --ink: #0C0C0C;
   --muted: rgba(12,12,12,0.45);
@@ -22,34 +30,163 @@ html { scroll-behavior: smooth; }
   --white: #FFFFFF;
 }
 
-body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+
 
 /* ─── NAV ─── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 18px 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(245,244,240,0.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  padding: 16px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: transparent;
+  border-bottom: none;
+  pointer-events: none;
 }
-.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
-.nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
-.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94); }
-.nav-links a:hover { color: var(--ink); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a.active { color: var(--ink); }
-.nav-links a.active::after { width: 100%; }
-.nav-cta { background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; transition: transform .2s; }
-.nav-cta:hover { transform: scale(1.04); }
-.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-.nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .3s, opacity .3s; }
-.nav-mobile { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+nav > * { pointer-events: auto; }
+.nav-logo {
+  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  letter-spacing: 0; text-decoration: none; color: var(--ink);
+  justify-self: start;
+  padding: 10px 4px;
+  transition: opacity .2s;
+}
+.nav-logo:hover { opacity: .7; }
+.nav-pill {
+  position: relative;
+  justify-self: center;
+  display: flex; align-items: center; gap: 2px;
+  padding: 5px;
+  border-radius: 100px;
+  background: var(--glass-bg, rgba(255,255,255,0.62));
+  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
+  box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
+}
+.nav-pill-indicator {
+  position: absolute;
+  top: 5px; left: 0;
+  height: calc(100% - 10px);
+  border-radius: 100px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(80,76,68,0.12);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), width .5s cubic-bezier(.22, 1, .36, 1), opacity .35s ease;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.nav-pill a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 18px;
+  min-height: 38px;
+  border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  box-shadow: none;
+  transition: color .35s ease;
+}
+.nav-pill a:hover { color: var(--ink); }
+.nav-pill a.active {
+  color: var(--green);
+  font-weight: 500;
+  background: transparent;
+  box-shadow: none;
+}
+.nav-cta {
+  justify-self: end;
+  background: var(--ink); color: var(--bg);
+  padding: 10px 20px; border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(12,12,12,0.12);
+}
+.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 8px; background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
+  justify-self: end;
+  box-shadow: 0 4px 16px rgba(80,76,68,0.08);
+}
+.nav-burger span {
+  display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px;
+}
+.nav-mobile {
+  display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
+  backdrop-filter: blur(24px); z-index: 998;
+  flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+}
 .nav-mobile.open { display: flex; }
-.nav-mobile a { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px,8vw,64px); text-transform: uppercase; letter-spacing: -1px; color: var(--ink); text-decoration: none; transition: color .2s; }
+.nav-mobile a {
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
+}
 .nav-mobile a:hover { color: var(--green); }
-.nav-mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted); }
+.nav-mobile-close {
+  position: absolute; top: 20px; right: 24px; background: none; border: none;
+  font-size: 24px; cursor: pointer; color: var(--muted);
+}
+
+/* ─── GLASS SYSTEM ─── */
+.glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.glass-badge {
+  display: inline-flex; align-items: center;
+  padding: 9px 18px; border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: rgba(12,12,12,0.72);
+  white-space: nowrap;
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+}
+.hero-chip {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab, .proj-tab {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab:hover, .proj-tab:hover {
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  border-color: rgba(255,255,255,0.95);
+}
+.work-tab.active, .proj-tab.active {
+  background: rgba(255,255,255,0.92);
+  color: var(--green);
+  border-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 12px rgba(80,76,68,0.10), 0 0 0 1px var(--glass-edge);
+}
+.p-card, .wk-card {
+  border: 1px solid rgba(255,255,255,0.65) !important;
+  box-shadow: var(--card-shadow-rest, 3px 6px 12px -1px rgba(80,76,68,.10)), 0 0 0 1px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.5);
+  background-clip: padding-box;
+}
+.p-card:hover, .wk-card:hover {
+  border-color: rgba(255,255,255,0.9) !important;
+}
+
 
 /* ─── HERO BAND ─── */
 .cs-hero-band {
@@ -75,11 +212,10 @@ nav {
   margin-bottom: 20px;
   display: flex; align-items: center; gap: 10px;
 }
-.cs-hero-kicker::before { content: ''; width: 20px; height: 1px; background: rgba(255,255,255,.2); }
 .cs-hero-h1 {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(40px,6vw,76px);
-  line-height: .92; letter-spacing: -2px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(31px, 4.68vw, 59px);
+  line-height: .92; letter-spacing: 0; text-transform: uppercase;
   color: #fff; margin-bottom: 28px;
 }
 .cs-hero-desc {
@@ -94,7 +230,7 @@ nav {
 }
 .cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
 .cs-hs:last-child { border-right: none; }
-.cs-hs-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -2px; color: #fff; line-height: 1; }
+.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
 .cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
 
 /* ─── CONTENT ─── */
@@ -119,13 +255,13 @@ nav {
   color: var(--muted); margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
-.cs-sec-label .n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
 .cs-sec-title {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(28px,3.5vw,44px); line-height: 1.06;
-  letter-spacing: -1px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06;
+  letter-spacing: 0; text-transform: uppercase;
   margin-bottom: 28px;
 }
 
@@ -133,7 +269,7 @@ nav {
 .cs-body + .cs-body { margin-top: -8px; }
 
 /* ─── IMAGE CAPTION ─── */
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: .02em; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── IMAGE PLACEHOLDER ─── */
 .img-ph {
@@ -152,7 +288,7 @@ nav {
 .img-ph.h-xs { min-height: 140px; }
 .img-ph-ico { font-size: 40px; opacity: .2; }
 .img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.5px; color: rgba(0,0,0,.38); }
+.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
 
 /* ─── SECTION SPLIT ─── */
@@ -160,7 +296,7 @@ nav {
 .sec-split-left { display: flex; flex-direction: column; gap: 20px; }
 .sec-split-right { position: relative; }
 .sec-split-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
-.sec-split-h { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 36px; line-height: .95; letter-spacing: -1px; text-transform: uppercase; }
+.sec-split-h { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 28px; line-height: .95; letter-spacing: 0; text-transform: uppercase; }
 .sec-split-body { font-size: 14px; line-height: 1.7; color: var(--muted); }
 
 /* ─── BEFORE / AFTER ─── */
@@ -171,9 +307,9 @@ nav {
 .ba-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
 .ba-red .ba-label { color: #C93A52; }
 .ba-green .ba-label { color: var(--green); }
-.ba-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: -.5px; margin-bottom: 8px; }
+.ba-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
 .ba-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.ba-arrow { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; color: var(--border); text-align: center; }
+.ba-arrow { font-family: 'Lato', sans-serif; font-size: 25px; font-weight: 700; color: var(--border); text-align: center; }
 
 /* ─── CARDS ─── */
 .cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
@@ -185,8 +321,8 @@ nav {
   transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.15); }
-.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: rgba(0,0,0,.06); line-height: 1; }
-.c-card-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── TOOL CARD ─── */
@@ -202,7 +338,7 @@ nav {
 .ti-warm { background: rgba(255,150,80,.1); }
 .ti-blue { background: rgba(59,130,246,.1); }
 .ti-teal { background: rgba(20,184,166,.1); }
-.t-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: -.4px; margin-bottom: 5px; }
+.t-name { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 5px; }
 .t-role { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
 /* ─── IMPACT ROW ─── */
@@ -213,7 +349,7 @@ nav {
   transition: transform .25s, border-color .2s;
 }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.15); }
-.impact-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 56px; letter-spacing: .06em; line-height: 1; margin-bottom: 8px; }
+.impact-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
 .impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
 .in-g { color: var(--green); }
 .in-o { color: var(--orange); }
@@ -234,7 +370,7 @@ nav {
 /* ─── FOOTER CTA ─── */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
-.cs-footer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
 .fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
@@ -279,9 +415,9 @@ nav {
 .step-row { display: grid; grid-template-columns: 60px 1fr; border-bottom: 1px solid var(--border); background: var(--white); transition: background .2s; }
 .step-row:last-child { border-bottom: none; }
 .step-row:hover { background: rgba(0,0,0,.015); }
-.step-num-col { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; color: rgba(0,0,0,.12); padding: 24px 0; }
+.step-num-col { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; color: rgba(0,0,0,.12); padding: 24px 0; }
 .step-content { padding: 24px 28px; }
-.step-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; margin-bottom: 6px; }
+.step-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 6px; }
 .step-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── INSIGHT ROW ─── */
@@ -290,15 +426,16 @@ nav {
   border-radius: 16px; padding: 32px 36px; margin: 16px 0;
   display: flex; gap: 24px; align-items: flex-start;
 }
-.ins-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; line-height: 1; letter-spacing: -2px; color: rgba(0,0,0,.06); flex-shrink: 0; min-width: 48px; margin-top: -4px; }
-.ins-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: -.5px; margin-bottom: 8px; }
+.ins-num { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; line-height: 1; letter-spacing: 0; color: rgba(0,0,0,.06); flex-shrink: 0; min-width: 48px; margin-top: -4px; }
+.ins-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
 .ins-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
 /* ─── RESPONSIVE ─── */
 @media(max-width: 900px) {
-  nav { padding: 14px 24px; }
+  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
   .cs-section { margin-bottom: 56px; }
-  .nav-links { display: none; }
+  .nav-pill { display: none; }
+  .nav-cta { display: none; }
   .nav-burger { display: flex; }
   .cs-hero-band { padding-top: 110px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
   .cs-content { padding: 0 20px 100px; }
@@ -310,7 +447,7 @@ nav {
   .cards-g2 { grid-template-columns: 1fr; }
   .impact-row { grid-template-columns: 1fr 1fr; }
   .cs-footer-inner { padding: 40px 24px; }
-  .cs-footer-title { font-size: 36px; }
+  .cs-footer-title { font-size: 28px; }
   .ba-row { grid-template-columns: 1fr; }
   .ba-arrow { display: none; }
   .sec-split { grid-template-columns: 1fr; gap: 24px; }
@@ -345,19 +482,21 @@ nav {
   }
 }
 </style>
+<link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
-  <ul class="nav-links">
-    <li><a href="work.html" class="active">Work</a></li>
-    <li><a href="playground.html">Play</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
-
-  </ul>
+<!-- ─── NAV ─── -->
+<nav class="nav-dark">
+  <a class="nav-logo" href="portfolio-v2.html">RM</a>
+  <div class="nav-pill">
+    <span class="nav-pill-indicator" aria-hidden="true"></span>
+    <a href="work.html" class="nav-pill-link active">Work</a>
+    <a href="playground.html" class="nav-pill-link">Play</a>
+    <a href="about.html" class="nav-pill-link">About</a>
+    <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" class="nav-pill-link" download>Resume ↗</a>
+  </div>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -386,7 +525,7 @@ nav {
     </div>
     <!-- product demo video -->
     <video class="vid-zoom" aria-label="OpsIQ AI dashboard hero walkthrough" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:40px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);">
-      <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" type="video/mp4">
+      <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mp4" type="video/mp4">
     </video>
   </div>
 </div>
@@ -407,23 +546,23 @@ nav {
     <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:20px;">Hired as Product Designer. Wore these hats.</div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
       <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-.2px;color:#3B6FD4;">UX Researcher</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">UX Researcher</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Semi-structured SMB interviews, affinity + empathy mapping</p>
       </div>
       <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-.2px;color:#3B6FD4;">Product Designer</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">Product Designer</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Dashboard UX, metric cards, edit mode, AI Insight layer</p>
       </div>
       <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-.2px;color:#3B6FD4;">Design Systems</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">Design Systems</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Built the full component library: cards, states, navigation</p>
       </div>
       <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-.2px;color:#3B6FD4;">UX Writer</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">UX Writer</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Dashboard copy, alerts, onboarding, pricing tier names</p>
       </div>
       <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-.2px;color:#3B6FD4;">Business Strategy</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">Business Strategy</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">3 paid tiers, technical feasibility, pitch deck narrative</p>
       </div>
     </div>
@@ -446,11 +585,11 @@ nav {
     <!-- stats row -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;">
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:14px;padding:28px 24px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:56px;color:#3B6FD4;line-height:1;margin-bottom:6px;">66%</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:44px;color:#3B6FD4;line-height:1;margin-bottom:6px;">66%</div>
         <div style="font-size:14px;color:rgba(0,0,0,.6);line-height:1.5;">of SMB founders feel overwhelmed by disconnected tools</div>
       </div>
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:14px;padding:28px 24px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:56px;color:#3B6FD4;line-height:1;margin-bottom:6px;">34%</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:44px;color:#3B6FD4;line-height:1;margin-bottom:6px;">34%</div>
         <div style="font-size:14px;color:rgba(0,0,0,.6);line-height:1.5;">of managers lack time to analyze the data they already have</div>
       </div>
     </div>
@@ -460,7 +599,7 @@ nav {
       <div>
         <div style="font-size:13px;font-weight:600;color:#0C0C0C;">SMB Founder</div>
         <div style="font-size:12px;color:rgba(12,12,12,.4);margin-top:1px;">Interview Participant · U.S.-based · $250K to $1M revenue</div>
-        <p style="font-size:15px;line-height:1.7;color:rgba(12,12,12,.7);margin:12px 0 0;font-family:'Instrument Serif',serif;font-style:italic;">"Without someone looking at this for me, these tools are just a waste of money."</p>
+        <p style="font-size:12px;line-height:1.7;color:rgba(12,12,12,.7);margin:12px 0 0;font-family:'Lato',sans-serif;font-style:italic;">"Without someone looking at this for me, these tools are just a waste of money."</p>
       </div>
     </div>
   </div>
@@ -490,17 +629,17 @@ nav {
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
       <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#3B6FD4;font-weight:600;margin-bottom:10px;">Visibility</div>
-        <p style="font-size:14px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Instrument Serif',serif;font-style:italic;margin:0 0 12px;">"I know the numbers, but I can't track everything at once."</p>
+        <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:italic;margin:0 0 12px;">"I know the numbers, but I can't track everything at once."</p>
         <div style="font-size:11px;color:rgba(12,12,12,.35);">SMB Founder · Interview</div>
       </div>
       <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#3B6FD4;font-weight:600;margin-bottom:10px;">Proactivity</div>
-        <p style="font-size:14px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Instrument Serif',serif;font-style:italic;margin:0 0 12px;">"I forgot we usually run an October campaign... it was too late."</p>
+        <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:italic;margin:0 0 12px;">"I forgot we usually run an October campaign... it was too late."</p>
         <div style="font-size:11px;color:rgba(12,12,12,.35);">SMB Founder · Interview</div>
       </div>
       <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#3B6FD4;font-weight:600;margin-bottom:10px;">Direction</div>
-        <p style="font-size:14px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Instrument Serif',serif;font-style:italic;margin:0 0 12px;">"Without someone looking at this, these tools are a waste of money."</p>
+        <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:italic;margin:0 0 12px;">"Without someone looking at this, these tools are a waste of money."</p>
         <div style="font-size:11px;color:rgba(12,12,12,.35);">SMB Founder · Interview</div>
       </div>
     </div>
@@ -513,11 +652,11 @@ nav {
         <div style="background:linear-gradient(160deg,#EBF0FA 0%,#D6E4FF 100%);padding:32px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;">
           <img src="assets/ABC Company/Sarah.png" alt="Sarah" style="width:96px;height:96px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(59,111,212,.2);">
           <div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;letter-spacing:-.3px;color:#0C0C0C;">Sarah</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;letter-spacing: 0;color:#0C0C0C;">Sarah</div>
             <div style="font-size:12px;color:rgba(12,12,12,.5);margin-top:2px;">SMB Founder, Age 34</div>
             <div style="font-size:12px;color:#3B6FD4;margin-top:4px;">4-person media company</div>
           </div>
-          <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:rgba(12,12,12,.55);line-height:1.6;margin-top:4px;">"Without someone looking at this for me, these tools are just a waste of money."</div>
+          <div style="font-family:'Lato',sans-serif;font-style:italic;font-size:13px;color:rgba(12,12,12,.55);line-height:1.6;margin-top:4px;">"Without someone looking at this for me, these tools are just a waste of money."</div>
         </div>
         <!-- Right: goals + pain points -->
         <div style="padding:32px 36px;display:grid;grid-template-columns:1fr 1fr;gap:32px;">
@@ -560,24 +699,24 @@ nav {
 
     <!-- Dashboard full-width video -->
     <video class="vid-zoom" aria-label="OpsIQ dashboard feature walkthrough" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:32px auto 40px;box-shadow:0 24px 64px rgba(0,0,0,.4);">
-      <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" type="video/mp4">
+      <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mp4" type="video/mp4">
     </video>
 
     <!-- 3 columns: Visualize / Analyze / Act -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:16px;padding:28px 24px;">
         <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z"/></svg></div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;color:#3B6FD4;letter-spacing:-.3px;margin-bottom:8px;">Visualize</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Visualize</div>
         <p style="font-size:13px;color:rgba(0,0,0,.6);line-height:1.65;margin:0;">Connect any tool in 2 clicks. All business metrics in one real-time view: revenue, tasks, pipeline.</p>
       </div>
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:16px;padding:28px 24px;">
         <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Z"/></svg></div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;color:#3B6FD4;letter-spacing:-.3px;margin-bottom:8px;">Analyze</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Analyze</div>
         <p style="font-size:13px;color:rgba(0,0,0,.6);line-height:1.65;margin:0;">AI Insight mode surfaces what changed and why. Proactive alerts mean catching issues before they become crises.</p>
       </div>
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:16px;padding:28px 24px;">
         <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;color:#3B6FD4;letter-spacing:-.3px;margin-bottom:8px;">Act</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Act</div>
         <p style="font-size:13px;color:rgba(0,0,0,.6);line-height:1.65;margin:0;">AI recommends a specific next move. Not just data: direction. The dashboard tells you what to do next.</p>
       </div>
     </div>
@@ -659,12 +798,12 @@ nav {
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div onclick="window.location='draggit.html'" style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome Extension</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Solo built &amp; shipped. A Chrome extension that fixes a daily LinkedIn UX pain.</p>
       </div>
       <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
       </div>
     </div>
@@ -714,5 +853,8 @@ document.querySelectorAll('.vid-zoom').forEach(function(v) {
   <span>Made with love and energy drinks ✨</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
+</script>
+
+<script src="scripts/nav-pill.js" defer></script>
 </body>
 </html>

@@ -5,13 +5,21 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About: Rhea Mittal</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/design-system.css">
 <style>
 /* ─── RESET & BASE ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.8);
+  --glass-edge: rgba(0,0,0,0.06);
+  --glass-blur: blur(18px) saturate(1.45);
+  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+
   --bg: #F5F4F0;
   --ink: #0C0C0C;
   --muted: rgba(12,12,12,0.45);
@@ -27,64 +35,66 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Open Sans', system-ui, sans-serif;
   font-size: 16px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── NAV ─── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 18px 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(245,244,240,0.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  transition: border-color .3s;
-}
-.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
-.nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a {
-  font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none;
-  position: relative; padding-bottom: 2px;
-  transition: color .2s;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
-  background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94);
-}
-.nav-links a:hover { color: var(--ink); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a.active { color: var(--ink); }
-.nav-links a.active::after { width: 100%; }
-.nav-cta {
-  background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px;
-  font-size: 13px; font-weight: 500; text-decoration: none;
-  transition: transform .2s, box-shadow .2s;
-}
-.nav-cta:hover { transform: scale(1.04); }
-.nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
-.nav-burger span { display:block; width:22px; height:2px; background:var(--ink); border-radius:2px; transition:transform .3s,opacity .3s; }
-.nav-mobile { display:none; position:fixed; inset:0; background:var(--bg); z-index:998; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
-.nav-mobile.open { display:flex; }
-.nav-mobile a { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(36px,8vw,64px); text-transform:uppercase; letter-spacing:-1px; color:var(--ink); text-decoration:none; transition:color .2s; }
-.nav-mobile a:hover { color:var(--green); }
-.nav-mobile-close { position:absolute; top:20px; right:24px; background:none; border:none; font-size:24px; cursor:pointer; color:var(--muted); }
 
-/* ─── PAGE WRAP ─── */
-.page { padding-top: 73px; }
 
-/* ─── SECTION LABEL ─── */
-.sec-label {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .14em;
-  color: var(--muted); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+
+
+/* Nav styles: styles/nav.css */
+
+/* ─── GLASS SYSTEM ─── */
+.glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
-.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.glass-badge {
+  display: inline-flex; align-items: center;
+  padding: 9px 18px; border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: rgba(12,12,12,0.72);
+  white-space: nowrap;
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+}
+.hero-chip {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab, .proj-tab {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab:hover, .proj-tab:hover {
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  border-color: rgba(255,255,255,0.95);
+}
+.work-tab.active, .proj-tab.active {
+  background: rgba(255,255,255,0.92);
+  color: var(--green);
+  border-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 12px rgba(80,76,68,0.10), 0 0 0 1px var(--glass-edge);
+}
+.p-card, .wk-card {
+  border: 1px solid rgba(255,255,255,0.65) !important;
+  box-shadow: var(--card-shadow-rest, 3px 6px 12px -1px rgba(80,76,68,.10)), 0 0 0 1px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.5);
+  background-clip: padding-box;
+}
+.p-card:hover, .wk-card:hover {
+  border-color: rgba(255,255,255,0.9) !important;
+}
 
-/* ──────────────────────────────────
-   1. HERO
-────────────────────────────────── */
 .hero-about {
   display: grid;
   grid-template-columns: 2fr 3fr;
@@ -106,12 +116,12 @@ nav {
 }
 
 .hero-h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900; font-size: clamp(64px, 7vw, 104px);
-  line-height: .92; letter-spacing: -3px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900; font-size: clamp(50px, 5.46vw, 81px);
+  line-height: .95; letter-spacing: 0; text-transform: uppercase;
   margin-bottom: 32px;
 }
-.hero-h1 em { font-style: italic; color: var(--green); }
+.hero-h1 em { font-style: italic; font-weight: 900; color: var(--green); }
 
 .hero-bio {
   font-size: 17px; line-height: 1.75; color: var(--muted);
@@ -206,11 +216,11 @@ nav {
 }
 
 .ach-h2 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900; font-size: clamp(40px, 5vw, 64px);
-  line-height: 1; letter-spacing: -2px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900; font-size: clamp(31px, 3.9vw, 50px);
+  line-height: 1; letter-spacing: 0; text-transform: uppercase;
 }
-.ach-h2 em { font-style: italic; color: var(--green); }
+.ach-h2 em { font-style: italic; font-weight: 900; color: var(--green); }
 
 .ach-sub {
   font-size: 15px; color: var(--muted); max-width: 280px;
@@ -278,8 +288,8 @@ nav {
   color: var(--muted); margin-bottom: 4px;
 }
 .col-caption-title {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-  font-size: 17px; color: var(--ink); line-height: 1.2;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: 13px; color: var(--ink); line-height: 1.2;
 }
 
 /* Hover overlay on image */
@@ -299,8 +309,8 @@ nav {
   color: rgba(255,255,255,.4); margin-bottom: 6px;
 }
 .col-ov-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700; font-size: 18px; color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900; font-size: 14px; color: #fff;
   line-height: 1.2; margin-bottom: 6px;
 }
 .col-ov-desc {
@@ -337,35 +347,40 @@ nav {
 
 .quote-card {
   padding: 48px 40px;
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 16px;
   position: relative;
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(18px) saturate(1.45);
+  -webkit-backdrop-filter: blur(18px) saturate(1.45);
+  box-shadow: 0 8px 28px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.12);
   transition: background .3s, transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s, border-color .3s;
   z-index: 1;
 }
 .quote-card:hover {
-  background: rgba(255,255,255,.09);
+  background: rgba(255,255,255,.14);
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 32px 80px rgba(0,0,0,.55);
-  border-color: rgba(255,255,255,.2);
+  box-shadow: 0 24px 64px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.28);
   z-index: 2;
 }
 .quote-card:hover .q-mark {
   color: rgba(255,255,255,.18);
 }
-.quote-card:first-child { border-radius: 16px 2px 2px 16px; }
-.quote-card:last-child { border-radius: 2px 16px 16px 2px; }
+.quotes-grid { gap: 12px; }
+.quote-card:first-child,
+.quote-card:last-child { border-radius: 16px; }
 
 .q-mark {
-  font-family: 'Instrument Serif', serif;
-  font-size: 80px; line-height: 1;
+  font-family: 'Lato', sans-serif;
+  font-size: 62px; line-height: 1;
   color: rgba(255,255,255,.07);
   position: absolute; top: 16px; left: 32px;
 }
 
 .q-text {
-  font-family: 'Instrument Serif', serif;
-  font-size: 21px; line-height: 1.6;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px; line-height: 1.6;
   color: rgba(255,255,255,.88);
   margin-bottom: 24px;
   font-style: normal;
@@ -391,12 +406,12 @@ nav {
 .journey-header { margin-bottom: 56px; }
 
 .journey-h2 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900; font-size: clamp(40px, 5vw, 64px);
-  line-height: 1; letter-spacing: -2px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900; font-size: clamp(31px, 3.9vw, 50px);
+  line-height: 1; letter-spacing: 0; text-transform: uppercase;
   margin-bottom: 12px;
 }
-.journey-h2 em { font-style: italic; color: var(--green); }
+.journey-h2 em { font-style: italic; font-weight: 900; color: var(--green); }
 
 .journey-sub { font-size: 16px; color: var(--muted); max-width: 440px; line-height: 1.65; }
 .resume-link-pill {
@@ -434,16 +449,16 @@ nav {
 .acc-left { display: flex; align-items: center; gap: 20px; }
 
 .acc-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900; font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900; font-size: 12px;
   color: var(--muted); letter-spacing: .05em;
   transition: color .2s;
 }
 .acc-item.open .acc-num { color: rgba(255,255,255,.3); }
 
 .acc-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800; font-size: 26px; letter-spacing: -.5px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900; font-size: 20px; letter-spacing: 0;
   color: var(--ink); transition: color .2s;
 }
 .acc-item.open .acc-title { color: #fff; }
@@ -466,7 +481,7 @@ nav {
   transition: max-height .45s ease;
   background: var(--white);
 }
-.acc-item.open .acc-body { max-height: 720px; }
+.acc-item.open .acc-body { max-height: 1100px; }
 
 .acc-inner {
   padding: 40px 36px 48px;
@@ -481,6 +496,21 @@ nav {
 .acc-imgs { display: grid; gap: 12px; }
 .acc-imgs.cols-2 { grid-template-columns: 1fr 1fr; }
 .acc-imgs.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.acc-imgs img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 12px;
+  display: block;
+  background: #EDE9E3;
+}
+.acc-imgs img.fit-mid { object-position: center 45%; }
+.acc-imgs img.fit-upper { object-position: center 28%; }
+.acc-imgs img.fit-contain {
+  object-fit: contain;
+  object-position: center center;
+}
 
 .acc-img-ph {
   height: 160px; border-radius: 12px;
@@ -518,11 +548,11 @@ nav {
 }
 
 .beyond-h2 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900; font-size: clamp(40px, 5vw, 64px);
-  line-height: 1; letter-spacing: -2px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900; font-size: clamp(31px, 3.9vw, 50px);
+  line-height: 1; letter-spacing: 0; text-transform: uppercase;
 }
-.beyond-h2 em { font-style: italic; color: var(--green); }
+.beyond-h2 em { font-style: italic; font-weight: 900; color: var(--green); }
 
 .beyond-intro { font-size: 16px; color: var(--muted); line-height: 1.7; }
 
@@ -574,11 +604,11 @@ nav {
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
 .contact-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
 .contact-h {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(40px, 5.5vw, 72px); letter-spacing: -2px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(31px, 4.29vw, 56px); letter-spacing: 0; text-transform: uppercase;
   line-height: .92; margin-bottom: 32px;
 }
-.contact-h em { font-style: italic; color: var(--green); }
+.contact-h em { font-style: italic; font-weight: 900; color: var(--green); }
 .contact-email {
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 17px; font-weight: 500; color: var(--ink);
@@ -640,8 +670,20 @@ nav {
 }
 .col-lb-close:hover { background: rgba(255,255,255,.2); }
 .col-lb-tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.4); margin-bottom: 16px; }
-.col-lb-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(28px,3vw,44px); line-height: .95; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 20px; color: #fff; }
-.col-lb-body { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.55); }
+.col-lb-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: clamp(22px, 2.34vw, 34px); line-height: .95; letter-spacing: 0; text-transform: uppercase; margin-bottom: 20px; color: #fff; }
+.col-lb-body { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.55); margin-bottom: 32px; }
+.col-lb-link {
+  display: none;
+  align-items: center; gap: 10px;
+  margin-top: auto;
+  font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+  color: #fff; text-decoration: none;
+  border: 1px solid rgba(255,255,255,.2);
+  padding: 14px 24px; border-radius: 12px;
+  transition: background .2s, border-color .2s;
+  width: fit-content;
+}
+.col-lb-link:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.35); }
 
 /* ─── SCROLL REVEAL ─── */
 .reveal {
@@ -665,8 +707,9 @@ nav {
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px) {
-  nav { padding: 14px 24px; }
-  .nav-links { display: none; }
+  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
+  .nav-pill { display: none; }
+  .nav-cta { display: none; }
   .nav-burger { display: flex; }
   .hero-about { grid-template-columns: 1fr; }
   .hero-right { min-height: 360px; }
@@ -707,19 +750,20 @@ nav {
   .col-item:nth-child(5) { grid-column: 1; grid-row: 5; }
 }
 </style>
+<link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
 
 <!-- ─── NAV ─── -->
 <nav>
-  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
-  <ul class="nav-links">
-    <li><a href="work.html">Work</a></li>
-    <li><a href="playground.html">Play</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
-
-  </ul>
+  <a class="nav-logo" href="portfolio-v2.html">RM</a>
+  <div class="nav-pill">
+    <span class="nav-pill-indicator" aria-hidden="true"></span>
+    <a href="work.html" class="nav-pill-link">Work</a>
+    <a href="playground.html" class="nav-pill-link">Play</a>
+    <a href="about.html" class="nav-pill-link active">About</a>
+    <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" class="nav-pill-link" download>Resume ↗</a>
+  </div>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -758,10 +802,10 @@ nav {
     <div class="hero-right">
       <div class="hero-photo-wrap">
         <video aria-label="Rhea Mittal background reel" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
-          <source src="assets/About me hero section.MOV" type="video/mp4">
+          <source src="assets/About me hero section_web.mp4" type="video/mp4">
         </video>
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Inter',sans-serif;">Always open to exploring</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Open Sans',sans-serif;">Always open to exploring</div>
     </div>
   </section>
 
@@ -824,7 +868,9 @@ nav {
         data-img="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png"
         data-tag="Podcast Guest · Unlearning by Design"
         data-title="Aedge Podcast, Adeptic Creative Labs"
-        data-body="In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field.">
+        data-body="In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field."
+        data-link="https://open.spotify.com/episode/5V7jU9nmPiRuxOOwyHTLnU?si=FHtexDBWSWu-kobsyZh_FA"
+        data-link-label="Listen on Spotify">
         <div class="col-img-wrap">
           <img class="col-img" src="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png" alt="Aedge Podcast">
           <div class="col-overlay">
@@ -845,7 +891,9 @@ nav {
         data-img="assets/About Me/Thingspart of./Medium Blog.png"
         data-tag="Writing"
         data-title="Medium Blog"
-        data-body="I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud.">
+        data-body="I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud."
+        data-link="https://medium.com/@rheamittal0401"
+        data-link-label="Read on Medium">
         <div class="col-img-wrap">
           <img class="col-img" src="assets/About Me/Thingspart of./Medium Blog.png" alt="Medium Blog">
           <div class="col-overlay">
@@ -920,7 +968,6 @@ nav {
   ────────────────────────────────── -->
   <section class="journey reveal">
     <div class="journey-header">
-      <div class="sec-label">Education</div>
       <h2 class="journey-h2">The making of<br>a <em>designer.</em></h2>
       <p class="journey-sub">Three chapters that shaped how I design, research, and think.</p>
       <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download class="resume-link-pill">Download Resume ↗</a>
@@ -945,43 +992,19 @@ nav {
             <div class="acc-tag">Foundation</div>
             <p class="acc-desc">Srishti was beautifully chaotic, and exactly what I needed. My degree was genuinely transdisciplinary. I didn't just learn to design interfaces. I designed through the lens of transport design, public space, filmmaking, game design, fabric, and code. The variety wasn't random; it cemented something that became core to how I work: design is everywhere. Not just on screens, not just in products, everywhere. I left with a portfolio and a philosophy.</p>
             <div class="acc-imgs cols-3">
-              <img src="assets/About Me/HowIgothere/Bachelor's/1000029828.JPG" alt="Srishti studio work" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
-              <img src="assets/About Me/HowIgothere/Bachelor's/Presentation.png" alt="Srishti presentation" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
-              <img src="assets/About Me/HowIgothere/Bachelor's/Product sketching.jpg" alt="Srishti product sketching" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MS-HCI -->
-      <div class="acc-item" id="acc-2">
-        <button class="acc-trigger" onclick="toggleAcc('acc-2')">
-          <div class="acc-left">
-            <span class="acc-num">02</span>
-            <div>
-              <div class="acc-title">MS in Human-Computer Interaction</div>
-              <div class="acc-meta">Indiana University · Indianapolis, USA</div>
-            </div>
-          </div>
-          <span class="acc-arrow">+</span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-inner">
-            <div class="acc-tag" style="background:var(--green-bg);color:var(--green);">Current</div>
-            <p class="acc-desc">Indiana pushed me into research properly: how to ask better questions, conduct rigorous qualitative studies, and communicate design decisions to people from completely different disciplines. But equally valuable was everything outside the classroom: building and shipping live projects with AI tools, winning a hackathon, attending CES, spending time in the SETH Lab doing deep qualitative work. I came in knowing how to design. I left knowing how to think.</p>
-            <div class="acc-imgs cols-2">
-              <img src="assets/About Me/HowIgothere/Masters/IMG_8732.JPG" alt="Indiana University campus" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
-              <img src="assets/About Me/HowIgothere/Masters/View recent photos 2.png" alt="Indiana University moments" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
+              <img src="assets/About Me/HowIgothere/Bachelor's/1000029828.JPG" alt="Srishti studio work" class="fit-mid">
+              <img src="assets/About Me/HowIgothere/Bachelor's/Presentation.png" alt="Srishti presentation" class="fit-upper">
+              <img src="assets/About Me/HowIgothere/Bachelor's/Product sketching.jpg" alt="Srishti product sketching" class="fit-mid">
             </div>
           </div>
         </div>
       </div>
 
       <!-- Exchange -->
-      <div class="acc-item" id="acc-3">
-        <button class="acc-trigger" onclick="toggleAcc('acc-3')">
+      <div class="acc-item" id="acc-2">
+        <button class="acc-trigger" onclick="toggleAcc('acc-2')">
           <div class="acc-left">
-            <span class="acc-num">03</span>
+            <span class="acc-num">02</span>
             <div>
               <div class="acc-title">Student Exchange</div>
               <div class="acc-meta">BESIGN, The Sustainable Design School</div>
@@ -994,9 +1017,34 @@ nav {
             <div class="acc-tag" style="background:#EEF3FF;color:#3B6FD4;">Exchange · France</div>
             <p class="acc-desc">A semester in France changed how I see scale. I worked on a partnership project with Accenture, explored transport design across different cities, and navigated a culture and language completely outside my comfort zone. Collaborating with people from entirely different backgrounds, genuinely being out of my depth, accelerated my growth in ways a classroom never could. I came back with a more global lens, a sharper ability to adapt, and a deep belief that the best design thinking happens when you're somewhere unfamiliar.</p>
             <div class="acc-imgs cols-3">
-              <img src="assets/About Me/HowIgothere/Exchange Program/1000014950.JPG" alt="BESIGN exchange fieldwork" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
-              <img src="assets/About Me/HowIgothere/Exchange Program/Ethnographic Research in Public.jpg" alt="BESIGN exchange ethnographic research" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;">
-              <img src="assets/About Me/HowIgothere/Exchange Program/Screenshot 2026-03-10 at 7.39.00 PM.png" alt="BESIGN exchange" style="height:200px;width:100%;object-fit:cover;border-radius:12px;display:block;" onerror="this.style.background='rgba(59,111,212,.12)';this.removeAttribute('src');">
+              <img src="assets/About Me/HowIgothere/Exchange Program/1000014950.JPG" alt="BESIGN exchange presentation" class="fit-upper">
+              <img src="assets/About Me/HowIgothere/Exchange Program/Ethnographic Research in Public.jpg" alt="BESIGN exchange ethnographic research" class="fit-mid">
+              <img src="assets/About Me/HowIgothere/Exchange Program/Screenshot 2026-03-10 at 7.39.00 PM.png" alt="Arduino prototyping during exchange" class="fit-contain">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MS-HCI -->
+      <div class="acc-item" id="acc-3">
+        <button class="acc-trigger" onclick="toggleAcc('acc-3')">
+          <div class="acc-left">
+            <span class="acc-num">03</span>
+            <div>
+              <div class="acc-title">MS in Human-Computer Interaction</div>
+              <div class="acc-meta">Indiana University · Indianapolis, USA</div>
+            </div>
+          </div>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-tag" style="background:var(--green-bg);color:var(--green);">Current</div>
+            <p class="acc-desc">Indiana pushed me into research properly: how to ask better questions, conduct rigorous qualitative studies, and communicate design decisions to people from completely different disciplines. But equally valuable was everything outside the classroom: building and shipping live projects with AI tools, winning a hackathon, attending CES, spending time in the SETH Lab doing deep qualitative work. I came in knowing how to design. I left knowing how to think.</p>
+            <div class="acc-imgs cols-3">
+              <img src="assets/About Me/HowIgothere/Masters/IMG_8732.JPG" alt="Working at Indiana University" class="fit-mid">
+              <img src="assets/About Me/HowIgothere/Masters/View recent photos 2.png" alt="HCI class presentation" class="fit-mid">
+              <img src="assets/salesforce/screenshots/capstone-event-1.png" alt="Salesforce People's Choice Award at IU Capstone Event" class="fit-mid">
             </div>
           </div>
         </div>
@@ -1009,7 +1057,6 @@ nav {
        5. BEYOND DESIGN
   ────────────────────────────────── -->
   <section class="beyond reveal">
-    <div class="sec-label">Life outside the screen</div>
     <div class="beyond-header">
       <div>
         <h2 class="beyond-h2">Beyond<br><em>design.</em></h2>
@@ -1099,6 +1146,7 @@ nav {
     <div class="col-lb-tag" id="colLbTag"></div>
     <div class="col-lb-title" id="colLbTitle"></div>
     <div class="col-lb-body" id="colLbBody"></div>
+    <a href="#" target="_blank" rel="noopener" class="col-lb-link" id="colLbLink">View ↗</a>
   </div>
 </div>
 
@@ -1130,6 +1178,15 @@ function openColLb(el) {
   document.getElementById('colLbTag').textContent = el.dataset.tag;
   document.getElementById('colLbTitle').textContent = el.dataset.title;
   document.getElementById('colLbBody').textContent = el.dataset.body;
+  const lnk = document.getElementById('colLbLink');
+  if (el.dataset.link) {
+    lnk.href = el.dataset.link;
+    lnk.textContent = (el.dataset.linkLabel || 'View') + ' ↗';
+    lnk.style.display = 'inline-flex';
+  } else {
+    lnk.removeAttribute('href');
+    lnk.style.display = 'none';
+  }
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1152,5 +1209,7 @@ document.getElementById('navMobileClose').addEventListener('click', () => {
   document.getElementById('navMobile').classList.remove('open');
 });
 </script>
+
+<script src="scripts/nav-pill.js" defer></script>
 </body>
 </html>

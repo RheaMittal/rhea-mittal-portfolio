@@ -1,0 +1,52 @@
+/* ═══════════════════════════════════════════
+   Shared design tokens + utilities
+   Nav lives in styles/nav.css (link that file last).
+═══════════════════════════════════════════ */
+
+:root {
+  --bg: #F5F4F0;
+  --ink: #0C0C0C;
+  --muted: rgba(12,12,12,0.45);
+  --border: rgba(0,0,0,0.08);
+  --green: #1DA855;
+  --green-bg: rgba(29,168,85,0.08);
+  --orange: #E8521A;
+  --orange-bg: rgba(232,82,26,0.08);
+  --white: #FFFFFF;
+  --shadow-color: 80, 76, 68;
+  --card-ease: cubic-bezier(.25, .46, .45, .94);
+  --card-duration: .35s;
+  --card-shadow-rest: 3px 6px 12px -1px rgba(var(--shadow-color), .10);
+  --card-shadow-hover: 5px 10px 20px -1px rgba(var(--shadow-color), .14);
+  --card-shadow-active: 3px 6px 14px -1px rgba(var(--shadow-color), .11);
+  --card-shadow-hover-dark: 5px 10px 20px -1px rgba(0, 0, 0, .22);
+
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.8);
+  --glass-edge: rgba(0,0,0,0.06);
+  --glass-blur: blur(18px) saturate(1.45);
+  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+}
+
+/* Optional utility — only when class is applied explicitly */
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(12,12,12,0.72);
+  white-space: nowrap;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}

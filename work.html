@@ -6,50 +6,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Work | Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="styles/design-system.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
+/* ─── RESET & TOKENS (fallback if design-system.css delayed) ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 :root {
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.8);
+  --glass-edge: rgba(0,0,0,0.06);
+  --glass-blur: blur(18px) saturate(1.45);
+  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
   --bg: #F5F4F0;
   --ink: #0C0C0C;
-  --muted: rgba(12,12,12,0.42);
-  --border: rgba(12,12,12,0.1);
+  --muted: rgba(12,12,12,0.45);
+  --border: rgba(0,0,0,0.08);
   --green: #1DA855;
-  --white: #FAFAF8;
+  --green-bg: rgba(29,168,85,0.08);
+  --orange: #E8521A;
+  --orange-bg: rgba(232,82,26,0.08);
+  --card-r: 20px;
+  --white: #FFFFFF;
   --shadow-color: 80, 76, 68;
   --card-ease: cubic-bezier(.25, .46, .45, .94);
   --card-duration: .35s;
   --card-shadow-rest: 3px 6px 12px -1px rgba(var(--shadow-color), .10);
   --card-shadow-hover: 5px 10px 20px -1px rgba(var(--shadow-color), .14);
   --card-shadow-active: 3px 6px 14px -1px rgba(var(--shadow-color), .11);
+  --card-shadow-hover-dark: 5px 10px 20px -1px rgba(0, 0, 0, .22);
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Open Sans', system-ui, sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 18px 56px; display: flex; align-items: center; justify-content: space-between;
-  background: rgba(245,244,240,0.88); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
-.nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--ink); }
-.nav-links a.active::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:1px; background:var(--ink); }
-.nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--ink); transition:width .3s; }
-.nav-links a:hover::after { width:100%; }
-.nav-cta { background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; transition: transform .2s; }
-.nav-cta:hover { transform: scale(1.04); }
-.nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
-.nav-burger span { display:block; width:22px; height:2px; background:var(--ink); border-radius:2px; }
-.nav-mobile { display:none; position:fixed; inset:0; background:var(--bg); z-index:998; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
-.nav-mobile.open { display:flex; }
-.nav-mobile a { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(36px,8vw,64px); text-transform:uppercase; letter-spacing:-1px; color:var(--ink); text-decoration:none; }
-.nav-mobile a:hover { color:var(--green); }
-.nav-mobile-close { position:absolute; top:20px; right:24px; background:none; border:none; font-size:24px; cursor:pointer; color:var(--muted); }
+
+
+
+/* Nav styles: styles/nav.css */
 
 /* PAGE */
 .page-wrap { max-width: 1240px; margin: 0 auto; padding: 140px 56px 120px; }
@@ -57,8 +59,8 @@ nav {
 /* HEADER */
 .work-header { display:flex; align-items:center; border-bottom:1px solid var(--border); padding-bottom:20px; margin-bottom:20px; }
 .work-label { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-.work-display { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(52px,7vw,100px); letter-spacing:-2px; line-height:.92; text-transform:uppercase; color:var(--ink); margin:16px 0 36px; }
-.work-display em { color:var(--green); font-style:normal; }
+.work-display { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(41px, 5.46vw, 78px); letter-spacing: 0; line-height:1.05; text-transform:uppercase; color:var(--ink); margin:16px 0 36px; }
+.work-display em { color:var(--green); font-style:italic; font-weight:900; }
 
 /* FILTER TABS */
 .work-tabs { display:flex; gap:8px; margin-bottom:40px; flex-wrap:wrap; }
@@ -77,17 +79,17 @@ nav {
 .wk-visual { width:100%; aspect-ratio:16/9; overflow:hidden; position:relative; flex-shrink:0; }
 .wk-visual video, .wk-visual img { width:100%; height:100%; object-fit:cover; display:block; }
 .wk-visual-brand { width:100%; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; }
-.wk-brand-name { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(36px,5vw,64px); letter-spacing:-1px; text-transform:uppercase; color:rgba(255,255,255,.95); position:relative; z-index:1; }
+.wk-brand-name { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(28px, 3.9vw, 50px); letter-spacing: 0; text-transform:uppercase; color:rgba(255,255,255,.95); position:relative; z-index:1; }
 .wk-visual-brand::after { content:none; }
 
 /* Card body */
 .wk-body { padding:32px 36px 36px; display:flex; flex-direction:column; flex:1; }
 .wk-tag { font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:14px; font-weight:500; color:var(--muted); }
-.wk-title { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(28px,2.8vw,40px); letter-spacing:-1px; line-height:1.0; text-transform:uppercase; margin-bottom:12px; color:var(--ink); }
+.wk-title { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(22px, 2.18vw, 31px); letter-spacing: 0; line-height:1.15; text-transform:uppercase; margin-bottom:12px; color:var(--ink); }
 .wk-title em { font-style:normal; }
 .wk-desc { font-size:14px; line-height:1.7; color:var(--muted); flex:1; margin-bottom:22px; }
 .wk-metrics { display:flex; gap:24px; padding-top:18px; border-top:1px solid var(--border); margin-bottom:22px; }
-.wk-stat-n { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(20px,1.8vw,26px); letter-spacing:1px; color:var(--ink); line-height:1; }
+.wk-stat-n { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(16px, 1.4vw, 20px); letter-spacing:1px; color:var(--ink); line-height:1; }
 .wk-stat-l { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-top:4px; }
 .wk-cta { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding:11px 24px; border-radius:100px; align-self:flex-start; transition:opacity .2s,transform .2s; text-decoration:none; }
 .wk-cta:hover { opacity:.8; }
@@ -103,27 +105,30 @@ nav {
   .wk-title{font-size:clamp(22px,4vw,30px);}
   .wk-desc{font-size:13px;}
   nav { padding:14px 24px; }
-  .nav-links { display:none; }
+  .nav-pill { display:none; }
+  .nav-cta { display:none; }
   .nav-burger { display:flex; }
   .page-wrap { padding:100px 24px 80px; }
   .work-grid { grid-template-columns:1fr; }
-  .work-display { font-size:clamp(44px,10vw,72px); }
+  .work-display { font-size:clamp(34px, 7.8vw, 56px); }
   .work-footer { padding:20px 24px; flex-direction:column; gap:6px; text-align:center; }
 }
 </style>
+<link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
 
 <!-- NAV -->
+<!-- ─── NAV ─── -->
 <nav>
-  <a class="nav-logo" href="portfolio-v2.html">Rhea Mittal</a>
-  <ul class="nav-links">
-    <li><a href="work.html" class="active">Work</a></li>
-    <li><a href="playground.html">Play</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
-
-  </ul>
+  <a class="nav-logo" href="portfolio-v2.html">RM</a>
+  <div class="nav-pill">
+    <span class="nav-pill-indicator" aria-hidden="true"></span>
+    <a href="work.html" class="nav-pill-link active">Work</a>
+    <a href="playground.html" class="nav-pill-link">Play</a>
+    <a href="about.html" class="nav-pill-link">About</a>
+    <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" class="nav-pill-link" download>Resume ↗</a>
+  </div>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -144,7 +149,7 @@ nav {
   <div class="work-header">
     <span class="work-label">All Work · 2021 to Present</span>
   </div>
-  <h1 class="work-display">Designed.<br><em>Shipped.</em> Real.</h1>
+  <h1 class="work-display">Designed &amp; <em>Shipped</em></h1>
 
   <!-- Filter tabs -->
   <div class="work-tabs">
@@ -162,7 +167,7 @@ nav {
 
     <!-- SALESFORCE CAPSTONE -->
     <a class="wk-card reveal" data-cats="all product research" href="salesforce.html" style="background:#fff;border:1px solid rgba(0,158,219,0.18);position:relative;">
-      <div style="position:absolute;top:16px;right:16px;z-index:10;background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.1);border-radius:100px;padding:9px 20px;font-size:13px;font-weight:700;color:rgba(12,12,12,0.65);white-space:nowrap;backdrop-filter:blur(8px);">🏅 People's Choice Award</div>
+      <div class="glass-badge">🏅 People's Choice Award</div>
       <div class="wk-visual-brand" style="background:linear-gradient(145deg,#D6EEFF 0%,#B3DAFF 100%);">
         <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:120px;width:auto;display:block;position:relative;z-index:1;">
       </div>
@@ -182,7 +187,7 @@ nav {
     <!-- DRAGGIT -->
     <a class="wk-card reveal" data-cats="all product" href="draggit.html" style="background:#fff;border:1px solid rgba(37,99,235,0.15);">
       <div class="wk-visual">
-        <video aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/Draggit Case Study/The problem modal covering profile info.png" data-src="assets/Draggit.mp4"></video>
+        <video aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Draggit_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#2563EB;">LinkedIn Chrome Extension · Built &amp; Shipped</div>
@@ -200,7 +205,7 @@ nav {
     <!-- CLIQUEPRIZE -->
     <a class="wk-card reveal" data-cats="all visual product" href="cliqueprize.html" style="background:#fff;border:1px solid rgba(125,26,46,0.15);">
       <div class="wk-visual">
-        <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize Card Video_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#7D1A2E;">B2B SaaS Platform · Live in Production</div>
@@ -220,7 +225,7 @@ nav {
     <!-- OPSIQ -->
     <a class="wk-card reveal" data-cats="all product" href="opsiq.html" style="background:#fff;border:1px solid rgba(26,29,179,0.15);">
       <div class="wk-visual">
-        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/ABC Company/User Testing Interface.png" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#1A1DB3;">AI Dashboard [NDA] · Client Project</div>
@@ -401,5 +406,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 document.getElementById('navBurger').addEventListener('click', () => document.getElementById('navMobile').classList.add('open'));
 document.getElementById('navMobileClose').addEventListener('click', () => document.getElementById('navMobile').classList.remove('open'));
 </script>
+
+<script src="scripts/nav-pill.js" defer></script>
 </body>
 </html>

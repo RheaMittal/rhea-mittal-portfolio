@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html><head></head><body>
+<pre id="out">figma: status=200 type=image/png bytes=11949
+  decode: ok 256x256
+miro: status=200 type=image/png bytes=16006
+  decode: ok 256x256
+illustrator: status=200 type=image/png bytes=6565
+  decode: ok 256x256
+xd: status=200 type=image/png bytes=11109
+  decode: ok 256x256
+claude: status=200 type=image/png bytes=19157
+  decode: ok 256x256
+cursor: status=200 type=image/png bytes=12089
+  decode: ok 256x256
+vercel: status=200 type=image/png bytes=4436
+  decode: ok 256x256
+lovable: status=200 type=image/png bytes=17188
+  decode: ok 256x256
+tool imgs in portfolio: 8
+figma.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false
+miro.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false
+illustrator.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false
+xd.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false
+claude.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false
+cursor.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false
+vercel.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false
+lovable.png complete=true nat=256x256 display=block opacity=1 w=44px h=44px visibility=visible parentOpacity=1 parentW=44px itemVisible=false sectionVisible=false</pre>
+<script>
+async function run() {
+  const paths = ['assets/tools/figma.png','assets/tools/miro.png','assets/tools/illustrator.png','assets/tools/xd.png','assets/tools/claude.png','assets/tools/cursor.png','assets/tools/vercel.png','assets/tools/lovable.png'];
+  const lines = [];
+  for (const p of paths) {
+    try {
+      const r = await fetch('../' + p.replace('assets/','../assets/'.slice(3))); // fix
+    } catch(e) {}
+  }
+  // correct fetches from this page at /.tmp-nav/diag.html -> ../assets/tools/
+  for (const name of ['figma','miro','illustrator','xd','claude','cursor','vercel','lovable']) {
+    const url = '../assets/tools/' + name + '.png';
+    const r = await fetch(url);
+    const buf = await r.arrayBuffer();
+    lines.push(name + ': status=' + r.status + ' type=' + r.headers.get('content-type') + ' bytes=' + buf.byteLength);
+    // also test image decode
+    const img = new Image();
+    const ok = await new Promise(res => { img.onload=()=>res('ok '+img.naturalWidth+'x'+img.naturalHeight); img.onerror=()=>res('ERR'); img.src=url; });
+    lines.push('  decode: ' + ok);
+  }
+  // load portfolio snippet styles
+  document.body.insertAdjacentHTML('beforeend', `
+  <link rel="stylesheet" href="#">
+  <div class="tool-ico" style="width:44px;height:44px;display:flex;border:1px solid red;margin:8px">
+    <img src="../assets/tools/claude.png" style="width:100%;height:100%;object-fit:contain;display:block">
+  </div>`);
+  // Check portfolio page in iframe
+  const iframe = document.createElement('iframe');
+  iframe.src = '../portfolio-v2.html';
+  iframe.style.width='1280px'; iframe.style.height='2000px';
+  document.body.appendChild(iframe);
+  await new Promise(r => iframe.onload = r);
+  await new Promise(r => setTimeout(r, 1500));
+  const doc = iframe.contentDocument;
+  const imgs = [...doc.querySelectorAll('.tool-ico img')];
+  lines.push('tool imgs in portfolio: ' + imgs.length);
+  for (const img of imgs) {
+    const cs = iframe.contentWindow.getComputedStyle(img);
+    const parent = img.parentElement;
+    const pcs = iframe.contentWindow.getComputedStyle(parent);
+    lines.push(img.src.split('/').pop() + ' complete=' + img.complete + ' nat=' + img.naturalWidth + 'x' + img.naturalHeight +
+      ' display=' + cs.display + ' opacity=' + cs.opacity + ' w=' + cs.width + ' h=' + cs.height +
+      ' visibility=' + cs.visibility + ' parentOpacity=' + pcs.opacity + ' parentW=' + pcs.width +
+      ' itemVisible=' + img.closest('.tool-item').classList.contains('visible') +
+      ' sectionVisible=' + img.closest('.tools-section').classList.contains('visible'));
+  }
+  document.getElementById('out').textContent = lines.join('\n');
+}
+run().catch(e => document.getElementById('out').textContent = String(e));
+</script>
+
+  <link rel="stylesheet" href="#">
+  <div class="tool-ico" style="width:44px;height:44px;display:flex;border:1px solid red;margin:8px">
+    <img src="../assets/tools/claude.png" style="width:100%;height:100%;object-fit:contain;display:block">
+  </div><iframe src="../portfolio-v2.html" style="width: 1280px; height: 2000px;"></iframe></body></html>

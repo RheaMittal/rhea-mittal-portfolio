@@ -5,12 +5,20 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Freetown Village, Rhea Mittal</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.8);
+  --glass-edge: rgba(0,0,0,0.06);
+  --glass-blur: blur(18px) saturate(1.45);
+  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+
   --bg: #F5F4F0;
   --ink: #0C0C0C;
   --muted: rgba(12,12,12,0.45);
@@ -22,33 +30,163 @@ html { scroll-behavior: smooth; }
   --white: #FFFFFF;
 }
 
-body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', system-ui, sans-serif; font-size: 16px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+
 
 /* ─── NAV ─── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 18px 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(245,244,240,0.92); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  padding: 16px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: transparent;
+  border-bottom: none;
+  pointer-events: none;
 }
-.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -.5px; text-decoration: none; color: var(--ink); }
-.nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: none; position: relative; padding-bottom: 2px; transition: color .2s; }
-.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--ink); transition: width .3s cubic-bezier(.25,.46,.45,.94); }
-.nav-links a:hover { color: var(--ink); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a.active { color: var(--ink); }
-.nav-links a.active::after { width: 100%; }
-.nav-cta { background: var(--ink); color: var(--bg); padding: 9px 22px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; transition: transform .2s; }
-.nav-cta:hover { transform: scale(1.04); }
-.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-.nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .3s, opacity .3s; }
-.nav-mobile { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+nav > * { pointer-events: auto; }
+.nav-logo {
+  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  letter-spacing: 0; text-decoration: none; color: var(--ink);
+  justify-self: start;
+  padding: 10px 4px;
+  transition: opacity .2s;
+}
+.nav-logo:hover { opacity: .7; }
+.nav-pill {
+  position: relative;
+  justify-self: center;
+  display: flex; align-items: center; gap: 2px;
+  padding: 5px;
+  border-radius: 100px;
+  background: var(--glass-bg, rgba(255,255,255,0.62));
+  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
+  box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
+}
+.nav-pill-indicator {
+  position: absolute;
+  top: 5px; left: 0;
+  height: calc(100% - 10px);
+  border-radius: 100px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(80,76,68,0.12);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), width .5s cubic-bezier(.22, 1, .36, 1), opacity .35s ease;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.nav-pill a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 18px;
+  min-height: 38px;
+  border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  box-shadow: none;
+  transition: color .35s ease;
+}
+.nav-pill a:hover { color: var(--ink); }
+.nav-pill a.active {
+  color: var(--green);
+  font-weight: 500;
+  background: transparent;
+  box-shadow: none;
+}
+.nav-cta {
+  justify-self: end;
+  background: var(--ink); color: var(--bg);
+  padding: 10px 20px; border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(12,12,12,0.12);
+}
+.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 8px; background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
+  justify-self: end;
+  box-shadow: 0 4px 16px rgba(80,76,68,0.08);
+}
+.nav-burger span {
+  display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px;
+}
+.nav-mobile {
+  display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
+  backdrop-filter: blur(24px); z-index: 998;
+  flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+}
 .nav-mobile.open { display: flex; }
-.nav-mobile a { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px,8vw,64px); text-transform: uppercase; letter-spacing: -1px; color: var(--ink); text-decoration: none; transition: color .2s; }
-.nav-mobile a:hover { color: var(--fv); }
-.nav-mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted); }
+.nav-mobile a {
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
+}
+.nav-mobile a:hover { color: var(--green); }
+.nav-mobile-close {
+  position: absolute; top: 20px; right: 24px; background: none; border: none;
+  font-size: 24px; cursor: pointer; color: var(--muted);
+}
+
+/* ─── GLASS SYSTEM ─── */
+.glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.glass-badge {
+  display: inline-flex; align-items: center;
+  padding: 9px 18px; border-radius: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: rgba(12,12,12,0.72);
+  white-space: nowrap;
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+}
+.hero-chip {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab, .proj-tab {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+}
+.work-tab:hover, .proj-tab:hover {
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  border-color: rgba(255,255,255,0.95);
+}
+.work-tab.active, .proj-tab.active {
+  background: rgba(255,255,255,0.92);
+  color: var(--green);
+  border-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 12px rgba(80,76,68,0.10), 0 0 0 1px var(--glass-edge);
+}
+.p-card, .wk-card {
+  border: 1px solid rgba(255,255,255,0.65) !important;
+  box-shadow: var(--card-shadow-rest, 3px 6px 12px -1px rgba(80,76,68,.10)), 0 0 0 1px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.5);
+  background-clip: padding-box;
+}
+.p-card:hover, .wk-card:hover {
+  border-color: rgba(255,255,255,0.9) !important;
+}
+
 
 /* ─── SCROLL REVEAL ─── */
 .cs-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94); }
@@ -77,8 +215,8 @@ nav {
   display: flex; align-items: center; gap: 10px;
 }
 .cs-hero-h1 {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(40px, 6vw, 76px); line-height: .92; letter-spacing: -2px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(31px, 4.68vw, 59px); line-height: .92; letter-spacing: 0; text-transform: uppercase;
   color: #fff; margin-bottom: 28px;
 }
 .cs-hero-desc {
@@ -92,7 +230,7 @@ nav {
 }
 .cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
 .cs-hs:last-child { border-right: none; }
-.cs-hs-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -2px; color: #fff; line-height: 1; }
+.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
 .cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
 
 /* ─── CONTENT LAYOUT ─── */
@@ -116,18 +254,18 @@ nav {
   color: var(--muted); margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
-.cs-sec-label .n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .cs-sec-title {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-  font-size: clamp(36px,5vw,56px); line-height: 1.04; letter-spacing: -.5px; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(28px, 3.9vw, 44px); line-height: 1.04; letter-spacing: 0; text-transform: uppercase;
   margin-bottom: 28px;
 }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
 /* ── EYEBROW: small muted all-caps subsection label ── */
 .cs-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: rgba(12,12,12,0.42); margin: 36px 0 14px; }
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: .02em; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── SPLITS ─── */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; margin-bottom: 0; }
@@ -144,8 +282,8 @@ nav {
   display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.18); }
-.c-card-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: -2px; color: rgba(0,0,0,.06); line-height: 1; }
-.c-card-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.4px; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── IMPACT ─── */
@@ -156,7 +294,7 @@ nav {
   transition: transform .25s, border-color .2s;
 }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
-.impact-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 56px; letter-spacing: .06em; line-height: 1; margin-bottom: 8px; }
+.impact-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
 .impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
 .in-fv { color: var(--fv); }
 
@@ -168,10 +306,10 @@ nav {
 .cs-quote.dark { background: #0A0A0A; }
 .cs-quote::before {
   content: '"'; position: absolute; top: -30px; left: 32px;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 200px;
+  font-family: 'Lato', sans-serif; font-size: 156px;
   color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
 }
-.cs-quote-text { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.55; color: rgba(255,255,255,.85); position: relative; margin-bottom: 16px; }
+.cs-quote-text { font-family: 'Lato', sans-serif; font-size: 20px; line-height: 1.55; color: rgba(255,255,255,.85); position: relative; margin-bottom: 16px; }
 .cs-quote-attr { font-size: 13px; color: rgba(255,255,255,.3); position: relative; }
 
 /* ─── DIVIDER ─── */
@@ -189,7 +327,7 @@ nav {
 .img-ph.h-small { min-height: 200px; }
 .img-ph-ico { font-size: 40px; opacity: .2; }
 .img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.5px; color: rgba(0,0,0,.38); }
+.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
 
 /* ─── VIDEO ZOOM ─── */
@@ -203,7 +341,7 @@ nav {
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
 .cs-footer.fv-foot { background: linear-gradient(160deg, #1C0C06 0%, #3D1A0A 55%, #7A3218 100%); }
-.cs-footer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
 .fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
@@ -213,9 +351,10 @@ nav {
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px) {
-  nav { padding: 14px 24px; }
+  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
   .cs-section { margin-bottom: 56px; }
-  .nav-links { display: none; }
+  .nav-pill { display: none; }
+  .nav-cta { display: none; }
   .nav-burger { display: flex; }
   .cs-hero-band { padding-top: 110px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
   .cs-content { padding: 0 20px 100px; }
@@ -227,7 +366,7 @@ nav {
   .cards-g2 { grid-template-columns: 1fr; }
   .impact-row { grid-template-columns: 1fr 1fr; }
   .cs-footer-inner { padding: 40px 24px; }
-  .cs-footer-title { font-size: 36px; }
+  .cs-footer-title { font-size: 28px; }
   .sec-split { grid-template-columns: 1fr; gap: 28px; }
 }
 @media(max-width:600px) {
@@ -260,19 +399,21 @@ nav {
   }
 }
 </style>
+<link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="index.html">Rhea Mittal</a>
-  <ul class="nav-links">
-    <li><a href="work.html" class="active">Work</a></li>
-    <li><a href="playground.html">Play</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume ↗</a></li>
-
-  </ul>
+<!-- ─── NAV ─── -->
+<nav class="nav-dark">
+  <a class="nav-logo" href="portfolio-v2.html">RM</a>
+  <div class="nav-pill">
+    <span class="nav-pill-indicator" aria-hidden="true"></span>
+    <a href="work.html" class="nav-pill-link active">Work</a>
+    <a href="playground.html" class="nav-pill-link">Play</a>
+    <a href="about.html" class="nav-pill-link">About</a>
+    <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" class="nav-pill-link" download>Resume ↗</a>
+  </div>
   <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -291,7 +432,7 @@ nav {
 <div class="cs-hero-band">
   <div class="cs-hero-inner">
     <div class="cs-hero-kicker">UX Research &amp; Visual Design · Freetown Village · 2024</div>
-    <h1 class="cs-hero-h1">40 years of stories.<br>A generation that couldn't find them.</h1>
+    <h1 class="cs-hero-h1">A 40-year museum,<br>invisible to Gen Z.</h1>
     <p class="cs-hero-desc">A 40-year-old living history museum was invisible to the generation it needed most. We researched why, then designed the platform to fix it.</p>
     <video class="cs-hero-video vid-zoom" aria-label="Freetown Village platform hero walkthrough" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:36px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);">
       <source src="assets/Freetown village/Landing Page.mp4" type="video/mp4">
@@ -371,15 +512,15 @@ nav {
       <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--fv);margin-bottom:20px;">What the data told us · Secondary Research</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
         <div style="background:#fff;border-radius:14px;padding:24px 22px;border:1px solid var(--border);">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;color:var(--fv);line-height:1;margin-bottom:8px;">79%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;letter-spacing: 0;color:var(--fv);line-height:1;margin-bottom:8px;">79%</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">of African American teens want to learn how slavery's legacy still affects them today</p>
         </div>
         <div style="background:#fff;border-radius:14px;padding:24px 22px;border:1px solid var(--border);">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;color:var(--fv);line-height:1;margin-bottom:8px;">76%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;letter-spacing: 0;color:var(--fv);line-height:1;margin-bottom:8px;">76%</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">have already talked with relatives about family ancestry, the appetite for connection is real</p>
         </div>
         <div style="background:#fff;border-radius:14px;padding:24px 22px;border:1px solid var(--border);">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;color:var(--fv);line-height:1;margin-bottom:8px;">18%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;letter-spacing: 0;color:var(--fv);line-height:1;margin-bottom:8px;">18%</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">only trust social media for accurate historical information. They want institutional credibility.</p>
         </div>
       </div>
@@ -426,7 +567,7 @@ nav {
 
         <!-- Demographics -->
         <div style="margin-bottom:16px;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.2px;color:var(--ink);line-height:1.1;">Jordan, 25</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);line-height:1.1;">Jordan, 25</div>
           <div style="font-size:13px;color:var(--fv);font-weight:600;margin:3px 0 10px;">Graduate Student · Indianapolis, IN</div>
           <div style="display:flex;flex-direction:column;gap:5px;">
             <div style="font-size:12px;color:rgba(12,12,12,0.55);display:flex;gap:8px;"><span style="font-weight:600;color:rgba(12,12,12,0.7);min-width:80px;">Education</span> Master's in Communications</div>
@@ -437,22 +578,22 @@ nav {
         </div>
 
         <div style="margin-top:20px;background:rgba(212,132,90,0.1);border-left:3px solid var(--fv);border-radius:0 10px 10px 0;padding:14px 16px;">
-          <div style="font-family:'Instrument Serif',serif;font-size:17px;line-height:1.55;color:#8B3A1A;">"I want to know where I come from, but every story online feels incomplete."</div>
+          <div style="font-family:'Lato',sans-serif;font-size:13px;line-height:1.55;color:#8B3A1A;">"I want to know where I come from, but every story online feels incomplete."</div>
         </div>
       </div>
       <div>
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:20px;">3 Needs Identified Across All Interviews</div>
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:14px;padding:20px 22px;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.02em;color:var(--fv);margin-bottom:6px;">Trust</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:6px;">Trust</div>
             <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Credible sources in a landscape of misinformation. Gen Z doesn't want to learn from content farms, they want institutional credibility.</p>
           </div>
           <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:14px;padding:20px 22px;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.02em;color:var(--fv);margin-bottom:6px;">Interactivity</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:6px;">Interactivity</div>
             <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Active participation. They'd experienced Freetown Village in person and the "fourth wall break" is what makes it memorable.</p>
           </div>
           <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:14px;padding:20px 22px;">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.02em;color:var(--fv);margin-bottom:6px;">Community</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:6px;">Community</div>
             <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Connection with others on the same journey. Cultural learning felt isolating alone; shared with others it became identity-building.</p>
           </div>
         </div>
@@ -462,7 +603,7 @@ nav {
     <!-- HMW -->
     <div style="margin-top:36px;background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:20px;padding:36px 40px;">
       <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--fv);margin-bottom:16px;">How Might We</div>
-      <p style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.4vw,24px);line-height:1.65;color:var(--ink);margin:0;">Help <mark style="background:rgba(212,132,90,0.25);color:#6B2D0F;border-radius:4px;padding:1px 5px;font-style:normal;">young digitally active learners</mark> connect with <mark style="background:rgba(212,132,90,0.25);color:#6B2D0F;border-radius:4px;padding:1px 5px;font-style:normal;">trustworthy and interactive experiences,</mark> so they feel more grounded in their <mark style="background:rgba(212,132,90,0.25);color:#6B2D0F;border-radius:4px;padding:1px 5px;font-style:normal;">historical roots?</mark></p>
+      <p style="font-family:'Lato',sans-serif;font-size:clamp(14px, 1.87vw, 19px);line-height:1.65;color:var(--ink);margin:0;">Help <mark style="background:rgba(212,132,90,0.25);color:#6B2D0F;border-radius:4px;padding:1px 5px;font-style:normal;">young digitally active learners</mark> connect with <mark style="background:rgba(212,132,90,0.25);color:#6B2D0F;border-radius:4px;padding:1px 5px;font-style:normal;">trustworthy and interactive experiences,</mark> so they feel more grounded in their <mark style="background:rgba(212,132,90,0.25);color:#6B2D0F;border-radius:4px;padding:1px 5px;font-style:normal;">historical roots?</mark></p>
     </div>
   </div>
 
@@ -495,17 +636,17 @@ nav {
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:8px;">
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px;">
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--fv);">→ Trust</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-.3px;">Live Watch Parties</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:16px;text-transform:uppercase;letter-spacing: 0;">Live Watch Parties</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Real-time performance streams with interactive quizzes and community chat. Freetown Village's credibility as the host addresses the trust gap directly.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px;">
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--fv);">→ Interactivity</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-.3px;">Museum of Memorabilia</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:16px;text-transform:uppercase;letter-spacing: 0;">Museum of Memorabilia</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Earn points through participation, unlock historical artifacts, build a personal 3D museum. Makes cultural exploration tangible and permanent, yours to keep.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px;">
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--fv);">→ Community</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-.3px;">Community Chat Threads</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:16px;text-transform:uppercase;letter-spacing: 0;">Community Chat Threads</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Moderated spaces to discuss performances, share family stories, and connect with historians. Recreates the shared experience that makes in-person events stick.</p>
       </div>
     </div>
@@ -527,15 +668,15 @@ nav {
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px;">
       <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:14px;padding:20px 22px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.02em;color:var(--fv);margin-bottom:6px;">Flow 01</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:6px;">Flow 01</div>
         <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Joining and participating in a live watch party with real-time community chat.</p>
       </div>
       <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:14px;padding:20px 22px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.02em;color:var(--fv);margin-bottom:6px;">Flow 02</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:6px;">Flow 02</div>
         <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Earning points through participation and unlocking artifacts in the Museum of Memorabilia.</p>
       </div>
       <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:14px;padding:20px 22px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.02em;color:var(--fv);margin-bottom:6px;">Flow 03</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:6px;">Flow 03</div>
         <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Navigating and posting within moderated community chat threads.</p>
       </div>
     </div>
@@ -543,22 +684,22 @@ nav {
     <!-- Points economy — concept developed at lo-fi stage -->
     <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:20px;padding:36px 40px;margin-top:32px;">
       <p class="cs-eyebrow" style="margin:0 0 12px;">A concept we built into the lo-fi: the points economy</p>
-      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(22px,3vw,30px);text-transform:uppercase;letter-spacing:-.3px;color:var(--ink);margin:0 0 28px;">Participation earns you currency. Currency you can use to build your virtual museum with.</h3>
+      <h3 style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(17px, 2.34vw, 23px);text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin:0 0 28px;">Participation earns you currency. Currency you can use to build your virtual museum with.</h3>
 
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
         <div style="background:#fff;border:1px solid var(--fv-border);border-radius:16px;padding:24px 22px;">
           <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#D4845A" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Z"/></svg></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.04em;color:var(--fv);margin-bottom:8px;">Earn</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:8px;">Earn</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Points are earned through participation: attending live watch parties, engaging in community chats, and completing cultural challenges.</p>
         </div>
         <div style="background:#fff;border:1px solid var(--fv-border);border-radius:16px;padding:24px 22px;">
           <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#D4845A" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"/></svg></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.04em;color:var(--fv);margin-bottom:8px;">Spend</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:8px;">Spend</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Points unlock historical artifacts in your personal museum and can be redeemed for exclusive Freetown Village merch.</p>
         </div>
         <div style="background:#fff;border:1px solid var(--fv-border);border-radius:16px;padding:24px 22px;">
           <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#D4845A" aria-hidden="true"><path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"/><path d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.008ZM4.5 9.75A.75.75 0 0 1 5.25 9h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V9.75Z"/></svg></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.04em;color:var(--fv);margin-bottom:8px;">Buy</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--fv);margin-bottom:8px;">Buy</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">Users can also purchase coins directly to fast-track access to artifacts and merch. A revenue stream that keeps the platform sustainable for a nonprofit.</p>
         </div>
       </div>
@@ -582,7 +723,7 @@ nav {
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:32px 0 36px;">
       <div style="border:1px solid rgba(212,132,90,.3);background:rgba(212,132,90,.08);border-radius:16px;padding:24px 22px;">
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--fv);margin-bottom:10px;">Failure 01</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;margin-bottom:8px;">Safety in the Community</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:14px;text-transform:uppercase;margin-bottom:8px;">Safety in the Community</div>
         <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0 0 12px;">"People say terrible things." Multiple participants expressed real concern that an unmoderated community space could replicate the exact online toxicity they were trying to escape.</p>
         <div style="height:1px;background:rgba(212,132,90,.2);margin:12px 0;"></div>
         <div style="font-size:11px;font-weight:600;color:#2E7D32;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">→ Fix</div>
@@ -590,7 +731,7 @@ nav {
       </div>
       <div style="border:1px solid rgba(212,132,90,.3);background:rgba(212,132,90,.08);border-radius:16px;padding:24px 22px;">
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--fv);margin-bottom:10px;">Failure 02</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;margin-bottom:8px;">Unclear Point System</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:14px;text-transform:uppercase;margin-bottom:8px;">Unclear Point System</div>
         <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0 0 12px;">"I wasn't sure where they came from." Participants couldn't connect earning points to the cultural archive, the gamification felt arbitrary without context.</p>
         <div style="height:1px;background:rgba(212,132,90,.2);margin:12px 0;"></div>
         <div style="font-size:11px;font-weight:600;color:#2E7D32;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">→ Fix</div>
@@ -598,7 +739,7 @@ nav {
       </div>
       <div style="border:1px solid rgba(212,132,90,.3);background:rgba(212,132,90,.08);border-radius:16px;padding:24px 22px;">
         <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--fv);margin-bottom:10px;">Failure 03</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;text-transform:uppercase;margin-bottom:8px;">Intrusive Quiz Pop-ups</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:14px;text-transform:uppercase;margin-bottom:8px;">Intrusive Quiz Pop-ups</div>
         <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0 0 12px;">"Pop-up blocks the live play." Quizzes appearing mid-performance broke the immersion at exactly the wrong moment, frustrating the users most engaged with the content.</p>
         <div style="height:1px;background:rgba(212,132,90,.2);margin:12px 0;"></div>
         <div style="font-size:11px;font-weight:600;color:#2E7D32;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">→ Fix</div>
@@ -607,7 +748,7 @@ nav {
     </div>
 
     <div style="background:var(--fv-bg);border:1px solid var(--fv-border);border-radius:16px;padding:24px 28px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(22px,3vw,30px);text-transform:uppercase;letter-spacing:-.5px;color:var(--ink);margin-bottom:10px;">88% would recommend the experience.</div>
+      <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(17px, 2.34vw, 23px);text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:10px;">88% would recommend the experience.</div>
       <p style="font-size:14px;color:rgba(12,12,12,0.58);line-height:1.7;margin:0;">7 out of 8 interview participants said they would recommend the platform to a friend interested in Black history and culture. Alongside the failures, this was the most important signal. The concept resonated. The execution needed tightening, and now we knew exactly where.</p>
     </div>
   </div>
@@ -622,8 +763,8 @@ nav {
     <!-- Feature 1 -->
     <div style="margin-bottom:40px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <div style="background:var(--fv);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Barlow Condensed',sans-serif;font-size:16px;color:#fff;flex-shrink:0;">1</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.3px;">Live Watch Parties</div>
+        <div style="background:var(--fv);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight: 700;font-family:'Lato',sans-serif;font-size:12px;color:#fff;flex-shrink:0;">1</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;letter-spacing: 0;">Live Watch Parties</div>
       </div>
       <video aria-label="Freetown Village prototype interaction video" autoplay loop muted playsinline class="vid-zoom" style="width:72%;border-radius:20px;display:block;margin:24px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);">
         <source src="assets/Freetown village/Live Watch Parties.mp4" type="video/mp4">
@@ -634,8 +775,8 @@ nav {
     <!-- Feature 2 -->
     <div style="margin-bottom:40px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <div style="background:var(--fv);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Barlow Condensed',sans-serif;font-size:16px;color:#fff;flex-shrink:0;">2</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.3px;">Museum of Memorabilia</div>
+        <div style="background:var(--fv);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight: 700;font-family:'Lato',sans-serif;font-size:12px;color:#fff;flex-shrink:0;">2</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;letter-spacing: 0;">Museum of Memorabilia</div>
       </div>
       <video aria-label="Freetown Village prototype interaction video" autoplay loop muted playsinline class="vid-zoom" style="width:72%;border-radius:20px;display:block;margin:24px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);">
         <source src="assets/Freetown village/Museum of Memrobilia.mp4" type="video/mp4">
@@ -647,8 +788,8 @@ nav {
     <!-- Feature 3 -->
     <div style="margin-bottom:40px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <div style="background:var(--fv);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Barlow Condensed',sans-serif;font-size:16px;color:#fff;flex-shrink:0;">3</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.3px;">Community Chat Threads</div>
+        <div style="background:var(--fv);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight: 700;font-family:'Lato',sans-serif;font-size:12px;color:#fff;flex-shrink:0;">3</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;letter-spacing: 0;">Community Chat Threads</div>
       </div>
       <video aria-label="Freetown Village prototype interaction video" autoplay loop muted playsinline class="vid-zoom" style="width:72%;border-radius:20px;display:block;margin:24px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);">
         <source src="assets/Freetown village/Community chat trends.mp4" type="video/mp4">
@@ -671,10 +812,10 @@ nav {
       <!-- Free tier -->
       <div style="background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;">
         <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;letter-spacing:-1px;color:var(--ink);line-height:1;">$0</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:28px;letter-spacing: 0;color:var(--ink);line-height:1;">$0</div>
           <div style="font-size:13px;font-weight:600;color:var(--muted);margin-top:4px;">Free forever</div>
         </div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);">Basic Exploration</div>
+        <div style="font-family:'Lato',sans-serif;font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);">Basic Exploration</div>
         <div style="height:1px;background:var(--border);"></div>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;">
           <li style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.5;display:flex;gap:8px;"><span style="color:var(--fv);font-weight:700;">·</span> Basic museum room</li>
@@ -688,10 +829,10 @@ nav {
       <div style="background:var(--fv-bg);border:2px solid var(--fv);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;position:relative;">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--fv);color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 12px;border-radius:20px;white-space:nowrap;">Jordan's projected tier</div>
         <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;letter-spacing:-1px;color:var(--ink);line-height:1;">$6.99<span style="font-size:16px;font-weight:600;letter-spacing:0;color:var(--muted);">/mo</span></div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:28px;letter-spacing: 0;color:var(--ink);line-height:1;">$6.99<span style="font-size:16px;font-weight:600;letter-spacing:0;color:var(--muted);">/mo</span></div>
           <div style="font-size:13px;font-weight:600;color:var(--muted);margin-top:4px;">Billed monthly</div>
         </div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);">Digital Historian</div>
+        <div style="font-family:'Lato',sans-serif;font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);">Digital Historian</div>
         <div style="height:1px;background:rgba(212,132,90,0.3);"></div>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;">
           <li style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.5;display:flex;gap:8px;"><span style="color:var(--fv);font-weight:700;">·</span> Full museum room</li>
@@ -703,10 +844,10 @@ nav {
       <!-- $19.99 tier -->
       <div style="background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;">
         <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;letter-spacing:-1px;color:var(--ink);line-height:1;">$19.99<span style="font-size:16px;font-weight:600;letter-spacing:0;color:var(--muted);">/mo</span></div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:28px;letter-spacing: 0;color:var(--ink);line-height:1;">$19.99<span style="font-size:16px;font-weight:600;letter-spacing:0;color:var(--muted);">/mo</span></div>
           <div style="font-size:13px;font-weight:600;color:var(--muted);margin-top:4px;">Billed monthly</div>
         </div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);">Cultural Curator</div>
+        <div style="font-family:'Lato',sans-serif;font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);">Cultural Curator</div>
         <div style="height:1px;background:var(--border);"></div>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;">
           <li style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.5;display:flex;gap:8px;"><span style="color:var(--fv);font-weight:700;">·</span> Full museum room</li>
@@ -843,12 +984,12 @@ nav {
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div onclick="window.location='salesforce.html'" style="background:rgba(0,112,210,.06);border:1px solid rgba(0,112,210,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(0,112,210,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(0,112,210,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:12px;">Enterprise SaaS · Visual Design</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#0C0C0C;margin-bottom:8px;">Salesforce</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Salesforce</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Designing Salesforce's AI-powered analytics experience for enterprise teams.</p>
       </div>
       <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform · Visual Design</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:-.7px;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
       </div>
     </div>
@@ -906,5 +1047,8 @@ revealEls.forEach(function(el) { revealObserver.observe(el); });
   <span>Made with love and energy drinks ✨</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
+</script>
+
+<script src="scripts/nav-pill.js" defer></script>
 </body>
 </html>
