@@ -23,7 +23,7 @@ html { scroll-behavior: smooth; }
   --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
   --bg: #F5F4F0;
   --ink: #0C0C0C;
-  --muted: rgba(12,12,12,0.45);
+  --muted: rgba(12,12,12,0.62);
   --border: rgba(0,0,0,0.08);
   --green: #1DA855;
   --green-bg: rgba(29,168,85,0.08);
@@ -59,7 +59,7 @@ body {
 /* HEADER */
 .work-header { display:flex; align-items:center; border-bottom:1px solid var(--border); padding-bottom:20px; margin-bottom:20px; }
 .work-label { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-.work-display { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(41px, 5.46vw, 78px); letter-spacing: 0; line-height:1.05; text-transform:uppercase; color:var(--ink); margin:16px 0 36px; }
+.work-display { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(34px, 4.68vw, 62px); letter-spacing: 0; line-height:.92; text-transform:uppercase; color:var(--ink); margin-bottom:24px; }
 .work-display em { color:var(--green); font-style:italic; font-weight:900; }
 
 /* FILTER TABS */
@@ -87,7 +87,7 @@ body {
 .wk-tag { font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:14px; font-weight:500; color:var(--muted); }
 .wk-title { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(22px, 2.18vw, 31px); letter-spacing: 0; line-height:1.15; text-transform:uppercase; margin-bottom:12px; color:var(--ink); }
 .wk-title em { font-style:normal; }
-.wk-desc { font-size:14px; line-height:1.7; color:var(--muted); flex:1; margin-bottom:22px; }
+.wk-desc { font-size:14px; line-height:1.8; color:var(--muted); flex:1; margin-bottom:22px; }
 .wk-metrics { display:flex; gap:24px; padding-top:18px; border-top:1px solid var(--border); margin-bottom:22px; }
 .wk-stat-n { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(16px, 1.4vw, 20px); letter-spacing:1px; color:var(--ink); line-height:1; }
 .wk-stat-l { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-top:4px; }
@@ -110,7 +110,6 @@ body {
   .nav-burger { display:flex; }
   .page-wrap { padding:100px 24px 80px; }
   .work-grid { grid-template-columns:1fr; }
-  .work-display { font-size:clamp(34px, 7.8vw, 56px); }
   .work-footer { padding:20px 24px; flex-direction:column; gap:6px; text-align:center; }
 }
 </style>
@@ -243,7 +242,7 @@ body {
     <!-- FREETOWN VILLAGE -->
     <a class="wk-card reveal" data-cats="all research product visual" href="freetown-village.html" style="background:#fff;border:1px solid rgba(139,58,26,0.15);">
       <div class="wk-visual">
-        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="metadata" class="wk-vid scroll-vid" src="assets/Freetown village/Landing Page.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Freetown village/Landing Page_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#8B3A1A;">UX Research · Visual Design</div>

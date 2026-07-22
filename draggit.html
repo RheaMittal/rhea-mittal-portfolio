@@ -5,6 +5,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Draggit, Rhea Mittal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
@@ -21,7 +23,7 @@ html { scroll-behavior: smooth; }
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
-  --muted: rgba(12,12,12,0.45);
+  --muted: rgba(12,12,12,0.62);
   --border: rgba(0,0,0,0.08);
   --green: #2563EB;
   --green-bg: rgba(37,99,235,0.08);
@@ -265,7 +267,7 @@ nav > * { pointer-events: auto; }
   font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06; letter-spacing: 0; text-transform: uppercase;
   margin-bottom: 28px;
 }
-.cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); max-width: 720px; margin-bottom: 24px; }
+.cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.65); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
 .img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
@@ -490,9 +492,7 @@ nav > * { pointer-events: auto; }
     <div class="cs-hero-kicker"><span class="live-dot"></span> Built &amp; Shipped · LinkedIn Chrome Extension · Nov 2025</div>
     <h1 class="cs-hero-h1">I noticed a friction.<br>I built the fix.</h1>
     <p class="cs-hero-desc">Built and shipped a LinkedIn Chrome Extension in 2 weeks, solo end-to-end. Built using AI-powered tools: Claude, Cursor, and Figma Make.</p>
-    <video class="cs-hero-video vid-zoom" aria-label="Draggit hero demo — draggable LinkedIn connect modal in action" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:36px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);">
-      <source src="assets/Draggit.mp4" type="video/mp4">
-    </video>
+    <video class="cs-hero-video vid-zoom lazy-vid" aria-label="Draggit hero demo — draggable LinkedIn connect modal in action" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:36px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);" preload="none" data-src="assets/Draggit_web.mp4"></video>
   </div>
 </div>
 
@@ -563,7 +563,7 @@ nav > * { pointer-events: auto; }
     <div style="margin-top:36px;background:#EEF2FF;border:1px solid rgba(37,99,235,.15);border-radius:20px;padding:32px 36px 28px;">
       <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:8px;">Validated Fast · LinkedIn Community Post</div>
       <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(22px, 2.73vw, 31px);letter-spacing: 0;line-height:1.1;color:var(--ink);margin-bottom:14px;">5+ responses within hours.</div>
-      <p style="font-size:14px;color:rgba(12,12,12,0.58);line-height:1.7;margin:0 0 28px;">I posted about the friction on LinkedIn. Product designers and engineers replied within hours confirming the same pain. That was the signal I needed to move forward.</p>
+      <p style="font-size:14px;color:rgba(12,12,12,0.62);line-height:1.7;margin:0 0 28px;">I posted about the friction on LinkedIn. Product designers and engineers replied within hours confirming the same pain. That was the signal I needed to move forward.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
         <div style="background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
           <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;">Soumyarup Lahiri</div>
@@ -600,11 +600,11 @@ nav > * { pointer-events: auto; }
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
         <div>
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:12px;">The Friction</div>
-          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">LinkedIn's modal covers the person's profile at the exact moment you need to read it to write something personal.</p>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">LinkedIn's modal covers the person's profile at the exact moment you need to read it to write something personal.</p>
         </div>
         <div>
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:12px;">The Constraint</div>
-          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Lightweight, Chrome-compatible, no personal data parsed or recorded, and simple enough to ship publicly on the Chrome Web Store.</p>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Lightweight, Chrome-compatible, no personal data parsed or recorded, and simple enough to ship publicly on the Chrome Web Store.</p>
         </div>
       </div>
     </div>
@@ -635,17 +635,17 @@ nav > * { pointer-events: auto; }
         <div style="background:#EEF2FF;border-radius:16px;padding:24px 22px;">
           <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Lightweight and technically feasible</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.58);line-height:1.6;margin:0;">A drag handle requires minimal DOM injection, no scraping, no new UI surface. One element. That's it.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">A drag handle requires minimal DOM injection, no scraping, no new UI surface. One element. That's it.</p>
         </div>
         <div style="background:#EEF2FF;border-radius:16px;padding:24px 22px;">
           <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"/></svg></div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Simplest to build with AI</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.58);line-height:1.6;margin:0;">Less complex logic meant Cursor could generate cleaner, more reliable code. Simpler to describe in a PRD, fewer edge cases to get wrong.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">Less complex logic meant Cursor could generate cleaner, more reliable code. Simpler to describe in a PRD, fewer edge cases to get wrong.</p>
         </div>
         <div style="background:#EEF2FF;border-radius:16px;padding:24px 22px;">
           <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.705-3.079Z"/></svg></div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Zero personal data involved</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.58);line-height:1.6;margin:0;">Critical: the extension doesn't parse or record any personal data from the person receiving the connection request. Privacy-safe by design.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">Critical: the extension doesn't parse or record any personal data from the person receiving the connection request. Privacy-safe by design.</p>
         </div>
       </div>
     </div>
@@ -681,7 +681,7 @@ nav > * { pointer-events: auto; }
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
           <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">ChatGPT: Feasibility Check</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.6);line-height:1.65;margin:0;">Before writing code, used ChatGPT to evaluate the technical feasibility of each solution option. Key question: <em>what can a Chrome extension actually do to LinkedIn's DOM?</em> Confirmed injecting a drag handle via content script was viable.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Before writing code, used ChatGPT to evaluate the technical feasibility of each solution option. Key question: <em>what can a Chrome extension actually do to LinkedIn's DOM?</em> Confirmed injecting a drag handle via content script was viable.</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
@@ -690,7 +690,7 @@ nav > * { pointer-events: auto; }
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
           <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">Claude: Built the PRD</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.6);line-height:1.65;margin:0;">Wrote the full PRD, translating interaction specs, edge cases, and design decisions into structured engineering requirements. Having a PRD meant Cursor had clear context and constraints, not just vibes.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Wrote the full PRD, translating interaction specs, edge cases, and design decisions into structured engineering requirements. Having a PRD meant Cursor had clear context and constraints, not just vibes.</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
@@ -699,7 +699,7 @@ nav > * { pointer-events: auto; }
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
           <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">Cursor: Built the Product</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.6);line-height:1.65;margin:0;">Built the Chrome extension: manifest, content script, drag logic, position memory. I directed the build, reviewed every output, debugged failures, and iterated when LinkedIn's dynamic DOM caused issues. Cursor wrote code; I owned the product.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Built the Chrome extension: manifest, content script, drag logic, position memory. I directed the build, reviewed every output, debugged failures, and iterated when LinkedIn's dynamic DOM caused issues. Cursor wrote code; I owned the product.</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
@@ -708,7 +708,7 @@ nav > * { pointer-events: auto; }
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
           <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">Figma Make: Iterated the Icon</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.6);line-height:1.65;margin:0;">Rapidly explored UI variations of the drag handle and icon: color, size, shape, hover states without touching code each time. Landed on the 6-dot grid that tested best with real users.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Rapidly explored UI variations of the drag handle and icon: color, size, shape, hover states without touching code each time. Landed on the 6-dot grid that tested best with real users.</p>
         </div>
       </div>
     </div>
@@ -720,9 +720,7 @@ nav > * { pointer-events: auto; }
     <h2 class="cs-sec-title">One drag. Full context restored.</h2>
     <p class="cs-body" style="font-size:15px;font-weight:500;letter-spacing:.01em;">The Product: Connect with Convenience</p>
 
-    <video aria-label="Draggit prototype walkthrough video" autoplay loop muted playsinline class="vid-zoom" style="width:72%;border-radius:20px;display:block;margin:32px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);">
-      <source src="assets/Draggit.mp4" type="video/mp4">
-    </video>
+    <video aria-label="Draggit prototype walkthrough video" loop muted playsinline class="vid-zoom lazy-vid" style="width:72%;border-radius:20px;display:block;margin:32px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);" preload="none" data-src="assets/Draggit_web.mp4"></video>
 
     <div class="product-features" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
       <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
@@ -788,13 +786,13 @@ nav > * { pointer-events: auto; }
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
         <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Build fast. Fail fast. Learn faster.</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">Simply animating a concept in Figma gave me everything I needed: validation that the pain was real, and early feedback on what features people actually wanted. I didn't need a polished prototype, a rough animation was enough to get signal.</p>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Simply animating a concept in Figma gave me everything I needed: validation that the pain was real, and early feedback on what features people actually wanted. I didn't need a polished prototype, a rough animation was enough to get signal.</p>
       </div>
       <!-- Card 2 -->
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"/></svg></div>
         <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Rejection is a debugging task.</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.55);margin:0;">The Chrome Store rejection forced me to understand the permission model properly. Highest-value moment of the whole build.</p>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">The Chrome Store rejection forced me to understand the permission model properly. Highest-value moment of the whole build.</p>
       </div>
     </div>
   </div>
@@ -970,6 +968,44 @@ if (productFeatures) {
   <span>Made with love and energy drinks ✨</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
+</script>
+
+<script>
+
+/* ── Viewport videos: load near view, play on screen, pause off screen ── */
+(function initViewportVideos() {
+  function loadVideo(video) {
+    if (video.dataset.loaded) return;
+    var src = video.dataset.src;
+    if (src) {
+      video.src = src;
+      video.dataset.loaded = 'true';
+      return;
+    }
+    var source = video.querySelector('source[data-src]');
+    if (source) {
+      source.src = source.getAttribute('data-src');
+      source.removeAttribute('data-src');
+      video.load();
+      video.dataset.loaded = 'true';
+    }
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        loadVideo(v);
+        var play = function() { v.play().catch(function(){}); };
+        if (v.readyState >= 2) play();
+        else v.addEventListener('loadeddata', play, { once: true });
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '120px' });
+  document.querySelectorAll('video.lazy-vid').forEach(function(v) { obs.observe(v); });
+})();
+
 </script>
 
 <script src="scripts/nav-pill.js" defer></script>

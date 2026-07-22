@@ -5,6 +5,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Playground: Rhea Mittal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
@@ -21,7 +23,7 @@ html { scroll-behavior: smooth; }
   --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
   --bg: #F5F4F0;
   --ink: #0C0C0C;
-  --muted: rgba(12,12,12,0.45);
+  --muted: rgba(12,12,12,0.62);
   --border: rgba(0,0,0,0.08);
   --green: #1DA855;
   --green-bg: rgba(29,168,85,0.08);
@@ -59,7 +61,7 @@ body {
 .page-kicker::before{display:none;}
 .page-title{font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(34px, 4.68vw, 62px);line-height:.92;letter-spacing: 0;text-transform:uppercase;margin-bottom:24px;}
 .page-title em{font-style:italic;font-weight:900;color:var(--green);}
-.page-desc{font-size:17px;line-height:1.75;color:var(--muted);max-width:560px;}
+.page-desc{font-size:17px;line-height:1.85;color:var(--muted);max-width:560px;}
 
 /* TABS */
 .tabs-wrap{max-width:1240px;margin:0 auto;padding:16px 56px;border-bottom:1px solid var(--border);}
@@ -182,7 +184,7 @@ body {
 .lb-close:hover{background:rgba(255,255,255,.2);}
 .lb-cat{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:16px;}
 .lb-title{font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(22px, 2.34vw, 34px);line-height:.95;letter-spacing: 0;text-transform:uppercase;margin-bottom:20px;color:#fff;}
-.lb-body{font-size:15px;line-height:1.75;color:rgba(255,255,255,.55);margin-bottom:32px;}
+.lb-body{font-size:15px;line-height:1.85;color:rgba(255,255,255,.55);margin-bottom:32px;}
 .lb-link{
   display:inline-flex;align-items:center;gap:10px;
   font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
@@ -328,12 +330,11 @@ body {
         data-link="https://youtu.be/56UhBMKTCLk"
         data-link-label="Watch on YouTube"
         data-media-type="video"
-        data-src="assets/Power Rangers Title Sequence.mp4">
+        data-src="assets/Power Rangers Title Sequence_web.mp4">
         <span class="card-badge video">▶ Motion</span>
-        <video aria-label="Power Rangers title sequence motion design" src="assets/Power Rangers Title Sequence.mp4"
-          autoplay muted loop playsinline preload="metadata"
-          style="width:100%;height:100%;object-fit:cover;"></video>
-        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <video aria-label="Power Rangers title sequence motion design" muted loop playsinline preload="none"
+          data-src="assets/Power Rangers Title Sequence_web.mp4"
+          style="width:100%;height:100%;object-fit:cover;background:#111;"></video>
         <div class="card-overlay">
           <div class="card-cat">Motion Graphics · After Effects</div>
           <div class="card-title">Power Rangers<br>Title Sequence</div>
@@ -350,12 +351,11 @@ body {
         data-link="https://chromewebstore.google.com/detail/camjmipgnifjhidhbjpabpniojioeojf"
         data-link-label="Get Extension"
         data-media-type="video"
-        data-src="assets/Draggit.mp4">
+        data-src="assets/Draggit_web.mp4">
         <span class="card-badge live">● Live · 20+ Users</span>
-        <video aria-label="Draggit Chrome extension demo" src="assets/Draggit.mp4"
-          autoplay muted loop playsinline preload="metadata"
-          style="width:100%;height:100%;object-fit:cover;"></video>
-        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <video aria-label="Draggit Chrome extension demo" muted loop playsinline preload="none"
+          data-src="assets/Draggit_web.mp4"
+          style="width:100%;height:100%;object-fit:cover;background:#111;"></video>
         <div class="card-overlay">
           <div class="card-cat">Chrome Extension · Solo Shipped</div>
           <div class="card-title">Shipping<br>Draggit</div>
@@ -372,12 +372,11 @@ body {
         data-link="https://rheaeye-care-notification.vercel.app/"
         data-link-label="View Project"
         data-media-type="video"
-        data-src="assets/Eye Care Notification.mov">
+        data-src="assets/Eye Care Notification_web.mp4">
         <span class="card-badge video">Vibe Coded</span>
-        <video aria-label="Eye care notification UI animation" src="assets/Eye Care Notification.mov"
-          autoplay muted loop playsinline preload="metadata"
-          style="width:100%;height:100%;object-fit:cover;"></video>
-        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <video aria-label="Eye care notification UI animation" muted loop playsinline preload="none"
+          data-src="assets/Eye Care Notification_web.mp4"
+          style="width:100%;height:100%;object-fit:cover;background:#111;"></video>
         <div class="card-overlay">
           <div class="card-cat">Vibe Coded · Vercel</div>
           <div class="card-title">Shipping For<br>Eye Care</div>
@@ -394,9 +393,9 @@ body {
         data-link="https://www.behance.net/gallery/203874031/Book-Cover-Design-Seeing-Like-A-Feminist"
         data-link-label="View on Behance"
         data-media-type="image"
-        data-src="assets/Book Design.png">
+        data-src="assets/Book Design.jpg">
         <span class="card-badge">Print · Typography</span>
-        <img src="assets/Book Design.png" alt="Book Cover Design — Seeing Like A Feminist"
+        <img src="assets/Book Design.jpg" alt="Book Cover Design — Seeing Like A Feminist"
           style="width:100%;height:100%;object-fit:cover;">
         <div class="card-overlay">
           <div class="card-cat">Print · Typography · Course Project</div>
@@ -414,9 +413,9 @@ body {
         data-link="https://moccasin-questions-214407.framer.app/terra-tales"
         data-link-label="View Project"
         data-media-type="image"
-        data-src="assets/Terra Tales Card Game.png">
+        data-src="assets/Terra Tales Card Game.jpg">
         <span class="card-badge">Game Design · Thesis</span>
-        <img src="assets/Terra Tales Card Game.png" alt="Terra Tales Card Game"
+        <img src="assets/Terra Tales Card Game.jpg" alt="Terra Tales Card Game"
           style="width:100%;height:100%;object-fit:cover;">
         <div class="card-overlay">
           <div class="card-cat">Life-Centered Design · Thesis</div>
@@ -518,12 +517,11 @@ body {
         data-link="https://youtu.be/56UhBMKTCLk"
         data-link-label="Watch on YouTube"
         data-media-type="video"
-        data-src="assets/Power Rangers Title Sequence.mp4">
+        data-src="assets/Power Rangers Title Sequence_web.mp4">
         <span class="card-badge video">▶ Motion</span>
-        <video aria-label="Power Rangers title sequence motion design" src="assets/Power Rangers Title Sequence.mp4"
-          autoplay muted loop playsinline preload="metadata"
-          style="width:100%;height:100%;object-fit:cover;"></video>
-        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <video aria-label="Power Rangers title sequence motion design" muted loop playsinline preload="none"
+          data-src="assets/Power Rangers Title Sequence_web.mp4"
+          style="width:100%;height:100%;object-fit:cover;background:#111;"></video>
         <div class="card-overlay">
           <div class="card-cat">Motion Graphics · After Effects</div>
           <div class="card-title">Power Rangers<br>Title Sequence</div>
@@ -539,9 +537,9 @@ body {
         data-link="https://www.behance.net/gallery/203874031/Book-Cover-Design-Seeing-Like-A-Feminist"
         data-link-label="View on Behance"
         data-media-type="image"
-        data-src="assets/Book Design.png">
+        data-src="assets/Book Design.jpg">
         <span class="card-badge">Print · Typography</span>
-        <img src="assets/Book Design.png" alt="Book Cover Design — Seeing Like A Feminist"
+        <img src="assets/Book Design.jpg" alt="Book Cover Design — Seeing Like A Feminist"
           style="width:100%;height:100%;object-fit:cover;">
         <div class="card-overlay">
           <div class="card-cat">Print · Typography · Course Project</div>
@@ -602,12 +600,11 @@ body {
         data-link="https://chromewebstore.google.com/detail/camjmipgnifjhidhbjpabpniojioeojf"
         data-link-label="Get Extension"
         data-media-type="video"
-        data-src="assets/Draggit.mp4">
+        data-src="assets/Draggit_web.mp4">
         <span class="card-badge live">● Live · 20+ Users</span>
-        <video aria-label="Draggit Chrome extension demo" src="assets/Draggit.mp4"
-          autoplay muted loop playsinline preload="metadata"
-          style="width:100%;height:100%;object-fit:cover;"></video>
-        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <video aria-label="Draggit Chrome extension demo" muted loop playsinline preload="none"
+          data-src="assets/Draggit_web.mp4"
+          style="width:100%;height:100%;object-fit:cover;background:#111;"></video>
         <div class="card-overlay">
           <div class="card-cat">Chrome Extension · Solo Shipped</div>
           <div class="card-title">Shipping<br>Draggit</div>
@@ -623,12 +620,11 @@ body {
         data-link="https://rheaeye-care-notification.vercel.app/"
         data-link-label="View Project"
         data-media-type="video"
-        data-src="assets/Eye Care Notification.mov">
+        data-src="assets/Eye Care Notification_web.mp4">
         <span class="card-badge video">Vibe Coded</span>
-        <video aria-label="Eye care notification UI animation" src="assets/Eye Care Notification.mov"
-          autoplay muted loop playsinline preload="metadata"
-          style="width:100%;height:100%;object-fit:cover;"></video>
-        <button class="mute-btn" onclick="toggleMute(this,event)" title="Toggle sound">🔇</button>
+        <video aria-label="Eye care notification UI animation" muted loop playsinline preload="none"
+          data-src="assets/Eye Care Notification_web.mp4"
+          style="width:100%;height:100%;object-fit:cover;background:#111;"></video>
         <div class="card-overlay">
           <div class="card-cat">Vibe Coded · Vercel</div>
           <div class="card-title">Shipping For<br>Eye Care</div>
@@ -669,9 +665,9 @@ body {
         data-link="https://moccasin-questions-214407.framer.app/terra-tales"
         data-link-label="View Project"
         data-media-type="image"
-        data-src="assets/Terra Tales Card Game.png">
+        data-src="assets/Terra Tales Card Game.jpg">
         <span class="card-badge">Game Design · Thesis</span>
-        <img src="assets/Terra Tales Card Game.png" alt="Terra Tales Card Game"
+        <img src="assets/Terra Tales Card Game.jpg" alt="Terra Tales Card Game"
           style="width:100%;height:100%;object-fit:cover;">
         <div class="card-overlay">
           <div class="card-cat">Life-Centered Design · Thesis</div>
@@ -762,38 +758,31 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
       panel.querySelectorAll('.reveal').forEach((el,i)=>{
         setTimeout(()=>el.classList.add('visible'), i*60);
       });
-      document.querySelectorAll('.media-card video').forEach(v=>v.pause());
-      panel.querySelectorAll('.media-card video').forEach(v=>v.play().catch(()=>{}));
+      // Cards never autoplay — video plays only in lightbox
     }
   });
 });
-
-/* ── MUTE CARD VIDEO ── */
-function toggleMute(btn,e){
-  e.stopPropagation();
-  const card=btn.closest('.media-card');
-  const vid=card.querySelector('video');
-  if(!vid)return;
-  vid.muted=!vid.muted;
-  btn.textContent=vid.muted?'🔇':'🔊';
-}
-
-/* ── INTERSECTION: pause videos out of view ── */
-const vidObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    const vid=e.target.querySelector('video');
-    if(!vid)return;
-    if(e.isIntersecting)vid.play().catch(()=>{});
-    else{vid.pause();vid.muted=true;const mb=e.target.querySelector('.mute-btn');if(mb)mb.textContent='🔇';}
-  });
-},{threshold:.2});
-document.querySelectorAll('.media-card').forEach(c=>vidObs.observe(c));
 
 /* ── LIGHTBOX ── */
 let lbVideo=null;
 let lbCarouselTimer=null;
 let lbCarouselIdx=0;
 let lbCarouselImgs=[];
+
+/* Card videos: load metadata for a still when near viewport — never autoplay */
+(function initCardVideoStills(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      const v=e.target;
+      if(!e.isIntersecting||!v.dataset.src||v.dataset.loaded)return;
+      v.src=v.dataset.src;
+      v.preload='metadata';
+      v.dataset.loaded='true';
+      v.load();
+    });
+  },{rootMargin:'200px',threshold:0.01});
+  document.querySelectorAll('.media-card video[data-src]').forEach(v=>obs.observe(v));
+})();
 
 function carouselGo(idx){
   lbCarouselImgs.forEach((img,i)=>{img.classList.toggle('active',i===idx);});
@@ -861,10 +850,11 @@ function openLightbox(card){
   } else if(card.dataset.src){
     if(card.dataset.mediaType==='video'){
       const v=document.createElement('video');
-      v.src=card.dataset.src;v.autoplay=true;v.muted=true;v.loop=true;v.playsInline=true;
+      v.src=card.dataset.src;v.muted=true;v.loop=true;v.playsInline=true;v.preload='auto';
       v.style.maxWidth='100%';v.style.maxHeight='80vh';v.style.borderRadius='8px';
       lbMedia.insertBefore(v,muteBtn);
       lbVideo=v;muteBtn.style.display='flex';muteBtn.textContent='🔇';
+      v.play().catch(()=>{});
     } else {
       const i=document.createElement('img');
       i.src=card.dataset.src;i.alt=card.dataset.title||'';
@@ -886,7 +876,12 @@ function closeLightbox(){
   const lb=document.getElementById('lightbox');
   lb.classList.remove('open');
   document.body.style.overflow='';
-  if(lbVideo){lbVideo.pause();lbVideo=null;}
+  if(lbVideo){
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    lbVideo.load();
+    lbVideo=null;
+  }
   clearInterval(lbCarouselTimer);lbCarouselImgs=[];
 }
 
@@ -899,7 +894,7 @@ function toggleLbMute(){
 // click card to open lightbox
 document.querySelectorAll('.media-card').forEach(card=>{
   card.addEventListener('click',function(e){
-    if(e.target.closest('.card-link')||e.target.closest('.mute-btn'))return;
+    if(e.target.closest('.card-link'))return;
     openLightbox(this);
   });
 });

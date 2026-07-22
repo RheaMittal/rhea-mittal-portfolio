@@ -5,6 +5,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OpsIQ | Rhea Mittal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
@@ -21,7 +23,7 @@ html { scroll-behavior: smooth; }
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
-  --muted: rgba(12,12,12,0.45);
+  --muted: rgba(12,12,12,0.62);
   --border: rgba(0,0,0,0.08);
   --green: #1A1DB3;
   --green-bg: rgba(26,29,179,0.08);
@@ -265,7 +267,7 @@ nav > * { pointer-events: auto; }
   margin-bottom: 28px;
 }
 
-.cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.58); max-width: 720px; margin-bottom: 24px; }
+.cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.65); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
 
 /* ─── IMAGE CAPTION ─── */
@@ -524,9 +526,7 @@ nav > * { pointer-events: auto; }
       🔒 Company name &amp; details changed for NDA
     </div>
     <!-- product demo video -->
-    <video class="vid-zoom" aria-label="OpsIQ AI dashboard hero walkthrough" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:40px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);">
-      <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mp4" type="video/mp4">
-    </video>
+    <video class="vid-zoom lazy-vid" aria-label="OpsIQ AI dashboard hero walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:40px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);" preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4"></video>
   </div>
 </div>
 
@@ -575,7 +575,7 @@ nav > * { pointer-events: auto; }
     <!-- text + laptop image side by side -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:40px;">
       <div>
-        <p style="font-size:16px;line-height:1.8;color:rgba(0,0,0,.58);">SMB founders weren't failing to collect data. They were drowning in it. HubSpot, ClickUp, Slack, spreadsheets: each told a different story. None told the whole one. The problem wasn't access to data. It was the inability to act on it.</p>
+        <p style="font-size:16px;line-height:1.8;color: rgba(0,0,0,.65);">SMB founders weren't failing to collect data. They were drowning in it. HubSpot, ClickUp, Slack, spreadsheets: each told a different story. None told the whole one. The problem wasn't access to data. It was the inability to act on it.</p>
       </div>
       <figure style="margin:0;">
         <img src="assets/ABC Company/Fragmented tool landscape, from pitch deck.png" alt="Fragmented tool landscape, multiple tabs open" style="width:100%;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.18);">
@@ -683,7 +683,7 @@ nav > * { pointer-events: auto; }
     <!-- User testing image -->
     <div style="margin-top:32px;">
       <figure style="margin:0;">
-        <img src="assets/ABC Company/User Testing Interface.png" alt="User testing session" style="width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);">
+        <img src="assets/ABC Company/User Testing Interface.jpg" alt="User testing session" style="width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);">
         <figcaption class="img-caption">Usability testing validating the dashboard's core navigation flow</figcaption>
       </figure>
     </div>
@@ -698,9 +698,7 @@ nav > * { pointer-events: auto; }
     <p class="cs-body">Three needs from research became the product's core promise: see your data, understand what changed, know what to do next.</p>
 
     <!-- Dashboard full-width video -->
-    <video class="vid-zoom" aria-label="OpsIQ dashboard feature walkthrough" autoplay loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:32px auto 40px;box-shadow:0 24px 64px rgba(0,0,0,.4);">
-      <source src="assets/ABC Company/OpsIQ Dashboard Walkthrough.mp4" type="video/mp4">
-    </video>
+    <video class="vid-zoom lazy-vid" aria-label="OpsIQ dashboard feature walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:32px auto 40px;box-shadow:0 24px 64px rgba(0,0,0,.4);" preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4"></video>
 
     <!-- 3 columns: Visualize / Analyze / Act -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
@@ -853,6 +851,44 @@ document.querySelectorAll('.vid-zoom').forEach(function(v) {
   <span>Made with love and energy drinks ✨</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
+</script>
+
+<script>
+
+/* ── Viewport videos: load near view, play on screen, pause off screen ── */
+(function initViewportVideos() {
+  function loadVideo(video) {
+    if (video.dataset.loaded) return;
+    var src = video.dataset.src;
+    if (src) {
+      video.src = src;
+      video.dataset.loaded = 'true';
+      return;
+    }
+    var source = video.querySelector('source[data-src]');
+    if (source) {
+      source.src = source.getAttribute('data-src');
+      source.removeAttribute('data-src');
+      video.load();
+      video.dataset.loaded = 'true';
+    }
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        loadVideo(v);
+        var play = function() { v.play().catch(function(){}); };
+        if (v.readyState >= 2) play();
+        else v.addEventListener('loadeddata', play, { once: true });
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '120px' });
+  document.querySelectorAll('video.lazy-vid').forEach(function(v) { obs.observe(v); });
+})();
+
 </script>
 
 <script src="scripts/nav-pill.js" defer></script>
