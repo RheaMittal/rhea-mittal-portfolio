@@ -1305,7 +1305,7 @@ body.locked { overflow: hidden; }
       <!-- CLIQUEPRIZE CARD -->
       <div class="p-card card-c reveal card-col-left" onclick="openCase('cliqueprize')">
         <div class="pc-right" style="padding:44px 28px;">
-          <video class="card-vid lazy-vid" aria-label="CliquePrize landing page walkthrough" loop muted playsinline preload="none" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_web.mp4" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;"></video>
+          <video class="card-vid lazy-vid" aria-label="CliquePrize landing page walkthrough" loop muted playsinline preload="none" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_hero.mp4" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;"></video>
         </div>
         <div class="pc-left">
           <div class="pc-status"><span class="live-dot"></span> Internship · Live in Production</div>
@@ -1324,7 +1324,7 @@ body.locked { overflow: hidden; }
       <!-- OPSIQ CARD -->
       <div class="p-card card-g reveal card-col-right" onclick="openCase('growthops')">
         <div class="pc-right" style="padding:44px 28px;">
-          <video class="card-vid lazy-vid" aria-label="OpsIQ AI dashboard walkthrough" loop muted playsinline preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;"></video>
+          <video class="card-vid lazy-vid" aria-label="OpsIQ AI dashboard walkthrough" loop muted playsinline preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4" style="width:100%;height:100%;min-height:240px;object-fit:cover;display:block;border-radius:12px;"></video>
         </div>
         <div class="pc-left">
           <div class="pc-status">Client Project · NDA</div>
@@ -1464,7 +1464,7 @@ body.locked { overflow: hidden; }
       <!-- TECHGUY -->
       <a class="wk-card" data-cats="all product research" href="techguy.html" style="background:#091828;">
         <div class="wk-visual">
-          <video class="lazy-vid" aria-label="TechGuy product suite preview" loop muted playsinline preload="none" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_web.mp4"></video>
+          <video class="lazy-vid" aria-label="TechGuy product suite preview" loop muted playsinline preload="none" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_hero.mp4"></video>
         </div>
         <div class="wk-tag" style="color:#405EAB;">UI/UX Design · Team Lead · 2021</div>
         <h3 class="wk-title" style="color:#fff;">Three products.<br><em style="color:#405EAB;">One design language.</em></h3>
@@ -1774,11 +1774,16 @@ document.querySelectorAll('.p-card').forEach(card => {
 
 /* ── LAZY VIDEOS — load src + play only when near viewport ── */
 (function initLazyVideos() {
+  function resolveSrc(raw) {
+    if (!raw) return '';
+    try { return encodeURI(decodeURI(raw)); } catch (e) { return encodeURI(raw); }
+  }
   function loadVideo(video) {
-    if (video.dataset.loaded) return;
+    if (video.dataset.loaded === 'true') return;
     const src = video.dataset.src;
     if (!src) return;
-    video.src = src;
+    video.src = resolveSrc(src);
+    video.load();
     video.dataset.loaded = 'true';
   }
 
@@ -1789,12 +1794,15 @@ document.querySelectorAll('.p-card').forEach(card => {
         loadVideo(v);
         const play = () => v.play().catch(() => {});
         if (v.readyState >= 2) play();
-        else v.addEventListener('loadeddata', play, { once: true });
-      } else {
+        else {
+          v.addEventListener('loadeddata', play, { once: true });
+          v.addEventListener('canplay', play, { once: true });
+        }
+      } else if (!v.paused) {
         v.pause();
       }
     });
-  }, { threshold: 0.15, rootMargin: '160px' });
+  }, { threshold: 0, rootMargin: '200px 0px' });
 
   document.querySelectorAll('.lazy-vid').forEach(v => obs.observe(v));
 })();

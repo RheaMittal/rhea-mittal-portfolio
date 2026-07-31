@@ -204,7 +204,7 @@ body {
     <!-- CLIQUEPRIZE -->
     <a class="wk-card reveal" data-cats="all visual product" href="cliqueprize.html" style="background:#fff;border:1px solid rgba(125,26,46,0.15);">
       <div class="wk-visual">
-        <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#7D1A2E;">B2B SaaS Platform · Live in Production</div>
@@ -224,7 +224,7 @@ body {
     <!-- OPSIQ -->
     <a class="wk-card reveal" data-cats="all product" href="opsiq.html" style="background:#fff;border:1px solid rgba(26,29,179,0.15);">
       <div class="wk-visual">
-        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#1A1DB3;">AI Dashboard [NDA] · Client Project</div>
@@ -242,7 +242,7 @@ body {
     <!-- FREETOWN VILLAGE -->
     <a class="wk-card reveal" data-cats="all research product visual" href="freetown-village.html" style="background:#fff;border:1px solid rgba(139,58,26,0.15);">
       <div class="wk-visual">
-        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Freetown village/Landing Page_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Freetown village/Landing Page_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#8B3A1A;">UX Research · Visual Design</div>
@@ -318,7 +318,7 @@ body {
     <!-- TECHGUY -->
     <a class="wk-card reveal" data-cats="all product research" href="techguy.html" style="background:#fff;border:1px solid rgba(64,94,171,0.15);">
       <div class="wk-visual">
-        <video aria-label="TechGuy product suite hero walkthrough" loop muted playsinline preload="none" class="lazy-vid" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_web.mp4"></video>
+        <video aria-label="TechGuy product suite hero walkthrough" loop muted playsinline preload="none" class="lazy-vid" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_hero.mp4"></video>
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#405EAB;">UI/UX Design · Team Lead · 2021</div>
@@ -357,11 +357,16 @@ document.querySelectorAll('.work-tab').forEach(tab => {
 
 /* Lazy videos — load src + play only when near viewport */
 (function initLazyVideos() {
+  function resolveSrc(raw) {
+    if (!raw) return '';
+    try { return encodeURI(decodeURI(raw)); } catch (e) { return encodeURI(raw); }
+  }
   function loadVideo(video) {
-    if (video.dataset.loaded) return;
+    if (video.dataset.loaded === 'true') return;
     const src = video.dataset.src;
     if (!src) return;
-    video.src = src;
+    video.src = resolveSrc(src);
+    video.load();
     video.dataset.loaded = 'true';
   }
 
@@ -372,12 +377,15 @@ document.querySelectorAll('.work-tab').forEach(tab => {
         loadVideo(v);
         const play = () => v.play().catch(() => {});
         if (v.readyState >= 2) play();
-        else v.addEventListener('loadeddata', play, { once: true });
-      } else {
+        else {
+          v.addEventListener('loadeddata', play, { once: true });
+          v.addEventListener('canplay', play, { once: true });
+        }
+      } else if (!v.paused) {
         v.pause();
       }
     });
-  }, { threshold: 0.15, rootMargin: '160px' });
+  }, { threshold: 0, rootMargin: '200px 0px' });
 
   document.querySelectorAll('.lazy-vid').forEach(v => vidObs.observe(v));
 })();
