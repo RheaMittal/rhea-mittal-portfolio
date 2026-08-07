@@ -238,10 +238,12 @@ body {
 .tile-unit:hover .tile-cap { color: var(--ink); }
 
 /* ═══════════ CONCEPT 4 — COLLAGE SCATTERS ON SCROLL ═══════════ */
-/* Tall stage drives the window scroll; the visuals sit in a fixed overlay
-   layered above the nav so it reads as a full-screen loading curtain.
-   Stack: page → headline → cream tint → chips → scroll hint. */
-#c4 { height: 320vh; }
+/* Short stage (~140vh) drives disperse; after clear, .runway-collapsed
+   shrinks to 100vh so leftover scroll dead-zone is gone. Fixed overlay
+   stays a full-screen loading curtain. Stack: page → headline → cream
+   tint → chips → scroll hint. */
+#c4 { height: 140vh; }
+#c4.runway-collapsed { height: 100vh; height: 100dvh; }
 #c4 .overlay {
   position: fixed; inset: 0; z-index: 1200;
   display: flex; align-items: center; justify-content: center;
@@ -909,9 +911,11 @@ body.c4-curtain .stage-note { display: none; }
   var c4IgnoreScrollUntil = 0;
   /* After first clear / user scroll, bind progress to scrollY (up = reassemble) */
   var c4ScrollBound = false;
+  var c4Collapsed = false;
+  var c4El = document.getElementById('c4');
 
   function smoothstep(t) { t = Math.min(Math.max(t, 0), 1); return t * t * (3 - 2 * t); }
-  function isC4Active() { return document.getElementById('c4').classList.contains('active'); }
+  function isC4Active() { return c4El.classList.contains('active'); }
 
   function scrollMax() {
     return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
@@ -929,6 +933,27 @@ body.c4-curtain .stage-note { display: none; }
     if (max <= 0) return;
     c4IgnoreScrollUntil = performance.now() + 80;
     window.scrollTo(0, p * max * 0.8);
+  }
+
+  function collapseC4Runway() {
+    if (c4Collapsed) return;
+    c4Collapsed = true;
+    c4El.classList.add('runway-collapsed');
+    c4IgnoreScrollUntil = performance.now() + 120;
+    window.scrollTo(0, 0);
+  }
+
+  function expandC4Runway() {
+    if (!c4Collapsed) return;
+    c4Collapsed = false;
+    c4El.classList.remove('runway-collapsed');
+  }
+
+  function maybeCollapseFromProgress() {
+    if (c4Progress >= 0.99) {
+      c4Mode = 'done';
+      collapseC4Runway();
+    }
   }
 
   function renderC4(p) {
@@ -954,7 +979,7 @@ body.c4-curtain .stage-note { display: none; }
       hint.style.pointerEvents = c4Progress > 0.35 ? 'none' : 'auto';
     }
     var revealed = c4Progress > 0.92;
-    document.getElementById('c4').classList.toggle('revealed', revealed);
+    c4El.classList.toggle('revealed', revealed);
     document.body.classList.toggle('c4-revealed', revealed);
     /* Mark fully clear, but keep scroll-bound so up can reverse */
     if (revealed && c4Mode !== 'scroll' && c4Mode !== 'auto' && c4Mode !== 'tween') {
@@ -974,7 +999,7 @@ body.c4-curtain .stage-note { display: none; }
     c4ScrollBound = true;
     c4Mode = 'done';
     renderC4(1);
-    syncC4Scroll(1);
+    collapseC4Runway();
   }
 
   function tweenC4ToOne(modeName) {
@@ -982,6 +1007,7 @@ body.c4-curtain .stage-note { display: none; }
     clearC4Raf();
     if (!isC4Active()) return;
     if (c4Progress >= 0.99) { finishC4Clear(); return; }
+    if (c4Collapsed) expandC4Runway();
     c4Mode = modeName || 'tween';
     var start = performance.now();
     var duration = reduce ? 1 : 1400;
@@ -1021,11 +1047,28 @@ body.c4-curtain .stage-note { display: none; }
     }, 1200);
   }
 
+  function beginReassembleFromTop(dy) {
+    expandC4Runway();
+    c4Mode = 'scroll';
+    c4ScrollBound = true;
+    syncC4Scroll(1);
+    var next = c4Progress + (dy || 0) / 900;
+    renderC4(next);
+    syncC4Scroll(c4Progress);
+  }
+
   function onC4Wheel(e) {
     if (!isC4Active()) return;
     if (c4Mode === 'auto' || c4Mode === 'tween') return;
+    var y = window.scrollY || window.pageYOffset || 0;
     var dy = e.deltaY || 0;
     if (Math.abs(dy) < 1) return;
+
+    if (c4Collapsed) {
+      if (dy < 0 && y <= 2) beginReassembleFromTop(dy);
+      return;
+    }
+
     /* Once scroll-bound (or user starts scrolling), wheel drives both ways */
     if (c4Mode === 'done' || c4ScrollBound || c4Mode === 'wait' || c4Mode === 'scroll') {
       clearC4Timer();
@@ -1035,7 +1078,7 @@ body.c4-curtain .stage-note { display: none; }
       var next = c4Progress + dy / 900;
       renderC4(next);
       syncC4Scroll(c4Progress);
-      if (c4Progress >= 0.99) c4Mode = 'done';
+      maybeCollapseFromProgress();
     }
   }
 
@@ -1043,6 +1086,7 @@ body.c4-curtain .stage-note { display: none; }
     if (!isC4Active()) return;
     if (c4Mode === 'auto' || c4Mode === 'tween') return;
     if (performance.now() < c4IgnoreScrollUntil) return;
+    if (c4Collapsed) return;
     var y = window.scrollY || window.pageYOffset || 0;
     if (c4Mode === 'wait' && y > 4) {
       clearC4Timer();
@@ -1056,14 +1100,14 @@ body.c4-curtain .stage-note { display: none; }
     if (c4Mode !== 'scroll') return;
     var p = progressFromScrollY();
     renderC4(p);
-    if (p >= 0.99) c4Mode = 'done';
+    maybeCollapseFromProgress();
   }
 
   function onC4HintClick(e) {
     e.preventDefault();
     e.stopPropagation();
     if (!isC4Active()) return;
-    if (c4Mode === 'done' && c4Progress >= 0.99) return;
+    if (c4Mode === 'done' && c4Progress >= 0.99 && c4Collapsed) return;
     /* Click always disperses — never cancels into a stuck wait */
     tweenC4ToOne('tween');
   }
@@ -1120,7 +1164,8 @@ body.c4-curtain .stage-note { display: none; }
     c4Mode = 'idle';
     c4Progress = 0;
     c4ScrollBound = false;
-    document.getElementById('c4').classList.remove('revealed');
+    c4Collapsed = false;
+    c4El.classList.remove('revealed', 'runway-collapsed');
     document.body.classList.remove('c4-revealed');
     renderC4(0);
     c4IgnoreScrollUntil = performance.now() + 200;
@@ -1133,7 +1178,7 @@ body.c4-curtain .stage-note { display: none; }
     renderC4(0);
     runC4Scramble();
 
-    /* Double-rAF so layout height (320vh) exists before arming timer /
+    /* Double-rAF so layout height (140vh) exists before arming timer /
        any spurious scroll from scrollTo settles */
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {

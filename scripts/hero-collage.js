@@ -1,6 +1,7 @@
 /* Collage hero (Concept 4) — loading curtain that clears on scroll / hint / ~1.2s.
-   Sticky overlay + tall runway so page content below scrolls normally after clear.
-   Scroll-up within the runway reassembles the collage. */
+   Short sticky runway (~140vh) while active. Once progress hits ~1, collapse
+   #c4 to 100vh so the next wheel/trackpad scroll moves real page content.
+   Scroll-up at the top expands the runway and reassembles the collage. */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var c4 = document.getElementById('c4');
@@ -158,6 +159,7 @@
   var c4Raf = null;
   var c4IgnoreScrollUntil = 0;
   var c4ScrollBound = false;
+  var c4Collapsed = false;
 
   function smoothstep(t) {
     t = Math.min(Math.max(t, 0), 1);
@@ -188,6 +190,30 @@
     var max = c4Runway();
     c4IgnoreScrollUntil = performance.now() + 80;
     scrollInstant(top + p * max * 0.8);
+  }
+
+  /* After reveal: collapse tall runway so document height is normal. */
+  function collapseC4Runway() {
+    if (c4Collapsed) return;
+    c4Collapsed = true;
+    var top = c4.offsetTop;
+    c4.classList.add('runway-collapsed');
+    c4IgnoreScrollUntil = performance.now() + 120;
+    scrollInstant(top);
+  }
+
+  /* At top + scroll up: restore runway so reverse disperse can map to scroll. */
+  function expandC4Runway() {
+    if (!c4Collapsed) return;
+    c4Collapsed = false;
+    c4.classList.remove('runway-collapsed');
+  }
+
+  function maybeCollapseFromProgress() {
+    if (c4Progress >= 0.99) {
+      c4Mode = 'done';
+      collapseC4Runway();
+    }
   }
 
   function renderC4(p) {
@@ -232,13 +258,14 @@
     c4ScrollBound = true;
     c4Mode = 'done';
     renderC4(1);
-    syncC4Scroll(1);
+    collapseC4Runway();
   }
 
   function tweenC4ToOne(modeName) {
     clearC4Timer();
     clearC4Raf();
     if (c4Progress >= 0.99) { finishC4Clear(); return; }
+    if (c4Collapsed) expandC4Runway();
     c4Mode = modeName || 'tween';
     var start = performance.now();
     var duration = reduce ? 1 : 1400;
@@ -274,19 +301,44 @@
     }, 1200);
   }
 
+  function beginReassembleFromTop(dy) {
+    expandC4Runway();
+    c4Mode = 'scroll';
+    c4ScrollBound = true;
+    syncC4Scroll(1);
+    var next = c4Progress + (dy || 0) / 900;
+    renderC4(next);
+    syncC4Scroll(c4Progress);
+  }
+
   function onC4Wheel(e) {
     if (c4Mode === 'auto' || c4Mode === 'tween') return;
     var y = window.scrollY || window.pageYOffset || 0;
     var top = c4.offsetTop;
+    var dy = e.deltaY || 0;
+    if (Math.abs(dy) < 1) return;
+
+    /* Collapsed: down scrolls the page; up at hero top reassembles */
+    if (c4Collapsed) {
+      if (dy < 0 && y <= top + 2) beginReassembleFromTop(dy);
+      return;
+    }
+
     var max = c4Runway();
     var clearY = top + max * 0.8;
     var pastClear = y > clearY + 2;
-    var dy = e.deltaY || 0;
-    if (Math.abs(dy) < 1) return;
-    /* Fully clear + scrolling down: don't syncScroll (would pin to clearY) */
-    if (c4Progress >= 0.99 && dy > 0) return;
-    /* Past the disperse runway — let the page scroll normally */
-    if (pastClear) return;
+
+    /* Fully clear + scrolling down: don't pin to clearY */
+    if (c4Progress >= 0.99 && dy > 0) {
+      collapseC4Runway();
+      return;
+    }
+    /* Past the disperse runway — collapse leftover dead-zone */
+    if (pastClear) {
+      if (c4Progress < 0.99) renderC4(1);
+      collapseC4Runway();
+      return;
+    }
     if (c4Mode === 'done' || c4ScrollBound || c4Mode === 'wait' || c4Mode === 'scroll') {
       clearC4Timer();
       clearC4Raf();
@@ -295,7 +347,7 @@
       var next = c4Progress + dy / 900;
       renderC4(next);
       syncC4Scroll(c4Progress);
-      if (c4Progress >= 0.99) c4Mode = 'done';
+      maybeCollapseFromProgress();
     }
   }
 
@@ -304,6 +356,12 @@
     if (performance.now() < c4IgnoreScrollUntil) return;
     var y = window.scrollY || window.pageYOffset || 0;
     var top = c4.offsetTop;
+
+    if (c4Collapsed) {
+      /* Stay out of the way once runway is gone; reassemble is wheel-driven */
+      return;
+    }
+
     var max = c4Runway();
     var pastClear = y > top + max * 0.8 + 2;
 
@@ -316,6 +374,7 @@
     if (pastClear) {
       if (c4Progress < 0.99) renderC4(1);
       c4Mode = 'done';
+      collapseC4Runway();
       return;
     }
 
@@ -325,13 +384,13 @@
     if (c4Mode !== 'scroll') return;
     var p = progressFromScrollY();
     renderC4(p);
-    if (p >= 0.99) c4Mode = 'done';
+    maybeCollapseFromProgress();
   }
 
   function onC4HintClick(e) {
     e.preventDefault();
     e.stopPropagation();
-    if (c4Mode === 'done' && c4Progress >= 0.99) return;
+    if (c4Mode === 'done' && c4Progress >= 0.99 && c4Collapsed) return;
     tweenC4ToOne('tween');
   }
 
@@ -386,7 +445,8 @@
     c4Mode = 'idle';
     c4Progress = 0;
     c4ScrollBound = false;
-    c4.classList.remove('revealed');
+    c4Collapsed = false;
+    c4.classList.remove('revealed', 'runway-collapsed');
     document.body.classList.remove('c4-revealed');
     buildC4Collage();
     renderC4(0);

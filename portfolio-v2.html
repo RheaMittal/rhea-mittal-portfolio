@@ -109,14 +109,18 @@ body {
 .home-wrap { max-width: 1240px; margin: 0 auto; }
 
 /* ─── COLLAGE HERO (Concept 4) ───
-   Tall runway drives disperse; sticky overlay stays viewport-locked until
-   the section scrolls away, so homepage content below works normally. */
+   Short runway (~140vh) drives disperse while sticky. After clear, JS adds
+   .runway-collapsed (100vh) so the next scroll moves real page content. */
 #c4 {
-  height: 320vh;
+  height: 140vh;
   position: relative;
   background: var(--bg);
   margin: 0;
   padding: 0;
+}
+#c4.runway-collapsed {
+  height: 100vh;
+  height: 100dvh;
 }
 #c4 .overlay {
   position: sticky; top: 0;
