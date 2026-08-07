@@ -54,9 +54,8 @@ nav > * {
   opacity: .7 !important;
 }
 
-/* Dark case-study heroes — white RM for contrast */
-.nav-dark .nav-logo,
-nav.nav-dark .nav-logo {
+/* Adaptive contrast — toggled by scripts/nav-pill.js (nav-on-dark) */
+nav.nav-on-dark .nav-logo {
   color: #fff !important;
 }
 
@@ -150,6 +149,7 @@ nav .nav-pill a {
   padding: 10px 20px !important;
   margin: 0 !important;
   border-radius: 100px !important;
+  border: 1px solid #0C0C0C !important;
   font-family: 'Open Sans', sans-serif !important;
   font-size: 13px !important;
   font-weight: 500 !important;
@@ -157,7 +157,7 @@ nav .nav-pill a {
   letter-spacing: 0 !important;
   text-decoration: none !important;
   text-transform: none !important;
-  transition: transform .2s, box-shadow .2s !important;
+  transition: transform .2s, box-shadow .2s, background .2s, color .2s, border-color .2s !important;
   box-shadow: 0 4px 16px rgba(12, 12, 12, 0.12) !important;
   height: auto !important;
   min-height: 0 !important;
@@ -167,6 +167,20 @@ nav .nav-pill a {
 .nav-cta:hover {
   transform: scale(1.04) !important;
   box-shadow: 0 6px 20px rgba(12, 12, 12, 0.16) !important;
+}
+
+/* Light CTA on dark backgrounds — synced with RM via nav-on-dark */
+nav.nav-on-dark .nav-cta {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.78) !important;
+  box-shadow: none !important;
+}
+
+nav.nav-on-dark .nav-cta:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18) !important;
 }
 
 .nav-burger {

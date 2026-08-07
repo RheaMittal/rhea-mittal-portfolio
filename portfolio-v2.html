@@ -108,45 +108,83 @@ body {
 /* ─── HOMEPAGE ─── */
 .home-wrap { max-width: 1240px; margin: 0 auto; }
 
-/* Hero */
-.hero { padding: 148px 56px 64px; }
-.hero-kicker {
+/* ─── COLLAGE HERO (Concept 4) ───
+   Tall runway drives disperse; sticky overlay stays viewport-locked until
+   the section scrolls away, so homepage content below works normally. */
+#c4 {
+  height: 320vh;
+  position: relative;
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+}
+#c4 .overlay {
+  position: sticky; top: 0;
+  height: 100vh; height: 100dvh;
+  z-index: 1200;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; pointer-events: none;
+  background: var(--bg);
+}
+#c4.revealed .overlay { z-index: 1; }
+body.c4-curtain nav {
+  opacity: 0 !important;
+  transition: opacity .45s ease;
+}
+body.c4-curtain:not(.c4-revealed) nav > * {
+  pointer-events: none !important;
+}
+body.c4-curtain.c4-revealed nav {
+  opacity: 1 !important;
+}
+#c4 .c4-tint {
+  position: absolute; inset: 0; z-index: 2;
+  background: var(--bg);
+  pointer-events: none; will-change: opacity;
+}
+#c4 .collage { position: absolute; inset: 0; z-index: 3; }
+.c4-chip {
+  position: absolute; border-radius: 10px; overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 12px 32px rgba(80,76,68,0.16), 0 2px 6px rgba(80,76,68,0.08);
+  will-change: transform, opacity;
+}
+.c4-chip img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  background: #fff; vertical-align: top;
+}
+#c4 .center {
+  position: relative; z-index: 1; text-align: center;
+  max-width: 900px; padding: 0 40px;
+  will-change: transform, opacity;
+}
+#c4 .hero-kicker {
   font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
   color: var(--muted); margin-bottom: 28px;
-  display: flex; align-items: center; gap: 12px;
 }
-.hero-kicker::before { display: none; }
-.hero-h1 {
+#c4 .hero-h1 {
   font-family: 'Lato', sans-serif; font-weight: 900;
   font-size: clamp(56px, 7.8vw, 109px);
   line-height: .95; letter-spacing: 0; text-transform: uppercase;
   margin-bottom: 40px;
 }
-.hero-h1 .accent { color: var(--green); font-style: italic; font-weight: 900; }
-.hero-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: stretch;
+#c4 .hero-h1 .accent { color: var(--green); font-style: italic; font-weight: 900; }
+#c4 .hero-desc {
+  font-size: 18px; line-height: 1.85; color: var(--muted);
+  max-width: 560px; margin: 0 auto;
 }
-.hero-left { min-width: 0; }
-.hero-desc { font-size: 18px; line-height: 1.85; color: var(--muted); max-width: 480px; margin: 0; }
-.name-hl {
-  font-weight: 500;
-  color: #0C0C0C;
-}
-.hero-desc a.feat-link {
-  font-weight: 500;
-  color: #0C0C0C;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.name-hl { font-weight: 500; color: #0C0C0C; }
+#c4 .hero-desc a.feat-link {
+  font-weight: 500; color: #0C0C0C;
+  text-decoration: underline; text-underline-offset: 3px;
   transition: opacity .2s;
 }
-.hero-desc a.feat-link:hover { opacity: .65; }
-/* Hero chips */
+#c4 .hero-desc a.feat-link:hover { opacity: .65; }
 .hero-chips {
   display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px;
 }
+#c4 .hero-chips { justify-content: center; }
 .hero-chip {
   display: inline-flex; align-items: center; gap: 7px;
   padding: 8px 16px; border-radius: 100px;
@@ -164,52 +202,60 @@ body {
   border-color: var(--ink);
   box-shadow: var(--glass-shadow);
 }
-.hero-chip .chip-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--green); flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(29,168,85,.5);
-  animation: lp 2s infinite;
+#c4 .btn-row {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  margin-top: 40px; justify-content: center;
 }
-
-/* Tablet + desktop: photo height tracks the text block.
-   Phone + very large screens: fixed aspect/size (see media queries). */
-.hero-photo-wrap {
-  position: relative;
-  min-height: 0;
-  /* Absolute image doesn't contribute intrinsic height — left column sets row height */
-  height: 100%;
+#c4 .center.ready { pointer-events: auto; }
+#c4 .cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 22px; border-radius: 100px;
+  font-size: 13px; font-weight: 600; letter-spacing: .01em;
+  line-height: 1.2; text-decoration: none;
+  border: 1.5px solid #0C0C0C;
+  background: #0C0C0C; color: #fff;
+  box-shadow: 0 2px 8px rgba(80,76,68,0.08);
+  transition: transform .25s cubic-bezier(.25,.46,.45,.94),
+    background .2s, border-color .2s, box-shadow .25s, color .2s;
 }
-.hero-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 20px;
-  display: block;
-  border: 1px solid var(--border);
-  transform: rotate(-1.5deg);
-  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+#c4 .cta:hover {
+  background: #1a1a1a; border-color: #1a1a1a; color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(80,76,68,0.12);
 }
-.hero-photo-wrap:hover .hero-photo { transform: rotate(0deg); }
-
-/* Very large screens: keep a constant portrait size instead of stretching */
-@media (min-width: 1440px) {
-  .hero-row { align-items: start; }
-  .hero-photo-wrap {
-    height: auto;
-    width: 100%;
-    max-width: 480px;
-    justify-self: end;
-    aspect-ratio: 4 / 5;
-    max-height: 560px;
-  }
-  .hero-photo {
-    position: absolute;
-    inset: 0;
-    transform: rotate(-1.5deg);
-  }
+#c4 .scroll-hint {
+  position: absolute; bottom: 92px; left: 50%; transform: translateX(-50%);
+  z-index: 5; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 100px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px) saturate(1.45);
+  -webkit-backdrop-filter: blur(18px) saturate(1.45);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 8px 28px rgba(80, 76, 68, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink); white-space: nowrap;
+  max-width: calc(100vw - 32px);
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none; -webkit-appearance: none;
+  margin: 0;
+}
+#c4 .scroll-hint:hover { background: rgba(255, 255, 255, 0.72); }
+#c4 .scroll-hint:focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 3px;
+}
+#c4 .scroll-hint .arrow { animation: c4-bob 1.8s ease-in-out infinite; }
+@keyframes c4-bob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .c4-chip, #c4 .center { transition: none !important; }
+  #c4 .scroll-hint .arrow { animation: none; }
 }
 
 /* Logo garden — always full viewport width */
@@ -833,6 +879,7 @@ body.locked { overflow: hidden; }
 .cs-quote-text {
   font-family: 'Lato', sans-serif; font-size: 20px; line-height: 1.55;
   color: rgba(255,255,255,.85); position: relative; margin-bottom: 16px;
+  font-style: normal;
 }
 .cs-quote-attr { font-size: 13px; color: rgba(255,255,255,.3); position: relative; }
 
@@ -1076,22 +1123,13 @@ body.locked { overflow: hidden; }
 
   /* ── HOMEPAGE ── */
   .home-wrap { max-width: 100%; }
-  .hero { padding: 100px 24px 48px; }
-  .hero-row { grid-template-columns: 1fr; gap: 0; align-items: start; }
-  .hero-photo-wrap {
-    display: block;
-    margin-top: 36px;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    max-height: none;
-    justify-self: stretch;
+  #c4 .scroll-hint {
+    bottom: 88px; padding: 10px 16px; font-size: 11px;
+    letter-spacing: .08em;
   }
-  .hero-photo {
-    transform: none;
-  }
-  .hero-desc { font-size: 16px; max-width: 100%; }
+  #c4 .center { padding: 0 24px; }
+  .c4-chip { border-radius: 8px; }
+  #c4 .hero-desc { font-size: 16px; }
   .work { padding-left: 24px; padding-right: 24px; }
   .cards-stack { grid-template-columns: 1fr; gap: 16px; }
   .pc-right { flex: 0 0 220px; }
@@ -1183,7 +1221,7 @@ body.locked { overflow: hidden; }
 </style>
 <link rel="stylesheet" href="styles/nav.css">
 </head>
-<body>
+<body class="c4-curtain">
 
 
 <!-- ─── NAV ─── -->
@@ -1214,28 +1252,31 @@ body.locked { overflow: hidden; }
 
 <!-- Custom cursor -->
 
-<!-- ─── HOMEPAGE ─── -->
-<div class="home-wrap">
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-row reveal reveal-d1">
-      <div class="hero-left">
-        <p class="hero-kicker">Product Designer · Builder · MS-HCI Indiana University</p>
-        <h1 class="hero-h1">I design<br>& I <span class="accent scramble">ship.</span></h1>
-        <p class="hero-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer recently featured on the <a class="feat-link" href="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal" target="_blank" rel="noopener noreferrer">Open Doors newsletter</a>. I work end-to-end from research and prototyping to shipping and testing.</p>
-        <div class="hero-chips">
-          <span class="hero-chip">Capstone @ Salesforce</span>
-          <span class="hero-chip">MS-HCI @ Indiana University</span>
-          <span class="hero-chip">🏆 Hackathon Winner</span>
-          <span class="hero-chip">🏅 People's Choice Award @ IU Capstone</span>
-        </div>
+<!-- ─── COLLAGE HERO (Concept 4) ─── -->
+<section class="hero" id="c4" aria-label="Introduction">
+  <div class="overlay">
+    <div class="center" id="c4Center">
+      <p class="hero-kicker">Product Designer · Builder · MS-HCI Indiana University</p>
+      <h1 class="hero-h1">I design<br>&amp; I <span class="accent scramble">ship.</span></h1>
+      <p class="hero-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer recently featured on the <a class="feat-link" href="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal" target="_blank" rel="noopener noreferrer">Open Doors newsletter</a>. I work end-to-end from research and prototyping to shipping and testing.</p>
+      <div class="hero-chips">
+        <span class="hero-chip">Capstone @ Salesforce</span>
+        <span class="hero-chip">MS-HCI @ Indiana University</span>
+        <span class="hero-chip">🏆 Hackathon Winner</span>
+        <span class="hero-chip">🏅 People's Choice Award @ IU Capstone</span>
       </div>
-      <div class="hero-photo-wrap">
-        <img src="assets/Hero Image Landing Image.jpg" alt="Rhea Mittal" class="hero-photo">
+      <div class="btn-row">
+        <a class="cta" href="work.html">View my work</a>
       </div>
     </div>
-  </section>
+    <div class="c4-tint" id="c4Tint" aria-hidden="true"></div>
+    <div class="collage" id="collage"></div>
+    <button type="button" class="scroll-hint" id="c4Hint">Scroll to see the portfolio <span class="arrow" aria-hidden="true">↓</span></button>
+  </div>
+</section>
+
+<!-- ─── HOMEPAGE ─── -->
+<div class="home-wrap">
 
   <!-- Logo Garden -->
   <div class="logo-garden-wrap">
@@ -1257,8 +1298,8 @@ body.locked { overflow: hidden; }
     <h2 class="work-display-title reveal">Selected <em>Work</em></h2>
     <div class="proj-tabs">
       <button class="proj-tab active">Product &amp; UX Design</button>
+      <a class="proj-tab" href="playground.html?tab=ai">AI Products ↗</a>
       <a class="proj-tab" href="playground.html?tab=motion">Visual &amp; Motion Graphics ↗</a>
-      <a class="proj-tab" href="playground.html?tab=ai">AI Powered Projects ↗</a>
       <a class="proj-tab" href="playground.html?tab=mediums">Exploring Mediums ↗</a>
     </div>
     <div class="cards-stack">
@@ -1352,11 +1393,11 @@ body.locked { overflow: hidden; }
   <!-- PLACEHOLDER for filter tabs/grid that was here (now moved to work.html) -->
   <div style="display:none;">
     <div class="work-tabs">
-      <button class="work-tab active" data-filter="all">All <span style="opacity:.45;font-size:11px;margin-left:4px;">8</span></button>
-      <button class="work-tab" data-filter="visual">Visual Design</button>
-      <button class="work-tab" data-filter="product">Product Design</button>
-      <button class="work-tab" data-filter="research">User Research</button>
-      <button class="work-tab" data-filter="industrial">Industrial Design</button>
+      <button class="work-tab active" data-filter="all">All <span style="opacity:.45;font-size:11px;margin-left:4px;">9</span></button>
+      <button class="work-tab" data-filter="b2b">B2B</button>
+      <button class="work-tab" data-filter="b2c">B2C</button>
+      <button class="work-tab" data-filter="ai">AI powered products</button>
+      <button class="work-tab" data-filter="hardware">Hardware &amp; Software</button>
     </div>
 
     <!-- 2-col grid -->
@@ -1365,7 +1406,7 @@ body.locked { overflow: hidden; }
       <!-- ROW 1: Draggit + CliquePrize -->
 
       <!-- DRAGGIT -->
-      <div class="wk-card" data-cats="all product" onclick="openCase('draggit')" style="background:#0A1628;">
+      <div class="wk-card" data-cats="all b2c ai" onclick="openCase('draggit')" style="background:#0A1628;">
         <div class="wk-tag" style="color:#5B8DEF;">LinkedIn Chrome Extension · Built &amp; Shipped</div>
         <h3 class="wk-title" style="color:#fff;">I noticed a friction.<br><em style="color:#2563EB;">I built the fix.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">A Chrome extension that fixes LinkedIn's "Add Note" modal by making it draggable. Designed, built, and shipped solo in 2 weeks.</p>
@@ -1378,7 +1419,7 @@ body.locked { overflow: hidden; }
       </div>
 
       <!-- CLIQUEPRIZE -->
-      <div class="wk-card" data-cats="all visual product" onclick="openCase('cliqueprize')" style="background:#160810;">
+      <div class="wk-card" data-cats="all b2b" onclick="openCase('cliqueprize')" style="background:#160810;">
         <div class="wk-tag" style="color:#C4566A;">B2B SaaS Platform · Live in Production</div>
         <h3 class="wk-title" style="color:#fff;">Rewrote the pitch.<br><em style="color:#C4566A;">Rebuilt the page.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">The company wasn't getting through to their target users. We rebuilt the site's IA and UX writing around 4 core questions SMBs were looking to be answered.</p>
@@ -1393,7 +1434,7 @@ body.locked { overflow: hidden; }
       <!-- ROW 2: OpsIQ + Freetown Village -->
 
       <!-- OPSIQ -->
-      <div class="wk-card" data-cats="all product" onclick="openCase('growthops')" style="background:#0F1A2E;">
+      <div class="wk-card" data-cats="all b2b ai" onclick="openCase('growthops')" style="background:#0F1A2E;">
         <div class="wk-tag" style="color:#7EB8FF;">AI Dashboard [NDA] · Client Project</div>
         <h3 class="wk-title" style="color:#fff;">Small businesses had the data.<br><em style="color:#3B6FD4;">They couldn't use it.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">AI-powered ops dashboard turning fragmented SMB data into one clear view and one next move. Research-led, systems-built.</p>
@@ -1406,7 +1447,7 @@ body.locked { overflow: hidden; }
       </div>
 
       <!-- FREETOWN VILLAGE -->
-      <a class="wk-card" data-cats="all visual product" href="https://rheamittalportfolio.framer.website/freetown-village" target="_blank" style="background:#1A1008;">
+      <a class="wk-card" data-cats="all b2c" href="https://rheamittalportfolio.framer.website/freetown-village" target="_blank" style="background:#1A1008;">
         <div class="wk-tag" style="color:#D4845A;">Visual Design · Brand Identity</div>
         <h3 class="wk-title" style="color:#fff;">A 40-year museum,<br><em style="color:#D4845A;">invisible to Gen Z.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">Visual design and brand identity for Freetown Village, an African American living history museum. History made tangible through design.</p>
@@ -1421,7 +1462,7 @@ body.locked { overflow: hidden; }
       <!-- ROW 3: Havells + Accenture -->
 
       <!-- HAVELLS -->
-      <a class="wk-card" data-cats="all research industrial" href="https://rheamittalportfolio.framer.website/havells" target="_blank" style="background:#181200;">
+      <a class="wk-card" data-cats="all b2c hardware" href="https://rheamittalportfolio.framer.website/havells" target="_blank" style="background:#181200;">
         <div class="wk-tag" style="color:#F0A500;">User Research · Industrial Design</div>
         <h3 class="wk-title" style="color:#fff;">I spent a semester in Indian kitchens.<br><em style="color:#F0A500;">Then redesigned the fan.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">User research and product development for Havells, one of India's largest electrical equipment manufacturers.</p>
@@ -1434,7 +1475,7 @@ body.locked { overflow: hidden; }
       </a>
 
       <!-- ACCENTURE -->
-      <a class="wk-card" data-cats="all industrial" href="https://rheamittalportfolio.framer.website/accenture" target="_blank" style="background:#0E0816;">
+      <a class="wk-card" data-cats="all b2c hardware" href="https://rheamittalportfolio.framer.website/accenture" target="_blank" style="background:#0E0816;">
         <div class="wk-tag" style="color:#A855F7;">Industrial Design · Transportation</div>
         <h3 class="wk-title" style="color:#fff;">I designed for a mobility future<br><em style="color:#A855F7;">that didn't exist yet.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">Transportation design and user research at Accenture, exploring future mobility systems and how people will move through the world.</p>
@@ -1449,7 +1490,7 @@ body.locked { overflow: hidden; }
       <!-- ROW 4: Canvas + TechGuy -->
 
       <!-- CANVAS -->
-      <a class="wk-card" data-cats="all research" href="canvas.html" style="background:#180404;">
+      <a class="wk-card" data-cats="all b2c" href="canvas.html" style="background:#180404;">
         <div class="wk-tag" style="color:#E63B2E;">User Research · AI Integration · 2024</div>
         <h3 class="wk-title" style="color:#fff;">Integrating AI into the<br><em style="color:#E63B2E;">world's most-used LMS.</em></h3>
         <p class="wk-desc" style="color:rgba(255,255,255,.55);">Redesigned Canvas's quiz creation flow for educators, integrating AI generation, autosave, and progress indicators. Research-backed across 3 fidelity levels, validated with 8+ faculty.</p>
@@ -1462,7 +1503,7 @@ body.locked { overflow: hidden; }
       </a>
 
       <!-- TECHGUY -->
-      <a class="wk-card" data-cats="all product research" href="techguy.html" style="background:#091828;">
+      <a class="wk-card" data-cats="all b2b b2c" href="techguy.html" style="background:#091828;">
         <div class="wk-visual">
           <video class="lazy-vid" aria-label="TechGuy product suite preview" loop muted playsinline preload="none" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_hero.mp4"></video>
         </div>
@@ -1553,7 +1594,7 @@ body.locked { overflow: hidden; }
     <div class="tool-item"><div class="tool-ico"><img src="assets/tools/claude.png" alt="Claude logo" width="44" height="44" decoding="async"></div><div class="tool-name">Claude</div><div class="tool-use">Ideation · Developing PRD · Research</div></div>
     <div class="tool-item"><div class="tool-ico tool-ico--dark"><img src="assets/tools/cursor.png" alt="Cursor logo" width="44" height="44" decoding="async"></div><div class="tool-name">Cursor</div><div class="tool-use">Vibecoding · Building · Shipping</div></div>
     <div class="tool-item"><div class="tool-ico tool-ico--dark"><img src="assets/tools/vercel.png" alt="Vercel logo" width="44" height="44" decoding="async"></div><div class="tool-name">Vercel</div><div class="tool-use">Hosting Projects · Deployment</div></div>
-    <div class="tool-item"><div class="tool-ico"><img src="assets/tools/lovable.png" alt="Lovable logo" width="44" height="44" decoding="async"></div><div class="tool-name">Loveable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
+    <div class="tool-item"><div class="tool-ico"><img src="assets/tools/lovable.png" alt="Lovable logo" width="44" height="44" decoding="async"></div><div class="tool-name">Lovable</div><div class="tool-use">Vibecoding · Wireframe Ideation</div></div>
   </div>
 </section>
 </div>
@@ -1716,39 +1757,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   });
 })();
 
-/* ── TEXT SCRAMBLE on hero headline ── */
-const heroH1 = document.querySelector('.hero-h1');
-if (heroH1) {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  const original = heroH1.innerHTML;
-  const textNodes = [];
-  heroH1.querySelectorAll('.line-wrap').forEach(n => textNodes.push(n));
-
-  function scramble(el, finalText, duration = 700) {
-    let frame = 0;
-    const totalFrames = Math.floor(duration / 16);
-    const origText = finalText;
-    const interval = setInterval(() => {
-      frame++;
-      const progress = frame / totalFrames;
-      el.textContent = origText.split('').map((char, i) => {
-        if (char === ' ') return ' ';
-        if (i < Math.floor(origText.length * progress)) return char;
-        return chars[Math.floor(Math.random() * chars.length)];
-      }).join('');
-      if (frame >= totalFrames) {
-        el.textContent = origText;
-        clearInterval(interval);
-      }
-    }, 16);
-  }
-
-  // Wrap each text line for scramble
-  heroH1.querySelectorAll('.scramble').forEach((el, i) => {
-    const txt = el.textContent;
-    setTimeout(() => scramble(el, txt, 800 + i * 150), 300 + i * 120);
-  });
-}
+/* Hero scramble lives in scripts/hero-collage.js */
 
 /* ── MAGNETIC BUTTONS removed ── */
 
@@ -1776,7 +1785,11 @@ document.querySelectorAll('.p-card').forEach(card => {
 (function initLazyVideos() {
   function resolveSrc(raw) {
     if (!raw) return '';
-    try { return encodeURI(decodeURI(raw)); } catch (e) { return encodeURI(raw); }
+    return raw.split('/').map(function (part) {
+      if (!part) return part;
+      try { return encodeURIComponent(decodeURIComponent(part)); }
+      catch (e) { return encodeURIComponent(part); }
+    }).join('/');
   }
   function loadVideo(video) {
     if (video.dataset.loaded === 'true') return;
@@ -1814,7 +1827,7 @@ document.querySelectorAll('.work-tab').forEach(tab => {
     this.classList.add('active');
     const filter = this.dataset.filter;
     document.querySelectorAll('.wk-card').forEach(card => {
-      const cats = card.dataset.cats || '';
+      const cats = (card.dataset.cats || '').split(/\s+/);
       if (filter === 'all' || cats.includes(filter)) {
         card.classList.remove('wk-hidden');
       } else {
@@ -1885,16 +1898,6 @@ document.querySelectorAll('.social-row').forEach(row => {
     this.style.paddingLeft = '';
   });
 });
-
-/* ── HERO: add scramble spans ── */
-(function() {
-  const h1 = document.querySelector('.hero-h1');
-  if (!h1) return;
-  // wrap accent spans in scramble class if not already
-  h1.querySelectorAll('.accent').forEach(el => {
-    if (!el.classList.contains('scramble')) el.classList.add('scramble');
-  });
-})();
 
 // Confetti — scoped to Draggit approved card
 (function() {
@@ -1977,5 +1980,6 @@ document.querySelectorAll('.social-row').forEach(row => {
 </script>
 
 <script src="scripts/nav-pill.js" defer></script>
+<script src="scripts/hero-collage.js" defer></script>
 </body>
 </html>

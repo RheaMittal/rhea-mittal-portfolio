@@ -59,14 +59,21 @@ body {
 /* HEADER */
 .work-header { display:flex; align-items:center; border-bottom:1px solid var(--border); padding-bottom:20px; margin-bottom:20px; }
 .work-label { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-.work-display { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(34px, 4.68vw, 62px); letter-spacing: 0; line-height:.92; text-transform:uppercase; color:var(--ink); margin-bottom:24px; }
+.work-display { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(34px, 4.68vw, 62px); letter-spacing: 0; line-height:.92; text-transform:uppercase; color:var(--ink); margin-bottom:16px; }
 .work-display em { color:var(--green); font-style:italic; font-weight:900; }
+.work-intro { font-family:'Open Sans',system-ui,sans-serif; font-size:15px; line-height:1.7; color:var(--muted); max-width:620px; margin:0 0 32px; }
 
 /* FILTER TABS */
-.work-tabs { display:flex; gap:8px; margin-bottom:40px; flex-wrap:wrap; }
+.work-tabs { display:flex; gap:8px; margin-bottom:32px; flex-wrap:wrap; align-items:center; }
 .work-tab { padding:8px 20px; border-radius:100px; font-size:13px; font-weight:500; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:background .2s,color .2s,border-color .2s; font-family:inherit; }
 .work-tab:hover { border-color:rgba(0,0,0,.25); color:var(--ink); }
 .work-tab.active { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+.work-ai-cta { display:none; align-items:center; justify-content:space-between; gap:24px; margin-top:48px; padding:28px 0 0; border-top:1px solid var(--border); text-decoration:none; color:var(--ink); transition:opacity .2s; }
+.work-ai-cta.is-visible { display:flex; }
+.work-ai-cta:hover { opacity:.72; }
+.work-ai-cta:hover .work-ai-cta-arrow { transform:translateX(4px); }
+.work-ai-cta-text { font-family:'Lato',sans-serif; font-weight:900; font-size:clamp(22px, 2.6vw, 34px); letter-spacing:0; line-height:1.15; text-transform:uppercase; }
+.work-ai-cta-arrow { font-size:clamp(22px, 2.6vw, 34px); font-weight:700; line-height:1; transition:transform .2s; flex-shrink:0; }
 
 /* GRID */
 .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
@@ -149,14 +156,15 @@ body {
     <span class="work-label">All Work · 2021 to Present</span>
   </div>
   <h1 class="work-display">Designed &amp; <em>Shipped</em></h1>
+  <p class="work-intro">This is my proudest work as a product designer. These projects showcase my skills in empathizing with users, creating, designing, and shipping products, then going back to test them with users.</p>
 
   <!-- Filter tabs -->
-  <div class="work-tabs">
-    <button class="work-tab active" data-filter="all">All <span style="opacity:.45;font-size:11px;margin-left:4px;">9</span></button>
-    <button class="work-tab" data-filter="visual">Visual Design</button>
-    <button class="work-tab" data-filter="product">Product Design</button>
-    <button class="work-tab" data-filter="research">User Research</button>
-    <button class="work-tab" data-filter="industrial">Industrial Design</button>
+  <div class="work-tabs" role="tablist" aria-label="Work categories">
+    <button class="work-tab active" data-filter="all" role="tab" aria-selected="true">All <span style="opacity:.45;font-size:11px;margin-left:4px;">9</span></button>
+    <button class="work-tab" data-filter="b2b" role="tab" aria-selected="false">B2B</button>
+    <button class="work-tab" data-filter="b2c" role="tab" aria-selected="false">B2C</button>
+    <button class="work-tab" data-filter="ai" role="tab" aria-selected="false">AI powered products</button>
+    <button class="work-tab" data-filter="hardware" role="tab" aria-selected="false">Hardware &amp; Software</button>
   </div>
 
   <!-- 2-col grid -->
@@ -165,7 +173,7 @@ body {
     <!-- ROW 1: Salesforce + Draggit -->
 
     <!-- SALESFORCE CAPSTONE -->
-    <a class="wk-card reveal" data-cats="all product research" href="salesforce.html" style="background:#fff;border:1px solid rgba(0,158,219,0.18);position:relative;">
+    <a class="wk-card reveal" data-cats="all b2b ai" href="salesforce.html" style="background:#fff;border:1px solid rgba(0,158,219,0.18);position:relative;">
       <div class="glass-badge">🏅 People's Choice Award</div>
       <div class="wk-visual-brand" style="background:linear-gradient(145deg,#D6EEFF 0%,#B3DAFF 100%);">
         <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:120px;width:auto;display:block;position:relative;z-index:1;">
@@ -184,7 +192,7 @@ body {
     </a>
 
     <!-- DRAGGIT -->
-    <a class="wk-card reveal" data-cats="all product" href="draggit.html" style="background:#fff;border:1px solid rgba(37,99,235,0.15);">
+    <a class="wk-card reveal" data-cats="all b2c ai" href="draggit.html" style="background:#fff;border:1px solid rgba(37,99,235,0.15);">
       <div class="wk-visual">
         <video aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Draggit_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
@@ -202,7 +210,7 @@ body {
     </a>
 
     <!-- CLIQUEPRIZE -->
-    <a class="wk-card reveal" data-cats="all visual product" href="cliqueprize.html" style="background:#fff;border:1px solid rgba(125,26,46,0.15);">
+    <a class="wk-card reveal" data-cats="all b2b" href="cliqueprize.html" style="background:#fff;border:1px solid rgba(125,26,46,0.15);">
       <div class="wk-visual">
         <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
@@ -222,7 +230,7 @@ body {
     <!-- ROW 2: OpsIQ + Freetown Village -->
 
     <!-- OPSIQ -->
-    <a class="wk-card reveal" data-cats="all product" href="opsiq.html" style="background:#fff;border:1px solid rgba(26,29,179,0.15);">
+    <a class="wk-card reveal" data-cats="all b2b ai" href="opsiq.html" style="background:#fff;border:1px solid rgba(26,29,179,0.15);">
       <div class="wk-visual">
         <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
@@ -240,7 +248,7 @@ body {
     </a>
 
     <!-- FREETOWN VILLAGE -->
-    <a class="wk-card reveal" data-cats="all research product visual" href="freetown-village.html" style="background:#fff;border:1px solid rgba(139,58,26,0.15);">
+    <a class="wk-card reveal" data-cats="all b2c" href="freetown-village.html" style="background:#fff;border:1px solid rgba(139,58,26,0.15);">
       <div class="wk-visual">
         <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Freetown village/Landing Page_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
@@ -260,7 +268,7 @@ body {
     <!-- ROW 3: Havells + Accenture -->
 
     <!-- HAVELLS -->
-    <a class="wk-card reveal" data-cats="all research industrial" href="havells.html">
+    <a class="wk-card reveal" data-cats="all b2c hardware" href="havells.html">
       <div class="wk-visual-brand" style="background:linear-gradient(135deg,#6B0008 0%,#BA151B 100%);">
         <img src="assets/Havells Logo.png" alt="Havells" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;">
       </div>
@@ -278,7 +286,7 @@ body {
     </a>
 
     <!-- ACCENTURE -->
-    <a class="wk-card reveal" data-cats="all industrial" href="accenture.html">
+    <a class="wk-card reveal" data-cats="all b2c hardware" href="accenture.html">
       <div class="wk-visual-brand" style="background:linear-gradient(135deg,#2E0050 0%,#7B2FBE 100%);">
         <img src="assets/accenture.png" alt="Accenture" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;">
       </div>
@@ -298,7 +306,7 @@ body {
     <!-- ROW 4: Canvas + TechGuy -->
 
     <!-- CANVAS -->
-    <a class="wk-card reveal" data-cats="all research" href="canvas.html">
+    <a class="wk-card reveal" data-cats="all b2c" href="canvas.html">
       <div class="wk-visual-brand" style="background:linear-gradient(135deg,#6B0000 0%,#CC0000 100%);">
         <img src="assets/canvas-white.png" alt="Canvas" style="max-width:48%;max-height:52%;object-fit:contain;position:relative;z-index:1;">
       </div>
@@ -316,7 +324,7 @@ body {
     </a>
 
     <!-- TECHGUY -->
-    <a class="wk-card reveal" data-cats="all product research" href="techguy.html" style="background:#fff;border:1px solid rgba(64,94,171,0.15);">
+    <a class="wk-card reveal" data-cats="all b2b b2c" href="techguy.html" style="background:#fff;border:1px solid rgba(64,94,171,0.15);">
       <div class="wk-visual">
         <video aria-label="TechGuy product suite hero walkthrough" loop muted playsinline preload="none" class="lazy-vid" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_hero.mp4"></video>
       </div>
@@ -334,6 +342,11 @@ body {
     </a>
 
   </div>
+
+  <a class="work-ai-cta" id="workAiNote" href="playground.html?tab=ai">
+    <span class="work-ai-cta-text">View my personal projects</span>
+    <span class="work-ai-cta-arrow" aria-hidden="true">→</span>
+  </a>
 </div>
 
 <footer class="work-footer">
@@ -343,15 +356,23 @@ body {
 
 <script>
 /* Filter tabs */
+const workAiNote = document.getElementById('workAiNote');
 document.querySelectorAll('.work-tab').forEach(tab => {
   tab.addEventListener('click', function() {
-    document.querySelectorAll('.work-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.work-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
     this.classList.add('active');
+    this.setAttribute('aria-selected', 'true');
     const filter = this.dataset.filter;
     document.querySelectorAll('.wk-card').forEach(card => {
-      const cats = card.dataset.cats || '';
+      const cats = (card.dataset.cats || '').split(/\s+/);
       card.classList.toggle('wk-hidden', filter !== 'all' && !cats.includes(filter));
     });
+    if (workAiNote) {
+      workAiNote.classList.toggle('is-visible', filter === 'ai');
+    }
   });
 });
 
@@ -359,7 +380,11 @@ document.querySelectorAll('.work-tab').forEach(tab => {
 (function initLazyVideos() {
   function resolveSrc(raw) {
     if (!raw) return '';
-    try { return encodeURI(decodeURI(raw)); } catch (e) { return encodeURI(raw); }
+    return raw.split('/').map(function (part) {
+      if (!part) return part;
+      try { return encodeURIComponent(decodeURIComponent(part)); }
+      catch (e) { return encodeURIComponent(part); }
+    }).join('/');
   }
   function loadVideo(video) {
     if (video.dataset.loaded === 'true') return;

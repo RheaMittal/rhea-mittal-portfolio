@@ -3,11 +3,14 @@
 (function initViewportVideos() {
   function resolveSrc(raw) {
     if (!raw) return '';
-    try {
-      return encodeURI(decodeURI(raw));
-    } catch (e) {
-      return encodeURI(raw);
-    }
+    return raw.split('/').map(function (part) {
+      if (!part) return part;
+      try {
+        return encodeURIComponent(decodeURIComponent(part));
+      } catch (e) {
+        return encodeURIComponent(part);
+      }
+    }).join('/');
   }
 
   function loadVideo(video) {

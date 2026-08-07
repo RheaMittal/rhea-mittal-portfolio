@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Concepts — Rhea Mittal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/design-system.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-bg-strong: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.8);
+  --glass-edge: rgba(0,0,0,0.06);
+  --glass-blur: blur(18px) saturate(1.45);
+  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+
+  --bg: #F5F4F0;
+  --ink: #0C0C0C;
+  --muted: rgba(12,12,12,0.62);
+  --border: rgba(0,0,0,0.08);
+  --green: #1DA855;
+  --orange: #E8521A;
+  --white: #FFFFFF;
+  --shadow-color: 80, 76, 68;
+
+  --pastel-work: #DCEFE1;
+  --pastel-ai: #E4DEF6;
+  --pastel-play: #FBE3D2;
+  --pastel-about: #DCE7F5;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Open Sans', system-ui, sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SHARED HERO TYPE (matches portfolio-v2) ─── */
+.h-kicker {
+  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 28px;
+}
+.h-title {
+  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-size: clamp(56px, 7.8vw, 109px);
+  line-height: .95; letter-spacing: 0; text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.h-title .accent { color: var(--green); font-style: italic; font-weight: 900; }
+.h-desc { font-size: 18px; line-height: 1.85; color: var(--muted); max-width: 480px; }
+.h-desc .name-hl { font-weight: 500; color: var(--ink); }
+.h-desc a.feat-link {
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity .2s;
+}
+.h-desc a.feat-link:hover { opacity: .65; }
+.hero-chips {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px;
+}
+.hero-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 16px; border-radius: 100px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
+  font-size: 12px; font-weight: 500; color: var(--ink);
+  white-space: nowrap; transition: background .2s, border-color .2s, color .2s;
+}
+.hero-chip:hover {
+  background: var(--glass-bg-strong);
+  color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: var(--glass-shadow);
+}
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 14px 26px; border-radius: 100px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  color: var(--ink); background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: 3px 6px 12px -1px rgba(var(--shadow-color), .10);
+  transition: transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s, border-color .3s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--ink);
+  box-shadow: 5px 10px 20px -1px rgba(var(--shadow-color), .16);
+}
+.btn.solid { background: var(--ink); color: #fff; border-color: var(--ink); }
+.btn.solid:hover { box-shadow: 5px 10px 22px -1px rgba(0,0,0,.24); }
+.btn .arw { transition: transform .3s cubic-bezier(.25,.46,.45,.94); }
+.btn:hover .arw { transform: translateX(3px); }
+
+/* ─── CONCEPT SWITCHER ─── */
+.switcher {
+  position: fixed; z-index: 1400;
+  left: 50%; bottom: 26px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px; border-radius: 100px;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px) saturate(1.45);
+  -webkit-backdrop-filter: blur(18px) saturate(1.45);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 34px rgba(80,76,68,0.16), 0 1px 0 rgba(255,255,255,0.85) inset;
+}
+.switcher .sw-label {
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); padding: 0 10px 0 12px; font-weight: 600; white-space: nowrap;
+}
+.sw-btn {
+  border: 0; cursor: pointer; font-family: inherit;
+  padding: 9px 16px; border-radius: 100px;
+  font-size: 12.5px; font-weight: 600; color: rgba(12,12,12,0.62);
+  background: transparent; transition: background .25s, color .25s;
+  white-space: nowrap;
+}
+.sw-btn:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
+.sw-btn.active { background: var(--ink); color: #fff; }
+
+.stage-note {
+  position: fixed; z-index: 1400; top: 92px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(12,12,12,0.42); font-weight: 600; text-align: center;
+  pointer-events: none; padding: 0 20px;
+}
+
+/* ─── STAGES ─── */
+.stage { display: none; }
+.stage.active { display: block; }
+
+/* ═══════════ CONCEPT 1 — CENTERED MINIMAL ═══════════ */
+#c1 .wrap {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 150px 40px 120px; max-width: 1000px; margin: 0 auto;
+}
+#c1 .h-title { margin-bottom: 34px; }
+#c1 .h-desc { max-width: 620px; margin: 0 auto; }
+#c1 .btn-row { justify-content: center; margin-top: 46px; }
+#c1 .rule { width: 64px; height: 2px; background: rgba(12,12,12,.16); margin: 0 auto 34px; }
+
+/* ═══════════ CONCEPT 2 — SPLIT + PASTEL CURSOR TABS ═══════════ */
+#c2 .wrap {
+  min-height: 100vh; display: grid; align-items: center;
+  padding: 150px 56px 120px; max-width: 1240px; margin: 0 auto;
+}
+#c2 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+#c2 .photo-zone { position: relative; }
+#c2 .photo {
+  width: 100%; aspect-ratio: 4/5; max-height: 560px;
+  object-fit: cover; object-position: center top;
+  border-radius: 20px; display: block; border: 1px solid var(--border);
+  transform: rotate(-1.5deg);
+}
+.float-tab {
+  position: absolute; z-index: 5;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px; border-radius: 100px;
+  font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 10px 26px rgba(80,76,68,0.16), 0 1px 0 rgba(255,255,255,0.9) inset;
+  will-change: transform;
+  transition: box-shadow .3s ease, filter .3s ease;
+}
+.float-tab:hover { filter: brightness(1.03); box-shadow: 0 14px 32px rgba(80,76,68,0.22); }
+.float-tab .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(12,12,12,.42); }
+.ft-work  { background: var(--pastel-work); top: 6%;  right: -6%; }
+.ft-ai    { background: var(--pastel-ai);   top: 44%; right: -13%; }
+.ft-play  { background: var(--pastel-play); bottom: 8%; right: -3%; }
+.ft-about { background: var(--pastel-about); bottom: 20%; left: -11%; }
+
+/* ═══════════ CONCEPT 3 — 2×2 IMAGE GRID, HOVER LABEL ═══════════ */
+#c3 .wrap {
+  min-height: 100vh; display: grid; align-items: center;
+  padding: 150px 56px 120px; max-width: 1240px; margin: 0 auto;
+}
+#c3 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+#c3 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tile {
+  position: relative; display: block; text-decoration: none;
+  border-radius: 18px; overflow: hidden;
+  aspect-ratio: 1/1;
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: 3px 6px 12px -1px rgba(var(--shadow-color), .10);
+  transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s;
+}
+.tile:hover { transform: translateY(-4px); box-shadow: 6px 12px 24px -2px rgba(var(--shadow-color), .18); }
+.tile img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94), filter .4s ease;
+}
+.tile:hover img { transform: scale(1.06); filter: brightness(.42); }
+.tile-veil {
+  position: absolute; inset: 0;
+  background: rgba(12,12,12,0.34);
+  opacity: 0; transition: opacity .4s ease;
+}
+.tile:hover .tile-veil { opacity: 1; }
+.tile-over {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; text-align: center; padding: 16px;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .35s ease, transform .45s cubic-bezier(.25,.46,.45,.94);
+}
+.tile:hover .tile-over { opacity: 1; transform: translateY(0); }
+.tile-over .t-name {
+  font-family: 'Lato', sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: clamp(18px, 2vw, 26px); line-height: 1; color: #fff; letter-spacing: .01em;
+}
+.tile-over .t-go {
+  font-size: 11px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(255,255,255,.82);
+}
+.tile-cap {
+  margin-top: 10px; text-align: center;
+  font-size: 12px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+  transition: color .3s ease;
+}
+.tile-unit:hover .tile-cap { color: var(--ink); }
+
+/* ═══════════ CONCEPT 4 — COLLAGE SCATTERS ON SCROLL ═══════════ */
+/* Tall stage drives the window scroll; the visuals sit in a fixed overlay
+   layered above the nav so it reads as a full-screen loading curtain.
+   Stack: page → headline → cream tint → chips → scroll hint. */
+#c4 { height: 320vh; }
+#c4 .overlay {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; pointer-events: none;
+  background: var(--bg);
+}
+/* Once the curtain has cleared, drop below the nav so it can take over again.
+   The overlay background matches the page, so the swap is invisible. */
+#c4.revealed .overlay { z-index: 400; }
+body.c4-curtain nav { opacity: 0; pointer-events: none; transition: opacity .45s ease; }
+body.c4-curtain.c4-revealed nav { opacity: 1; pointer-events: auto; }
+body.c4-curtain .stage-note { display: none; }
+#c4 .c4-tint {
+  position: absolute; inset: 0; z-index: 2;
+  background: var(--bg);
+  pointer-events: none; will-change: opacity;
+}
+.collage { position: absolute; inset: 0; z-index: 3; }
+/* Simple photo chips — natural aspect, soft depth, no Polaroid frames */
+.chip {
+  position: absolute; border-radius: 10px; overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 12px 32px rgba(80,76,68,0.16), 0 2px 6px rgba(80,76,68,0.08);
+  will-change: transform, opacity;
+}
+.chip img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  background: #fff; vertical-align: top;
+}
+#c4 .center {
+  position: relative; z-index: 1; text-align: center;
+  max-width: 900px; padding: 0 40px;
+  will-change: transform, opacity;
+}
+#c4 .center .h-desc { max-width: 560px; margin: 0 auto; }
+#c4 .hero-chips { justify-content: center; }
+#c4 .btn-row { justify-content: center; }
+#c4 .center.ready { pointer-events: auto; }
+
+/* CTA pair — C4 + C5 neutrals.
+   Case Studies = #0C0C0C white text; AI Projects = space grey #6E6E73 white text.
+   Same size/weight; thin padding; subtle shadow only, no glass/glow/arrows. */
+.cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 22px; border-radius: 100px;
+  font-size: 13px; font-weight: 600; letter-spacing: .01em;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 8px rgba(80,76,68,0.08);
+  transition: transform .25s cubic-bezier(.25,.46,.45,.94),
+    background .2s, border-color .2s, box-shadow .25s, color .2s;
+}
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(80,76,68,0.12);
+}
+/* Primary — ink #0C0C0C, white text */
+.cta-a,
+#c4 .cta-a,
+#c5 .cta-a {
+  background: #0C0C0C;
+  border-color: #0C0C0C;
+  color: #fff;
+}
+.cta-a:hover,
+#c4 .cta-a:hover,
+#c5 .cta-a:hover {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+}
+/* Secondary — space grey #6E6E73, white text */
+.cta-b,
+#c4 .cta-b,
+#c5 .cta-b {
+  background: #6E6E73;
+  border-color: #6E6E73;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(80,76,68,0.06);
+}
+.cta-b:hover,
+#c4 .cta-b:hover,
+#c5 .cta-b:hover {
+  background: #5c5c61;
+  border-color: #5c5c61;
+  color: #fff;
+}
+#c4 .scroll-hint {
+  position: absolute; bottom: 92px; left: 50%; transform: translateX(-50%);
+  z-index: 5; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 100px;
+  /* Same glass language as .nav-pill */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px) saturate(1.45);
+  -webkit-backdrop-filter: blur(18px) saturate(1.45);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 8px 28px rgba(80, 76, 68, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink); white-space: nowrap;
+  max-width: calc(100vw - 32px);
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none; -webkit-appearance: none;
+  margin: 0;
+}
+#c4 .scroll-hint:hover {
+  background: rgba(255, 255, 255, 0.72);
+}
+#c4 .scroll-hint:focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 3px;
+}
+#c4 .scroll-hint .arrow { animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+/* ═══════════ CONCEPT 5 — TORCH / SPOTLIGHT REVEAL ═══════════ */
+/* Cream veil over collage; system cursor drives a small soft hole.
+   No custom cursor, no green, no outline — understated peek only.
+   Hero copy stays above the veil so it stays readable. */
+#c5 {
+  min-height: 100vh;
+  background: var(--bg);
+}
+#c5 .c5-wrap {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+#c5 .c5-collage {
+  position: absolute; inset: 0; z-index: 1;
+  background: #1a2e22;
+}
+#c5 .c5-collage .chip {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28), 0 2px 6px rgba(0,0,0,0.12);
+  border-color: rgba(255,255,255,0.55);
+}
+#c5 .c5-veil {
+  position: absolute; inset: 0; z-index: 2;
+  background: var(--bg);
+  pointer-events: none;
+  will-change: -webkit-mask-image, mask-image;
+  /* Soft hole — JS swaps mask for viscous trail / stretch when moving fast.
+     Fallback single circle until first pointer move. */
+  -webkit-mask-image: radial-gradient(
+    circle 52px at var(--mx, 50%) var(--my, 42%),
+    rgba(0,0,0,0.04) 0%,
+    rgba(0,0,0,0.12) 18%,
+    rgba(0,0,0,0.28) 36%,
+    rgba(0,0,0,0.48) 52%,
+    rgba(0,0,0,0.70) 68%,
+    rgba(0,0,0,0.88) 84%,
+    #000 100%
+  );
+  mask-image: radial-gradient(
+    circle 52px at var(--mx, 50%) var(--my, 42%),
+    rgba(0,0,0,0.04) 0%,
+    rgba(0,0,0,0.12) 18%,
+    rgba(0,0,0,0.28) 36%,
+    rgba(0,0,0,0.48) 52%,
+    rgba(0,0,0,0.70) 68%,
+    rgba(0,0,0,0.88) 84%,
+    #000 100%
+  );
+}
+#c5 .c5-center {
+  position: relative; z-index: 4;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  max-width: 900px; margin: 0 auto;
+  padding: 140px 40px 120px;
+  pointer-events: none;
+}
+#c5 .c5-center .h-desc { max-width: 560px; margin: 0 auto; }
+#c5 .c5-center .hero-chips,
+#c5 .c5-center .btn-row { justify-content: center; pointer-events: auto; }
+#c5 .c5-center a.feat-link { pointer-events: auto; }
+#c5 .c5-hint {
+  position: absolute; z-index: 5;
+  bottom: 92px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(12,12,12,0.38);
+  pointer-events: none; white-space: nowrap;
+  transition: opacity .4s ease;
+}
+#c5 .c5-hint .dot {
+  display: inline-block; width: 5px; height: 5px; margin-right: 8px;
+  border-radius: 50%; background: rgba(12,12,12,0.28);
+  vertical-align: middle;
+  animation: c5Pulse 2.4s ease-in-out infinite;
+}
+@keyframes c5Pulse {
+  0%,100% { opacity: .4; }
+  50% { opacity: .85; }
+}
+
+/* Mobile / coarse pointer: soft auto-path, same small soft reveal */
+@media (max-width: 720px), (hover: none), (pointer: coarse) {
+  #c5 .c5-veil {
+    -webkit-mask-image: radial-gradient(
+      circle 46px at var(--mx, 35%) var(--my, 40%),
+      rgba(0,0,0,0.04) 0%,
+      rgba(0,0,0,0.12) 18%,
+      rgba(0,0,0,0.28) 36%,
+      rgba(0,0,0,0.48) 52%,
+      rgba(0,0,0,0.70) 68%,
+      rgba(0,0,0,0.88) 84%,
+      #000 100%
+    );
+    mask-image: radial-gradient(
+      circle 46px at var(--mx, 35%) var(--my, 40%),
+      rgba(0,0,0,0.04) 0%,
+      rgba(0,0,0,0.12) 18%,
+      rgba(0,0,0,0.28) 36%,
+      rgba(0,0,0,0.48) 52%,
+      rgba(0,0,0,0.70) 68%,
+      rgba(0,0,0,0.88) 84%,
+      #000 100%
+    );
+  }
+  #c5 .c5-hint { bottom: 88px; font-size: 10px; }
+  #c5 .c5-center { padding: 110px 24px 130px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #c5 .c5-hint .dot { animation: none; }
+  #c5 .c5-veil {
+    -webkit-mask-image: radial-gradient(
+      circle 48px at 42% 38%,
+      rgba(0,0,0,0.04) 0%,
+      rgba(0,0,0,0.12) 18%,
+      rgba(0,0,0,0.28) 36%,
+      rgba(0,0,0,0.48) 52%,
+      rgba(0,0,0,0.70) 68%,
+      rgba(0,0,0,0.88) 84%,
+      #000 100%
+    );
+    mask-image: radial-gradient(
+      circle 48px at 42% 38%,
+      rgba(0,0,0,0.04) 0%,
+      rgba(0,0,0,0.12) 18%,
+      rgba(0,0,0,0.28) 36%,
+      rgba(0,0,0,0.48) 52%,
+      rgba(0,0,0,0.70) 68%,
+      rgba(0,0,0,0.88) 84%,
+      #000 100%
+    );
+  }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  #c2 .wrap, #c3 .wrap { padding: 110px 24px 130px; }
+  #c2 .row, #c3 .row { grid-template-columns: 1fr; gap: 48px; }
+  #c2 .photo-zone { max-width: 420px; }
+  .ft-work { right: 0; } .ft-ai { right: -4%; } .ft-play { right: 2%; } .ft-about { left: -2%; }
+  #c1 .wrap { padding: 110px 24px 130px; }
+  .switcher .sw-label { display: none; }
+  .sw-btn { padding: 9px 11px; font-size: 11.5px; }
+  #c4 .scroll-hint {
+    bottom: 88px; padding: 10px 16px; font-size: 11px;
+    letter-spacing: .08em;
+  }
+  #c4 .center { padding: 0 24px; }
+  .chip { border-radius: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-tab, .tile, .tile img, .chip, #c4 .center { transition: none !important; }
+  #c4 .scroll-hint span { animation: none; }
+}
+</style>
+<link rel="stylesheet" href="styles/nav.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="portfolio-v2.html">RM</a>
+  <div class="nav-pill">
+    <span class="nav-pill-indicator" aria-hidden="true"></span>
+    <a href="work.html" class="nav-pill-link">Work</a>
+    <a href="playground.html" class="nav-pill-link">Play</a>
+    <a href="about.html" class="nav-pill-link">About</a>
+    <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" class="nav-pill-link" download>Resume ↗</a>
+  </div>
+  <a class="nav-cta" href="mailto:rheamittal0401@gmail.com">Contact me</a>
+</nav>
+
+<div class="stage-note" id="stageNote"></div>
+
+<!-- ═══════════ CONCEPT 1 ═══════════ -->
+<section class="stage active" id="c1" data-note="Concept 1 — Centered statement, no image">
+  <div class="wrap">
+    <p class="h-kicker">Product Designer · Builder · MS-HCI Indiana University</p>
+    <div class="rule"></div>
+    <h1 class="h-title">I design<br>&amp; I <span class="accent">ship.</span></h1>
+    <p class="h-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer who works end-to-end — from research and prototyping to shipping and testing real products.</p>
+    <div class="btn-row">
+      <a class="btn solid" href="work.html">Work projects <span class="arw">→</span></a>
+      <a class="btn" href="playground.html">AI projects <span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONCEPT 2 ═══════════ -->
+<section class="stage" id="c2" data-note="Concept 2 — Pastel tabs that drift with your cursor">
+  <div class="wrap">
+    <div class="row" id="c2Row">
+      <div>
+        <p class="h-kicker">Product Designer · Builder · MS-HCI Indiana University</p>
+        <h1 class="h-title">I design<br>&amp; I <span class="accent">ship.</span></h1>
+        <p class="h-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer who works end-to-end — from research and prototyping to shipping and testing real products.</p>
+      </div>
+      <div class="photo-zone">
+        <img class="photo" src="assets/Hero Image Landing Image.jpg" alt="Rhea Mittal">
+        <a class="float-tab ft-work"  href="work.html"       data-depth="26"><span class="dot"></span>Work</a>
+        <a class="float-tab ft-ai"    href="playground.html" data-depth="42"><span class="dot"></span>AI Projects</a>
+        <a class="float-tab ft-play"  href="playground.html" data-depth="18"><span class="dot"></span>Play</a>
+        <a class="float-tab ft-about" href="about.html"      data-depth="34"><span class="dot"></span>About</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONCEPT 3 ═══════════ -->
+<section class="stage" id="c3" data-note="Concept 3 — Hover a tile: it darkens and reveals the label">
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <p class="h-kicker">Product Designer · Builder · MS-HCI Indiana University</p>
+        <h1 class="h-title">I design<br>&amp; I <span class="accent">ship.</span></h1>
+        <p class="h-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer who works end-to-end — from research and prototyping to shipping and testing real products.</p>
+      </div>
+      <div>
+        <div class="grid">
+          <div class="tile-unit">
+            <a class="tile" href="work.html">
+              <img src="assets/TechGuy/Admin dashboard.png" alt="Work">
+              <span class="tile-veil"></span>
+              <span class="tile-over"><span class="t-name">Work</span><span class="t-go">View work</span></span>
+            </a>
+            <p class="tile-cap">Work</p>
+          </div>
+          <div class="tile-unit">
+            <a class="tile" href="playground.html">
+              <img src="assets/Terra Tales Card Game.jpg" alt="Play">
+              <span class="tile-veil"></span>
+              <span class="tile-over"><span class="t-name">Play</span><span class="t-go">View play</span></span>
+            </a>
+            <p class="tile-cap">Play</p>
+          </div>
+          <div class="tile-unit">
+            <a class="tile" href="playground.html">
+              <img src="assets/ElevenLabs Hackathon.png" alt="AI Projects">
+              <span class="tile-veil"></span>
+              <span class="tile-over"><span class="t-name">AI</span><span class="t-go">View projects</span></span>
+            </a>
+            <p class="tile-cap">AI Projects</p>
+          </div>
+          <div class="tile-unit">
+            <a class="tile" href="about.html">
+              <img src="assets/Hero Image Landing Image.jpg" alt="About me">
+              <span class="tile-veil"></span>
+              <span class="tile-over"><span class="t-name">About</span><span class="t-go">More about me</span></span>
+            </a>
+            <p class="tile-cap">About me</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONCEPT 4 ═══════════ -->
+<section class="stage" id="c4" data-note="Concept 4 — Scroll (or wait 1.2s) and the collage clears away">
+  <div class="overlay">
+    <div class="center" id="c4Center">
+      <h1 class="h-title">I design<br>&amp; I <span class="accent scramble">ship.</span></h1>
+      <p class="h-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer recently featured on the <a class="feat-link" href="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal" target="_blank" rel="noopener noreferrer">Open Doors newsletter</a>. I work end-to-end from research and prototyping to shipping and testing.</p>
+      <div class="hero-chips">
+        <span class="hero-chip">Capstone @ Salesforce</span>
+        <span class="hero-chip">MS-HCI @ Indiana University</span>
+        <span class="hero-chip">🏆 Hackathon Winner</span>
+        <span class="hero-chip">🏅 People's Choice Award @ IU Capstone</span>
+      </div>
+      <div class="btn-row">
+        <a class="cta cta-a" href="work.html">View my work</a>
+      </div>
+    </div>
+    <div class="c4-tint" id="c4Tint" aria-hidden="true"></div>
+    <div class="collage" id="collage"></div>
+    <button type="button" class="scroll-hint" id="c4Hint">Scroll to see the portfolio <span class="arrow" aria-hidden="true">↓</span></button>
+  </div>
+</section>
+
+<!-- ═══════════ CONCEPT 5 — TORCH REVEAL ═══════════ -->
+<section class="stage" id="c5" data-note="Concept 5 — Move your cursor to torch-reveal the work collage">
+  <div class="c5-wrap" id="c5Wrap">
+    <div class="c5-collage" id="c5Collage" aria-hidden="true"></div>
+    <div class="c5-veil" id="c5Veil"></div>
+    <div class="c5-center" id="c5Center">
+      <h1 class="h-title">I design<br>&amp; I <span class="accent scramble">ship.</span></h1>
+      <p class="h-desc">I'm <span class="name-hl">Rhea Mittal</span>, a product designer recently featured on the <a class="feat-link" href="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal" target="_blank" rel="noopener noreferrer">Open Doors newsletter</a>. I work end-to-end from research and prototyping to shipping and testing.</p>
+      <div class="hero-chips">
+        <span class="hero-chip">Capstone @ Salesforce</span>
+        <span class="hero-chip">MS-HCI @ Indiana University</span>
+        <span class="hero-chip">🏆 Hackathon Winner</span>
+        <span class="hero-chip">🏅 People's Choice Award @ IU Capstone</span>
+      </div>
+      <div class="btn-row">
+        <a class="cta cta-a" href="work.html">Case Studies</a>
+        <a class="cta cta-b" href="playground.html">AI Projects</a>
+      </div>
+    </div>
+    <p class="c5-hint" id="c5Hint"><span class="dot" aria-hidden="true"></span><span class="c5-hint-text">Move to reveal</span></p>
+  </div>
+</section>
+
+<!-- ═══════════ SWITCHER ═══════════ -->
+<div class="switcher" role="tablist" aria-label="Hero concepts">
+  <span class="sw-label">Concept</span>
+  <button class="sw-btn active" data-target="c1">1 · Centered</button>
+  <button class="sw-btn" data-target="c2">2 · Cursor tabs</button>
+  <button class="sw-btn" data-target="c3">3 · Image grid</button>
+  <button class="sw-btn" data-target="c4">4 · Collage</button>
+  <button class="sw-btn" data-target="c5">5 · Torch</button>
+</div>
+
+<script src="scripts/nav-pill.js"></script>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Switcher ── */
+  var stages = Array.prototype.slice.call(document.querySelectorAll('.stage'));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.sw-btn'));
+  var note = document.getElementById('stageNote');
+
+  function show(id) {
+    stages.forEach(function (s) { s.classList.toggle('active', s.id === id); });
+    buttons.forEach(function (b) { b.classList.toggle('active', b.dataset.target === id); });
+    var active = document.getElementById(id);
+    note.textContent = active ? (active.dataset.note || '') : '';
+    document.body.classList.toggle('c4-curtain', id === 'c4');
+    document.body.classList.toggle('c5-torch', id === 'c5');
+    resetC4();
+    resetC5();
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.target); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key >= '1' && e.key <= '5') { show('c' + e.key); }
+  });
+
+  /* ── Concept 2: pastel tabs drift with cursor ── */
+  var c2Row = document.getElementById('c2Row');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.float-tab'));
+  if (c2Row && !reduce) {
+    var target = { x: 0, y: 0 };
+    var current = { x: 0, y: 0 };
+    var raf = null;
+
+    function tick() {
+      current.x += (target.x - current.x) * 0.09;
+      current.y += (target.y - current.y) * 0.09;
+      tabs.forEach(function (t) {
+        var d = parseFloat(t.dataset.depth) || 20;
+        t.style.transform = 'translate(' + (current.x * d) + 'px,' + (current.y * d) + 'px)';
+      });
+      if (Math.abs(target.x - current.x) > 0.001 || Math.abs(target.y - current.y) > 0.001) {
+        raf = requestAnimationFrame(tick);
+      } else { raf = null; }
+    }
+    function kick() { if (raf === null) { raf = requestAnimationFrame(tick); } }
+
+    document.getElementById('c2').addEventListener('mousemove', function (e) {
+      var r = c2Row.getBoundingClientRect();
+      target.x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      target.y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      kick();
+    });
+    document.getElementById('c2').addEventListener('mouseleave', function () {
+      target.x = 0; target.y = 0; kick();
+    });
+  }
+
+  /* ── Concept 4: dense photo collage that clears on scroll / click / 1.2s ──
+     Single progress 0–1 drives all visuals. Modes:
+       wait   → armed 1.2s timer
+       auto   → tween after timer
+       scroll → user wheel/scroll drives progress (bidirectional)
+       tween  → hint-click (or forced) tween to 1
+       done   → fully revealed; scroll-up re-enters scroll mode
+     After first clear (or once user scrolls), progress is scroll-linked:
+     down disperses, up reassembles.
+     Eye-path: CENTER presenting/work → MID play → OUTER play/about/screens.
+     Chips are center-anchored (top/left = center %) so the pile can reach
+     edges without cut-off tiles beside empty cream. */
+
+  /* src, centerY%, centerX%, baseSide(px), rot, keepOnMobile
+     Soft overlaps (~15–35%). Repeats only in opposite quadrants.
+     CliquePrize: visual hero/system frames only — never Pricing.
+     Paint order: OUTER first, CENTER last so presenting chips sit on top. */
+  var PHOTOS = [
+    /* OUTER — playground + about; fill corners and former cream voids */
+    ['assets/Terra Tales Card Game.jpg',                                        8, 20, 240,  8, true],
+    ['assets/ElevenLabs Hackathon.png',                                         8, 68, 250, -7, true],
+    ['assets/Book Design.jpg',                                                 68,  8, 230,  6, true],
+    ['assets/Smeg Iron image.jpg',                                             60, 58, 230, -5, true],
+    ['assets/boardgame design.png',                                            12, 52, 190,  3, false],
+    ['assets/Crochet Business.png',                                            36, 88, 200,  9, true],
+    ['assets/Illustratuion pt1.png',                                           78, 16, 210, -4, false],
+    ['assets/About Me/Beyond Design/Adventure Sports.JPG',                     90, 18, 200, -9, true],
+    ['assets/About Me/Beyond Design/Travel.jpg',                               50, 96, 180,  9, true],
+    ['assets/About Me/Beyond Design/Music.jpeg',                               92, 58, 190,  4, false],
+    ['assets/About Me/Beyond Design/Formula 1.jpg',                            34, 14, 190, -5, false],
+    ['assets/About Me/Beyond Design/Reading.jpg',                              62, 92, 180,  7, true],
+    ['assets/Me at the Havells office.jpeg',                                   92, 88, 170,  5, false],
+    ["assets/About Me/HowIgothere/Bachelor's/Product sketching.jpg",           58, 16, 190, -6, false],
+    ['assets/About Me/HowIgothere/Exchange Program/Ethnographic Research in Public.jpg', 28, 10, 180,  5, false],
+    ['assets/About Me/Beyond Design/Crochet Business.png',                     22, 96, 170, -8, false],
+    /* OUTER — visual case-study frames (CliquePrize hero/system — NOT pricing).
+       Use assets/collage/* JPEGs: clean names + real JPEG (Canvas source is AVIF
+       mislabeled .png — fails decode under image/png MIME in some browsers). */
+    ['assets/collage/freetown-landing.jpg',                                    14,  4, 250, -8, true],
+    ['assets/collage/cliqueprize-hero.jpg',                                    10, 44, 260,  5, true],
+    ['assets/collage/techguy-hero.jpg',                                        86,  6, 260,  4, true],
+    ['assets/collage/opsiq-dash.jpg',                                          86, 72, 250, -6, true],
+    ['assets/collage/canvas-landing.jpg',                                      32, 80, 230, -4, true],
+    ['assets/TechGuy/Admin dashboard.png',                                     50, 74, 210,  6, false],
+    ['assets/Hero Image Landing Image.jpg',                                    48,  4, 200, -7, false],
+    ['assets/collage/cliqueprize-system.jpg',                                  64, 76, 200, -6, false],
+    /* Extra fillers — repeats far from primaries (opp. quadrants) */
+    ['assets/Terra Tales Card Game.jpg',                                       84, 50, 180, -3, false],
+    ['assets/ElevenLabs Hackathon.png',                                        78, 28, 190,  8, false],
+    ['assets/Smeg Iron image.jpg',                                             14, 72, 180,  2, false],
+    /* CENTER last — presenting / work on top, airy so each chip still reads */
+    ['assets/salesforce/screenshots/capstone-event-1.jpg',                     40, 34, 300,  4, true],
+    ["assets/About Me/HowIgothere/Bachelor's/Presentation.png",                30, 56, 280, -6, true],
+    ['assets/salesforce/screenshots/capstone-event-2.jpg',                     56, 48, 290,  7, true],
+    ['assets/salesforce/screenshots/iteration-phase/iteration-team-01.jpg',    22, 26, 250, -4, true],
+    ['assets/salesforce/screenshots/iteration-phase/iteration-whiteboard.jpg', 62, 24, 240,  5, true],
+    ['assets/ABC Company/Working with my team.jpg',                            42, 66, 250, -3, true],
+    ['assets/salesforce/screenshots/iteration-phase/iteration-team-02.jpg',    20, 40, 220,  6, false],
+    /* Presenting repeats — opposite quadrants from their primaries */
+    ['assets/salesforce/screenshots/capstone-event-1.jpg',                     78, 88, 200, -8, false],
+    ["assets/About Me/HowIgothere/Bachelor's/Presentation.png",                88, 42, 190,  3, false],
+    ['assets/salesforce/screenshots/capstone-event-2.jpg',                     14, 88, 190,  5, false]
+  ];
+
+  /* Per-segment encode (spaces, commas, &, quotes, +) — same as lazy-vid /
+     CliquePrize fix. decode-then-encode avoids double-encoding. */
+  function encodePath(p) {
+    return p.split('/').map(function (part) {
+      if (!part) return part;
+      try { return encodeURIComponent(decodeURIComponent(part)); }
+      catch (e) { return encodeURIComponent(part); }
+    }).join('/');
+  }
+
+  function isMobileC4() { return window.innerWidth < 720; }
+
+  var collage = document.getElementById('collage');
+  var chips = [];
+
+  /* After natural size is known, nudge so rotated AABB stays fully on-screen. */
+  function keepChipInView(el) {
+    requestAnimationFrame(function () {
+      if (!collage || !el.parentNode) return;
+      var parent = collage.getBoundingClientRect();
+      var r = el.getBoundingClientRect();
+      if (parent.width < 40 || parent.height < 40) return;
+      var margin = 6;
+      var dx = 0, dy = 0;
+      if (r.left < parent.left + margin) dx += (parent.left + margin) - r.left;
+      if (r.top < parent.top + margin) dy += (parent.top + margin) - r.top;
+      if (r.right > parent.right - margin) dx += (parent.right - margin) - r.right;
+      if (r.bottom > parent.bottom - margin) dy += (parent.bottom - margin) - r.bottom;
+      if (!dx && !dy) return;
+      var curL = parseFloat(el.style.left) || 0;
+      var curT = parseFloat(el.style.top) || 0;
+      el.style.left = (curL + (dx / parent.width) * 100) + '%';
+      el.style.top = (curT + (dy / parent.height) * 100) + '%';
+    });
+  }
+
+  function sizeFromNatural(el, img, base) {
+    var nw = img.naturalWidth || 1;
+    var nh = img.naturalHeight || 1;
+    var aspect = nw / nh;
+    var w, h;
+    if (aspect >= 1) { w = base; h = base / aspect; }
+    else { h = base; w = base * aspect; }
+    el.style.width = Math.round(w) + 'px';
+    el.style.height = Math.round(h) + 'px';
+    keepChipInView(el);
+  }
+
+  function chipBaseTransform(rot) {
+    return 'translate(-50%, -50%) rotate(' + rot + 'deg)';
+  }
+
+  function buildC4Collage() {
+    if (!collage) return;
+    collage.innerHTML = '';
+    chips = [];
+    var mobile = isMobileC4();
+    var scale = mobile ? 0.66 : 1;
+    PHOTOS.forEach(function (spec, i) {
+      var src = spec[0], top = spec[1], left = spec[2], base = spec[3], rot = spec[4], keep = spec[5];
+      if (mobile && !keep) return;
+
+      var el = document.createElement('div');
+      el.className = 'chip';
+      /* top/left are CENTER percentages */
+      el.style.top = top + '%';
+      el.style.left = left + '%';
+      var b = Math.round(base * scale);
+      el.style.width = b + 'px';
+      el.style.height = Math.round(b * 0.72) + 'px'; /* provisional landscape-ish until load */
+
+      var img = document.createElement('img');
+      img.alt = '';
+      img.decoding = 'async';
+      img.onload = function () { sizeFromNatural(el, img, b); };
+      img.src = encodePath(src);
+      el.appendChild(img);
+      collage.appendChild(el);
+
+      var dx = left - 50;
+      var dy = top - 48;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 10) {
+        var a = (i / PHOTOS.length) * Math.PI * 2;
+        dx = Math.cos(a); dy = Math.sin(a); len = 1;
+      }
+      chips.push({
+        el: el,
+        rot: rot,
+        ux: (dx / len) * 1200,
+        uy: (dy / len) * 950
+      });
+      el.style.transform = chipBaseTransform(rot);
+      if (img.complete && img.naturalWidth) sizeFromNatural(el, img, b);
+    });
+  }
+  buildC4Collage();
+
+  var center = document.getElementById('c4Center');
+  var hint = document.getElementById('c4Hint');
+  var tint = document.getElementById('c4Tint');
+
+  /* progress is the single source of truth for chip transforms */
+  var c4Progress = 0;
+  var c4Mode = 'idle'; /* idle | wait | auto | scroll | tween | done */
+  var c4Timer = null;
+  var c4Raf = null;
+  var c4IgnoreScrollUntil = 0;
+  /* After first clear / user scroll, bind progress to scrollY (up = reassemble) */
+  var c4ScrollBound = false;
+
+  function smoothstep(t) { t = Math.min(Math.max(t, 0), 1); return t * t * (3 - 2 * t); }
+  function isC4Active() { return document.getElementById('c4').classList.contains('active'); }
+
+  function scrollMax() {
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  }
+
+  function progressFromScrollY() {
+    var max = scrollMax();
+    var y = window.scrollY || window.pageYOffset || 0;
+    if (max <= 0) return c4Progress;
+    return Math.min(Math.max(y / (max * 0.8), 0), 1);
+  }
+
+  function syncC4Scroll(p) {
+    var max = scrollMax();
+    if (max <= 0) return;
+    c4IgnoreScrollUntil = performance.now() + 80;
+    window.scrollTo(0, p * max * 0.8);
+  }
+
+  function renderC4(p) {
+    c4Progress = Math.min(Math.max(p, 0), 1);
+    var eased = smoothstep(c4Progress);
+    chips.forEach(function (c) {
+      var tx = c.ux * eased;
+      var ty = c.uy * eased;
+      var sc = 1 - 0.35 * eased;
+      c.el.style.transform =
+        'translate(-50%, -50%) translate(' + tx + 'px,' + ty + 'px) rotate(' + (c.rot + eased * c.rot * 2.5) + 'deg) scale(' + sc + ')';
+      c.el.style.opacity = String(Math.max(0, 1 - eased * 1.35));
+    });
+    if (tint) tint.style.opacity = String(Math.max(0, 1 - eased));
+    var textEased = smoothstep(Math.min(1, c4Progress / 0.7));
+    if (center) {
+      center.style.opacity = String(0.9 + 0.1 * textEased);
+      center.style.transform = 'scale(' + (0.97 + 0.03 * textEased) + ')';
+      center.classList.toggle('ready', c4Progress > 0.9);
+    }
+    if (hint) {
+      hint.style.opacity = String(Math.max(0, 1 - c4Progress * 3));
+      hint.style.pointerEvents = c4Progress > 0.35 ? 'none' : 'auto';
+    }
+    var revealed = c4Progress > 0.92;
+    document.getElementById('c4').classList.toggle('revealed', revealed);
+    document.body.classList.toggle('c4-revealed', revealed);
+    /* Mark fully clear, but keep scroll-bound so up can reverse */
+    if (revealed && c4Mode !== 'scroll' && c4Mode !== 'auto' && c4Mode !== 'tween') {
+      c4Mode = 'done';
+    }
+  }
+
+  function clearC4Timer() {
+    if (c4Timer) { clearTimeout(c4Timer); c4Timer = null; }
+  }
+
+  function clearC4Raf() {
+    if (c4Raf) { cancelAnimationFrame(c4Raf); c4Raf = null; }
+  }
+
+  function finishC4Clear() {
+    c4ScrollBound = true;
+    c4Mode = 'done';
+    renderC4(1);
+    syncC4Scroll(1);
+  }
+
+  function tweenC4ToOne(modeName) {
+    clearC4Timer();
+    clearC4Raf();
+    if (!isC4Active()) return;
+    if (c4Progress >= 0.99) { finishC4Clear(); return; }
+    c4Mode = modeName || 'tween';
+    var start = performance.now();
+    var duration = reduce ? 1 : 1400;
+    var from = c4Progress;
+    function step(now) {
+      if (!isC4Active()) { c4Raf = null; return; }
+      /* User took over with scroll — stop tween */
+      if (c4Mode === 'scroll') { c4Raf = null; return; }
+      var t = Math.min(1, (now - start) / duration);
+      var p = from + (1 - from) * smoothstep(t);
+      renderC4(p);
+      syncC4Scroll(p);
+      if (t < 1) {
+        c4Raf = requestAnimationFrame(step);
+      } else {
+        c4Raf = null;
+        finishC4Clear();
+      }
+    }
+    c4Raf = requestAnimationFrame(step);
+  }
+
+  function armC4Auto() {
+    clearC4Timer();
+    clearC4Raf();
+    c4Mode = 'wait';
+    if (reduce) {
+      finishC4Clear();
+      return;
+    }
+    c4Timer = setTimeout(function () {
+      c4Timer = null;
+      if (!isC4Active()) return;
+      /* Only fire if still waiting — scroll/hint already moved on */
+      if (c4Mode !== 'wait') return;
+      tweenC4ToOne('auto');
+    }, 1200);
+  }
+
+  function onC4Wheel(e) {
+    if (!isC4Active()) return;
+    if (c4Mode === 'auto' || c4Mode === 'tween') return;
+    var dy = e.deltaY || 0;
+    if (Math.abs(dy) < 1) return;
+    /* Once scroll-bound (or user starts scrolling), wheel drives both ways */
+    if (c4Mode === 'done' || c4ScrollBound || c4Mode === 'wait' || c4Mode === 'scroll') {
+      clearC4Timer();
+      clearC4Raf();
+      c4Mode = 'scroll';
+      c4ScrollBound = true;
+      var next = c4Progress + dy / 900;
+      renderC4(next);
+      syncC4Scroll(c4Progress);
+      if (c4Progress >= 0.99) c4Mode = 'done';
+    }
+  }
+
+  function onC4Scroll() {
+    if (!isC4Active()) return;
+    if (c4Mode === 'auto' || c4Mode === 'tween') return;
+    if (performance.now() < c4IgnoreScrollUntil) return;
+    var y = window.scrollY || window.pageYOffset || 0;
+    if (c4Mode === 'wait' && y > 4) {
+      clearC4Timer();
+      c4Mode = 'scroll';
+      c4ScrollBound = true;
+    }
+    /* After first clear, always follow scroll so up reassembles */
+    if (c4Mode === 'done' && c4ScrollBound) {
+      c4Mode = 'scroll';
+    }
+    if (c4Mode !== 'scroll') return;
+    var p = progressFromScrollY();
+    renderC4(p);
+    if (p >= 0.99) c4Mode = 'done';
+  }
+
+  function onC4HintClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isC4Active()) return;
+    if (c4Mode === 'done' && c4Progress >= 0.99) return;
+    /* Click always disperses — never cancels into a stuck wait */
+    tweenC4ToOne('tween');
+  }
+
+  /* Scramble "ship." — same behavior as portfolio-v2.html hero */
+  var SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var c4ScrambleTimers = [];
+  var c4ScrambleInterval = null;
+
+  function clearC4Scramble() {
+    c4ScrambleTimers.forEach(clearTimeout);
+    c4ScrambleTimers = [];
+    if (c4ScrambleInterval) { clearInterval(c4ScrambleInterval); c4ScrambleInterval = null; }
+  }
+
+  function scrambleEl(el, finalText, duration) {
+    var frame = 0;
+    var totalFrames = Math.floor(duration / 16);
+    if (c4ScrambleInterval) clearInterval(c4ScrambleInterval);
+    c4ScrambleInterval = setInterval(function () {
+      frame++;
+      var progress = frame / totalFrames;
+      el.textContent = finalText.split('').map(function (char, i) {
+        if (char === ' ') return ' ';
+        if (i < Math.floor(finalText.length * progress)) return char;
+        return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      }).join('');
+      if (frame >= totalFrames) {
+        el.textContent = finalText;
+        clearInterval(c4ScrambleInterval);
+        c4ScrambleInterval = null;
+      }
+    }, 16);
+  }
+
+  function runC4Scramble() {
+    clearC4Scramble();
+    if (reduce) return;
+    var el = document.querySelector('#c4Center .scramble');
+    if (!el) return;
+    var txt = el.dataset.final || el.textContent;
+    el.dataset.final = txt;
+    el.textContent = txt;
+    c4ScrambleTimers.push(setTimeout(function () {
+      if (!isC4Active()) return;
+      scrambleEl(el, txt, 800);
+    }, 300));
+  }
+
+  function resetC4() {
+    clearC4Timer();
+    clearC4Raf();
+    clearC4Scramble();
+    c4Mode = 'idle';
+    c4Progress = 0;
+    c4ScrollBound = false;
+    document.getElementById('c4').classList.remove('revealed');
+    document.body.classList.remove('c4-revealed');
+    renderC4(0);
+    c4IgnoreScrollUntil = performance.now() + 200;
+    window.scrollTo(0, 0);
+
+    if (!isC4Active()) return;
+
+    /* Rebuild on activate so mobile/desktop chip set is current */
+    buildC4Collage();
+    renderC4(0);
+    runC4Scramble();
+
+    /* Double-rAF so layout height (320vh) exists before arming timer /
+       any spurious scroll from scrollTo settles */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (!isC4Active()) return;
+        window.scrollTo(0, 0);
+        renderC4(0);
+        armC4Auto();
+      });
+    });
+  }
+
+  if (hint) hint.addEventListener('click', onC4HintClick);
+  window.addEventListener('scroll', function () { requestAnimationFrame(onC4Scroll); }, { passive: true });
+  window.addEventListener('wheel', onC4Wheel, { passive: true });
+  var c4ResizeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(c4ResizeTimer);
+    c4ResizeTimer = setTimeout(function () {
+      if (!isC4Active()) return;
+      var p = c4Progress;
+      var mode = c4Mode;
+      buildC4Collage();
+      renderC4(p);
+      if (mode === 'wait') armC4Auto();
+    }, 150);
+  });
+  renderC4(0);
+
+  /* ── Concept 5: torch / spotlight reveal over work collage ──
+     Cream veil masks the collage; system cursor drives a small soft hole
+     (no custom cursor, no green rim). Fast motion stretches a viscous
+     trail; slow motion stays roughly circular. Desktop: follow pointer.
+     Mobile / reduced motion: gentle auto path or static peek. */
+  var c5Wrap = document.getElementById('c5Wrap');
+  var c5Collage = document.getElementById('c5Collage');
+  var c5Veil = document.getElementById('c5Veil');
+  var c5Hint = document.getElementById('c5Hint');
+  var c5Chips = [];
+  var c5Built = false;
+  var c5Raf = null;
+  var c5AutoRaf = null;
+  var c5ScrambleTimers = [];
+  var c5ScrambleInterval = null;
+  /* Cursor target (%); blob center lags behind for physical drag feel */
+  var c5Tx = 50, c5Ty = 42;
+  var c5Mx = 50, c5My = 42;
+  var c5Vx = 0, c5Vy = 0;       /* smoothed cursor velocity (% / ms) */
+  var c5LastTx = 50, c5LastTy = 42;
+  var c5LastT = 0;
+  var c5Speed = 0;              /* px/ms equivalent, for stretch */
+  var c5Trail = [];             /* lagged positions for viscous stamps */
+  var c5Moved = false;
+  var C5_BASE_R = 52;
+  var C5_TRAIL_MAX = 8;
+  var C5_FALLOFF = 36; /* soft edge beyond core radius */
+  var c5MaskCanvas = document.createElement('canvas');
+  var c5MaskCtx = c5MaskCanvas.getContext('2d');
+
+  function isC5Active() { return document.getElementById('c5').classList.contains('active'); }
+  function isC5Coarse() {
+    return window.matchMedia('(max-width: 720px), (hover: none), (pointer: coarse)').matches;
+  }
+
+  /* Soft hole via canvas mask: opaque veil with destination-out stamps.
+     Fast motion → overlapping stamps along velocity (viscous stretch). */
+  function applyC5Mask() {
+    if (!c5Veil || !c5Wrap || !c5MaskCtx) return;
+    var w = Math.max(1, c5Wrap.clientWidth || 1);
+    var h = Math.max(1, c5Wrap.clientHeight || 1);
+    if (c5MaskCanvas.width !== w || c5MaskCanvas.height !== h) {
+      c5MaskCanvas.width = w;
+      c5MaskCanvas.height = h;
+    }
+    var ctx = c5MaskCtx;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, w, h);
+
+    var gap = Math.sqrt(Math.pow(c5Tx - c5Mx, 2) + Math.pow(c5Ty - c5My, 2));
+    var points;
+    if (c5Speed >= 0.35 && gap > 0.8) {
+      var dx = c5Tx - c5Mx;
+      var dy = c5Ty - c5My;
+      var behind = Math.min(c5Speed * 3.2, 4.5);
+      var spd2 = Math.sqrt(c5Vx * c5Vx + c5Vy * c5Vy) || 1e-6;
+      var bx = (c5Vx / spd2) * behind;
+      var by = (c5Vy / spd2) * behind;
+      var headPull = Math.min(0.55, 0.2 + c5Speed * 0.5);
+      var hx = c5Mx + dx * headPull;
+      var hy = c5My + dy * headPull;
+      var tx = c5Mx - bx;
+      var ty = c5My - by;
+      var n = 2 + Math.min(Math.floor(c5Speed * 10), C5_TRAIL_MAX - 2);
+      points = [];
+      for (var i = 0; i < n; i++) {
+        var u = i / (n - 1);
+        points.push({ x: hx + (tx - hx) * u, y: hy + (ty - hy) * u });
+      }
+      if (c5Trail.length > 1) {
+        for (var j = 1; j < Math.min(c5Trail.length, 3); j++) points.push(c5Trail[j]);
+      }
+    } else {
+      points = [{ x: c5Mx, y: c5My }];
+    }
+
+    ctx.globalCompositeOperation = 'destination-out';
+    var nPts = points.length;
+    for (var i = 0; i < nPts; i++) {
+      var t = nPts <= 1 ? 0 : i / (nPts - 1);
+      var p = points[i];
+      var cx = (p.x / 100) * w;
+      var cy = (p.y / 100) * h;
+      var core = (C5_BASE_R - 8) * (1 - t * 0.22);
+      var outer = core + C5_FALLOFF;
+      var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, outer);
+      /* Soft falloff — matches prior CSS gradient feel */
+      g.addColorStop(0, 'rgba(0,0,0,0.96)');
+      g.addColorStop(0.18, 'rgba(0,0,0,0.88)');
+      g.addColorStop(0.36, 'rgba(0,0,0,0.72)');
+      g.addColorStop(0.52, 'rgba(0,0,0,0.52)');
+      g.addColorStop(0.68, 'rgba(0,0,0,0.30)');
+      g.addColorStop(0.84, 'rgba(0,0,0,0.12)');
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(cx, cy, outer, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    var url = 'url(' + c5MaskCanvas.toDataURL('image/png') + ')';
+    c5Veil.style.webkitMaskImage = url;
+    c5Veil.style.maskImage = url;
+    c5Veil.style.webkitMaskSize = '100% 100%';
+    c5Veil.style.maskSize = '100% 100%';
+    c5Veil.style.webkitMaskSourceType = 'alpha';
+    c5Veil.style.maskMode = 'alpha';
+    c5Wrap.style.setProperty('--mx', c5Mx.toFixed(2) + '%');
+    c5Wrap.style.setProperty('--my', c5My.toFixed(2) + '%');
+  }
+
+  function setC5Pos(xPct, yPct, instant) {
+    c5Tx = Math.min(Math.max(xPct, 0), 100);
+    c5Ty = Math.min(Math.max(yPct, 0), 100);
+    if (instant) {
+      c5Mx = c5Tx; c5My = c5Ty;
+      c5Vx = 0; c5Vy = 0; c5Speed = 0;
+      c5LastTx = c5Tx; c5LastTy = c5Ty;
+      c5Trail = [{ x: c5Mx, y: c5My }];
+      applyC5Mask();
+    } else {
+      kickC5Smooth();
+    }
+  }
+
+  function kickC5Smooth() {
+    if (c5Raf !== null) return;
+    function step(now) {
+      if (!c5LastT) c5LastT = now;
+      var dt = Math.min(Math.max(now - c5LastT, 1), 40);
+      c5LastT = now;
+
+      var rawVx = (c5Tx - c5LastTx) / dt;
+      var rawVy = (c5Ty - c5LastTy) / dt;
+      c5LastTx = c5Tx;
+      c5LastTy = c5Ty;
+      c5Vx += (rawVx - c5Vx) * 0.4;
+      c5Vy += (rawVy - c5Vy) * 0.4;
+
+      var w = (c5Wrap && c5Wrap.clientWidth) || 1200;
+      var h = (c5Wrap && c5Wrap.clientHeight) || 800;
+      var spd = Math.sqrt(
+        Math.pow(c5Vx * w / 100, 2) + Math.pow(c5Vy * h / 100, 2)
+      );
+      c5Speed += (spd - c5Speed) * 0.5;
+
+      /* Lag increases with speed — feels like dragging a heavy fluid */
+      var lerp = 0.18 - Math.min(c5Speed * 0.65, 0.13);
+      if (lerp < 0.04) lerp = 0.04;
+      c5Mx += (c5Tx - c5Mx) * lerp;
+      c5My += (c5Ty - c5My) * lerp;
+
+      var head = { x: c5Mx, y: c5My };
+      if (!c5Trail.length) {
+        c5Trail.push(head);
+      } else {
+        var prev = c5Trail[0];
+        var ddx = head.x - prev.x;
+        var ddy = head.y - prev.y;
+        var dist = Math.sqrt(ddx * ddx + ddy * ddy);
+        if (dist >= 0.25) c5Trail.unshift(head);
+        else c5Trail[0] = head;
+      }
+      while (c5Trail.length > C5_TRAIL_MAX) c5Trail.pop();
+      if (c5Speed < 0.25 && c5Trail.length > 1) {
+        for (var i = 1; i < c5Trail.length; i++) {
+          c5Trail[i].x += (c5Mx - c5Trail[i].x) * 0.3;
+          c5Trail[i].y += (c5My - c5Trail[i].y) * 0.3;
+        }
+      }
+
+      applyC5Mask();
+
+      var stillMoving =
+        Math.abs(c5Tx - c5Mx) > 0.04 ||
+        Math.abs(c5Ty - c5My) > 0.04 ||
+        c5Speed > 0.025 ||
+        c5Trail.length > 1;
+      if (stillMoving) {
+        c5Raf = requestAnimationFrame(step);
+      } else {
+        c5Mx = c5Tx; c5My = c5Ty;
+        c5Speed = 0;
+        c5Trail = [{ x: c5Mx, y: c5My }];
+        applyC5Mask();
+        c5Raf = null;
+        c5LastT = 0;
+      }
+    }
+    c5Raf = requestAnimationFrame(step);
+  }
+
+  function keepChipInViewC5(el) {
+    requestAnimationFrame(function () {
+      if (!c5Collage || !el.parentNode) return;
+      var parent = c5Collage.getBoundingClientRect();
+      var r = el.getBoundingClientRect();
+      if (parent.width < 40 || parent.height < 40) return;
+      var margin = 4;
+      var dx = 0, dy = 0;
+      if (r.left < parent.left + margin) dx += (parent.left + margin) - r.left;
+      if (r.top < parent.top + margin) dy += (parent.top + margin) - r.top;
+      if (r.right > parent.right - margin) dx += (parent.right - margin) - r.right;
+      if (r.bottom > parent.bottom - margin) dy += (parent.bottom - margin) - r.bottom;
+      if (!dx && !dy) return;
+      var curL = parseFloat(el.style.left) || 0;
+      var curT = parseFloat(el.style.top) || 0;
+      el.style.left = (curL + (dx / parent.width) * 100) + '%';
+      el.style.top = (curT + (dy / parent.height) * 100) + '%';
+    });
+  }
+
+  function sizeFromNaturalC5(el, img, base) {
+    var nw = img.naturalWidth || 1;
+    var nh = img.naturalHeight || 1;
+    var aspect = nw / nh;
+    var w, h;
+    if (aspect >= 1) { w = base; h = base / aspect; }
+    else { h = base; w = base * aspect; }
+    el.style.width = Math.round(w) + 'px';
+    el.style.height = Math.round(h) + 'px';
+    keepChipInViewC5(el);
+  }
+
+  function buildC5Collage() {
+    if (!c5Collage) return;
+    c5Collage.innerHTML = '';
+    c5Chips = [];
+    var mobile = isMobileC4();
+    var scale = mobile ? 0.7 : 1.05;
+    PHOTOS.forEach(function (spec) {
+      var src = spec[0], top = spec[1], left = spec[2], base = spec[3], rot = spec[4], keep = spec[5];
+      if (mobile && !keep) return;
+      var el = document.createElement('div');
+      el.className = 'chip';
+      el.style.top = top + '%';
+      el.style.left = left + '%';
+      var b = Math.round(base * scale);
+      el.style.width = b + 'px';
+      el.style.height = Math.round(b * 0.72) + 'px';
+      el.style.transform = 'translate(-50%, -50%) rotate(' + rot + 'deg)';
+      var img = document.createElement('img');
+      img.alt = '';
+      img.decoding = 'async';
+      img.onload = function () { sizeFromNaturalC5(el, img, b); };
+      img.src = encodePath(src);
+      el.appendChild(img);
+      c5Collage.appendChild(el);
+      c5Chips.push(el);
+      if (img.complete && img.naturalWidth) sizeFromNaturalC5(el, img, b);
+    });
+    c5Built = true;
+  }
+
+  function clearC5Scramble() {
+    c5ScrambleTimers.forEach(clearTimeout);
+    c5ScrambleTimers = [];
+    if (c5ScrambleInterval) { clearInterval(c5ScrambleInterval); c5ScrambleInterval = null; }
+  }
+
+  function scrambleElC5(el, finalText, duration) {
+    var frame = 0;
+    var totalFrames = Math.round(duration / 16);
+    if (c5ScrambleInterval) clearInterval(c5ScrambleInterval);
+    c5ScrambleInterval = setInterval(function () {
+      frame++;
+      var progress = frame / totalFrames;
+      el.textContent = finalText.split('').map(function (char, i) {
+        if (char === ' ') return ' ';
+        if (i < Math.floor(finalText.length * progress)) return char;
+        return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      }).join('');
+      if (frame >= totalFrames) {
+        el.textContent = finalText;
+        clearInterval(c5ScrambleInterval);
+        c5ScrambleInterval = null;
+      }
+    }, 16);
+  }
+
+  function runC5Scramble() {
+    clearC5Scramble();
+    if (reduce) return;
+    var el = document.querySelector('#c5Center .scramble');
+    if (!el) return;
+    var txt = el.dataset.final || el.textContent;
+    el.dataset.final = txt;
+    el.textContent = txt;
+    c5ScrambleTimers.push(setTimeout(function () {
+      if (!isC5Active()) return;
+      scrambleElC5(el, txt, 800);
+    }, 300));
+  }
+
+  function stopC5Auto() {
+    if (c5AutoRaf) { cancelAnimationFrame(c5AutoRaf); c5AutoRaf = null; }
+  }
+
+  function startC5AutoPath() {
+    stopC5Auto();
+    if (reduce) {
+      setC5Pos(42, 38, true);
+      return;
+    }
+    var t0 = performance.now();
+    function loop(now) {
+      if (!isC5Active()) { c5AutoRaf = null; return; }
+      var t = (now - t0) / 1000;
+      /* Gentle figure-eight so work peeks through without user input */
+      var x = 50 + Math.sin(t * 0.4) * 22;
+      var y = 42 + Math.sin(t * 0.4 * 2) * 14;
+      setC5Pos(x, y, false);
+      c5AutoRaf = requestAnimationFrame(loop);
+    }
+    c5AutoRaf = requestAnimationFrame(loop);
+  }
+
+  function onC5Move(e) {
+    if (!isC5Active() || !c5Wrap) return;
+    if (isC5Coarse()) return;
+    stopC5Auto();
+    var r = c5Wrap.getBoundingClientRect();
+    var x = ((e.clientX - r.left) / r.width) * 100;
+    var y = ((e.clientY - r.top) / r.height) * 100;
+    setC5Pos(x, y, false);
+    if (!c5Moved && c5Hint) {
+      c5Moved = true;
+      c5Hint.style.opacity = '0';
+    }
+  }
+
+  function onC5Leave() {
+    if (isC5Active() && !isC5Coarse() && !reduce) {
+      /* Drift back toward center slowly via auto path if pointer leaves */
+      startC5AutoPath();
+    }
+  }
+
+  function resetC5() {
+    stopC5Auto();
+    if (c5Raf) { cancelAnimationFrame(c5Raf); c5Raf = null; }
+    c5LastT = 0;
+    clearC5Scramble();
+    c5Moved = false;
+    if (c5Hint) c5Hint.style.opacity = '1';
+    if (c5Hint) {
+      var label = c5Hint.querySelector('.c5-hint-text');
+      if (label) label.textContent = isC5Coarse() ? 'Spotlight drifts' : 'Move to reveal';
+    }
+    if (!isC5Active()) return;
+    if (!c5Built) buildC5Collage();
+    else buildC5Collage();
+    runC5Scramble();
+    setC5Pos(isC5Coarse() ? 35 : 50, isC5Coarse() ? 40 : 42, true);
+    if (reduce) {
+      setC5Pos(42, 38, true);
+    } else if (isC5Coarse()) {
+      startC5AutoPath();
+    } else {
+      /* Soft starting peek; wait for cursor */
+      setC5Pos(50, 42, true);
+    }
+  }
+
+  if (c5Wrap) {
+    c5Wrap.addEventListener('mousemove', onC5Move);
+    c5Wrap.addEventListener('mouseleave', onC5Leave);
+  }
+  window.addEventListener('resize', function () {
+    if (!isC5Active()) return;
+    buildC5Collage();
+    if (isC5Coarse() && !reduce) startC5AutoPath();
+  });
+
+  /* init */
+  show('c1');
+})();
+</script>
+</body>
+</html>

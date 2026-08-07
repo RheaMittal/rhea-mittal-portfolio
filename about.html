@@ -159,8 +159,7 @@ body {
 .hero-photo-wrap:hover {
   transform: perspective(1000px) rotateY(-1deg) rotateX(0deg);
 }
-.hero-photo-wrap img,
-.hero-photo-wrap video {
+.hero-photo-wrap img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center top;
   display: block;
@@ -203,125 +202,7 @@ body {
 @keyframes lp { 0%,100%{opacity:1}50%{opacity:.35} }
 
 /* ──────────────────────────────────
-   2. ACHIEVEMENTS / COLLAGE
-────────────────────────────────── */
-.achievements {
-  padding: 100px 56px;
-  border-bottom: 1px solid var(--border);
-  max-width: 1240px;
-  margin: 0 auto;
-}
-
-.ach-header {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  margin-bottom: 56px;
-}
-
-.ach-h2 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: clamp(31px, 3.9vw, 50px);
-  line-height: 1; letter-spacing: 0; text-transform: uppercase;
-}
-.ach-h2 em { font-style: italic; font-weight: 900; color: var(--green); }
-
-.ach-sub {
-  font-size: 15px; color: var(--muted); max-width: 280px;
-  text-align: right; line-height: 1.55;
-}
-
-/* Collage grid */
-.collage {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 24px 16px;
-  align-items: start;
-}
-
-.col-item {
-  display: flex; flex-direction: column; gap: 12px;
-  cursor: pointer;
-}
-
-/* 1 · SIGCHI — top left */
-.col-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-/* 2 · Seth Lab — bottom, spans 2 cols */
-.col-item:nth-child(2) { grid-column: 1 / 3; grid-row: 2; }
-/* 3 · Podcast — top centre */
-.col-item:nth-child(3) { grid-column: 2; grid-row: 1; }
-/* 4 · Blog — top right */
-.col-item:nth-child(4) { grid-column: 3; grid-row: 1; }
-/* 5 · Period Society — bottom right */
-.col-item:nth-child(5) { grid-column: 3; grid-row: 2; }
-
-/* Image wrapper — fixed height, clips + zooms on hover */
-.col-img-wrap {
-  position: relative; overflow: hidden;
-  border-radius: 16px; height: 260px; flex-shrink: 0;
-  transition: box-shadow .3s ease;
-}
-.col-item:hover .col-img-wrap {
-  box-shadow: 0 16px 48px rgba(0,0,0,.18);
-}
-
-.col-img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-  display: block;
-  transition: transform .5s ease;
-}
-.col-item:hover .col-img { transform: scale(1.06); }
-
-.col-ph {
-  width: 100%; height: 100%;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 8px; color: var(--muted);
-  font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
-  transition: transform .5s ease;
-}
-.col-ph-ico { font-size: 32px; opacity: .35; }
-.col-ph-lbl { opacity: .45; }
-
-/* Visible caption below image */
-.col-caption-below { padding: 0 4px; }
-.col-caption-tag {
-  font-size: 10px; text-transform: uppercase; letter-spacing: .13em;
-  color: var(--muted); margin-bottom: 4px;
-}
-.col-caption-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: 13px; color: var(--ink); line-height: 1.2;
-}
-
-/* Hover overlay on image */
-.col-overlay {
-  position: absolute; inset: 0;
-  background: rgba(12,12,12,.88);
-  display: flex; flex-direction: column;
-  justify-content: flex-end;
-  padding: 24px;
-  opacity: 0; transition: opacity .3s ease;
-  border-radius: 16px;
-}
-.col-item:hover .col-overlay { opacity: 1; }
-
-.col-ov-tag {
-  font-size: 10px; text-transform: uppercase; letter-spacing: .12em;
-  color: rgba(255,255,255,.4); margin-bottom: 6px;
-}
-.col-ov-title {
-  font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: 14px; color: #fff;
-  line-height: 1.2; margin-bottom: 6px;
-}
-.col-ov-desc {
-  font-size: 12px; color: rgba(255,255,255,.6);
-  line-height: 1.55;
-}
-
-/* ──────────────────────────────────
-   3. QUOTES
+   2. QUOTES
 ────────────────────────────────── */
 .quotes-section {
   padding: 100px 0;
@@ -640,77 +521,6 @@ body {
   font-size: 12px; color: var(--muted);
 }
 
-/* ── COLLAGE LIGHTBOX (matched to Playground .lightbox) ── */
-.col-lb {
-  position: fixed; inset: 0; z-index: 900;
-  background: rgba(6,6,6,.97); backdrop-filter: blur(20px);
-  display: flex; align-items: stretch;
-  opacity: 0; pointer-events: none;
-  transition: opacity .4s cubic-bezier(.25,.46,.45,.94);
-}
-.col-lb.open { opacity: 1; pointer-events: all; }
-.col-lb-media {
-  flex: 1; display: flex; align-items: center; justify-content: center;
-  background: #080808; border-right: 1px solid rgba(255,255,255,.07);
-  padding: 40px; position: relative; overflow: hidden;
-}
-.col-lb-media img {
-  max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px;
-}
-.col-lb-info {
-  width: 420px; flex-shrink: 0; padding: 64px 48px;
-  display: flex; flex-direction: column; justify-content: center;
-  overflow-y: auto; position: relative;
-}
-.col-lb-close {
-  position: absolute; top: 24px; right: 24px;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; cursor: pointer; color: #fff;
-  transition: background .2s; z-index: 10;
-}
-.col-lb-close:hover { background: rgba(255,255,255,.2); }
-.col-lb-tag {
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: .12em; color: rgba(255,255,255,.45); margin-bottom: 16px;
-}
-.col-lb-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(22px, 2.34vw, 34px); line-height: .95; letter-spacing: 0;
-  text-transform: uppercase; margin: 0 0 20px; color: #fff;
-}
-.col-lb-body {
-  font-size: 15px; line-height: 1.85; color: rgba(255,255,255,.55);
-  margin: 0 0 32px;
-}
-.col-lb-link {
-  display: none;
-  align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
-  color: #fff; text-decoration: none;
-  border: 1px solid rgba(255,255,255,.2);
-  padding: 14px 24px; border-radius: 12px;
-  transition: background .2s, border-color .2s;
-  width: fit-content;
-}
-.col-lb-link:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.35); }
-
-/* Overlay CTA on collage cards — match Playground .card-link */
-.col-overlay .card-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 16px;
-  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
-  color: #fff; text-decoration: none;
-  border: 1px solid rgba(255,255,255,.35);
-  padding: 8px 16px; border-radius: 100px; width: fit-content;
-  background: rgba(255,255,255,.1);
-  transition: background .2s, border-color .2s;
-}
-.col-overlay .card-link:hover {
-  background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6);
-}
-
 /* ─── SCROLL REVEAL ─── */
 .reveal {
   opacity: 0; transform: translateY(28px);
@@ -740,22 +550,13 @@ body {
   .hero-about { grid-template-columns: 1fr; }
   .hero-right { min-height: 360px; }
   .hero-left { padding: 56px 24px; }
-  .achievements { padding: 72px 24px; }
   .quotes-section { padding: 72px 24px; }
   .journey { padding: 72px 24px; }
   .beyond { padding: 72px 24px; }
-  .collage { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px 220px; }
-  .col-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-  .col-item:nth-child(2) { grid-column: 1 / 3; grid-row: 3; }
-  .col-item:nth-child(3) { grid-column: 2; grid-row: 1; }
-  .col-item:nth-child(4) { grid-column: 1; grid-row: 2; }
-  .col-item:nth-child(5) { grid-column: 2; grid-row: 2; }
   .quotes-grid { grid-template-columns: 1fr; }
   .beyond-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
   .beyond-item:nth-child(1), .beyond-item:nth-child(4) { grid-column: span 1; }
   .beyond-item { height: 180px; }
-  .ach-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .ach-sub { text-align: left; max-width: 100%; }
   .beyond-header { grid-template-columns: 1fr; }
   .contact-section { margin: 0 24px; padding: 72px 0 60px; }
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -768,12 +569,6 @@ body {
 @media(max-width:640px) {
   .beyond-grid { grid-template-columns: 1fr; }
   .beyond-item { height: 160px; }
-  .collage { grid-template-columns: 1fr; grid-template-rows: repeat(5, 200px); }
-  .col-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-  .col-item:nth-child(2) { grid-column: 1; grid-row: 4; }
-  .col-item:nth-child(3) { grid-column: 1; grid-row: 2; }
-  .col-item:nth-child(4) { grid-column: 1; grid-row: 3; }
-  .col-item:nth-child(5) { grid-column: 1; grid-row: 5; }
 }
 </style>
 <link rel="stylesheet" href="styles/nav.css">
@@ -827,137 +622,14 @@ body {
 
     <div class="hero-right">
       <div class="hero-photo-wrap">
-        <video aria-label="Rhea Mittal background reel" muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;" class="lazy-vid" preload="none" data-src="assets/About me hero section_hero.mp4"></video>
+        <img src="assets/Hero Image Landing Image.jpg" alt="Rhea Mittal at Jaguar 5K marathon" class="hero-photo">
       </div>
       <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Open Sans',sans-serif;">Always open to exploring</div>
     </div>
   </section>
 
   <!-- ──────────────────────────────────
-       2. ACHIEVEMENTS / COLLAGE
-  ────────────────────────────────── -->
-  <section class="achievements reveal">
-    <div class="sec-label">Communities &amp; Milestones</div>
-    <div class="ach-header">
-      <div>
-        <h2 class="ach-h2">Things I've<br>been part <em>of.</em></h2>
-      </div>
-      <p class="ach-sub">Click any card to learn the full story.</p>
-    </div>
-
-    <div class="collage">
-
-      <!-- Card 1: SIGCHI -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png"
-        data-tag="Club Leadership"
-        data-title="SIGCHI, Creative Lead, Srishti Chapter"
-        data-body="I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter's online presence and community engagement.">
-        <div class="col-img-wrap">
-          <img class="col-img" src="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png" alt="SIGCHI Creative Lead">
-          <div class="col-overlay">
-            <div class="col-ov-tag">Club Leadership</div>
-            <div class="col-ov-title">SIGCHI, Creative Lead, Srishti Chapter</div>
-            <div class="col-ov-desc">I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter's online presence and community engagement.</div>
-          </div>
-        </div>
-        <div class="col-caption-below">
-          <div class="col-caption-tag">Club Leadership</div>
-          <div class="col-caption-title">SIGCHI, Creative Lead</div>
-        </div>
-      </div>
-
-      <!-- Card 2: SETH Lab -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./SETH Lab.png"
-        data-tag="Research Lab · Indiana University"
-        data-title="SETH Lab"
-        data-body="I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.">
-        <div class="col-img-wrap">
-          <img class="col-img" src="assets/About Me/Thingspart of./SETH Lab.png" alt="SETH Lab">
-          <div class="col-overlay">
-            <div class="col-ov-tag">Research Lab · Indiana University</div>
-            <div class="col-ov-title">SETH Lab</div>
-            <div class="col-ov-desc">I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.</div>
-          </div>
-        </div>
-        <div class="col-caption-below">
-          <div class="col-caption-tag">Research Lab · Indiana University</div>
-          <div class="col-caption-title">SETH Lab</div>
-        </div>
-      </div>
-
-      <!-- Card 3: ADGE Podcast -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png"
-        data-tag="Podcast Guest · Unlearning by Design"
-        data-title="Aedge Podcast, Adeptic Creative Labs"
-        data-body="In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field."
-        data-link="https://open.spotify.com/episode/5V7jU9nmPiRuxOOwyHTLnU?si=FHtexDBWSWu-kobsyZh_FA"
-        data-link-label="Listen on Spotify">
-        <div class="col-img-wrap">
-          <img class="col-img" src="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png" alt="Aedge Podcast">
-          <div class="col-overlay">
-            <div class="col-ov-tag">Podcast Guest · Unlearning by Design</div>
-            <div class="col-ov-title">Aedge Podcast, Adeptic Creative Labs</div>
-            <div class="col-ov-desc">In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field.</div>
-            <a href="https://open.spotify.com/episode/5V7jU9nmPiRuxOOwyHTLnU?si=FHtexDBWSWu-kobsyZh_FA" target="_blank" rel="noopener" class="card-link" onclick="event.stopPropagation();">Listen on Spotify ↗</a>
-          </div>
-        </div>
-        <div class="col-caption-below">
-          <div class="col-caption-tag">Podcast Guest</div>
-          <div class="col-caption-title">Aedge Podcast, Adeptic Creative Labs</div>
-        </div>
-      </div>
-
-      <!-- Card 4: Medium Blog -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./Medium Blog.png"
-        data-tag="Writing"
-        data-title="Medium Blog"
-        data-body="I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud."
-        data-link="https://medium.com/@rheamittal0401"
-        data-link-label="Read on Medium">
-        <div class="col-img-wrap">
-          <img class="col-img" src="assets/About Me/Thingspart of./Medium Blog.png" alt="Medium Blog">
-          <div class="col-overlay">
-            <div class="col-ov-tag">Writing</div>
-            <div class="col-ov-title">Medium Blog</div>
-            <div class="col-ov-desc">I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud.</div>
-            <a href="https://medium.com/@rheamittal0401" target="_blank" rel="noopener" class="card-link" onclick="event.stopPropagation();">Read on Medium ↗</a>
-          </div>
-        </div>
-        <div class="col-caption-below">
-          <div class="col-caption-tag">Writing</div>
-          <div class="col-caption-title">Medium Blog</div>
-        </div>
-      </div>
-
-      <!-- Card 5: The Period Society -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./The Period Society — Bangalore.png"
-        data-tag="Non-Profit · Product Designer"
-        data-title="The Period Society, Bangalore"
-        data-body="I designed for a non-profit working to remove stigma around menstruation, creating their Myths and Facts campaign and social media content supporting sanitary napkin distribution drives in rural Maharashtra.">
-        <div class="col-img-wrap">
-          <img class="col-img" src="assets/About Me/Thingspart of./The Period Society — Bangalore.png" alt="The Period Society">
-          <div class="col-overlay">
-            <div class="col-ov-tag">Non-Profit · Product Designer</div>
-            <div class="col-ov-title">The Period Society, Bangalore</div>
-            <div class="col-ov-desc">I designed for a non-profit working to remove stigma around menstruation, creating their Myths and Facts campaign and social media content supporting sanitary napkin distribution drives in rural Maharashtra.</div>
-          </div>
-        </div>
-        <div class="col-caption-below">
-          <div class="col-caption-tag">Non-Profit · Product Designer</div>
-          <div class="col-caption-title">The Period Society, Bangalore</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ──────────────────────────────────
-       3. QUOTES
+       2. QUOTES
   ────────────────────────────────── -->
   <section class="quotes-section">
     <div class="quotes-inner">
@@ -988,7 +660,7 @@ body {
   </section>
 
   <!-- ──────────────────────────────────
-       4. DESIGN JOURNEY
+       3. DESIGN JOURNEY
   ────────────────────────────────── -->
   <section class="journey reveal">
     <div class="journey-header">
@@ -1078,7 +750,7 @@ body {
   </section>
 
   <!-- ──────────────────────────────────
-       5. BEYOND DESIGN
+       4. BEYOND DESIGN
   ────────────────────────────────── -->
   <section class="beyond reveal">
     <div class="beyond-header">
@@ -1160,20 +832,6 @@ body {
 </footer>
 </div>
 
-<!-- ── COLLAGE LIGHTBOX ── -->
-<div class="col-lb" id="colLb">
-  <div class="col-lb-media">
-    <img id="colLbImg" src="" alt="">
-  </div>
-  <div class="col-lb-info">
-    <button class="col-lb-close" onclick="closeColLb()" aria-label="Close">×</button>
-    <div class="col-lb-tag" id="colLbTag"></div>
-    <h2 class="col-lb-title" id="colLbTitle"></h2>
-    <p class="col-lb-body" id="colLbBody"></p>
-    <a href="#" target="_blank" rel="noopener" class="col-lb-link" id="colLbLink">View ↗</a>
-  </div>
-</div>
-
 <script>
 /* ── ACCORDION ── */
 function toggleAcc(id) {
@@ -1195,35 +853,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* ── COLLAGE LIGHTBOX ── */
-function openColLb(el) {
-  const lb = document.getElementById('colLb');
-  document.getElementById('colLbImg').src = el.dataset.img;
-  document.getElementById('colLbTag').textContent = el.dataset.tag;
-  document.getElementById('colLbTitle').textContent = el.dataset.title;
-  document.getElementById('colLbBody').textContent = el.dataset.body;
-  const lnk = document.getElementById('colLbLink');
-  if (el.dataset.link) {
-    lnk.href = el.dataset.link;
-    lnk.textContent = (el.dataset.linkLabel || 'View') + ' ↗';
-    lnk.style.display = 'inline-flex';
-  } else {
-    lnk.removeAttribute('href');
-    lnk.style.display = 'none';
-  }
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeColLb() {
-  document.getElementById('colLb').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('colLb').addEventListener('click', function(e) {
-  if (e.target === this) closeColLb();
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeColLb();
-});
 
 /* Hamburger */
 document.getElementById('navBurger').addEventListener('click', () => {
@@ -1234,7 +863,6 @@ document.getElementById('navMobileClose').addEventListener('click', () => {
 });
 </script>
 
-<script src="scripts/lazy-vid.js"></script>
 <script src="scripts/nav-pill.js" defer></script>
 </body>
 </html>
