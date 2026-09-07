@@ -9,6 +9,13 @@ Personal portfolio site for product designer Rhea Mittal (MS-HCI, Indiana Univer
 
 Document notable changes with every GitHub commit. Newest first.
 
+### 2026-09-07 — About milestone logos, hover photos, SETH blue
+
+- About **Communities & Milestones** tiles show logos by default. Hover fades in the original working/contributing photo; the lightbox opens that same photo.
+- SETH Lab tile background is the logo’s baby blue (`#DEF0F0`). Other logo tiles stay cream. SETH lightbox uses the original lab photo, not the logo tile.
+- Open Doors stays logo on the tile, hover, and lightbox (no cookie-banner screenshot).
+- Photos: `SIGCHI — Creative Lead, Srishti Chapter.png`, `SETH Lab.png`, `Aedge Podcast — Adeptic Creative Labs.png`, `Medium Blog.png`, `The Period Society — Bangalore.png`.
+
 ### 2026-09-07 — SETH Lab logo on About collage
 
 - Replaced the SETH Lab photo on the About **Communities & Milestones** card with the lab logo, using the same cream-tile / `object-fit: contain` treatment as the other milestone logos.

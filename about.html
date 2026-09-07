@@ -295,6 +295,28 @@ body {
 }
 .col-item:hover .col-img-wrap.is-logo .col-img { transform: scale(1.04); }
 
+/* SETH Lab — tile matches the logo's light baby-blue ground */
+.col-img-wrap.is-logo.is-seth {
+  background: #DEF0F0;
+}
+
+/* Hover photo — fades over the logo; lightbox uses the same file */
+.col-img-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  opacity: 0; pointer-events: none; z-index: 1;
+  transition: opacity .4s ease, transform .5s ease;
+}
+.col-item:hover .col-img-photo {
+  opacity: 1;
+  transform: scale(1.04);
+}
+.col-item:hover .col-img-wrap.has-photo .col-img { transform: none; }
+.col-item:hover .col-img-wrap.has-photo .col-overlay {
+  background: linear-gradient(to top, rgba(12,12,12,.88) 0%, rgba(12,12,12,.4) 50%, rgba(12,12,12,.18) 100%);
+}
+
 .col-ph {
   width: 100%; height: 100%;
   display: flex; flex-direction: column;
@@ -319,7 +341,7 @@ body {
 
 /* Hover overlay on image */
 .col-overlay {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 2;
   background: rgba(12,12,12,.88);
   display: flex; flex-direction: column;
   justify-content: flex-end;
@@ -909,13 +931,13 @@ body {
 
       <!-- Card 2: SIGCHI -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./SIGCHI logo.png"
-        data-fit="logo"
+        data-img="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png"
         data-tag="Club Leadership"
         data-title="SIGCHI, Creative Lead, Srishti Chapter"
         data-body="I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter's online presence and community engagement.">
-        <div class="col-img-wrap is-logo">
+        <div class="col-img-wrap is-logo has-photo">
           <img class="col-img" src="assets/About Me/Thingspart of./SIGCHI logo.png" alt="SIGCHI logo">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png" alt="" aria-hidden="true">
           <div class="col-overlay">
             <div class="col-ov-tag">Club Leadership</div>
             <div class="col-ov-title">SIGCHI, Creative Lead, Srishti Chapter</div>
@@ -930,13 +952,14 @@ body {
 
       <!-- Card 3: SETH Lab -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./SETH Lab logo.png"
-        data-fit="logo"
+        data-img="assets/About Me/Thingspart of./SETH Lab.png"
+        data-tile="seth"
         data-tag="Research Lab · Indiana University"
         data-title="SETH Lab"
         data-body="I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.">
-        <div class="col-img-wrap is-logo">
+        <div class="col-img-wrap is-logo is-seth has-photo">
           <img class="col-img" src="assets/About Me/Thingspart of./SETH Lab logo.png" alt="SETH Lab logo">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./SETH Lab.png" alt="" aria-hidden="true">
           <div class="col-overlay">
             <div class="col-ov-tag">Research Lab · Indiana University</div>
             <div class="col-ov-title">SETH Lab</div>
@@ -951,15 +974,15 @@ body {
 
       <!-- Card 4: ADGE Podcast -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./Adeptic logo.png"
-        data-fit="logo"
+        data-img="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png"
         data-tag="Podcast Guest · Unlearning by Design"
         data-title="Aedge Podcast, Adeptic Creative Labs"
         data-body="In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field."
         data-link="https://open.spotify.com/episode/5V7jU9nmPiRuxOOwyHTLnU?si=FHtexDBWSWu-kobsyZh_FA"
         data-link-label="Listen on Spotify">
-        <div class="col-img-wrap is-logo">
+        <div class="col-img-wrap is-logo has-photo">
           <img class="col-img" src="assets/About Me/Thingspart of./Adeptic logo.png" alt="Adeptic Creative Labs logo">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png" alt="" aria-hidden="true">
           <div class="col-overlay">
             <div class="col-ov-tag">Podcast Guest · Unlearning by Design</div>
             <div class="col-ov-title">Aedge Podcast, Adeptic Creative Labs</div>
@@ -975,15 +998,15 @@ body {
 
       <!-- Card 5: Medium Blog -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./Medium logo.png"
-        data-fit="logo"
+        data-img="assets/About Me/Thingspart of./Medium Blog.png"
         data-tag="Writing"
         data-title="Medium Blog"
         data-body="I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud."
         data-link="https://medium.com/@rheamittal0401"
         data-link-label="Read on Medium">
-        <div class="col-img-wrap is-logo">
+        <div class="col-img-wrap is-logo has-photo">
           <img class="col-img" src="assets/About Me/Thingspart of./Medium logo.png" alt="Medium logo">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./Medium Blog.png" alt="" aria-hidden="true">
           <div class="col-overlay">
             <div class="col-ov-tag">Writing</div>
             <div class="col-ov-title">Medium Blog</div>
@@ -999,13 +1022,13 @@ body {
 
       <!-- Card 6: The Period Society -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
-        data-img="assets/About Me/Thingspart of./The Period Society logo.png"
-        data-fit="logo"
+        data-img="assets/About Me/Thingspart of./The Period Society — Bangalore.png"
         data-tag="Non-Profit · Product Designer"
         data-title="The Period Society, Bangalore"
         data-body="I designed for a non-profit working to remove stigma around menstruation, creating their Myths and Facts campaign and social media content supporting sanitary napkin distribution drives in rural Maharashtra.">
-        <div class="col-img-wrap is-logo">
+        <div class="col-img-wrap is-logo has-photo">
           <img class="col-img" src="assets/About Me/Thingspart of./The Period Society logo.png" alt="The Period Society logo">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./The Period Society — Bangalore.png" alt="" aria-hidden="true">
           <div class="col-overlay">
             <div class="col-ov-tag">Non-Profit · Product Designer</div>
             <div class="col-ov-title">The Period Society, Bangalore</div>
