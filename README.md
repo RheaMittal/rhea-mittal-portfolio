@@ -9,6 +9,12 @@ Personal portfolio site for product designer Rhea Mittal (MS-HCI, Indiana Univer
 
 Document notable changes with every GitHub commit. Newest first.
 
+### 2026-09-07 — Open Doors hover + lightbox screenshot
+
+- About **Communities & Milestones** Open Doors card stays the logo by default.
+- Hover and lightbox now use `assets/About Me/Thingspart of./Open Doors — Junior Portfolio Showcase.png` — Florian Bölter’s Junior Portfolio Showcase article (no cookie banner).
+- Same logo-then-photo pattern as SIGCHI, SETH Lab, and the other milestone cards.
+
 ### 2026-09-07 — About milestone logos, hover photos, SETH blue
 
 - About **Communities & Milestones** tiles show logos by default. Hover fades in the original working/contributing photo; the lightbox opens that same photo.
