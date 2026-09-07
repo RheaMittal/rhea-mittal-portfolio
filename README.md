@@ -9,6 +9,13 @@ Personal portfolio site for product designer Rhea Mittal (MS-HCI, Indiana Univer
 
 Document notable changes with every GitHub commit. Newest first.
 
+### 2026-09-07 — Restore About Communities & Milestones
+
+- Reinstated the **Communities & Milestones** collage on `about.html` (heading: *Things I've been part of.*), which had been removed from the latest GitHub push.
+- Cards restored from git history with original copy and assets: SIGCHI Creative Lead, SETH Lab, Aedge Podcast guest, Medium Blog, and The Period Society Bangalore.
+- Restored collage lightbox markup, CSS, and JS so cards open the full story again (Spotify / Medium CTAs included).
+- Section sits after the About hero and before the quotes block, matching its original placement.
+
 ### 2026-08-07 — Collage scroll dead-zone fix
 
 - **Homepage collage** (`portfolio-v2.html` / `scripts/hero-collage.js`): after the collage clears (auto-dismiss, hint click, or scroll), `#c4` collapses from the disperse runway to `100vh` (`.runway-collapsed`) so the next wheel/trackpad scroll moves real page content (logo garden / rest of site) instead of leftover sticky runway.
