@@ -9,6 +9,12 @@ Personal portfolio site for product designer Rhea Mittal (MS-HCI, Indiana Univer
 
 Document notable changes with every GitHub commit. Newest first.
 
+### 2026-09-07 — Logo tiles on About collage
+
+- Replaced screenshot/crop-style images on the About **Communities & Milestones** cards with logos, on cream tiles (`object-fit: contain`, padding). Open Doors no longer uses the cookie-banner article screenshot.
+- Logos in `assets/About Me/Thingspart of./`: `Open Doors logo.png`, `SIGCHI logo.png`, `The Period Society logo.png`, `Adeptic logo.png`, `Medium logo.png`.
+- SETH Lab has no public mark, so the existing lab photo stays. Lightbox uses the same logo (or photo) as the card.
+
 ### 2026-09-07 — Open Doors feature on About
 
 - Added an **Open Doors Junior Portfolio Showcase** card to the About page **Communities & Milestones** collage (`about.html`).
