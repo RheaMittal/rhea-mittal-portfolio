@@ -249,16 +249,18 @@ body {
   cursor: pointer;
 }
 
-/* 1 · SIGCHI — top left */
+/* 1 · Open Doors — top left (featured) */
 .col-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-/* 2 · Seth Lab — bottom, spans 2 cols */
-.col-item:nth-child(2) { grid-column: 1 / 3; grid-row: 2; }
-/* 3 · Podcast — top centre */
-.col-item:nth-child(3) { grid-column: 2; grid-row: 1; }
-/* 4 · Blog — top right */
+/* 2 · SIGCHI — top centre */
+.col-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+/* 3 · Seth Lab — bottom left */
+.col-item:nth-child(3) { grid-column: 1; grid-row: 2; }
+/* 4 · Podcast — top right */
 .col-item:nth-child(4) { grid-column: 3; grid-row: 1; }
-/* 5 · Period Society — bottom right */
-.col-item:nth-child(5) { grid-column: 3; grid-row: 2; }
+/* 5 · Blog — bottom centre */
+.col-item:nth-child(5) { grid-column: 2; grid-row: 2; }
+/* 6 · Period Society — bottom right */
+.col-item:nth-child(6) { grid-column: 3; grid-row: 2; }
 
 /* Image wrapper — fixed height, clips + zooms on hover */
 .col-img-wrap {
@@ -750,12 +752,13 @@ body {
   .quotes-section { padding: 72px 24px; }
   .journey { padding: 72px 24px; }
   .beyond { padding: 72px 24px; }
-  .collage { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px 220px; }
+  .collage { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; }
   .col-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-  .col-item:nth-child(2) { grid-column: 1 / 3; grid-row: 3; }
-  .col-item:nth-child(3) { grid-column: 2; grid-row: 1; }
-  .col-item:nth-child(4) { grid-column: 1; grid-row: 2; }
-  .col-item:nth-child(5) { grid-column: 2; grid-row: 2; }
+  .col-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .col-item:nth-child(3) { grid-column: 1; grid-row: 2; }
+  .col-item:nth-child(4) { grid-column: 2; grid-row: 2; }
+  .col-item:nth-child(5) { grid-column: 1; grid-row: 3; }
+  .col-item:nth-child(6) { grid-column: 2; grid-row: 3; }
   .quotes-grid { grid-template-columns: 1fr; }
   .beyond-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
   .beyond-item:nth-child(1), .beyond-item:nth-child(4) { grid-column: span 1; }
@@ -774,12 +777,13 @@ body {
 @media(max-width:640px) {
   .beyond-grid { grid-template-columns: 1fr; }
   .beyond-item { height: 160px; }
-  .collage { grid-template-columns: 1fr; grid-template-rows: repeat(5, 200px); }
+  .collage { grid-template-columns: 1fr; grid-template-rows: repeat(6, auto); }
   .col-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-  .col-item:nth-child(2) { grid-column: 1; grid-row: 4; }
-  .col-item:nth-child(3) { grid-column: 1; grid-row: 2; }
-  .col-item:nth-child(4) { grid-column: 1; grid-row: 3; }
+  .col-item:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .col-item:nth-child(3) { grid-column: 1; grid-row: 3; }
+  .col-item:nth-child(4) { grid-column: 1; grid-row: 4; }
   .col-item:nth-child(5) { grid-column: 1; grid-row: 5; }
+  .col-item:nth-child(6) { grid-column: 1; grid-row: 6; }
 }
 </style>
 <link rel="stylesheet" href="styles/nav.css">
@@ -853,7 +857,30 @@ body {
 
     <div class="collage">
 
-      <!-- Card 1: SIGCHI -->
+      <!-- Card 1: Open Doors -->
+      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+        data-img="assets/About Me/Thingspart of./Open Doors — Junior Portfolio Showcase.png"
+        data-tag="Newsletter Feature"
+        data-title="Open Doors, Junior Portfolio Showcase"
+        data-body="I was featured on the Open Doors newsletter Junior Portfolio Showcase, a write-up of my B2B-focused portfolio and how I present work I have shipped."
+        data-link="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal"
+        data-link-label="Read the feature">
+        <div class="col-img-wrap">
+          <img class="col-img" src="assets/About Me/Thingspart of./Open Doors — Junior Portfolio Showcase.png" alt="Open Doors Junior Portfolio Showcase">
+          <div class="col-overlay">
+            <div class="col-ov-tag">Newsletter Feature</div>
+            <div class="col-ov-title">Open Doors, Junior Portfolio Showcase</div>
+            <div class="col-ov-desc">I was featured on the Open Doors newsletter Junior Portfolio Showcase, a write-up of my B2B-focused portfolio and how I present work I have shipped.</div>
+            <a href="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal" target="_blank" rel="noopener" class="card-link" onclick="event.stopPropagation();">Read the feature ↗</a>
+          </div>
+        </div>
+        <div class="col-caption-below">
+          <div class="col-caption-tag">Newsletter Feature</div>
+          <div class="col-caption-title">Open Doors, Junior Portfolio Showcase</div>
+        </div>
+      </div>
+
+      <!-- Card 2: SIGCHI -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png"
         data-tag="Club Leadership"
@@ -873,7 +900,7 @@ body {
         </div>
       </div>
 
-      <!-- Card 2: SETH Lab -->
+      <!-- Card 3: SETH Lab -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./SETH Lab.png"
         data-tag="Research Lab · Indiana University"
@@ -893,7 +920,7 @@ body {
         </div>
       </div>
 
-      <!-- Card 3: ADGE Podcast -->
+      <!-- Card 4: ADGE Podcast -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png"
         data-tag="Podcast Guest · Unlearning by Design"
@@ -916,7 +943,7 @@ body {
         </div>
       </div>
 
-      <!-- Card 4: Medium Blog -->
+      <!-- Card 5: Medium Blog -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./Medium Blog.png"
         data-tag="Writing"
@@ -939,7 +966,7 @@ body {
         </div>
       </div>
 
-      <!-- Card 5: The Period Society -->
+      <!-- Card 6: The Period Society -->
       <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./The Period Society — Bangalore.png"
         data-tag="Non-Profit · Product Designer"

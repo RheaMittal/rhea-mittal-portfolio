@@ -9,6 +9,13 @@ Personal portfolio site for product designer Rhea Mittal (MS-HCI, Indiana Univer
 
 Document notable changes with every GitHub commit. Newest first.
 
+### 2026-09-07 — Open Doors feature on About
+
+- Added an **Open Doors Junior Portfolio Showcase** card to the About page **Communities & Milestones** collage (`about.html`).
+- Card sits first in the grid, with collage lightbox copy and a live CTA to the [newsletter feature](https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal).
+- Card image is a screenshot of the article hero, saved at `assets/About Me/Thingspart of./Open Doors — Junior Portfolio Showcase.png`.
+- Collage grid updated from 5 to 6 cards (3×2 on desktop).
+
 ### 2026-09-07 — Restore About Communities & Milestones
 
 - Reinstated the **Communities & Milestones** collage on `about.html` (heading: *Things I've been part of.*), which had been removed from the latest GitHub push.
