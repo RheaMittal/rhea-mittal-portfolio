@@ -9,6 +9,11 @@ Personal portfolio site for product designer Rhea Mittal (MS-HCI, Indiana Univer
 
 Document notable changes with every GitHub commit. Newest first.
 
+### 2026-09-07 — SETH Lab logo on About collage
+
+- Replaced the SETH Lab photo on the About **Communities & Milestones** card with the lab logo, using the same cream-tile / `object-fit: contain` treatment as the other milestone logos.
+- Logo saved at `assets/About Me/Thingspart of./SETH Lab logo.png` (cropped from a screenshot to the mark). Card and lightbox both use this file.
+
 ### 2026-09-07 — Logo tiles on About collage
 
 - Replaced screenshot/crop-style images on the About **Communities & Milestones** cards with logos, on cream tiles (`object-fit: contain`, padding). Open Doors no longer uses the cookie-banner article screenshot.
