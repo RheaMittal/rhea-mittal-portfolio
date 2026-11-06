@@ -21,23 +21,29 @@
   --card-shadow-active: 3px 6px 14px -1px rgba(var(--shadow-color), .11);
   --card-shadow-hover-dark: 5px 10px 20px -1px rgba(0, 0, 0, .22);
 
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  /* Former glass tokens: now a plain raised paper surface with a hairline */
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --dur-fast: .15s;
+  --dur: .2s;
+  --dur-enter: .4s;
 }
 
 /* Optional utility — only when class is applied explicitly */
 .glass-badge {
   display: inline-flex;
   align-items: center;
-  padding: 8px 16px;
-  border-radius: 100px;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   color: rgba(12,12,12,0.72);
   white-space: nowrap;
   position: absolute;
@@ -50,3 +56,68 @@
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
+
+/* Emphasis is carried by colour, never italic */
+em, i, cite { font-style: normal; }
+
+/* ═══════════════════════════════════════════
+   Interface guidelines: shared accessibility + interaction layer
+═══════════════════════════════════════════ */
+
+/* Skip link: hidden until focused */
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 10000;
+  padding: 8px 16px; border-radius: 10px;
+  background: #0C0C0C; color: #F5F4F0;
+  font: 500 14px/1.2 'Open Sans', system-ui, sans-serif;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 24px));
+  transition: transform .2s cubic-bezier(.22, 1, .36, 1);
+}
+.skip-link:focus-visible { transform: none; outline: 2px solid #F5F4F0; outline-offset: 2px; }
+main:focus { outline: none; } /* programmatic skip target, not a control */
+
+/* One visible keyboard focus ring for every control */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid #0C0C0C;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.cs-hero-band a:focus-visible,
+.cs-footer a:focus-visible,
+nav.nav-on-dark a:focus-visible { outline-color: #FFFFFF; }
+
+/* Cards that became links keep their look */
+a.p-card, a.wk-card { color: inherit; text-decoration: none; }
+
+/* Touch: no double-tap zoom delay, intentional tap highlight */
+a, button, [role="button"], label, summary { touch-action: manipulation; -webkit-tap-highlight-color: rgba(12, 12, 12, 0.08); }
+
+/* Anchors land below the fixed nav */
+[id] { scroll-margin-top: 96px; }
+
+/* Headings never leave a lone word on the last line */
+h1, h2, h3, h4 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* Reduced motion: no entrance, loop or zoom animation */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .reveal, .cs-reveal, .p-card.reveal, .p-card.reveal .draggit-vid, .p-card.reveal .card-vid {
+    opacity: 1 !important; transform: none !important;
+  }
+  .logo-track { animation: none !important; }
+}
+
+/* Width/height attributes reserve space; CSS still controls display size */
+img { height: auto; }

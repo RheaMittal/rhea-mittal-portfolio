@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>Designing Adaptive Engagement for Evolving Learner Needs | Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
@@ -49,10 +50,10 @@ nav {
 }
 nav > * { pointer-events: auto; }
 .nav-logo {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 18px;
   letter-spacing: 0; text-decoration: none; color: var(--ink);
   justify-self: start;
-  padding: 10px 4px;
+  padding: 12px 4px;
   transition: opacity .2s;
 }
 .nav-logo:hover { opacity: .7; }
@@ -60,11 +61,11 @@ nav > * { pointer-events: auto; }
   position: relative;
   justify-self: center;
   display: flex; align-items: center; gap: 2px;
-  padding: 5px;
+  padding: 4px;
   border-radius: 100px;
   background: var(--glass-bg, rgba(255,255,255,0.62));
-  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
-  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
   box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
 }
@@ -84,7 +85,7 @@ nav > * { pointer-events: auto; }
   position: relative;
   z-index: 1;
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 18px;
+  padding: 12px 20px;
   min-height: 38px;
   border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
@@ -106,17 +107,17 @@ nav > * { pointer-events: auto; }
 .nav-cta {
   justify-self: end;
   background: var(--ink); color: var(--bg);
-  padding: 10px 20px; border-radius: 100px;
+  padding: 12px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px; font-weight: 500; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
   box-shadow: 0 4px 16px rgba(12,12,12,0.12);
 }
-.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-cta:hover { background: #2A2A28; }
 .nav-burger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  display: none; flex-direction: column; gap: 4px; cursor: pointer;
   padding: 8px; background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
   border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
   justify-self: end;
   box-shadow: 0 4px 16px rgba(80,76,68,0.08);
@@ -126,13 +127,13 @@ nav > * { pointer-events: auto; }
 }
 .nav-mobile {
   display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
-  backdrop-filter: blur(24px); z-index: 998;
+  backdrop-filter: none; z-index: 998;
   flex-direction: column; align-items: center; justify-content: center; gap: 36px;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: none;
   letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
 }
 .nav-mobile a:hover { color: var(--green); }
@@ -144,14 +145,14 @@ nav > * { pointer-events: auto; }
 /* ─── GLASS SYSTEM ─── */
 .glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
 .glass-badge {
   display: inline-flex; align-items: center;
-  padding: 9px 18px; border-radius: 100px;
+  padding: 8px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; font-weight: 600;
   color: rgba(12,12,12,0.72);
@@ -200,8 +201,8 @@ nav > * { pointer-events: auto; }
 /* ─── HERO BAND ─── */
 .cs-hero-band {
   width: 100%;
-  padding: 130px 56px 0;
-  background: linear-gradient(160deg, #050E2A 0%, #0A1E50 55%, #009EDB 100%);
+  padding: 132px 56px 0;
+  background: #0A1E50;
   overflow: hidden;
 }
 .cs-hero-inner {
@@ -210,20 +211,20 @@ nav > * { pointer-events: auto; }
 }
 .cs-hero-logos {
   display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px;
-  background: #fff; border-radius: 24px; padding: 10px 20px;
+  background: #fff; border-radius: 24px; padding: 12px 20px;
   box-shadow: 0 2px 16px rgba(0,0,0,.2);
 }
 .cs-hero-logos img { height: 20px; width: auto; display: block; }
-.cs-hero-logo-x { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 12px; color: rgba(0,0,0,0.2); }
+.cs-hero-logo-x { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 12px; color: rgba(0,0,0,0.2); }
 .cs-hero-kicker {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: rgba(255,255,255,.52); margin-bottom: 20px;
 }
 .cs-hero-h1 {
-  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-family: 'Lato', sans-serif; font-weight: 600;
   /* min ~25px phone / preferred scales with viewport / max 44px so title doesn't dominate hero */
   font-size: clamp(25px, 2vw + 16px, 44px);
-  line-height: 1.02; letter-spacing: 0; text-transform: uppercase;
+  line-height: 1.02; letter-spacing: 0; text-transform: none;
   color: #fff; margin-bottom: 28px;
   max-width: 100%;
 }
@@ -250,36 +251,36 @@ nav > * { pointer-events: auto; }
 }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
-.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-label { font-size: 11px; text-transform: none; letter-spacing: 0.01em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
 
 /* ─── SECTION ANATOMY ─── */
 .cs-section { margin-bottom: 96px; }
 .cs-sec-label {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: var(--muted); margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
 .cs-sec-label .n {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px;
   color: rgba(0,0,0,.15); letter-spacing: 0;
 }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .cs-sec-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-family: 'Lato', sans-serif; font-weight: 600;
   font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06;
-  letter-spacing: 0; text-transform: uppercase; margin-bottom: 28px;
+  letter-spacing: 0; text-transform: none; margin-bottom: 28px;
 }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.65); margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
 
 /* ─── IMAGE ─── */
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── STAT GRID ─── */
 .stat-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0; }
 .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px 20px; text-align: center; }
-.stat-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 37px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+.stat-card-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 37px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
 .stat-card-l { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
 /* ─── CARDS ─── */
@@ -290,42 +291,42 @@ nav > * { pointer-events: auto; }
   display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.16); }
-.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(1,118,211,.12); line-height: 1; }
-.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0; color: rgba(1,118,211,.12); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 15px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── PROC RAIL ─── */
 .proc-rail { display: flex; align-items: stretch; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 28px 0; }
-.proc-step { flex: 1; padding: 22px 18px; text-align: center; border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--white); transition: background .2s; }
+.proc-step { flex: 1; padding: 24px 20px; text-align: center; border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--white); transition: background .2s; }
 .proc-step:last-child { border-right: none; }
 .proc-step:hover { background: rgba(0,0,0,.02); }
 .proc-step-ico { display:flex; align-items:center; justify-content:center; height:28px; margin-bottom:0; }
-.proc-step-label { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0; }
+.proc-step-label { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px; text-transform: none; letter-spacing: 0; }
 .proc-step-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
 
 /* ─── DONUT FINDINGS ─── */
 .findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
-.finding-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; display: flex; align-items: center; gap: 20px; transition: border-color .2s; }
+.finding-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px; display: flex; align-items: center; gap: 20px; transition: border-color .2s; }
 .finding-card:hover { border-color: rgba(0,112,210,.25); }
 .donut-ring { width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; position: relative; flex-shrink: 0; background: conic-gradient(#0070D2 0%, rgba(0,112,210,.12) 0%); }
 .donut-ring::after { content: ''; position: absolute; width: 58px; height: 58px; border-radius: 50%; background: var(--white); }
-.donut-pct { position: relative; z-index: 1; font-family: 'Lato', sans-serif; font-weight: 900; font-size: 12px; color: #0070D2; letter-spacing: 0; }
+.donut-pct { position: relative; z-index: 1; font-family: 'Lato', sans-serif; font-weight: 600; font-size: 12px; color: #0070D2; letter-spacing: 0; }
 .finding-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
 .finding-text strong { color: var(--ink); font-weight: 600; }
 
 /* ─── HOW-STEP ─── */
 .how-steps { display: flex; flex-direction: column; gap: 0; }
-.how-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
+.how-step { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
 .how-step:last-child { border-bottom: none; }
-.step-badge { width: 28px; height: 28px; border-radius: 50%; background: #0070D2; color: #fff; font-family: 'Lato', sans-serif; font-weight: 900; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.step-badge { width: 28px; height: 28px; border-radius: 50%; background: #0070D2; color: #fff; font-family: 'Lato', sans-serif; font-weight: 600; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
 .step-txt { font-size: 14px; color: var(--muted); line-height: 1.65; }
 .step-txt strong { color: var(--ink); font-weight: 600; }
 
 /* ─── SOLUTION FEATURE ─── */
 .sol-feature { margin-bottom: 72px; }
-.sol-feat-label { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: #0070D2; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.sol-feat-badge { width: 22px; height: 22px; border-radius: 50%; background: #0070D2; color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Lato', sans-serif; }
-.sol-feat-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: clamp(22px, 2.73vw, 34px); text-transform: uppercase; letter-spacing: 0; color: var(--ink); margin-bottom: 16px; line-height: 1.05; }
+.sol-feat-label { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 11px; text-transform: none; letter-spacing: 0.01em; color: #0070D2; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.sol-feat-badge { width: 22px; height: 22px; border-radius: 50%; background: #0070D2; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; font-family: 'Lato', sans-serif; }
+.sol-feat-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: clamp(22px, 2.73vw, 34px); text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 16px; line-height: 1.05; }
 .sol-feat-body { font-size: 15px; line-height: 1.75; color: var(--muted); background: var(--accent-bg); border: 1px solid var(--accent-border); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
 .sol-feat-layout { display: grid; grid-template-columns: 1fr 0.75fr; gap: 32px; align-items: start; }
 .sol-feat-screen { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
@@ -335,11 +336,11 @@ nav > * { pointer-events: auto; }
 .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 32px 0; }
 .res-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; transition: border-color .2s, transform .25s; }
 .res-card:hover { border-color: rgba(1,118,211,.25); transform: translateY(-3px); }
-.res-num { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; color: var(--accent); letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
+.res-num { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; color: var(--accent); letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
 .res-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
 
 /* ─── LEARNINGS ─── */
-.learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 28px; display: flex; gap: 18px; align-items: flex-start; margin-bottom: 2px; transition: border-color .2s; }
+.learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; margin-bottom: 2px; transition: border-color .2s; }
 .learning:hover { border-color: rgba(12,12,12,0.18); }
 .l-text { font-size: 15px; line-height: 1.7; color: rgba(12,12,12,0.65); }
 .l-text strong { color: var(--ink); font-weight: 600; }
@@ -353,25 +354,25 @@ nav > * { pointer-events: auto; }
 
 /* ─── FOOTER CTA ─── */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
-.cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; background: linear-gradient(160deg, #050E2A 0%, #0A1E50 60%, #009EDB 100%); }
-.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; background: #0A1E50; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; letter-spacing: 0; text-transform: none; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
-.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
 .fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
-.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
 
 /* ─── EVAL CARDS ─── */
 .eval-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
 .eval-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
-.eval-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 4px 10px; border-radius: 100px; background: var(--accent-bg); color: var(--accent); margin-bottom: 12px; }
-.eval-card h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
+.eval-badge { display: inline-block; font-size: 10px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; padding: 4px 12px; border-radius: 100px; background: var(--accent-bg); color: var(--accent); margin-bottom: 12px; }
+.eval-card h3 { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 16px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .eval-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  nav { padding: 14px 24px; }
+  nav { padding: 16px 24px; }
   .cs-section { margin-bottom: 56px; }
   .nav-pill { display: none; }
   .nav-cta { display: none; }
@@ -410,20 +411,20 @@ nav > * { pointer-events: auto; }
 .solve-slide { flex: 0 0 100%; width: 100%; }
 .solve-slide img { width: 100%; height: auto; display: block; }
 .solve-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.96); border: 1px solid rgba(0,0,0,.1); font-size: 22px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink); transition: background .2s, box-shadow .2s, transform .2s; box-shadow: 0 2px 12px rgba(0,0,0,.14); padding: 0; }
-.solve-btn:hover { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,.22); transform: translateY(-50%) scale(1.05); }
+.solve-btn:hover { background: #fff; transform: translateY(-50%); }
 .solve-prev { left: 14px; }
 .solve-next { right: 14px; }
-.solve-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; }
+.solve-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
 .solve-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,.22); border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
 .solve-dot.active { background: #0070D2; transform: scale(1.3); }
 
 /* ─── PHOTO GALLERY ─── */
-.photo-gallery { display: grid; grid-template-columns: 1fr 0.48fr; gap: 10px; margin-bottom: 16px; }
-.photo-gallery-left { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.photo-gallery-right { display: flex; flex-direction: column; gap: 10px; }
+.photo-gallery { display: grid; grid-template-columns: 1fr 0.48fr; gap: 12px; margin-bottom: 16px; }
+.photo-gallery-left { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.photo-gallery-right { display: flex; flex-direction: column; gap: 12px; }
 .gallery-item { border-radius: 14px; overflow: hidden; cursor: pointer; position: relative; background: rgba(0,0,0,.04); }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .38s cubic-bezier(.25,.46,.45,.94); }
-.gallery-item:hover img { transform: scale(1.07); }
+.gallery-item:hover img { transform: scale(1.02); }
 .gallery-item::after { content: ''; position: absolute; inset: 0; border-radius: 14px; background: rgba(0,158,219,0); transition: background .3s; pointer-events: none; }
 .gallery-item:hover::after { background: rgba(0,158,219,.07); }
 .gallery-item::before {
@@ -443,7 +444,7 @@ nav > * { pointer-events: auto; }
 /* ─── LIGHTBOX ─── */
 .photo-lightbox {
   position: fixed; inset: 0; z-index: 9999;
-  background: rgba(5,10,25,.94); backdrop-filter: blur(12px);
+  background: rgba(5,10,25,.94); backdrop-filter: none;
   display: flex; align-items: center; justify-content: center;
   padding: 56px 80px;
   opacity: 0; pointer-events: none;
@@ -477,7 +478,7 @@ nav > * { pointer-events: auto; }
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
   color: rgba(255,255,255,.85); font-size: 28px; line-height: 1;
-  cursor: pointer; padding: 14px 18px; border-radius: 10px;
+  cursor: pointer; padding: 16px 20px; border-radius: 10px;
   transition: background .2s, color .2s;
 }
 .lb-nav:hover { background: rgba(255,255,255,.22); color: #fff; }
@@ -485,7 +486,7 @@ nav > * { pointer-events: auto; }
 .lb-next { right: 20px; }
 .lb-counter {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-  font-size: 12px; font-weight: 600; letter-spacing: .08em;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.01em;
   color: rgba(255,255,255,.55); z-index: 3;
 }
 @media (max-width: 768px) {
@@ -495,7 +496,7 @@ nav > * { pointer-events: auto; }
   .photo-lightbox { padding: 48px 16px; }
   .lb-prev { left: 8px; }
   .lb-next { right: 8px; }
-  .lb-nav { padding: 12px 14px; font-size: 22px; }
+  .lb-nav { padding: 12px 16px; font-size: 22px; }
 }
 /* ─── DASH SHOWCASE ─── */
 /* Desktop (>1024px): full layered 3-col grid with overlapping callouts */
@@ -526,7 +527,7 @@ nav > * { pointer-events: auto; }
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 /* Callout sizing — dialled back to readable without overwhelming */
 .dash-callout-left {
@@ -562,7 +563,7 @@ nav > * { pointer-events: auto; }
   background: #DDF0FA; /* solid light Salesforce-blue tint */
   border: 1px solid rgba(0,112,210,.2);
   border-radius: 12px;
-  padding: 14px 16px;
+  padding: 16px 16px;
   box-shadow: 0 4px 16px rgba(0,0,0,.07);
   width: 100%;
 }
@@ -597,7 +598,7 @@ nav > * { pointer-events: auto; }
 
 /* ── Mobile / phone (480px and below) ── */
 @media (max-width: 480px) {
-  .dash-callout-caption { font-size: 12px; padding: 12px 14px; }
+  .dash-callout-caption { font-size: 12px; padding: 12px 16px; }
   .sol-feat-layout { grid-template-columns: 1fr; }
 }
 
@@ -622,6 +623,7 @@ nav > * { pointer-events: auto; }
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <!-- ─── NAV ─── -->
@@ -641,28 +643,30 @@ nav > * { pointer-events: auto; }
 </nav>
 
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">&#x2715;</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <!-- HERO BAND -->
 <div class="cs-hero-band">
   <div class="cs-hero-inner">
     <div class="cs-hero-logos">
-      <img src="assets/salesforce/logos/Indiana_Hoosiers_logo.svg.png" alt="Indiana University Indianapolis">
+      <img src="assets/salesforce/logos/Indiana_Hoosiers_logo.svg.png" alt="Indiana University Indianapolis" width="1920" height="2425" fetchpriority="high" decoding="async">
       <span class="cs-hero-logo-x">×</span>
-      <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:22px;">
+      <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:22px;" width="1280" height="896" decoding="async">
       <span class="cs-hero-logo-x">·</span>
-      <img src="assets/salesforce/logos/images.png" alt="Salesforce Trailhead">
+      <img src="assets/salesforce/logos/images.png" alt="Salesforce Trailhead" width="225" height="225" decoding="async">
     </div>
-    <div class="cs-hero-kicker">Capstone &middot; User Research &middot; Product Design &middot; AI-Powered</div>
-    <h1 class="cs-hero-h1">Designing Adaptive Engagement<br>for Evolving Learner Needs</h1>
-    <p class="cs-hero-desc">A 10-month research-driven capstone with Salesforce Trailhead. We redesigned what happens after mastery, building two AI-powered features to re-engage the platform's most valuable users.</p>
-    <img src="assets/salesforce/screenshots/Realistic Tablet Screen UI Mockup.png" alt="Trailhead Solve tablet mockup" style="width:100%;display:block;margin:-80px auto 0;">
+    <div class="cs-hero-kicker">Capstone · User research · Product design · AI features</div>
+    <h1 class="cs-hero-h1">Designing adaptive engagement<br>for evolving learner needs</h1>
+    <p class="cs-hero-desc">A 10-month research-driven capstone with Salesforce Trailhead. We redesigned what happens after mastery, building two AI features to re-engage the platform’s most valuable users.</p>
+    <img src="assets/salesforce/screenshots/Realistic Tablet Screen UI Mockup.png" alt="Trailhead Solve tablet mockup" style="width:100%;display:block;margin:-80px auto 0;" width="2000" height="964" decoding="async">
   </div>
 </div>
 
@@ -680,17 +684,17 @@ nav > * { pointer-events: auto; }
 
   <!-- THE GOAL -->
   <div class="cs-reveal" style="margin-bottom:80px;">
-    <div style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:12px;">The Brief <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight:500;letter-spacing: 0.01em;text-transform: none;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:12px;">The brief <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
     <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:18px;overflow:hidden;">
       <div style="padding:32px 36px 28px;">
-        <p style="font-size:18px;line-height:1.65;color:var(--ink);max-width:680px;margin:0 0 28px;font-weight:500;">Partner with the Salesforce Trailhead product team to research, design, and prototype new features for the platform's most experienced users: the power users who built their careers on Trailhead and then quietly stopped coming back.</p>
+        <p style="font-size:18px;line-height:1.65;color:var(--ink);max-width:680px;margin:0 0 28px;font-weight:500;">Partner with the Salesforce Trailhead product team to research, design, and prototype new features for the platform’s most experienced users: the power users who built their careers on Trailhead and then quietly stopped coming back.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--accent-border);padding-top:24px;">
           <div style="padding-right:28px;border-right:1px solid var(--accent-border);">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">The Question</div>
-            <p style="font-size:13px;line-height:1.6;color:rgba(0,0,0,.6);margin:0;">Why do Trailhead's most experienced users stop engaging and what would actually bring them back?</p>
+            <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--accent);margin-bottom:8px;">The question</div>
+            <p style="font-size:13px;line-height:1.6;color:rgba(0,0,0,.6);margin:0;">Why do Trailhead’s most experienced users stop engaging and what would actually bring them back?</p>
           </div>
           <div style="padding-left:28px;">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">The Constraint</div>
+            <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--accent);margin-bottom:8px;">The constraint</div>
             <p style="font-size:13px;line-height:1.6;color:rgba(0,0,0,.6);margin:0;">10 months. A real product team as stakeholders. Participants who are full-time professionals across five time zones.</p>
           </div>
         </div>
@@ -706,24 +710,24 @@ nav > * { pointer-events: auto; }
     <!-- Row 1: What is Trailhead (left) + Logo (right) -->
     <div style="display:grid;grid-template-columns:1.65fr 1fr;gap:16px;margin-bottom:16px;align-items:stretch;">
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 32px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">The Platform</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;letter-spacing: 0;margin-bottom:14px;color:var(--ink);">Free. Guided. Built for beginners to experts.</div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin:0;">Salesforce Trailhead is a free learning platform used by millions of professionals to get certified and build careers in enterprise software. Through guided modules, hands-on challenges, and community forums, it takes beginners to certified experts. But that's exactly where it stops working. Once a user earns their certifications, the loop has nowhere to go.</p>
+        <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--accent);margin-bottom:12px;">The platform</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:17px;text-transform: none;letter-spacing: 0;margin-bottom:16px;color:var(--ink);">Free. Guided. Built for beginners to experts.</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin:0;">Salesforce Trailhead is a free learning platform used by millions of professionals to get certified and build careers in enterprise software. Through guided modules, hands-on challenges, and community forums, it takes beginners to certified experts. But that’s exactly where it stops working. Once a user earns their certifications, the loop has nowhere to go.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
-        <img src="assets/salesforce/logos/images.png" alt="Salesforce Trailhead" style="width:110px;display:block;">
+        <img src="assets/salesforce/logos/images.png" alt="Salesforce Trailhead" style="width:110px;display:block;" width="225" height="225" loading="lazy" decoding="async">
       </div>
     </div>
 
     <!-- Row 2: Who were we designing for full width -->
     <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;margin-bottom:16px;overflow:hidden;display:grid;grid-template-columns:1fr auto;align-items:center;">
       <div style="padding:28px 32px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Our Focus</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(16px, 1.95vw, 22px);text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:12px;">Who were we designing for?</div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin:0;">The power user: someone who had already arrived. They had certifications, years of Salesforce experience, and had built their careers on the platform. And they had stopped logging in. The drop-off wasn't a failure of motivation. It was a failure of the product. Trailhead had no trigger for re-engagement after mastery.</p>
+        <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--accent);margin-bottom:12px;">Our focus</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:clamp(16px, 1.95vw, 22px);text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:12px;">Who were we designing for?</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin:0;">The power user: someone who had already arrived. They had certifications, years of Salesforce experience, and had built their careers on the platform. And they had stopped logging in. The drop-off wasn’t a failure of motivation. It was a failure of the product. Trailhead had no trigger for re-engagement after mastery.</p>
       </div>
       <div style="display:flex;align-items:flex-end;height:100%;overflow:hidden;border-radius:0 16px 16px 0;">
-        <img src="assets/salesforce/mascots/Blog-ContextualDrivers-336x360-AstroCodey.png" alt="Trailhead mascots Codey and Astro" style="height:200px;width:auto;display:block;object-fit:contain;">
+        <img src="assets/salesforce/mascots/Blog-ContextualDrivers-336x360-AstroCodey.png" alt="Trailhead mascots Codey and Astro" style="height:200px;width:auto;display:block;object-fit:contain;" width="336" height="360" loading="lazy" decoding="async">
       </div>
     </div>
 
@@ -731,15 +735,15 @@ nav > * { pointer-events: auto; }
 
   <!-- 01 RESEARCH -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">01</span> Research &amp; Discovery</div>
+    <div class="cs-sec-label"><span class="n">01</span> Research &amp; discovery</div>
     <h2 class="cs-sec-title">Research across 3 continents.</h2>
 
-    <p class="cs-body" style="margin-bottom:28px;">To understand why expert users disengage, we conducted two rounds of semi-structured interviews with 11 power users across 5 regions: US, India, Canada, Europe, and the Middle East. These weren't passive participants. They were full-time Salesforce professionals who had built their careers on Trailhead and then moved on.</p>
+    <p class="cs-body" style="margin-bottom:28px;">To understand why expert users disengage, we conducted two rounds of semi-structured interviews with 11 power users across 5 regions: US, India, Canada, Europe, and the Middle East. These weren’t passive participants. They were full-time Salesforce professionals who had built their careers on Trailhead and then moved on.</p>
 
     <div class="proc-rail" style="margin-bottom:48px;">
       <div class="proc-step">
         <div class="proc-step-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="#0070D2" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 3.944a.75.75 0 0 1-1.248 0l-2.755-3.944a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z"/></svg></div>
-        <div class="proc-step-label">Exploratory Interviews</div>
+        <div class="proc-step-label">Exploratory interviews</div>
         <div class="proc-step-sub">Habits, routines, and relationship with Trailhead</div>
       </div>
       <div class="proc-step">
@@ -749,7 +753,7 @@ nav > * { pointer-events: auto; }
       </div>
       <div class="proc-step">
         <div class="proc-step-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="#0070D2" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"/></svg></div>
-        <div class="proc-step-label">Validation Interviews</div>
+        <div class="proc-step-label">Validation interviews</div>
         <div class="proc-step-sub">Testing assumptions with refined questions</div>
       </div>
       <div class="proc-step">
@@ -760,16 +764,16 @@ nav > * { pointer-events: auto; }
     </div>
 
     <!-- Quote -->
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:40px;display:flex;gap:16px;align-items:flex-start;">
-      <div style="font-family:'Lato',sans-serif;font-size:37px;color:var(--accent);line-height:.65;flex-shrink:0;opacity:.4;">"</div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:40px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-family:'Lato',sans-serif;font-size:37px;color:var(--accent);line-height:.65;flex-shrink:0;opacity:.4;">“</div>
       <div>
-        <p style="font-family:'Lato',sans-serif;font-size:14px;font-style:normal;color:var(--ink);line-height:1.65;margin-bottom:10px;">I used to check Trailhead every morning. Now I just open ChatGPT when I have a Salesforce question. It actually knows what I'm asking.</p>
-        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Senior Salesforce Admin, Round 1 interview</div>
+        <p style="font-family:'Lato',sans-serif;font-size:14px;font-style:normal;color:var(--ink);line-height:1.65;margin-bottom:12px;">I used to check Trailhead every morning. Now I just open ChatGPT when I have a Salesforce question. It actually knows what I’m asking.</p>
+        <div style="font-size:11px;font-weight:600;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">Senior Salesforce admin, round 1 interview</div>
       </div>
     </div>
 
     <!-- What we found -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:16px;display:flex;align-items:center;gap:10px;">What we found about advanced users <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#0070D2;margin-bottom:16px;display:flex;align-items:center;gap:12px;">What we found about advanced users <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
     <div class="findings-grid">
       <div class="finding-card">
@@ -786,12 +790,12 @@ nav > * { pointer-events: auto; }
       </div>
       <div class="finding-card">
         <div class="donut-ring" data-pct="36"><span class="donut-pct">36%</span></div>
-        <p class="finding-text">Are unhappy with <strong>personalization recommendations</strong>. The system doesn't know who they've become</p>
+        <p class="finding-text">Are unhappy with <strong>personalization recommendations</strong>. The system doesn’t know who they’ve become</p>
       </div>
     </div>
 
     <figure style="margin:32px auto 0;max-width:600px;">
-      <img src="assets/salesforce/screenshots/engagement.png" alt="Engagement vs. learner journey graph" style="width:100%;border-radius:14px;display:block;">
+      <img src="assets/salesforce/screenshots/engagement.png" alt="Engagement vs. learner journey graph" style="width:100%;border-radius:14px;display:block;" width="3119" height="1055" loading="lazy" decoding="async">
       <figcaption class="img-caption">Engagement drops sharply at the certification milestone, the moment the platform stops adapting</figcaption>
     </figure>
   </div>
@@ -802,7 +806,7 @@ nav > * { pointer-events: auto; }
     <h2 class="cs-sec-title">How might we bring them back?</h2>
 
     <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:44px 52px;margin-bottom:40px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#0070D2;margin-bottom:16px;">How might we</div>
+      <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#0070D2;margin-bottom:16px;">How might we</div>
       <p style="font-family:'Lato',sans-serif;font-weight:600;font-size:clamp(20px, 2.5vw, 33px);color:var(--accent-dark);line-height:1.15;margin:0;">Drive advanced users to keep returning to Trailhead with <span style="color:#0070D2;">deeper, relevant,</span> and <span style="color:#0070D2;">career-aligned</span> experiences?</p>
     </div>
 
@@ -811,32 +815,32 @@ nav > * { pointer-events: auto; }
   <!-- 03 IDEATION -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">03</span> Ideation</div>
-    <h2 class="cs-sec-title">Between insights and solution: Ideation.</h2>
-    <p class="cs-body" style="margin-bottom:32px;">Ideation began with those five engagement requirements as hard constraints. We weren't looking for the most ambitious idea we were looking for the smallest intervention that would create a genuine reason for a power user to return. Across whiteboard sessions, affinity maps, and structured concept rounds, two directions consistently held up against user needs and technical feasibility.</p>
+    <h2 class="cs-sec-title">Between insights and solution: ideation</h2>
+    <p class="cs-body" style="margin-bottom:32px;">Ideation began with those five engagement requirements as hard constraints. We weren’t looking for the most ambitious idea we were looking for the smallest intervention that would create a genuine reason for a power user to return. Across whiteboard sessions, affinity maps, and structured concept rounds, two directions consistently held up against user needs and technical feasibility.</p>
 
     <div class="photo-gallery">
       <!-- Left: 2×2 grid of whiteboard / close-up shots -->
       <div class="photo-gallery-left">
         <div class="gallery-item gallery-left-item" data-lb-idx="0" role="button" tabindex="0" aria-label="View whiteboard ideation session">
-          <img src="assets/salesforce/screenshots/iteration-phase/iteration-whiteboard.jpg" alt="Whiteboard ideation session">
+          <img src="assets/salesforce/screenshots/iteration-phase/iteration-whiteboard.jpg" alt="Whiteboard ideation session" width="1600" height="1200" loading="lazy" decoding="async">
         </div>
         <div class="gallery-item gallery-left-item" data-lb-idx="1" role="button" tabindex="0" aria-label="View iteration sketch">
-          <img src="assets/salesforce/screenshots/iteration-phase/iteration-01.jpg" alt="Iteration sketch">
+          <img src="assets/salesforce/screenshots/iteration-phase/iteration-01.jpg" alt="Iteration sketch" width="1810" height="1334" loading="lazy" decoding="async">
         </div>
         <div class="gallery-item gallery-left-item" data-lb-idx="2" role="button" tabindex="0" aria-label="View concept iteration">
-          <img src="assets/salesforce/screenshots/iteration-phase/iteration-02.jpg" alt="Concept iteration">
+          <img src="assets/salesforce/screenshots/iteration-phase/iteration-02.jpg" alt="Concept iteration" width="1734" height="1194" loading="lazy" decoding="async">
         </div>
         <div class="gallery-item gallery-left-item" data-lb-idx="3" role="button" tabindex="0" aria-label="View iteration wireframe">
-          <img src="assets/salesforce/screenshots/iteration-phase/iteration-03.jpg" alt="Iteration wireframe">
+          <img src="assets/salesforce/screenshots/iteration-phase/iteration-03.jpg" alt="Iteration wireframe" width="1750" height="1302" loading="lazy" decoding="async">
         </div>
       </div>
       <!-- Right: single column with the 2 team photos -->
       <div class="photo-gallery-right">
         <div class="gallery-item gallery-right-item" data-lb-idx="4" role="button" tabindex="0" aria-label="View team ideation session">
-          <img src="assets/salesforce/screenshots/iteration-phase/iteration-team-01.jpg" alt="Team ideation session">
+          <img src="assets/salesforce/screenshots/iteration-phase/iteration-team-01.jpg" alt="Team ideation session" width="1600" height="1200" loading="lazy" decoding="async">
         </div>
         <div class="gallery-item gallery-right-item" data-lb-idx="5" role="button" tabindex="0" aria-label="View team ideation session">
-          <img src="assets/salesforce/screenshots/iteration-phase/iteration-team-02.jpg" alt="Team ideation session">
+          <img src="assets/salesforce/screenshots/iteration-phase/iteration-team-02.jpg" alt="Team ideation session" width="1600" height="1200" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -844,13 +848,13 @@ nav > * { pointer-events: auto; }
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div style="background:var(--white);border:2px solid var(--accent-border);border-radius:16px;padding:28px;">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:12px;">Selected Direction 01</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;text-transform:uppercase;letter-spacing: 0;margin-bottom:10px;color:var(--ink);">Trailhead Solve</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;">An AI-powered workspace that answers real Salesforce problems in plain language. Addresses the "I just use ChatGPT" behavior by keeping expert knowledge inside the Trailhead ecosystem.</p>
+        <div style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#0070D2;margin-bottom:12px;">Selected direction 01</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;text-transform: none;letter-spacing: 0;margin-bottom:12px;color:var(--ink);">Trailhead Solve</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;">An AI-powered workspace that answers real Salesforce problems in plain language. Addresses the “I just use ChatGPT” behavior by keeping expert knowledge inside the Trailhead ecosystem.</p>
       </div>
       <div style="background:var(--white);border:2px solid var(--accent-border);border-radius:16px;padding:28px;">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:12px;">Selected Direction 02</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;text-transform:uppercase;letter-spacing: 0;margin-bottom:10px;color:var(--ink);">Personalised Dashboard</div>
+        <div style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#0070D2;margin-bottom:12px;">Selected direction 02</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;text-transform: none;letter-spacing: 0;margin-bottom:12px;color:var(--ink);">Personalised dashboard</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;">An adaptive career layer that shows what changed, where you stand, and what to do next. Creates a weekly visit habit instead of waiting for a new certification cycle.</p>
       </div>
     </div>
@@ -864,34 +868,34 @@ nav > * { pointer-events: auto; }
 
     <!-- Feature 01: Trailhead Solve -->
     <div class="sol-feature">
-      <p class="sol-feat-label"><span class="sol-feat-badge">01</span> Feature One</p>
+      <p class="sol-feat-label"><span class="sol-feat-badge">01</span> Feature one</p>
       <h3 class="sol-feat-title">Trailhead Solve</h3>
-      <p class="sol-feat-body">An AI-powered workspace where expert users describe a real Salesforce problem in plain language and get a structured, expert answer calibrated to their certification level and Salesforce release. Includes an expertise depth toggle (Novice, Intermediate, Professional), version-specific flagging, and a one-click community escalation path when the AI isn't enough.</p>
+      <p class="sol-feat-body">An AI-powered workspace where expert users describe a real Salesforce problem in plain language and get a structured, expert answer calibrated to their certification level and Salesforce release. Includes an expertise depth toggle (Novice, Intermediate, Professional), version-specific flagging, and a one-click community escalation path when the AI isn’t enough.</p>
 
       <div class="sol-feat-layout">
         <!-- Screenshot carousel -->
         <div class="solve-carousel" id="solveCarousel">
           <div class="solve-carousel-track" id="solveTrack">
-            <div class="solve-slide"><img src="assets/salesforce/screenshots/Solution 1 carousel image 1.png" alt="Trailhead Solve – main interface"></div>
-            <div class="solve-slide"><img src="assets/salesforce/screenshots/Solution 1 carousel image 2.png" alt="Trailhead Solve – depth toggle"></div>
-            <div class="solve-slide"><img src="assets/salesforce/screenshots/Solution 1 carousel image 3.png" alt="Trailhead Solve – community escalation"></div>
+            <div class="solve-slide"><img src="assets/salesforce/screenshots/Solution 1 carousel image 1.png" alt="Trailhead Solve – main interface" width="2000" height="1471" loading="lazy" decoding="async"></div>
+            <div class="solve-slide"><img src="assets/salesforce/screenshots/Solution 1 carousel image 2.png" alt="Trailhead Solve – depth toggle" width="2000" height="1471" loading="lazy" decoding="async"></div>
+            <div class="solve-slide"><img src="assets/salesforce/screenshots/Solution 1 carousel image 3.png" alt="Trailhead Solve – community escalation" width="2000" height="1141" loading="lazy" decoding="async"></div>
           </div>
           <button class="solve-btn solve-prev" id="solvePrev" aria-label="Previous">&#8249;</button>
           <button class="solve-btn solve-next" id="solveNext" aria-label="Next">&#8250;</button>
           <div class="solve-dots" id="solveDots">
-            <button class="solve-dot active" data-idx="0"></button>
-            <button class="solve-dot" data-idx="1"></button>
-            <button class="solve-dot" data-idx="2"></button>
+            <button class="solve-dot active" data-idx="0" aria-label="Show slide 1"></button>
+            <button class="solve-dot" data-idx="1" aria-label="Show slide 2"></button>
+            <button class="solve-dot" data-idx="2" aria-label="Show slide 3"></button>
           </div>
         </div>
 
         <!-- How it works — right column -->
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0070D2;margin-bottom:4px;">How it works</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#0070D2;margin-bottom:4px;">How it works</div>
           <div class="how-steps">
             <div class="how-step">
               <div class="step-badge">1</div>
-              <p class="step-txt"><strong>Type your problem in plain language.</strong> Get a structured, expert answer from Salesforce's full knowledge base, calibrated to your certification level and current release.</p>
+              <p class="step-txt"><strong>Type your problem in plain language.</strong> Get a structured, expert answer from Salesforce’s full knowledge base, calibrated to your certification level and current release.</p>
             </div>
             <div class="how-step">
               <div class="step-badge">2</div>
@@ -908,8 +912,8 @@ nav > * { pointer-events: auto; }
 
     <!-- Feature 02: Personalised Dashboard -->
     <div class="sol-feature">
-      <p class="sol-feat-label"><span class="sol-feat-badge">02</span> Feature Two</p>
-      <h3 class="sol-feat-title">Personalised Dashboard</h3>
+      <p class="sol-feat-label"><span class="sol-feat-badge">02</span> Feature two</p>
+      <h3 class="sol-feat-title">Personalised dashboard</h3>
       <p class="sol-feat-body">An adaptive career layer that tells you what changed, where you stand, and what to do next. One personalised action per visit, tied to certifications, recent Solve sessions, and Salesforce release changes. Agentforce surfaces trending skills for your role, shows your current standing in the market, and generates custom Trailmixes to close skill gaps. Each visit becomes more valuable than the last.</p>
 
       <div class="dash-showcase" id="dashShowcase">
@@ -927,20 +931,20 @@ nav > * { pointer-events: auto; }
         <!-- Callout 1 — top left -->
         <div class="dash-callout dash-callout-left" id="dashLeftCallout">
           <div class="dash-callout-img" id="dashLeftCalloutImg">
-            <img src="assets/salesforce/screenshots/Trails recommended.png" alt="Trail recommendations">
+            <img src="assets/salesforce/screenshots/Trails recommended.png" alt="Trail recommendations" width="844" height="759" loading="lazy" decoding="async">
           </div>
           <p class="dash-callout-caption">Trails recommended based on chats with Trailhead Solve.</p>
         </div>
 
         <!-- Full dashboard screenshot — centre, spans both rows -->
         <div class="dash-center" id="dashCenterImg">
-          <img src="assets/salesforce/screenshots/screencapture-localhost-5174-2026-04-28-16_43_13.png" alt="Personalised Dashboard full view">
+          <img src="assets/salesforce/screenshots/screencapture-localhost-5174-2026-04-28-16_43_13.png" alt="Personalised Dashboard full view" width="955" height="2000" loading="lazy" decoding="async">
         </div>
 
         <!-- Callout 2 — bottom right (skills) -->
         <div class="dash-callout dash-callout-right" id="dashRightCallout">
           <div class="dash-callout-img" id="dashRightCalloutImg">
-            <img src="assets/salesforce/screenshots/trending skills .png" alt="Trending skills">
+            <img src="assets/salesforce/screenshots/trending skills .png" alt="Trending skills" width="2000" height="1024" loading="lazy" decoding="async">
           </div>
           <p class="dash-callout-caption">Agentforce identifies trending skills for your role, shows your current standing in the market, and enables you to generate custom Trailmixes to close skill gaps.</p>
         </div>
@@ -950,28 +954,28 @@ nav > * { pointer-events: auto; }
 
   <!-- 05 WHERE IT FITS -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">05</span> Design Decision</div>
+    <div class="cs-sec-label"><span class="n">05</span> Design decision</div>
     <h2 class="cs-sec-title">Where does this solution close the loop?</h2>
     <p class="cs-body" style="margin-bottom:32px;">We designed for the specific moment the platform was losing its users. Not the beginning of the journey the platform handles that well. The gap was after mastery. After the certifications. After the content stopped feeling relevant.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;">
       <div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px;"></div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px;"></div>
           <p style="font-size:14px;color:var(--muted);line-height:1.65;margin:0;"><strong style="color:var(--ink);">The engaged state.</strong> Users join to learn completing trails, earning badges, working toward certifications. The loop is clear and the product serves them well.</p>
         </div>
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:8px;height:8px;border-radius:50%;background:rgba(201,58,82,.6);flex-shrink:0;margin-top:6px;"></div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:8px;height:8px;border-radius:50%;background:rgba(201,58,82,.6);flex-shrink:0;margin-top:8px;"></div>
           <p style="font-size:14px;color:var(--muted);line-height:1.65;margin:0;"><strong style="color:var(--ink);">The drop-off.</strong> Once certified, users hit a wall. Content feels too basic, and when real work problems come up, they turn to ChatGPT, Google, or Slack instead.</p>
         </div>
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:8px;height:8px;border-radius:50%;background:#22C55E;flex-shrink:0;margin-top:6px;"></div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#22C55E;flex-shrink:0;margin-top:8px;"></div>
           <p style="font-size:14px;color:var(--muted);line-height:1.65;margin:0;"><strong style="color:var(--ink);">Closing the loop.</strong> Trailhead Solve brings experts back with accurate, Salesforce-backed answers. The Personalised Dashboard then nudges them toward relevant trails, turning a one-off visit into re-engagement.</p>
         </div>
       </div>
       <figure style="margin:0;">
         <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
-          <img src="assets/salesforce/screenshots/Where this solution fit.png" alt="Where this solution fits in the user journey" style="width:100%;display:block;">
+          <img src="assets/salesforce/screenshots/Where this solution fit.png" alt="Where this solution fits in the user journey" style="width:100%;display:block;" width="7300" height="7197" loading="lazy" decoding="async">
         </div>
         <figcaption class="img-caption">The intervention point: where Solve and the Dashboard close the engagement loop</figcaption>
       </figure>
@@ -980,19 +984,19 @@ nav > * { pointer-events: auto; }
 
   <!-- 06 TESTING -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">06</span> Testing &amp; Impact</div>
-    <h2 class="cs-sec-title">We weren't measuring speed. We were measuring motivation.</h2>
-    <p class="cs-body" style="margin-bottom:32px;">The metric that mattered wasn't task completion time. It was whether the product created a new reason to come back. We ran two rounds of evaluation: one internal, one external, before any result was claimed.</p>
+    <div class="cs-sec-label"><span class="n">06</span> Testing &amp; impact</div>
+    <h2 class="cs-sec-title">We weren’t measuring speed. We were measuring motivation.</h2>
+    <p class="cs-body" style="margin-bottom:32px;">The metric that mattered wasn’t task completion time. It was whether the product created a new reason to come back. We ran two rounds of evaluation: one internal, one external, before any result was claimed.</p>
 
     <div class="eval-grid">
       <div class="eval-card">
         <span class="eval-badge">Internal</span>
-        <h3>AI-Simulated Stress Testing</h3>
+        <h3>AI-simulated stress testing</h3>
         <p>We built 12 AI agents from our research data to simulate power user behavior and stress-test prototype flows before any real participant encountered them. Edge cases, knowledge gaps, and escalation paths were all tested in simulation first.</p>
       </div>
       <div class="eval-card">
         <span class="eval-badge">External</span>
-        <h3>Moderated Think-Aloud Sessions</h3>
+        <h3>Moderated think-aloud sessions</h3>
         <p>8 Salesforce power users, approximately 30 minutes each. Where participants would normally open ChatGPT, we asked them to try Solve first giving us a live substitution signal and direct comparison data.</p>
       </div>
     </div>
@@ -1001,23 +1005,23 @@ nav > * { pointer-events: auto; }
 
   <!-- 07 CAPSTONE SHOWCASE -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">07</span> Capstone Showcase</div>
-    <h2 class="cs-sec-title">From Design to Execution</h2>
+    <div class="cs-sec-label"><span class="n">07</span> Capstone showcase</div>
+    <h2 class="cs-sec-title">From design to execution</h2>
 
-    <div style="background:linear-gradient(120deg,rgba(251,191,36,0.1),rgba(245,158,11,0.06));border:1px solid rgba(245,158,11,0.28);border-radius:16px;padding:28px 32px;display:flex;align-items:center;gap:24px;margin-bottom:32px;">
-      <div style="font-size:52px;line-height:1;flex-shrink:0;">🏅</div>
+    <div style="background:#FFFFFF;border:1px solid rgba(12,12,12,0.08);border-radius:16px;padding:28px 32px;display:flex;align-items:center;gap:24px;margin-bottom:32px;">
+      <div style="width:56px;height:56px;border-radius:12px;background:#F5F4F0;color:#0C0C0C;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;display:block;"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></div>
       <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#92400E;margin-bottom:6px;">Award</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;letter-spacing: 0;color:#0C0C0C;line-height:1;margin-bottom:6px;">People's Choice Award</div>
-        <div style="font-size:14px;color:rgba(12,12,12,.5);line-height:1.5;">IU Capstone Event &middot; Voted by the audience across all capstone projects</div>
+        <div style="font-size:13px;font-weight: 500;color:rgba(12,12,12,.62);margin-bottom:8px;">Award</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;letter-spacing: 0;color:#0C0C0C;line-height:1;margin-bottom:8px;">People’s Choice Award</div>
+        <div style="font-size:14px;color:rgba(12,12,12,.5);line-height:1.5;">IU capstone event &middot; Voted by the audience across all capstone projects</div>
       </div>
     </div>
 
-    <p class="cs-body" style="margin-bottom:32px;">At the IU Capstone Event, we presented our work in front of industry professionals, faculty, and fellow students. Out of all capstone projects across the program, the audience voted us <strong>People's Choice Award</strong>, a moment that made 10 months of research, iteration, and late nights felt worth it.</p>
+    <p class="cs-body" style="margin-bottom:32px;">At the IU Capstone Event, we presented our work in front of industry professionals, faculty, and fellow students. Out of all capstone projects across the program, the audience voted us <strong>People’s Choice Award</strong>, a moment that made 10 months of research, iteration, and late nights felt worth it.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <img src="assets/salesforce/screenshots/capstone-event-1.jpg" alt="Team presenting at IU Capstone Event" style="width:100%;height:280px;object-fit:cover;border-radius:16px;display:block;">
-      <img src="assets/salesforce/screenshots/capstone-event-2.jpg" alt="Team at IU Capstone Event" style="width:100%;height:280px;object-fit:cover;border-radius:16px;display:block;">
+      <img src="assets/salesforce/screenshots/capstone-event-1.jpg" alt="Team presenting at IU Capstone Event" style="width:100%;height:280px;object-fit:cover;border-radius:16px;display:block;" width="1838" height="1326" loading="lazy" decoding="async">
+      <img src="assets/salesforce/screenshots/capstone-event-2.jpg" alt="Team at IU Capstone Event" style="width:100%;height:280px;object-fit:cover;border-radius:16px;display:block;" width="1808" height="1258" loading="lazy" decoding="async">
     </div>
   </div>
 
@@ -1032,12 +1036,12 @@ nav > * { pointer-events: auto; }
       <div class="l-text"><strong>Recruiting authentic power users within a semester timeline is genuinely hard.</strong> These are full-time professionals across five time zones who have no particular reason to give a student team 30 minutes. Getting 11 was the result of personal persistence, not a convenient research pool. It changed how we think about research access as a design constraint, not just a logistics problem.</div>
     </div>
     <div class="learning cs-reveal">
-      <div class="l-text"><strong>The substitution signal was the most honest metric we had.</strong> Asking users to try Solve where they'd normally open ChatGPT gave us a real comparison, not a satisfaction survey, but a revealed preference. 6 out of 8 choosing Solve told us something a usability score couldn't.</div>
+      <div class="l-text"><strong>The substitution signal was the most honest metric we had.</strong> Asking users to try Solve where they’d normally open ChatGPT gave us a real comparison, not a satisfaction survey, but a revealed preference. 6 out of 8 choosing Solve told us something a usability score couldn’t.</div>
     </div>
 
     <div style="margin-top:32px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:14px;padding:24px 28px;">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:10px;">What's next</div>
-      <p style="font-size:14px;color:var(--muted);line-height:1.65;margin:0;">Scale testing globally with certified professionals. Refine Solve's answer quality using structured feedback loops. Pitch an integration roadmap to the Salesforce Trailhead product team.</p>
+      <div style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--accent);margin-bottom:12px;">What’s next</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.65;margin:0;">Scale testing globally with certified professionals. Refine Solve’s answer quality using structured feedback loops. Pitch an integration roadmap to the Salesforce Trailhead product team.</p>
     </div>
   </div>
 
@@ -1045,8 +1049,8 @@ nav > * { pointer-events: auto; }
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">09</span> Demo</div>
     <h2 class="cs-sec-title">See it in action.</h2>
-    <div id="yt-wrapper" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.12);background:#111;cursor:pointer;" onclick="var t=document.getElementById('yt-thumb');var b=document.getElementById('yt-play-btn');var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/N9LtHmaBKDQ?autoplay=1&rel=0';f.title='Trailhead Solve & Personalised Dashboard Demo';f.frameBorder='0';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';f.allowFullscreen=true;f.style.cssText='position:absolute;inset:0;width:100%;height:100%;';this.appendChild(f);t.style.opacity='0';b.style.opacity='0';">
-      <img id="yt-thumb" src="https://img.youtube.com/vi/N9LtHmaBKDQ/maxresdefault.jpg" alt="Demo video thumbnail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s;">
+    <div id="yt-wrapper" role="button" tabindex="0" aria-label="Play the demo video" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.12);background:#111;cursor:pointer;" onclick="var t=document.getElementById('yt-thumb');var b=document.getElementById('yt-play-btn');var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/N9LtHmaBKDQ?autoplay=1&rel=0';f.title='Trailhead Solve & Personalised Dashboard Demo';f.frameBorder='0';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';f.allowFullscreen=true;f.style.cssText='position:absolute;inset:0;width:100%;height:100%;';this.appendChild(f);t.style.opacity='0';b.style.opacity='0';">
+      <img id="yt-thumb" src="https://img.youtube.com/vi/N9LtHmaBKDQ/maxresdefault.jpg" width="1280" height="720" alt="Demo video thumbnail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s;" loading="lazy" decoding="async">
       <div id="yt-play-btn" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;transition:opacity .3s;">
         <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="36" cy="36" r="36" fill="rgba(0,0,0,0.55)"/>
@@ -1071,22 +1075,22 @@ nav > * { pointer-events: auto; }
   <!-- NEXT PROJECTS -->
   <div style="padding:48px 0 0;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
-      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;">View all 9 &#x2197;</a>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 16px;border-radius:100px;transition:color .2s,border-color .2s;">View all 9 &#x2197;</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div onclick="window.location='freetown-village.html'" style="background:rgba(212,132,90,.06);border:1px solid rgba(212,132,90,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(212,132,90,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(212,132,90,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#D4845A;margin-bottom:12px;">Cultural Heritage · Visual Design</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Freetown Village</div>
+      <a href="freetown-village.html" style="display:block;text-decoration:none;color:inherit;background:rgba(212,132,90,.06);border:1px solid rgba(212,132,90,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(212,132,90,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(212,132,90,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#D4845A;margin-bottom:12px;">Cultural heritage · Visual design</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Freetown Village</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Designing a gamified digital experience to make Black history accessible and engaging.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&rarr;</span>
-      </div>
-      <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.35)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C9547A;margin-bottom:12px;">B2B SaaS · Visual Design</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+      </a>
+      <a href="cliqueprize.html" style="display:block;text-decoration:none;color:inherit;background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.35)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#C9547A;margin-bottom:12px;">B2B SaaS · Visual design</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a page that spoke their language. We rebuilt it.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&rarr;</span>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -1305,12 +1309,14 @@ document.querySelectorAll('.cs-reveal').forEach(function(el) {
 </script>
 
 <footer class="footer-bar">
-  <span>© 2025 Rhea Mittal</span>
-  <span>Made with love and energy drinks ✨</span>
+  <span>© 2026 Rhea Mittal</span>
+  <span>Made with love and energy drinks</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
 </script>
 
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>

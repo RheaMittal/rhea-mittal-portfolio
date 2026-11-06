@@ -4,20 +4,21 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>Canvas LMS | Rhea Mittal</title>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
@@ -45,10 +46,10 @@ nav {
 }
 nav > * { pointer-events: auto; }
 .nav-logo {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 18px;
   letter-spacing: 0; text-decoration: none; color: var(--ink);
   justify-self: start;
-  padding: 10px 4px;
+  padding: 12px 4px;
   transition: opacity .2s;
 }
 .nav-logo:hover { opacity: .7; }
@@ -56,11 +57,11 @@ nav > * { pointer-events: auto; }
   position: relative;
   justify-self: center;
   display: flex; align-items: center; gap: 2px;
-  padding: 5px;
+  padding: 4px;
   border-radius: 100px;
   background: var(--glass-bg, rgba(255,255,255,0.62));
-  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
-  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
   box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
 }
@@ -80,7 +81,7 @@ nav > * { pointer-events: auto; }
   position: relative;
   z-index: 1;
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 18px;
+  padding: 12px 20px;
   min-height: 38px;
   border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
@@ -102,17 +103,17 @@ nav > * { pointer-events: auto; }
 .nav-cta {
   justify-self: end;
   background: var(--ink); color: var(--bg);
-  padding: 10px 20px; border-radius: 100px;
+  padding: 12px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px; font-weight: 500; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
   box-shadow: 0 4px 16px rgba(12,12,12,0.12);
 }
-.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-cta:hover { background: #2A2A28; }
 .nav-burger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  display: none; flex-direction: column; gap: 4px; cursor: pointer;
   padding: 8px; background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
   border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
   justify-self: end;
   box-shadow: 0 4px 16px rgba(80,76,68,0.08);
@@ -122,13 +123,13 @@ nav > * { pointer-events: auto; }
 }
 .nav-mobile {
   display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
-  backdrop-filter: blur(24px); z-index: 998;
+  backdrop-filter: none; z-index: 998;
   flex-direction: column; align-items: center; justify-content: center; gap: 36px;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: none;
   letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
 }
 .nav-mobile a:hover { color: var(--green); }
@@ -140,14 +141,14 @@ nav > * { pointer-events: auto; }
 /* ─── GLASS SYSTEM ─── */
 .glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
 .glass-badge {
   display: inline-flex; align-items: center;
-  padding: 9px 18px; border-radius: 100px;
+  padding: 8px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; font-weight: 600;
   color: rgba(12,12,12,0.72);
@@ -199,25 +200,25 @@ nav > * { pointer-events: auto; }
 /* ─── HERO BAND ─── */
 .cs-hero-band {
   width: 100%;
-  padding-top: 130px;
+  padding-top: 132px;
   padding-right: 56px;
   padding-bottom: 80px;
   padding-left: 56px;
   margin-bottom: 0;
 }
-.cs-hero-band.red-band { background: linear-gradient(160deg, #1A0404 0%, #2D0808 55%, #450E0E 100%); }
+.cs-hero-band.red-band { background: #2D0808; }
 .cs-hero-inner {
   max-width: 888px; margin: 0 auto;
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 .cs-hero-kicker {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: rgba(255,255,255,.75); margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
 }
 .cs-hero-h1 {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(31px, 4.68vw, 59px); line-height: .92; letter-spacing: 0; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(31px, 4.68vw, 59px); line-height: 1.05; letter-spacing: -0.02em; text-transform: none;
   color: #fff; margin-bottom: 28px;
 }
 .cs-hero-h1 em { font-style: normal; color: #fff; }
@@ -234,9 +235,9 @@ nav > * { pointer-events: auto; }
 }
 .cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
 .cs-hs:last-child { border-right: none; }
-.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
+.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
 .cs-hs-n.red { color: #FF7B71; }
-.cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
+.cs-hs-l { font-size: 11px; letter-spacing: 0.01em; text-transform: none; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
 
 /* ─── CONTENT LAYOUT ─── */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
@@ -249,26 +250,26 @@ nav > * { pointer-events: auto; }
 }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
-.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-label { font-size: 11px; text-transform: none; letter-spacing: 0.01em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
 
 /* ─── SECTION ─── */
 .cs-section { margin-bottom: 96px; }
 .cs-sec-label {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: var(--muted); margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
-.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .cs-sec-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06; letter-spacing: 0; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06; letter-spacing: 0; text-transform: none;
   margin-bottom: 28px;
 }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.65); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── SPLITS ─── */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; margin-bottom: 0; }
@@ -281,12 +282,12 @@ nav > * { pointer-events: auto; }
 .ba-card { border-radius: 16px; padding: 32px; }
 .ba-red { background: rgba(230,59,46,.06); border: 1px solid rgba(230,59,46,.2); }
 .ba-green { background: rgba(34,197,94,.06); border: 1px solid rgba(34,197,94,.2); }
-.ba-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+.ba-label { font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; margin-bottom: 12px; }
 .ba-red .ba-label { color: var(--red); }
 .ba-green .ba-label { color: #16A34A; }
-.ba-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
+.ba-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .ba-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.ba-arrow { font-family: 'Lato', sans-serif; font-size: 25px; font-weight: 700; color: var(--border); text-align: center; }
+.ba-arrow { font-family: 'Lato', sans-serif; font-size: 25px; font-weight: 600; color: var(--border); text-align: center; }
 
 /* ─── CARDS ─── */
 .cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
@@ -297,8 +298,8 @@ nav > * { pointer-events: auto; }
   display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.18); }
-.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: var(--red); line-height: 1; opacity: .7; }
-.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0; color: var(--red); line-height: 1; opacity: .7; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 15px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── IMPACT ─── */
@@ -309,15 +310,15 @@ nav > * { pointer-events: auto; }
   transition: transform .25s, border-color .2s;
 }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
-.impact-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
-.impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
+.impact-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
+.impact-l { font-size: 12px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; font-weight: 500; }
 .in-r { color: var(--red); }
 
 /* ─── LEARNINGS ─── */
 .learning {
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 14px; padding: 22px 28px;
-  display: flex; gap: 18px; align-items: flex-start;
+  border-radius: 14px; padding: 24px 28px;
+  display: flex; gap: 20px; align-items: flex-start;
   margin-bottom: 2px; transition: border-color .2s;
 }
 .learning:hover { border-color: rgba(12,12,12,0.18); }
@@ -344,13 +345,13 @@ nav > * { pointer-events: auto; }
 /* ─── FOOTER CTA ─── */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
-.cs-footer.red-foot { background: linear-gradient(160deg, #1A0404 0%, #2D0808 55%, #450E0E 100%); }
-.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer.red-foot { background: #2D0808; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; letter-spacing: 0; text-transform: none; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
-.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
 .fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
-.fb-ghost { border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost { border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
 
 /* ─── IMG ZOOM (same as Draggit vid-zoom) ─── */
@@ -365,25 +366,25 @@ nav > * { pointer-events: auto; }
 .img-ph {
   border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02);
   padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; gap: 14px; margin: 32px 0;
+  text-align: center; gap: 16px; margin: 32px 0;
 }
 .img-ph.h-full { min-height: 520px; }
 .img-ph.h-large { min-height: 420px; }
 .img-ph.h-medium { min-height: 320px; }
 .img-ph.h-small { min-height: 200px; }
 .img-ph-ico { font-size: 40px; opacity: .2; }
-.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 4px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; }
+.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px) {
-  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
+  nav { padding: 16px 24px; display: flex; justify-content: space-between; }
   .cs-section { margin-bottom: 56px; }
   .nav-pill { display: none; }
   .nav-cta { display: none; }
   .nav-burger { display: flex; }
-  .cs-hero-band { padding-top: 110px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
+  .cs-hero-band { padding-top: 112px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
   .cs-content { padding: 0 20px 100px; }
   .cs-overview { grid-template-columns: 1fr 1fr; }
   .cs-ov-cell:nth-child(2) { border-right: none; }
@@ -413,6 +414,7 @@ nav > * { pointer-events: auto; }
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <!-- ─── NAV ─── -->
@@ -431,27 +433,29 @@ nav > * { pointer-events: auto; }
   </button>
 </nav>
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">✕</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <!-- ══ HERO BAND ══ -->
 <div class="cs-hero-band red-band">
   <div class="cs-hero-inner">
     <div class="cs-hero-kicker">
       <span class="team-dot"></span>
-      UX Research + Feature Design &nbsp;·&nbsp; Canvas LMS &nbsp;·&nbsp; Team of 4 &nbsp;·&nbsp; 2024
+      UX research + feature design · Canvas LMS · Team of 4 · 2024
     </div>
-    <h1 class="cs-hero-h1">Integrating AI into the<br><em>world's most-used LMS.</em></h1>
-    <p class="cs-hero-desc">We redesigned Canvas's quiz creation flow for educators, adding AI-powered generation, autosave, and progress indicators. Research-backed across 3 fidelity levels, validated with 8+ faculty.</p>
+    <h1 class="cs-hero-h1">Integrating AI into the<br><em>world’s most-used LMS.</em></h1>
+    <p class="cs-hero-desc">We redesigned Canvas’s quiz creation flow for educators, adding AI quiz generation, autosave and progress indicators. Research-backed across 3 fidelity levels, validated with 8+ faculty.</p>
 
 
     <!-- HERO IMAGE -->
-    <img src="assets/Canvas/Landing Page Img.png" alt="Canvas quiz creation redesign" class="img-zoom">
+    <img src="assets/Canvas/Landing Page Img.png" alt="Canvas quiz creation redesign" class="img-zoom" width="1024" height="622" fetchpriority="high" decoding="async">
 
   </div>
 </div>
@@ -462,7 +466,7 @@ nav > * { pointer-events: auto; }
   <!-- OVERVIEW META -->
   <div class="cs-overview cs-reveal">
     <div class="cs-ov-cell">
-      <div class="cs-ov-label">My Role</div>
+      <div class="cs-ov-label">My role</div>
       <div class="cs-ov-val">UX Research + Feature Design</div>
     </div>
     <div class="cs-ov-cell">
@@ -487,14 +491,14 @@ nav > * { pointer-events: auto; }
 
   <!-- ══ SECTION 1: THE BRIEF ══ -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">01</span> The Brief</div>
-    <h2 class="cs-sec-title">A Tool 40 Million People Use Every Day With Frustration</h2>
+    <div class="cs-sec-label"><span class="n">01</span> The brief</div>
+    <h2 class="cs-sec-title">A tool 40 million people use every day with frustration</h2>
     <p class="cs-body">Canvas is the learning management system used by universities across North America. Faculty use it to build courses, manage students, and create assessments. It is deeply embedded in how education runs.</p>
     <p class="cs-body">And it is genuinely painful to use.</p>
     <p class="cs-body">Our brief was focused: <strong>redesign the quiz creation experience for educators.</strong> Not a rebrand. Not a full overhaul. One high-friction workflow, fixed. We had 2.5 months, a team of four, and real faculty to test with.</p>
 
     <div class="cs-quote" style="margin-top:40px;">
-      <div class="cs-quote-text">The system hasn't been updated in years. There is the general feeling that the world has passed it by.</div>
+      <div class="cs-quote-text">The system hasn’t been updated in years. There is the general feeling that the world has passed it by.</div>
       <div class="cs-quote-attr">- Professor, Teaching Faculty</div>
     </div>
   </div>
@@ -502,71 +506,71 @@ nav > * { pointer-events: auto; }
   <!-- ══ SECTION 2: RESEARCH ══ -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">02</span> Research</div>
-    <h2 class="cs-sec-title">We Asked. They Had a Lot to Say.</h2>
+    <h2 class="cs-sec-title">We asked. They had a lot to say.</h2>
     <p class="cs-body">We interviewed 8+ educators and faculty to understand where time was being lost and where frustration ran highest. We also ran observation sessions - watching faculty actually build quizzes - and measured time on task, click count, error rate, and task completion.</p>
 
     <div class="cards-g3" style="margin-top:36px;">
       <div class="c-card">
         <div class="c-card-n">8+</div>
-        <div class="c-card-t">Faculty Interviewed</div>
+        <div class="c-card-t">Faculty interviewed</div>
         <div class="c-card-b">Educators across disciplines, from first-year lecturers to tenured professors building complex assessments.</div>
       </div>
       <div class="c-card">
         <div class="c-card-n">3</div>
-        <div class="c-card-t">Fidelity Levels Tested</div>
+        <div class="c-card-t">Fidelity levels tested</div>
         <div class="c-card-b">Lo-fi, mid-fi, and hi-fi - each round measured against the same four metrics to track real progress.</div>
       </div>
       <div class="c-card">
         <div class="c-card-n">4</div>
-        <div class="c-card-t">Metrics Tracked</div>
+        <div class="c-card-t">Metrics tracked</div>
         <div class="c-card-b">Time on task, click count, error rate, and task completion rate - consistent across every round.</div>
       </div>
     </div>
 
     <div style="margin-top:40px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:20px;font-weight:500;">Baseline - before we touched anything</div>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-bottom:20px;font-weight:500;">Baseline - before we touched anything</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
         <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">273s</div>
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Avg Task Time</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">273s</div>
+          <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-top:8px;font-weight:500;">Avg task time</div>
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">24.5</div>
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Avg Click Count</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">24.5</div>
+          <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-top:8px;font-weight:500;">Avg click count</div>
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">0%</div>
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Error Rate</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">0%</div>
+          <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-top:8px;font-weight:500;">Error rate</div>
         </div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">100%</div>
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px;font-weight:500;">Task Completion</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;letter-spacing: 0;color:var(--red);line-height:1;">100%</div>
+          <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-top:8px;font-weight:500;">Task completion</div>
         </div>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6;">Tasks <em>completed</em> - but not easily. 273 seconds and 24.5 clicks to build a single quiz. That's the problem.</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.6;">Tasks <em>completed</em> - but not easily. 273 seconds and 24.5 clicks to build a single quiz. That’s the problem.</p>
     </div>
   </div>
 
   <!-- ══ SECTION 3: PROBLEM ══ -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">03</span> The Problem</div>
-    <h2 class="cs-sec-title">Three Problems. One Broken Flow.</h2>
-    <p class="cs-body">Faculty weren't failing to complete quizzes - they were succeeding slowly, anxiously, and with too much effort. The research surfaced three systemic issues driving it all.</p>
+    <div class="cs-sec-label"><span class="n">03</span> The problem</div>
+    <h2 class="cs-sec-title">Three problems. One broken flow.</h2>
+    <p class="cs-body">Faculty weren’t failing to complete quizzes - they were succeeding slowly, anxiously, and with too much effort. The research surfaced three systemic issues driving it all.</p>
 
     <div class="cards-g3" style="margin-top:36px;">
       <div class="c-card" style="border-top:3px solid var(--red);">
         <div class="c-card-n" style="color:rgba(230,59,46,.12);">01</div>
-        <div class="c-card-t">No Progress Visibility</div>
+        <div class="c-card-t">No progress visibility</div>
         <div class="c-card-b">Faculty had no indication of how far through a quiz they were. Every session felt like starting from zero. The anxiety of lost work was constant.</div>
       </div>
       <div class="c-card" style="border-top:3px solid var(--red);">
         <div class="c-card-n" style="color:rgba(230,59,46,.12);">02</div>
-        <div class="c-card-t">Redundant Manual Actions</div>
-        <div class="c-card-b">Creating similar question types required fully manual re-entry each time. Settings couldn't be copied or templated. Save had to be hit repeatedly - or risk losing work.</div>
+        <div class="c-card-t">Redundant manual actions</div>
+        <div class="c-card-b">Creating similar question types required fully manual re-entry each time. Settings couldn’t be copied or templated. Save had to be hit repeatedly - or risk losing work.</div>
       </div>
       <div class="c-card" style="border-top:3px solid var(--red);">
         <div class="c-card-n" style="color:rgba(230,59,46,.12);">03</div>
-        <div class="c-card-t">Poor Feedback Mechanisms</div>
+        <div class="c-card-t">Poor feedback mechanisms</div>
         <div class="c-card-b">The interface gave no confirmation, no error states that helped, and no signal that anything was working. Faculty had to hold the whole quiz in their head.</div>
       </div>
     </div>
@@ -579,36 +583,36 @@ nav > * { pointer-events: auto; }
 
   <!-- ══ SECTION 4: PROCESS ══ -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">04</span> Design Process</div>
-    <h2 class="cs-sec-title">We Tested at Every Fidelity. The Data Told Us What to Cut.</h2>
+    <div class="cs-sec-label"><span class="n">04</span> Design process</div>
+    <h2 class="cs-sec-title">We tested at every fidelity. The data told us what to cut.</h2>
     <p class="cs-body">We ran structured usability tests at lo-fi, mid-fi, and hi-fi - measuring the same four metrics each time. This gave us a consistent signal across the full process, not just at the end.</p>
-    <p class="cs-body">The key question for each round wasn't "does this look good?" It was: does this reduce time, reduce clicks, and reduce cognitive load - without introducing new errors?</p>
+    <p class="cs-body">The key question for each round wasn’t “does this look good?” It was: does this reduce time, reduce clicks, and reduce cognitive load - without introducing new errors?</p>
 
     <div style="border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:36px 0;">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);">
         <div style="padding:24px 28px;border-right:1px solid var(--border);">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:10px;">Lo-Fi</div>
+          <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);font-weight:500;margin-bottom:12px;">Lo-Fi</div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Diverge: explore the space</div>
           <div style="font-size:13px;color:var(--muted);line-height:1.6;">Multiple directions per pain point. Quick sketches and flows. Tested with 3 faculty - looking for directional signal, not polish.</div>
         </div>
         <div style="padding:24px 28px;border-right:1px solid var(--border);background:var(--white);">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:10px;">Mid-Fi</div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Converge: kill what doesn't work</div>
+          <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);font-weight:500;margin-bottom:12px;">Mid-Fi</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Converge: kill what doesn’t work</div>
           <div style="font-size:13px;color:var(--muted);line-height:1.6;">Narrowed to strongest concepts. First test of AI integration - initial version added complexity, not removed it. We pulled it back.</div>
         </div>
         <div style="padding:24px 28px;">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:10px;">Hi-Fi</div>
+          <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);font-weight:500;margin-bottom:12px;">Hi-Fi</div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Validate: measure the delta</div>
           <div style="font-size:13px;color:var(--muted);line-height:1.6;">Full interactive prototype. Simpler AI flow, progress bar, restructured nav. Measured against the same baseline metrics.</div>
         </div>
       </div>
       <div style="padding:20px 28px;background:rgba(230,59,46,.04);">
-        <div style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;"><strong style="color:var(--ink);">The mid-fi learning:</strong> our first attempt at AI generation asked too many questions upfront. Faculty felt overwhelmed. We stripped it to a single prompt input - topic, level, and a reference upload. That's it.</div>
+        <div style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;"><strong style="color:var(--ink);">The mid-fi learning:</strong> our first attempt at AI generation asked too many questions upfront. Faculty felt overwhelmed. We stripped it to a single prompt input - topic, level, and a reference upload. That’s it.</div>
       </div>
     </div>
 
     <figure class="cs-reveal reveal-d2" style="margin:32px 0 0;">
-      <img src="assets/Canvas/Low to High fid.png" alt="Lo to Hi fidelity progression" style="width:100%;border-radius:16px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);">
+      <img src="assets/Canvas/Low to High fid.png" alt="Lo to Hi fidelity progression" style="width:100%;border-radius:16px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);" width="2048" height="759" loading="lazy" decoding="async">
       <figcaption class="img-caption">Lo-fi wireframes to hi-fi prototype - how the quiz builder evolved across testing rounds</figcaption>
     </figure>
   </div>
@@ -616,31 +620,31 @@ nav > * { pointer-events: auto; }
   <!-- ══ SECTION 5: SOLUTIONS ══ -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">05</span> Solutions</div>
-    <h2 class="cs-sec-title">Three Fixes. All Grounded in the Data.</h2>
+    <h2 class="cs-sec-title">Three fixes. All grounded in the data.</h2>
     <p class="cs-body">Every solution maps directly to a pain point from research. Nothing added for aesthetics. We focused on reducing cognitive load at each step of the quiz creation flow.</p>
 
     <!-- Solution 1 -->
     <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:40px 0;">
       <div style="padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
-        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:6px 14px;font-family:'Lato',sans-serif;font-weight: 900;font-size:13px;letter-spacing:.05em;color:var(--red);text-transform:uppercase;">Solution 01</div>
+        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:8px 16px;font-family:'Lato',sans-serif;font-weight: 600;font-size:13px;letter-spacing: 0.01em;color:var(--red);text-transform: none;">Solution 01</div>
         <div style="font-size:12px;color:var(--muted);">Addresses: Redundant manual actions</div>
       </div>
-      <img src="assets/Canvas/Solution 1.png" alt="Build with AI - final screen" style="width:100%;display:block;">
+      <img src="assets/Canvas/Solution 1.png" alt="Build with AI - final screen" style="width:100%;display:block;" width="2048" height="1152" loading="lazy" decoding="async">
       <div style="padding:28px 36px;border-top:1px solid var(--border);">
-        <h3 style="font-family:'Lato',sans-serif;font-weight: 900;font-size:23px;letter-spacing: 0;text-transform:uppercase;margin-bottom:12px;">Build with AI</h3>
-        <p class="cs-body" style="margin-bottom:0;">Faculty enter a topic prompt, difficulty level, and optional reference material. Canvas generates a full quiz - editable, reviewable, not locked in. The AI doesn't replace the educator's judgment; it handles the typing and structuring so they can focus on content quality.</p>
+        <h3 style="font-family:'Lato',sans-serif;font-weight: 600;font-size:23px;letter-spacing: 0;text-transform: none;margin-bottom:12px;">Build with AI</h3>
+        <p class="cs-body" style="margin-bottom:0;">Faculty enter a topic prompt, difficulty level, and optional reference material. Canvas generates a full quiz - editable, reviewable, not locked in. The AI doesn’t replace the educator’s judgment; it handles the typing and structuring so they can focus on content quality.</p>
       </div>
     </div>
 
     <!-- Solution 2 -->
     <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:40px 0;">
       <div style="padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
-        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:6px 14px;font-family:'Lato',sans-serif;font-weight: 900;font-size:13px;letter-spacing:.05em;color:var(--red);text-transform:uppercase;">Solution 02</div>
+        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:8px 16px;font-family:'Lato',sans-serif;font-weight: 600;font-size:13px;letter-spacing: 0.01em;color:var(--red);text-transform: none;">Solution 02</div>
         <div style="font-size:12px;color:var(--muted);">Addresses: No progress visibility</div>
       </div>
-      <img src="assets/Canvas/Solution 2.png" alt="Progress bar and autosave - final screen" style="width:100%;display:block;">
+      <img src="assets/Canvas/Solution 2.png" alt="Progress bar and autosave - final screen" style="width:100%;display:block;" width="2048" height="1152" loading="lazy" decoding="async">
       <div style="padding:28px 36px;border-top:1px solid var(--border);">
-        <h3 style="font-family:'Lato',sans-serif;font-weight: 900;font-size:23px;letter-spacing: 0;text-transform:uppercase;margin-bottom:12px;">Progress Bar + Autosave</h3>
+        <h3 style="font-family:'Lato',sans-serif;font-weight: 600;font-size:23px;letter-spacing: 0;text-transform: none;margin-bottom:12px;">Progress bar + autosave</h3>
         <p class="cs-body" style="margin-bottom:0;">A persistent progress indicator shows educators exactly where they are in the quiz creation flow. Combined with autosave, the anxiety of losing work disappears. Faculty can stop mid-session and return without fear.</p>
       </div>
     </div>
@@ -648,12 +652,12 @@ nav > * { pointer-events: auto; }
     <!-- Solution 3 -->
     <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:40px 0;">
       <div style="padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
-        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:6px 14px;font-family:'Lato',sans-serif;font-weight: 900;font-size:13px;letter-spacing:.05em;color:var(--red);text-transform:uppercase;">Solution 03</div>
+        <div style="background:rgba(230,59,46,.1);border:1px solid rgba(230,59,46,.2);border-radius:10px;padding:8px 16px;font-family:'Lato',sans-serif;font-weight: 600;font-size:13px;letter-spacing: 0.01em;color:var(--red);text-transform: none;">Solution 03</div>
         <div style="font-size:12px;color:var(--muted);">Addresses: Navigation friction</div>
       </div>
-      <img src="assets/Canvas/Solution 3.png" alt="Direct access from courses tab - final screen" style="width:100%;display:block;">
+      <img src="assets/Canvas/Solution 3.png" alt="Direct access from courses tab - final screen" style="width:100%;display:block;" width="2048" height="1152" loading="lazy" decoding="async">
       <div style="padding:28px 36px;border-top:1px solid var(--border);">
-        <h3 style="font-family:'Lato',sans-serif;font-weight: 900;font-size:23px;letter-spacing: 0;text-transform:uppercase;margin-bottom:12px;">Direct Access from Courses Tab</h3>
+        <h3 style="font-family:'Lato',sans-serif;font-weight: 600;font-size:23px;letter-spacing: 0;text-transform: none;margin-bottom:12px;">Direct access from the Courses tab</h3>
         <p class="cs-body" style="margin-bottom:0;">Faculty can now access quiz creation directly from their course tab - no multi-step navigation to find it. A cleaner, less cluttered question interface reduces the visual noise that slowed decision-making in every test session.</p>
       </div>
     </div>
@@ -662,48 +666,48 @@ nav > * { pointer-events: auto; }
   <!-- ══ SECTION 6: IMPACT ══ -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">06</span> Impact</div>
-    <h2 class="cs-sec-title">62% Faster. 30% Less Effort.</h2>
+    <h2 class="cs-sec-title">62% faster. 30% less effort.</h2>
     <p class="cs-body">Hi-fi usability testing against the same four metrics we set at baseline. The numbers moved in every category that mattered.</p>
 
     <div class="ba-row" style="margin-top:40px;">
       <div class="ba-card ba-red">
         <div class="ba-label">Before</div>
-        <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
           <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(230,59,46,.1);">
-            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Task Time</div>
-            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;letter-spacing: 0;color:var(--red);">273s</div>
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg task time</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;letter-spacing: 0;color:var(--red);">273s</div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(230,59,46,.1);">
-            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Click Count</div>
-            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;letter-spacing: 0;color:var(--red);">24.5</div>
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg click count</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;letter-spacing: 0;color:var(--red);">24.5</div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div style="font-size:14px;color:rgba(0,0,0,.6);">Task Completion</div>
-            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;letter-spacing: 0;color:var(--red);">100%</div>
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Task completion</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;letter-spacing: 0;color:var(--red);">100%</div>
           </div>
         </div>
       </div>
       <div class="ba-arrow">→</div>
       <div class="ba-card ba-green">
         <div class="ba-label">After</div>
-        <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
           <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(34,197,94,.15);">
-            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Task Time</div>
-            <div style="display:flex;align-items:baseline;gap:10px;">
-              <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;letter-spacing: 0;color:#16A34A;">104s</div>
-              <div style="font-size:12px;font-weight:600;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 10px;border-radius:100px;">↓ 62%</div>
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg task time</div>
+            <div style="display:flex;align-items:baseline;gap:12px;">
+              <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;letter-spacing: 0;color:#16A34A;">104s</div>
+              <div style="font-size:12px;font-weight:600;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 12px;border-radius:100px;">↓ 62%</div>
             </div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(34,197,94,.15);">
-            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg Click Count</div>
-            <div style="display:flex;align-items:baseline;gap:10px;">
-              <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;letter-spacing: 0;color:#16A34A;">17</div>
-              <div style="font-size:12px;font-weight:600;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 10px;border-radius:100px;">↓ 30%</div>
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Avg click count</div>
+            <div style="display:flex;align-items:baseline;gap:12px;">
+              <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;letter-spacing: 0;color:#16A34A;">17</div>
+              <div style="font-size:12px;font-weight:600;color:#16A34A;background:rgba(34,197,94,.1);padding:2px 12px;border-radius:100px;">↓ 30%</div>
             </div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div style="font-size:14px;color:rgba(0,0,0,.6);">Task Completion</div>
-            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:22px;letter-spacing: 0;color:#16A34A;">100%</div>
+            <div style="font-size:14px;color:rgba(0,0,0,.6);">Task completion</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:22px;letter-spacing: 0;color:#16A34A;">100%</div>
           </div>
         </div>
       </div>
@@ -712,19 +716,19 @@ nav > * { pointer-events: auto; }
     <div class="impact-row cs-reveal reveal-d2" style="margin-top:40px;">
       <div class="impact-card">
         <div class="impact-n in-r">62%</div>
-        <div class="impact-l">Faster Task Time</div>
+        <div class="impact-l">Faster task time</div>
       </div>
       <div class="impact-card">
         <div class="impact-n in-r">30%</div>
-        <div class="impact-l">Fewer Clicks</div>
+        <div class="impact-l">Fewer clicks</div>
       </div>
       <div class="impact-card">
         <div class="impact-n">8+</div>
-        <div class="impact-l">Educators Tested</div>
+        <div class="impact-l">Educators tested</div>
       </div>
       <div class="impact-card">
         <div class="impact-n">0%</div>
-        <div class="impact-l">Error Rate (maintained)</div>
+        <div class="impact-l">Error rate (maintained)</div>
       </div>
     </div>
   </div>
@@ -737,23 +741,23 @@ nav > * { pointer-events: auto; }
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;">
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#E63B2E" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"/></svg></div>
-        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">AI works best when it feels optional.</div>
+        <div style="font-size:16px;font-weight: 600;color:var(--ink);margin-bottom:12px;">AI works best when it feels optional.</div>
         <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Our first attempt at AI integration failed because it was front and centre - mandatory, heavy, intimidating. Faculty responded positively only when it felt like a tool they could pick up or ignore. Assistive, not prescriptive.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#E63B2E" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
-        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Small changes move big numbers.</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Autosave, a progress bar, and a reorganised entry point didn't feel like major features - but together they cut task time by 62%. Cognitive load reduction compounds.</p>
+        <div style="font-size:16px;font-weight: 600;color:var(--ink);margin-bottom:12px;">Small changes move big numbers.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Autosave, a progress bar, and a reorganised entry point didn’t feel like major features - but together they cut task time by 62%. Cognitive load reduction compounds.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#E63B2E" aria-hidden="true"><path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z"/></svg></div>
-        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Consistent metrics across fidelity levels are underrated.</div>
+        <div style="font-size:16px;font-weight: 600;color:var(--ink);margin-bottom:12px;">Consistent metrics across fidelity levels are underrated.</div>
         <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Testing with the same four metrics at every stage meant we could see the impact of each decision - not just whether the final product worked, but which specific change moved the needle.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#E63B2E" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"/></svg></div>
-        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">What I'd do differently.</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">I'd push for real Canvas access earlier - prototyping alongside the live product would have surfaced technical constraints sooner and shaped our solutions more practically from day one.</p>
+        <div style="font-size:16px;font-weight: 600;color:var(--ink);margin-bottom:12px;">What I’d do differently.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">I’d push for real Canvas access earlier - prototyping alongside the live product would have surfaced technical constraints sooner and shaped our solutions more practically from day one.</p>
       </div>
     </div>
   </div>
@@ -768,7 +772,7 @@ nav > * { pointer-events: auto; }
       <div class="cs-footer-sub">Browse other case studies or reach out directly.</div>
       <div class="cs-footer-btns">
         <a class="fb-primary" href="portfolio-v2.html">← Back to Work</a>
-        <a class="fb-ghost" href="mailto:rheamittal0401@gmail.com">Let's talk ↗</a>
+        <a class="fb-ghost" href="mailto:rheamittal0401@gmail.com">Let’s talk ↗</a>
       </div>
     </div>
   </div>
@@ -776,20 +780,20 @@ nav > * { pointer-events: auto; }
   <!-- VIEW MORE PROJECTS -->
   <div style="padding:48px 0 80px;" class="cs-reveal">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
-      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 16px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+      <a href="cliqueprize.html" style="display:block;text-decoration:none;color:inherit;background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#C4566A;margin-bottom:12px;">B2B SaaS platform</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
-      </div>
-      <div onclick="window.location='draggit.html'" style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.35)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#60A5FA;margin-bottom:12px;">LinkedIn Chrome Extension</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
+      </a>
+      <a href="draggit.html" style="display:block;text-decoration:none;color:inherit;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.35)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#60A5FA;margin-bottom:12px;">LinkedIn Chrome extension</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">I noticed a friction. I built the fix. Solo end-to-end, shipped in 2 weeks.</p>
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -821,5 +825,7 @@ document.getElementById('navMobileClose').addEventListener('click', () => docume
 </script>
 
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>

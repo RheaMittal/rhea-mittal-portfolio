@@ -9,6 +9,17 @@ Personal portfolio site for product designer Rhea Mittal (MS-HCI, Indiana Univer
 
 Document notable changes with every GitHub commit. Newest first.
 
+### 2026-11-05 — Design polish + interface guidelines pass (all pages)
+
+- **Type:** headlines and labels in sentence case; weights capped at 600 (Lato renders 700); no italic emphasis. Lato + Open Sans pairing unchanged.
+- **Colour:** site green stays `#1DA855` on title accents. Glass blur, white inset highlights, coloured glows and gradient avatars removed. Case-study hero bands and footers use solid project colours.
+- **Copy:** emoji replaced with line icons or status dots; OpsIQ card shows only real stats; Canvas work card shows 62% / 30% / 8+; "AI-powered" trimmed from hero lines; curly quotes and `…` in visible text; footer © 2026.
+- **Spacing and motion:** padding, margins and gaps on a 4px grid; no pulsing live dot or bobbing scroll arrow; shorter card entrance; hover zooms reduced.
+- **Accessibility:** link-cards are real `<a>` elements; icon buttons labelled; skip link + `<main>` on every page; shared `:focus-visible` ring; `rel="noopener noreferrer"` on new-tab links; About tiles and the Salesforce video keyboard-operable (`scripts/a11y.js`).
+- **Reduced motion:** videos show a still frame instead of autoplaying; reveals, marquee and hover zooms off (`styles/design-system.css`, `scripts/lazy-vid.js`).
+- **Performance:** real `width`/`height` on images, lazy loading below the fold, poster frames for all videos (`assets/posters/`).
+- **Assets:** removed 20 unused files (old `.mov` originals and unused screenshots).
+
 ### 2026-09-07 — Open Doors hover + lightbox screenshot
 
 - About **Communities & Milestones** Open Doors card stays the logo by default.

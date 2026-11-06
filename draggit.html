@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>Draggit, Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
@@ -49,10 +50,10 @@ nav {
 }
 nav > * { pointer-events: auto; }
 .nav-logo {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 18px;
   letter-spacing: 0; text-decoration: none; color: var(--ink);
   justify-self: start;
-  padding: 10px 4px;
+  padding: 12px 4px;
   transition: opacity .2s;
 }
 .nav-logo:hover { opacity: .7; }
@@ -60,11 +61,11 @@ nav > * { pointer-events: auto; }
   position: relative;
   justify-self: center;
   display: flex; align-items: center; gap: 2px;
-  padding: 5px;
+  padding: 4px;
   border-radius: 100px;
   background: var(--glass-bg, rgba(255,255,255,0.62));
-  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
-  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
   box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
 }
@@ -84,7 +85,7 @@ nav > * { pointer-events: auto; }
   position: relative;
   z-index: 1;
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 18px;
+  padding: 12px 20px;
   min-height: 38px;
   border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
@@ -106,17 +107,17 @@ nav > * { pointer-events: auto; }
 .nav-cta {
   justify-self: end;
   background: var(--ink); color: var(--bg);
-  padding: 10px 20px; border-radius: 100px;
+  padding: 12px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px; font-weight: 500; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
   box-shadow: 0 4px 16px rgba(12,12,12,0.12);
 }
-.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-cta:hover { background: #2A2A28; }
 .nav-burger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  display: none; flex-direction: column; gap: 4px; cursor: pointer;
   padding: 8px; background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
   border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
   justify-self: end;
   box-shadow: 0 4px 16px rgba(80,76,68,0.08);
@@ -126,13 +127,13 @@ nav > * { pointer-events: auto; }
 }
 .nav-mobile {
   display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
-  backdrop-filter: blur(24px); z-index: 998;
+  backdrop-filter: none; z-index: 998;
   flex-direction: column; align-items: center; justify-content: center; gap: 36px;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: none;
   letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
 }
 .nav-mobile a:hover { color: var(--green); }
@@ -144,14 +145,14 @@ nav > * { pointer-events: auto; }
 /* ─── GLASS SYSTEM ─── */
 .glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
 .glass-badge {
   display: inline-flex; align-items: center;
-  padding: 9px 18px; border-radius: 100px;
+  padding: 8px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; font-weight: 600;
   color: rgba(12,12,12,0.72);
@@ -198,31 +199,31 @@ nav > * { pointer-events: auto; }
 .reveal-d4 { transition-delay: .4s; }
 
 /* ─── LIVE DOT ─── */
-.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px rgba(34,197,94,.5); animation: lp 2s infinite; display: inline-block; vertical-align: middle; }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; display: inline-block; vertical-align: middle; }
 @keyframes lp { 0%,100%{opacity:1} 50%{opacity:.35} }
 
 /* ─── HERO BAND ─── */
 .cs-hero-band {
   width: 100%;
-  padding-top: 130px;
+  padding-top: 132px;
   padding-right: 56px;
   padding-bottom: 80px;
   padding-left: 56px;
   margin-bottom: 0;
 }
-.cs-hero-band.green-band { background: linear-gradient(160deg, #071228 0%, #0E1E5A 60%, #1535A0 100%); }
+.cs-hero-band.green-band { background: #0E1E5A; }
 .cs-hero-inner {
   max-width: 888px; margin: 0 auto;
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 .cs-hero-kicker {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: rgba(255,255,255,.95); margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
 }
 .cs-hero-h1 {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(31px, 4.68vw, 59px); line-height: .92; letter-spacing: 0; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(31px, 4.68vw, 59px); line-height: 1.05; letter-spacing: -0.02em; text-transform: none;
   color: #fff; margin-bottom: 28px;
 }
 .cs-hero-desc {
@@ -236,8 +237,8 @@ nav > * { pointer-events: auto; }
 }
 .cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
 .cs-hs:last-child { border-right: none; }
-.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
-.cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
+.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
+.cs-hs-l { font-size: 11px; letter-spacing: 0.01em; text-transform: none; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
 
 /* ─── CONTENT LAYOUT ─── */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
@@ -250,26 +251,26 @@ nav > * { pointer-events: auto; }
 }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
-.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-label { font-size: 11px; text-transform: none; letter-spacing: 0.01em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
 
 /* ─── SECTION ─── */
 .cs-section { margin-bottom: 96px; }
 .cs-sec-label {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: var(--muted); margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
-.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .cs-sec-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06; letter-spacing: 0; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06; letter-spacing: 0; text-transform: none;
   margin-bottom: 28px;
 }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.65); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── SPLITS ─── */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; margin-bottom: 0; }
@@ -282,12 +283,12 @@ nav > * { pointer-events: auto; }
 .ba-card { border-radius: 16px; padding: 32px; }
 .ba-red { background: rgba(201,58,82,.06); border: 1px solid rgba(201,58,82,.2); }
 .ba-green { background: var(--green-bg); border: 1px solid rgba(39,194,100,.2); }
-.ba-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+.ba-label { font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; margin-bottom: 12px; }
 .ba-red .ba-label { color: #C93A52; }
 .ba-green .ba-label { color: var(--green); }
-.ba-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
+.ba-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .ba-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.ba-arrow { font-family: 'Lato', sans-serif; font-size: 25px; font-weight: 700; color: var(--border); text-align: center; }
+.ba-arrow { font-family: 'Lato', sans-serif; font-size: 25px; font-weight: 600; color: var(--border); text-align: center; }
 
 /* ─── CARDS ─── */
 .cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
@@ -298,8 +299,8 @@ nav > * { pointer-events: auto; }
   display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.18); }
-.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
-.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 15px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── TOOL CARDS ─── */
@@ -314,7 +315,7 @@ nav > * { pointer-events: auto; }
 .ti-warm { background: rgba(255,150,80,.1); }
 .ti-blue { background: rgba(59,130,246,.1); }
 .ti-teal { background: rgba(20,184,166,.1); }
-.t-name { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 5px; }
+.t-name { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 16px; text-transform: none; letter-spacing: 0; margin-bottom: 4px; }
 .t-role { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
 /* ─── IMPACT ─── */
@@ -325,15 +326,15 @@ nav > * { pointer-events: auto; }
   transition: transform .25s, border-color .2s;
 }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
-.impact-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
-.impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
+.impact-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
+.impact-l { font-size: 12px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; font-weight: 500; }
 .in-g { color: var(--green); }
 
 /* ─── LEARNINGS ─── */
 .learning {
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 14px; padding: 22px 28px;
-  display: flex; gap: 18px; align-items: flex-start;
+  border-radius: 14px; padding: 24px 28px;
+  display: flex; gap: 20px; align-items: flex-start;
   margin-bottom: 2px; transition: border-color .2s;
 }
 .learning:hover { border-color: rgba(12,12,12,0.18); }
@@ -369,20 +370,20 @@ nav > * { pointer-events: auto; }
 /* ─── FOOTER CTA ─── */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
-.cs-footer.green-foot { background: linear-gradient(160deg, #071228 0%, #0D1B52 60%, #1330A0 100%); }
-.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer.green-foot { background: #0D1B52; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; letter-spacing: 0; text-transform: none; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
-.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
 .fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
-.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
 
 /* ─── IMG PLACEHOLDER ─── */
 .img-ph {
   border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02);
   padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; gap: 14px; margin: 32px 0;
+  text-align: center; gap: 16px; margin: 32px 0;
 }
 .img-ph.h-full { min-height: 520px; }
 .img-ph.h-large { min-height: 420px; }
@@ -390,18 +391,18 @@ nav > * { pointer-events: auto; }
 .img-ph.h-small { min-height: 200px; }
 .img-ph.h-xs { min-height: 140px; }
 .img-ph-ico { font-size: 40px; opacity: .2; }
-.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 4px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; }
+.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px) {
-  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
+  nav { padding: 16px 24px; display: flex; justify-content: space-between; }
   .cs-section { margin-bottom: 56px; }
   .nav-pill { display: none; }
   .nav-cta { display: none; }
   .nav-burger { display: flex; }
-  .cs-hero-band { padding-top: 110px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
+  .cs-hero-band { padding-top: 112px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
   .cs-content { padding: 0 20px 100px; }
   .cs-overview { grid-template-columns: 1fr 1fr; }
   .cs-ov-cell:nth-child(2) { border-right: none; }
@@ -461,6 +462,7 @@ nav > * { pointer-events: auto; }
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <!-- ─── NAV ─── -->
@@ -479,21 +481,23 @@ nav > * { pointer-events: auto; }
   </button>
 </nav>
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">✕</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <!-- HERO BAND -->
 <div class="cs-hero-band green-band">
   <div class="cs-hero-inner">
-    <div class="cs-hero-kicker"><span class="live-dot"></span> Built &amp; Shipped · LinkedIn Chrome Extension · Nov 2025</div>
+    <div class="cs-hero-kicker"><span class="live-dot"></span> Built &amp; shipped · LinkedIn Chrome extension · Nov 2025</div>
     <h1 class="cs-hero-h1">I noticed a friction.<br>I built the fix.</h1>
-    <p class="cs-hero-desc">Built and shipped a LinkedIn Chrome Extension in 2 weeks, solo end-to-end. Built using AI-powered tools: Claude, Cursor, and Figma Make.</p>
-    <video class="cs-hero-video vid-zoom lazy-vid" aria-label="Draggit hero demo — draggable LinkedIn connect modal in action" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:36px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);" preload="none" data-src="assets/Draggit_web.mp4"></video>
+    <p class="cs-hero-desc">Built and shipped a LinkedIn Chrome extension in 2 weeks, solo end-to-end. Built with Claude, Cursor and Figma Make.</p>
+    <video class="cs-hero-video vid-zoom lazy-vid" aria-label="Draggit hero demo — draggable LinkedIn connect modal in action" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:36px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);" preload="none" data-src="assets/Draggit_web.mp4" poster="assets/posters/draggit-web.jpg"></video>
   </div>
 </div>
 
@@ -502,7 +506,7 @@ nav > * { pointer-events: auto; }
 
   <!-- OVERVIEW META -->
   <div class="cs-overview cs-reveal">
-    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">Product Designer &amp; Builder (Solo)</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">My role</div><div class="cs-ov-val">Product Designer &amp; Builder (Solo)</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Timeline</div><div class="cs-ov-val">2 weeks, Nov 2025</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Platform</div><div class="cs-ov-val">Chrome Extension (Web)</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Tools</div><div class="cs-ov-val">Figma, ChatGPT, Claude, Cursor, Figma Make</div></div>
@@ -512,31 +516,31 @@ nav > * { pointer-events: auto; }
   <!-- VISUAL PROCESS STRIP -->
   <div style="margin-bottom:80px;" class="cs-reveal reveal-d2">
     <div style="padding:36px 0 40px;border-bottom:1px solid var(--border);">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:24px;">How this went from frustration to live product</div>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-bottom:24px;">How this went from frustration to live product</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;">
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
-          <div style="margin-bottom:10px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/></svg></div>
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Spot Friction</div>
-          <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">Personal frustration, modal hides name while I'm writing a note</div>
+        <div style="padding:24px 20px;text-align:center;border-right:1px solid var(--border);">
+          <div style="margin-bottom:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+          <div style="font-size:13px;font-weight: 600;color:var(--ink);margin-bottom:8px;">Spot Friction</div>
+          <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">Personal frustration, modal hides name while I’m writing a note</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
-          <div style="margin-bottom:10px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 3.944a.75.75 0 0 1-1.248 0l-2.755-3.944a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z"/></svg></div>
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Validate</div>
+        <div style="padding:24px 20px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
+          <div style="margin-bottom:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
+          <div style="font-size:13px;font-weight: 600;color:var(--ink);margin-bottom:8px;">Validate</div>
           <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">LinkedIn community post, 5+ people confirm same frustration</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);">
-          <div style="margin-bottom:10px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z"/></svg></div>
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Design</div>
+        <div style="padding:24px 20px;text-align:center;border-right:1px solid var(--border);">
+          <div style="margin-bottom:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
+          <div style="font-size:13px;font-weight: 600;color:var(--ink);margin-bottom:8px;">Design</div>
           <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">6 options explored in Figma, drag handle chosen for zero learning curve</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
-          <div style="margin-bottom:10px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"/></svg></div>
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;">Build with AI</div>
+        <div style="padding:24px 20px;text-align:center;border-right:1px solid var(--border);background:var(--white);">
+          <div style="margin-bottom:12px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"/></svg></div>
+          <div style="font-size:13px;font-weight: 600;color:var(--ink);margin-bottom:8px;">Build with AI</div>
           <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">PRD → Cursor → Figma Make. I directed, AI executed</div>
         </div>
-        <div style="padding:22px 18px;text-align:center;background:var(--green-bg);">
-          <div style="margin-bottom:10px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path d="M3.478 2.405a.75.75 0 0 0-.926.94l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.405Z"/></svg></div>
-          <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px;">Ship</div>
+        <div style="padding:24px 20px;text-align:center;background:var(--green-bg);">
+          <div style="margin-bottom:12px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path d="M3.478 2.405a.75.75 0 0 0-.926.94l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.405Z"/></svg></div>
+          <div style="font-size:13px;font-weight: 600;color:var(--green);margin-bottom:8px;">Ship</div>
           <div style="font-size:12px;color:rgba(12,12,12,0.65);line-height:1.5;">Rejected once, debugged permissions, resubmitted as Draggit. Live.</div>
         </div>
       </div>
@@ -549,37 +553,37 @@ nav > * { pointer-events: auto; }
     <h2 class="cs-sec-title" style="font-size:clamp(28px,3.5vw,44px);margin-bottom:32px;">The modal that blocked your context.</h2>
     <div class="sec-split">
       <div class="sec-split-left">
-        <p class="sec-split-body">LinkedIn's "Add Note" modal opens directly on top of the person's profile, hiding their name, title, and company at the exact moment you need it to write something personal. So you close the modal, re-read the profile, reopen the modal, try to hold the details in working memory, and start writing. Every time. For every connection.</p>
-        <p class="sec-split-body">A small friction, but one that compounds fast when you're actively networking. And for a platform built around meaningful connection, it was a surprisingly avoidable problem.</p>
+        <p class="sec-split-body">LinkedIn’s “Add Note” modal opens directly on top of the person’s profile, hiding their name, title, and company at the exact moment you need it to write something personal. So you close the modal, re-read the profile, reopen the modal, try to hold the details in working memory, and start writing. Every time. For every connection.</p>
+        <p class="sec-split-body">A small friction, but one that compounds fast when you’re actively networking. And for a platform built around meaningful connection, it was a surprisingly avoidable problem.</p>
       </div>
       <div class="sec-split-right">
         <figure style="margin:0;">
-          <img src="assets/Draggit Case Study/The problem modal covering profile info.png" alt="The LinkedIn Add Note modal covering the profile" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.12);border:1px solid var(--border);">
-          <figcaption class="img-caption">LinkedIn's "Add Note" modal blocking the profile info you need to write the message</figcaption>
+          <img src="assets/Draggit Case Study/The problem modal covering profile info.png" alt="The LinkedIn Add Note modal covering the profile" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.12);border:1px solid var(--border);" width="1348" height="766" loading="lazy" decoding="async">
+          <figcaption class="img-caption">LinkedIn’s “Add Note” modal blocking the profile info you need to write the message</figcaption>
         </figure>
       </div>
     </div>
 
     <!-- Validated callout -->
     <div style="margin-top:36px;background:#EEF2FF;border:1px solid rgba(37,99,235,.15);border-radius:20px;padding:32px 36px 28px;">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:8px;">Validated Fast · LinkedIn Community Post</div>
-      <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(22px, 2.73vw, 31px);letter-spacing: 0;line-height:1.1;color:var(--ink);margin-bottom:14px;">5+ responses within hours.</div>
+      <div style="font-size:11px;font-weight:600;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:8px;">Validated fast · LinkedIn community post</div>
+      <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:clamp(22px, 2.73vw, 31px);letter-spacing: 0;line-height:1.1;color:var(--ink);margin-bottom:16px;">5+ responses within hours.</div>
       <p style="font-size:14px;color:rgba(12,12,12,0.62);line-height:1.7;margin:0 0 28px;">I posted about the friction on LinkedIn. Product designers and engineers replied within hours confirming the same pain. That was the signal I needed to move forward.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
-        <div style="background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+        <div style="background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
           <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;">Soumyarup Lahiri</div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:12px;">Engineer at Apple</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">"This is something I deal with every single day."</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">“This is something I deal with every single day.”</p>
         </div>
-        <div style="background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+        <div style="background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
           <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;">Prarabdh G.</div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:12px;">MS ECE · Carnegie Mellon</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">"Pretty cool solution. I would even like it."</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">“Pretty cool solution. I would even like it.”</p>
         </div>
-        <div style="background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+        <div style="background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
           <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;">Akanksha Murmure</div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:12px;">Sr Product Designer</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">"So relatable! Love the speed of your brainstorming."</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.6;margin:0;">“So relatable! Love the speed of your brainstorming.”</p>
         </div>
       </div>
     </div>
@@ -587,24 +591,24 @@ nav > * { pointer-events: auto; }
 
   <!-- GOAL -->
   <div class="cs-section cs-reveal" style="margin-top:80px;">
-    <div class="cs-sec-label">The Goal</div>
-    <h2 class="cs-sec-title" style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(28px, 3.9vw, 44px);text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:32px;">Find a fix that anyone could use.</h2>
+    <div class="cs-sec-label">The goal</div>
+    <h2 class="cs-sec-title" style="font-family:'Lato',sans-serif;font-weight: 600;font-size:clamp(28px, 3.9vw, 44px);text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:32px;">Find a fix that anyone could use.</h2>
 
     <!-- Single blue-tinted card -->
     <div style="background:var(--green-bg);border:1px solid rgba(37,99,235,0.15);border-radius:20px;padding:36px 40px;">
       <!-- Goal label + statement -->
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:16px;">Goal</div>
-      <p style="font-size:clamp(18px,2.2vw,22px);font-weight:600;color:var(--ink);line-height:1.5;margin:0 0 36px;">Fix the UX friction on LinkedIn's "Add Note" modal and ship a solution anyone could use publicly, not just a personal workaround.</p>
+      <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:16px;">Goal</div>
+      <p style="font-size:clamp(18px,2.2vw,22px);font-weight:600;color:var(--ink);line-height:1.5;margin:0 0 36px;">Fix the UX friction on LinkedIn’s “Add Note” modal and ship a solution anyone could use publicly, not just a personal workaround.</p>
       <!-- Divider -->
       <div style="height:1px;background:rgba(37,99,235,0.15);margin-bottom:32px;"></div>
       <!-- Two columns -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
         <div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:12px;">The Friction</div>
-          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">LinkedIn's modal covers the person's profile at the exact moment you need to read it to write something personal.</p>
+          <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:12px;">The friction</div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">LinkedIn’s modal covers the person’s profile at the exact moment you need to read it to write something personal.</p>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:12px;">The Constraint</div>
+          <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:12px;">The constraint</div>
           <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Lightweight, Chrome-compatible, no personal data parsed or recorded, and simple enough to ship publicly on the Chrome Web Store.</p>
         </div>
       </div>
@@ -613,17 +617,17 @@ nav > * { pointer-events: auto; }
 
   <!-- 02 DESIGN PROCESS -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">02</span> Design Process</div>
+    <div class="cs-sec-label"><span class="n">02</span> Design process</div>
     <h2 class="cs-sec-title">Two decisions. Both tested.</h2>
 
     <div class="sec-split" style="margin-bottom:32px;align-items:start;">
       <div class="sec-split-left">
-        <p class="sec-split-body">I started by sketching on paper, not Figma. Six approaches for the same constraint: how do you expose profile context without creating a new interaction pattern? Each one tested against three questions: does it feel native? Does it break LinkedIn's layout? Can it be built safely without reading personal data?</p>
+        <p class="sec-split-body">I started by sketching on paper, not Figma. Six approaches for the same constraint: how do you expose profile context without creating a new interaction pattern? Each one tested against three questions: does it feel native? Does it break LinkedIn’s layout? Can it be built safely without reading personal data?</p>
         <p class="sec-split-body">One concept cleared all three. Then the icon needed two tries.</p>
       </div>
       <div class="sec-split-right">
         <figure style="margin:0;">
-          <img src="assets/Draggit Case Study/Figma Explorationsolution iterations.png" alt="Hand-drawn UI iterations" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);">
+          <img src="assets/Draggit Case Study/Figma Explorationsolution iterations.png" alt="Hand-drawn UI iterations" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);" width="1594" height="822" loading="lazy" decoding="async">
           <figcaption class="img-caption">Hand-drawn explorations across 6 UI approaches before picking up Figma</figcaption>
         </figure>
       </div>
@@ -631,22 +635,22 @@ nav > * { pointer-events: auto; }
 
     <!-- Why drag handle -->
     <div style="margin-top:36px;">
-      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:16px;">Why the final concept was selected for the build</p>
+      <p style="font-size:13px;font-weight:500;color:var(--muted);margin-bottom:16px;">Why the final concept was selected for the build</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
-        <div style="background:#EEF2FF;border-radius:16px;padding:24px 22px;">
-          <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
+        <div style="background:#EEF2FF;border-radius:16px;padding:24px 24px;">
+          <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Lightweight and technically feasible</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">A drag handle requires minimal DOM injection, no scraping, no new UI surface. One element. That's it.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">A drag handle requires minimal DOM injection, no scraping, no new UI surface. One element. That’s it.</p>
         </div>
-        <div style="background:#EEF2FF;border-radius:16px;padding:24px 22px;">
-          <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"/></svg></div>
+        <div style="background:#EEF2FF;border-radius:16px;padding:24px 24px;">
+          <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"/></svg></div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Simplest to build with AI</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">Less complex logic meant Cursor could generate cleaner, more reliable code. Simpler to describe in a PRD, fewer edge cases to get wrong.</p>
         </div>
-        <div style="background:#EEF2FF;border-radius:16px;padding:24px 22px;">
-          <div style="margin-bottom:14px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.705-3.079Z"/></svg></div>
+        <div style="background:#EEF2FF;border-radius:16px;padding:24px 24px;">
+          <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.705-3.079Z"/></svg></div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;">Zero personal data involved</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">Critical: the extension doesn't parse or record any personal data from the person receiving the connection request. Privacy-safe by design.</p>
+          <p style="font-size:13px;color:rgba(12,12,12,0.62);line-height:1.6;margin:0;">Critical: the extension doesn’t parse or record any personal data from the person receiving the connection request. Privacy-safe by design.</p>
         </div>
       </div>
     </div>
@@ -655,13 +659,13 @@ nav > * { pointer-events: auto; }
     <div style="margin-top:36px;">
       <div class="icon-iter-row" style="display:flex;gap:24px;align-items:flex-start;">
         <figure style="margin:0;flex:0 0 340px;max-width:340px;">
-          <img src="assets/Icon Ideation.png" alt="Icon iteration explorations for Draggit" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
-          <p class="img-caption" style="margin-top:10px;">Icon ideation sketches, exploring drag metaphors before landing on the 6-dot grip</p>
+          <img src="assets/Icon Ideation.png" alt="Icon iteration explorations for Draggit" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);" width="1016" height="1556" loading="lazy" decoding="async">
+          <p class="img-caption" style="margin-top:12px;">Icon ideation sketches, exploring drag metaphors before landing on the 6-dot grip</p>
         </figure>
         <div style="flex:1;padding-top:8px;">
-          <div style="background:rgba(37,99,235,0.08);border-radius:16px;padding:20px 22px;">
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#2563EB;margin-bottom:12px;">Informal Test</div>
-            <p style="font-size:16px;color:var(--ink);line-height:1.7;margin:0;">Showed two icon options to two friends. Both picked the 6 dots. Both guessed "drag" without prompting.</p>
+          <div style="background:rgba(37,99,235,0.08);border-radius:16px;padding:20px 24px;">
+            <div style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#2563EB;margin-bottom:12px;">Informal test</div>
+            <p style="font-size:16px;color:var(--ink);line-height:1.7;margin:0;">Showed two icon options to two friends. Both picked the 6 dots. Both guessed “drag” without prompting.</p>
           </div>
         </div>
       </div>
@@ -670,45 +674,45 @@ nav > * { pointer-events: auto; }
 
   <!-- 03 BUILD PROCESS -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">03</span> Build Process</div>
+    <div class="cs-sec-label"><span class="n">03</span> Build process</div>
     <h2 class="cs-sec-title">Vibecoded with AI tools.</h2>
-    <p class="cs-body">I didn't just prompt-and-paste. I treated AI as a specialized collaborator on each phase of the build, with a different tool playing a different role. The design and product decisions stayed mine throughout.</p>
+    <p class="cs-body">I didn’t just prompt-and-paste. I treated AI as a specialized collaborator on each phase of the build, with a different tool playing a different role. The design and product decisions stayed mine throughout.</p>
 
     <!-- AI vertical timeline -->
     <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
         <div style="width:48px;height:48px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
-          <img src="assets/Chat GPT logo.jpg" alt="ChatGPT" style="width:100%;height:100%;object-fit:cover;">
+          <img src="assets/Chat GPT logo.jpg" alt="ChatGPT" style="width:100%;height:100%;object-fit:cover;" width="980" height="980" loading="lazy" decoding="async">
         </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">ChatGPT: Feasibility Check</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Before writing code, used ChatGPT to evaluate the technical feasibility of each solution option. Key question: <em>what can a Chrome extension actually do to LinkedIn's DOM?</em> Confirmed injecting a drag handle via content script was viable.</p>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 24px;">
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:8px;">ChatGPT: feasibility check</div>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Before writing code, used ChatGPT to evaluate the technical feasibility of each solution option. Key question: <em>what can a Chrome extension actually do to LinkedIn’s DOM?</em> Confirmed injecting a drag handle via content script was viable.</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
         <div style="width:48px;height:48px;border-radius:50%;background:#CC5B2B;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
-          <img src="assets/claude_logo.jpeg" alt="Claude" style="width:100%;height:100%;object-fit:cover;">
+          <img src="assets/claude_logo.jpeg" alt="Claude" style="width:100%;height:100%;object-fit:cover;" width="200" height="200" loading="lazy" decoding="async">
         </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">Claude: Built the PRD</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 24px;">
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:8px;">Claude: built the PRD</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Wrote the full PRD, translating interaction specs, edge cases, and design decisions into structured engineering requirements. Having a PRD meant Cursor had clear context and constraints, not just vibes.</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
         <div style="width:48px;height:48px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
-          <img src="assets/Cursor_logo.png" alt="Cursor" style="width:100%;height:100%;object-fit:cover;">
+          <img src="assets/Cursor_logo.png" alt="Cursor" style="width:100%;height:100%;object-fit:cover;" width="1024" height="1024" loading="lazy" decoding="async">
         </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">Cursor: Built the Product</div>
-          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Built the Chrome extension: manifest, content script, drag logic, position memory. I directed the build, reviewed every output, debugged failures, and iterated when LinkedIn's dynamic DOM caused issues. Cursor wrote code; I owned the product.</p>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 24px;">
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:8px;">Cursor: built the product</div>
+          <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Built the Chrome extension: manifest, content script, drag logic, position memory. I directed the build, reviewed every output, debugged failures, and iterated when LinkedIn’s dynamic DOM caused issues. Cursor wrote code; I owned the product.</p>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;">
         <div style="width:48px;height:48px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
-          <img src="assets/Figma Make Logo.png" alt="Figma Make" style="width:72%;height:72%;object-fit:contain;">
+          <img src="assets/Figma Make Logo.png" alt="Figma Make" style="width:72%;height:72%;object-fit:contain;" width="278" height="284" loading="lazy" decoding="async">
         </div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:6px;">Figma Make: Iterated the Icon</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 24px;">
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:8px;">Figma Make: iterated the icon</div>
           <p style="font-size:13px;color:rgba(12,12,12,0.65);line-height:1.65;margin:0;">Rapidly explored UI variations of the drag handle and icon: color, size, shape, hover states without touching code each time. Landed on the 6-dot grid that tested best with real users.</p>
         </div>
       </div>
@@ -717,26 +721,26 @@ nav > * { pointer-events: auto; }
 
   <!-- THE PRODUCT -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">04</span> The Product</div>
+    <div class="cs-sec-label"><span class="n">04</span> The product</div>
     <h2 class="cs-sec-title">One drag. Full context restored.</h2>
     <p class="cs-body" style="font-size:15px;font-weight:500;letter-spacing:.01em;">The Product: Connect with Convenience</p>
 
-    <video aria-label="Draggit prototype walkthrough video" loop muted playsinline class="vid-zoom lazy-vid" style="width:72%;border-radius:20px;display:block;margin:32px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);" preload="none" data-src="assets/Draggit_web.mp4"></video>
+    <video aria-label="Draggit prototype walkthrough video" loop muted playsinline class="vid-zoom lazy-vid" style="width:72%;border-radius:20px;display:block;margin:32px auto;box-shadow:0 24px 64px rgba(0,0,0,.18);" preload="none" data-src="assets/Draggit_web.mp4" poster="assets/posters/draggit-web.jpg"></video>
 
     <div class="product-features" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
-      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
-        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:14px;opacity:0;">✓</div>
-        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">Drag the modal</div>
+      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 24px;background:var(--white);">
+        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:16px;opacity:0;">✓</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Drag the modal</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Move it to clearly see the hidden profile information: name, title, company, while you write.</p>
       </div>
-      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
-        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:14px;opacity:0;">✓</div>
-        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">No more close-and-reopen</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Reference the profile while you're writing. No need to close the modal, re-read, and reopen just to double-check a spelling.</p>
+      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 24px;background:var(--white);">
+        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:16px;opacity:0;">✓</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">No more close-and-reopen</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Reference the profile while you’re writing. No need to close the modal, re-read, and reopen just to double-check a spelling.</p>
       </div>
-      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 22px;background:var(--white);">
-        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:14px;opacity:0;">✓</div>
-        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">More confident networking</div>
+      <div style="border:1px solid var(--border);border-radius:14px;padding:20px 24px;background:var(--white);">
+        <div class="check-icon" style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;margin-bottom:16px;opacity:0;">✓</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">More confident networking</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Write a personalised note knowing you have the full context in front of you. Fewer generic notes. More genuine first impressions.</p>
       </div>
     </div>
@@ -747,18 +751,18 @@ nav > * { pointer-events: auto; }
     <div class="cs-sec-label"><span class="n">05</span> Challenges</div>
     <h2 class="cs-sec-title">Rejected by Chrome. Debugged. Resubmitted.</h2>
 
-    <p class="cs-body" style="margin-top:24px;margin-bottom:32px;">After submitting, I received a rejection email. I was gutted, I'd put real work into this. But I decided to sit with it, read through the manifest carefully, understand exactly why Chrome had flagged it, and fix it properly. I'd gotten this far. I wasn't stopping at the finish line.</p>
+    <p class="cs-body" style="margin-top:24px;margin-bottom:32px;">After submitting, I received a rejection email. I was gutted, I’d put real work into this. But I decided to sit with it, read through the manifest carefully, understand exactly why Chrome had flagged it, and fix it properly. I’d gotten this far. I wasn’t stopping at the finish line.</p>
 
     <div class="ba-row">
       <div class="ba-card ba-red">
-        <div class="ba-label">❌ Submission 1: Rejected</div>
+        <div class="ba-label"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#C2413A;margin-right:8px;vertical-align:1px;" aria-hidden="true"></span>Submission 1: rejected</div>
         <div class="ba-title">ConnectRight</div>
         <p class="ba-text">Overly broad manifest permission flagged by Chrome. No appeal. Fix and resubmit.</p>
       </div>
       <div class="ba-arrow">→</div>
       <div class="ba-card ba-green" id="draggit-approved-v2" style="position:relative;overflow:hidden;">
         <canvas id="confetti-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
-        <div class="ba-label">✅ Submission 2: Approved</div>
+        <div class="ba-label"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#1A8F4A;margin-right:8px;vertical-align:1px;" aria-hidden="true"></span>Submission 2: approved</div>
         <div class="ba-title">Draggit</div>
         <p class="ba-text">Scoped permission to minimum needed. Rewrote manifest fields. Approved within 72 hours.</p>
       </div>
@@ -772,27 +776,27 @@ nav > * { pointer-events: auto; }
     <p class="cs-body" style="margin-bottom:32px;">From a personal frustration to a live product with real users, the goal of fixing the friction and shipping it publicly was fully realised.</p>
     <div class="impact-row" style="grid-template-columns:repeat(3,1fr);">
       <div class="impact-card"><div class="impact-n in-g">✓</div><div class="impact-l">Live on Chrome Web Store</div></div>
-      <div class="impact-card"><div class="impact-n in-g">20+</div><div class="impact-l">Active Users</div></div>
-      <div class="impact-card"><div class="impact-n">5★</div><div class="impact-l">Chrome Store Rating</div></div>
+      <div class="impact-card"><div class="impact-n in-g">20+</div><div class="impact-l">Active users</div></div>
+      <div class="impact-card"><div class="impact-n">5★</div><div class="impact-l">Chrome Store rating</div></div>
     </div>
   </div>
 
   <!-- 07 REFLECTION -->
   <div class="cs-section cs-reveal">
     <div class="cs-sec-label"><span class="n">07</span> Reflection</div>
-    <h2 class="cs-sec-title" style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(28px, 3.9vw, 44px);text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:32px;">What I took away.</h2>
+    <h2 class="cs-sec-title" style="font-family:'Lato',sans-serif;font-weight: 600;font-size:clamp(28px, 3.9vw, 44px);text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:32px;">What I took away.</h2>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
       <!-- Card 1 -->
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
-        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Build fast. Fail fast. Learn faster.</div>
-        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Simply animating a concept in Figma gave me everything I needed: validation that the pain was real, and early feedback on what features people actually wanted. I didn't need a polished prototype, a rough animation was enough to get signal.</p>
+        <div style="font-size:16px;font-weight: 600;color:var(--ink);margin-bottom:12px;">Build fast. Fail fast. Learn faster.</div>
+        <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Simply animating a concept in Figma gave me everything I needed: validation that the pain was real, and early feedback on what features people actually wanted. I didn’t need a polished prototype, a rough animation was enough to get signal.</p>
       </div>
       <!-- Card 2 -->
       <div style="background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;">
         <div style="margin-bottom:20px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2563EB" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"/></svg></div>
-        <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;">Rejection is a debugging task.</div>
+        <div style="font-size:16px;font-weight: 600;color:var(--ink);margin-bottom:12px;">Rejection is a debugging task.</div>
         <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">The Chrome Store rejection forced me to understand the permission model properly. Highest-value moment of the whole build.</p>
       </div>
     </div>
@@ -804,7 +808,7 @@ nav > * { pointer-events: auto; }
       <h3 class="cs-footer-title">Try Draggit yourself.</h3>
       <p class="cs-footer-sub">Live on the Chrome Web Store · Free · No account needed · Works immediately</p>
       <div class="cs-footer-btns">
-        <a href="https://chromewebstore.google.com/detail/camjmipgnifjhidhbjpabpniojioeojf?utm_source=item-share-cb" target="_blank" class="fb-primary">↗ Open on Chrome Web Store</a>
+        <a href="https://chromewebstore.google.com/detail/camjmipgnifjhidhbjpabpniojioeojf?utm_source=item-share-cb" target="_blank" class="fb-primary" rel="noopener noreferrer">↗ Open on Chrome Web Store</a>
         <a href="mailto:rheamittal0401@gmail.com" class="fb-ghost"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.5 8.67v8.58A3.09 3.09 0 0 0 4.62 20.25h14.76a3.09 3.09 0 0 0 3.12-3V8.67l-8.29 5.493a1.5 1.5 0 0 1-1.62 0L1.5 8.67Z"/><path d="M21 6.257V6a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v.257l9 5.985 9-5.985Z"/></svg> Say hello to Rhea</a>
       </div>
     </div>
@@ -813,20 +817,20 @@ nav > * { pointer-events: auto; }
   <!-- VIEW MORE PROJECTS -->
   <div style="padding:48px 0;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
-      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 16px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+      <a href="cliqueprize.html" style="display:block;text-decoration:none;color:inherit;background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#C4566A;margin-bottom:12px;">B2B SaaS platform</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
-      </div>
-      <div onclick="window.location='opsiq.html'" style="background:rgba(59,111,212,.06);border:1px solid rgba(59,111,212,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(59,111,212,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,111,212,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#7EB8FF;margin-bottom:12px;">AI Dashboard [NDA]</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">OpsIQ</div>
-        <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses had the data. They couldn't use it. We built the tool that changes that.</p>
-      </div>
+      </a>
+      <a href="opsiq.html" style="display:block;text-decoration:none;color:inherit;background:rgba(59,111,212,.06);border:1px solid rgba(59,111,212,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(59,111,212,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,111,212,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#7EB8FF;margin-bottom:12px;">AI dashboard [NDA]</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">OpsIQ</div>
+        <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses had the data. They couldn’t use it. We built the tool that changes that.</p>
+      </a>
     </div>
   </div>
 
@@ -965,12 +969,14 @@ if (productFeatures) {
 }
 </script>
 <footer class="footer-bar">
-  <span>© 2025 Rhea Mittal</span>
-  <span>Made with love and energy drinks ✨</span>
+  <span>© 2026 Rhea Mittal</span>
+  <span>Made with love and energy drinks</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
 
 <script src="scripts/lazy-vid.js"></script>
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>

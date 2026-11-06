@@ -4,23 +4,24 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>Work | Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="styles/design-system.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 
 /* ─── RESET & TOKENS (fallback if design-system.css delayed) ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
   --bg: #F5F4F0;
   --ink: #0C0C0C;
   --muted: rgba(12,12,12,0.62);
@@ -58,27 +59,27 @@ body {
 
 /* HEADER */
 .work-header { display:flex; align-items:center; border-bottom:1px solid var(--border); padding-bottom:20px; margin-bottom:20px; }
-.work-label { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-.work-display { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(34px, 4.68vw, 62px); letter-spacing: 0; line-height:.92; text-transform:uppercase; color:var(--ink); margin-bottom:16px; }
-.work-display em { color:var(--green); font-style:italic; font-weight:900; }
+.work-label { font-size:11px; font-weight:500; letter-spacing: 0.01em; text-transform: none; color:var(--muted); }
+.work-display { font-family:'Lato',sans-serif; font-weight: 600; font-size:clamp(34px, 4.68vw, 62px); letter-spacing: -0.02em; line-height:1.05; text-transform: none; color:var(--ink); margin-bottom:16px; }
+.work-display em { color:var(--green); font-style: normal; font-weight: 600; }
 .work-intro { font-family:'Open Sans',system-ui,sans-serif; font-size:15px; line-height:1.7; color:var(--muted); max-width:620px; margin:0 0 32px; }
 
 /* FILTER TABS */
 .work-tabs { display:flex; gap:8px; margin-bottom:32px; flex-wrap:wrap; align-items:center; }
-.work-tab { padding:8px 20px; border-radius:100px; font-size:13px; font-weight:500; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:background .2s,color .2s,border-color .2s; font-family:inherit; }
+.work-tab { padding:8px 16px; border-radius:10px; font-size:13px; font-weight:500; border:1px solid var(--border); background:transparent; color:var(--muted); cursor:pointer; transition:background .2s,color .2s,border-color .2s; font-family:inherit; }
 .work-tab:hover { border-color:rgba(0,0,0,.25); color:var(--ink); }
 .work-tab.active { background:var(--ink); color:var(--bg); border-color:var(--ink); }
 .work-ai-cta { display:none; align-items:center; justify-content:space-between; gap:24px; margin-top:48px; padding:28px 0 0; border-top:1px solid var(--border); text-decoration:none; color:var(--ink); transition:opacity .2s; }
 .work-ai-cta.is-visible { display:flex; }
 .work-ai-cta:hover { opacity:.72; }
 .work-ai-cta:hover .work-ai-cta-arrow { transform:translateX(4px); }
-.work-ai-cta-text { font-family:'Lato',sans-serif; font-weight:900; font-size:clamp(22px, 2.6vw, 34px); letter-spacing:0; line-height:1.15; text-transform:uppercase; }
-.work-ai-cta-arrow { font-size:clamp(22px, 2.6vw, 34px); font-weight:700; line-height:1; transition:transform .2s; flex-shrink:0; }
+.work-ai-cta-text { font-family:'Lato',sans-serif; font-weight: 600; font-size:clamp(22px, 2.6vw, 34px); letter-spacing:0; line-height:1.15; text-transform: none; }
+.work-ai-cta-arrow { font-size:clamp(22px, 2.6vw, 34px); font-weight: 600; line-height:1; transition:transform .2s; flex-shrink:0; }
 
 /* GRID */
 .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 .wk-card { background:#fff; border:1px solid rgba(0,0,0,.07); border-radius:20px; overflow:hidden; cursor:pointer; display:flex; flex-direction:column; transition:transform var(--card-duration) var(--card-ease),box-shadow var(--card-duration) var(--card-ease),border-color var(--card-duration) var(--card-ease); text-decoration:none; box-shadow:var(--card-shadow-rest); }
-.wk-card:hover { transform:translateY(-3px); box-shadow:var(--card-shadow-hover); border-color:rgba(0,0,0,.10); }
+.wk-card:hover { transform:translateY(-2px); box-shadow:var(--card-shadow-hover); border-color:rgba(0,0,0,.10); }
 .wk-card:active { transform:translateY(-1px); box-shadow:var(--card-shadow-active); transition-duration:.15s; }
 .wk-card.wk-hidden { display:none !important; }
 
@@ -86,19 +87,19 @@ body {
 .wk-visual { width:100%; aspect-ratio:16/9; overflow:hidden; position:relative; flex-shrink:0; }
 .wk-visual video, .wk-visual img { width:100%; height:100%; object-fit:cover; display:block; }
 .wk-visual-brand { width:100%; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; }
-.wk-brand-name { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(28px, 3.9vw, 50px); letter-spacing: 0; text-transform:uppercase; color:rgba(255,255,255,.95); position:relative; z-index:1; }
+.wk-brand-name { font-family:'Lato',sans-serif; font-weight: 600; font-size:clamp(28px, 3.9vw, 50px); letter-spacing: 0; text-transform: none; color:rgba(255,255,255,.95); position:relative; z-index:1; }
 .wk-visual-brand::after { content:none; }
 
 /* Card body */
 .wk-body { padding:32px 36px 36px; display:flex; flex-direction:column; flex:1; }
-.wk-tag { font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:14px; font-weight:500; color:var(--muted); }
-.wk-title { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(22px, 2.18vw, 31px); letter-spacing: 0; line-height:1.15; text-transform:uppercase; margin-bottom:12px; color:var(--ink); }
+.wk-tag { font-size:13px; text-transform: none; letter-spacing: 0; margin-bottom:16px; font-weight:500; color:var(--muted); }
+.wk-title { font-family:'Lato',sans-serif; font-weight: 600; font-size:clamp(22px, 2.18vw, 32px); letter-spacing: -0.01em; line-height:1.15; text-transform: none; margin-bottom:12px; color:var(--ink); }
 .wk-title em { font-style:normal; }
-.wk-desc { font-size:14px; line-height:1.8; color:var(--muted); flex:1; margin-bottom:22px; }
-.wk-metrics { display:flex; gap:24px; padding-top:18px; border-top:1px solid var(--border); margin-bottom:22px; }
-.wk-stat-n { font-family:'Lato',sans-serif; font-weight: 900; font-size:clamp(16px, 1.4vw, 20px); letter-spacing:1px; color:var(--ink); line-height:1; }
-.wk-stat-l { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-top:4px; }
-.wk-cta { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding:11px 24px; border-radius:100px; align-self:flex-start; transition:opacity .2s,transform .2s; text-decoration:none; }
+.wk-desc { font-size:14px; line-height:1.8; color:var(--muted); flex:1; margin-bottom:24px; }
+.wk-metrics { display:flex; gap:24px; padding-top:20px; border-top:1px solid var(--border); margin-bottom:24px; }
+.wk-stat-n { font-family:'Lato',sans-serif; font-weight: 600; font-size:clamp(16px, 1.4vw, 20px); letter-spacing:1px; color:var(--ink); line-height:1; }
+.wk-stat-l { font-size:11px; text-transform: none; letter-spacing: 0.01em; color:var(--muted); margin-top:4px; }
+.wk-cta { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding:12px 20px; border-radius:10px; align-self:flex-start; transition:opacity .2s,transform .2s; text-decoration:none; }
 .wk-cta:hover { opacity:.8; }
 
 /* Reveal */
@@ -111,18 +112,19 @@ body {
 @media(max-width:900px){
   .wk-title{font-size:clamp(22px,4vw,30px);}
   .wk-desc{font-size:13px;}
-  nav { padding:14px 24px; }
+  nav { padding:16px 24px; }
   .nav-pill { display:none; }
   .nav-cta { display:none; }
   .nav-burger { display:flex; }
   .page-wrap { padding:100px 24px 80px; }
   .work-grid { grid-template-columns:1fr; }
-  .work-footer { padding:20px 24px; flex-direction:column; gap:6px; text-align:center; }
+  .work-footer { padding:20px 24px; flex-direction:column; gap:8px; text-align:center; }
 }
 </style>
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <!-- ─── NAV ─── -->
@@ -142,20 +144,22 @@ body {
 </nav>
 
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">✕</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <div class="page-wrap">
 
   <div class="work-header">
-    <span class="work-label">All Work · 2021 to Present</span>
+    <span class="work-label">All work · 2021 to present</span>
   </div>
-  <h1 class="work-display">Designed &amp; <em>Shipped</em></h1>
+  <h1 class="work-display">Designed &amp; <em>shipped</em></h1>
   <p class="work-intro">This is my proudest work as a product designer. These projects showcase my skills in empathizing with users, creating, designing, and shipping products, then going back to test them with users.</p>
 
   <!-- Filter tabs -->
@@ -163,8 +167,8 @@ body {
     <button class="work-tab active" data-filter="all" role="tab" aria-selected="true">All <span style="opacity:.45;font-size:11px;margin-left:4px;">9</span></button>
     <button class="work-tab" data-filter="b2b" role="tab" aria-selected="false">B2B</button>
     <button class="work-tab" data-filter="b2c" role="tab" aria-selected="false">B2C</button>
-    <button class="work-tab" data-filter="ai" role="tab" aria-selected="false">AI powered products</button>
-    <button class="work-tab" data-filter="hardware" role="tab" aria-selected="false">Hardware &amp; Software</button>
+    <button class="work-tab" data-filter="ai" role="tab" aria-selected="false">AI products</button>
+    <button class="work-tab" data-filter="hardware" role="tab" aria-selected="false">Hardware &amp; software</button>
   </div>
 
   <!-- 2-col grid -->
@@ -174,38 +178,38 @@ body {
 
     <!-- SALESFORCE CAPSTONE -->
     <a class="wk-card reveal" data-cats="all b2b ai" href="salesforce.html" style="background:#fff;border:1px solid rgba(0,158,219,0.18);position:relative;">
-      <div class="glass-badge">🏅 People's Choice Award</div>
-      <div class="wk-visual-brand" style="background:linear-gradient(145deg,#D6EEFF 0%,#B3DAFF 100%);">
-        <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:120px;width:auto;display:block;position:relative;z-index:1;">
+      <div class="glass-badge">People’s Choice Award</div>
+      <div class="wk-visual-brand" style="background:#B3DAFF;">
+        <img src="assets/salesforce/logos/salesforce-logo.png" alt="Salesforce" style="height:120px;width:auto;display:block;position:relative;z-index:1;" width="1280" height="896" loading="lazy" decoding="async">
       </div>
       <div class="wk-body">
         <div class="wk-tag" style="color:#009EDB;">Capstone · IUI × Salesforce Trailhead</div>
-        <h2 class="wk-title" style="color:#111009;">Designing Adaptive Engagement<br><em style="color:#009EDB;">for Evolving Learner Needs</em></h2>
-        <p class="wk-desc" style="color:rgba(17,16,9,.55);">10-month capstone with Salesforce Trailhead redesigning engagement for power users who plateaued. Research-driven, AI-powered, end-to-end product design across 5 global regions.</p>
+        <h2 class="wk-title" style="color:#111009;">Designing adaptive engagement<br><em style="color:#009EDB;">for evolving learner needs</em></h2>
+        <p class="wk-desc" style="color:rgba(17,16,9,.55);">A 10-month capstone with Salesforce Trailhead, redesigning engagement for power users who had plateaued. Research across 5 global regions, two AI features, end to end.</p>
         <div class="wk-metrics" style="border-top-color:rgba(17,16,9,.1);">
-          <div><div class="wk-stat-n" style="color:#111009;">11</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Users Interviewed</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">11</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Users interviewed</div></div>
           <div><div class="wk-stat-n" style="color:#111009;">6/8</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Prefer Solve</div></div>
-          <div><div class="wk-stat-n" style="color:#111009;">5</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Person Team</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">5</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Person team</div></div>
         </div>
-        <span class="wk-cta" style="background:#009EDB;color:#fff;">Explore Case Study ↗</span>
+        <span class="wk-cta" style="background:#009EDB;color:#fff;">View case study →</span>
       </div>
     </a>
 
     <!-- DRAGGIT -->
     <a class="wk-card reveal" data-cats="all b2c ai" href="draggit.html" style="background:#fff;border:1px solid rgba(37,99,235,0.15);">
       <div class="wk-visual">
-        <video aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Draggit_web.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="Draggit Chrome extension demo — draggable LinkedIn connect modal" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Draggit_web.mp4" style="width:100%;height:100%;object-fit:cover;" poster="assets/posters/draggit-web.jpg"></video>
       </div>
       <div class="wk-body">
-        <div class="wk-tag" style="color:#2563EB;">LinkedIn Chrome Extension · Built &amp; Shipped</div>
+        <div class="wk-tag" style="color:#2563EB;">LinkedIn Chrome extension · Built &amp; shipped</div>
         <h2 class="wk-title" style="color:#111009;">I noticed a friction.<br><em style="color:#2563EB;">I built the fix.</em></h2>
-        <p class="wk-desc" style="color:rgba(17,16,9,.55);">A Chrome extension that fixes LinkedIn's "Add Note" modal by making it draggable. Designed, built, and shipped solo in 2 weeks.</p>
+        <p class="wk-desc" style="color:rgba(17,16,9,.55);">LinkedIn’s connect modal covers the profile you’re writing to. I built a Chrome extension that makes it draggable, solo and end to end.</p>
         <div class="wk-metrics" style="border-top-color:rgba(17,16,9,.1);">
-          <div><div class="wk-stat-n" style="color:#111009;">20+</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Active Users</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">20+</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Active users</div></div>
           <div><div class="wk-stat-n" style="color:#111009;">5★</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Chrome Store</div></div>
-          <div><div class="wk-stat-n" style="color:#111009;">Solo</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">End-to-End</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">Solo</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">End to end</div></div>
         </div>
-        <span class="wk-cta" style="background:#2563EB;color:#fff;">Explore Case Study ↗</span>
+        <span class="wk-cta" style="background:#2563EB;color:#fff;">View case study →</span>
       </div>
     </a>
 
@@ -215,15 +219,15 @@ body {
         <video aria-label="CliquePrize landing page walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" poster="assets/CliquePrize/Original Landing Page.png" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="wk-body">
-        <div class="wk-tag" style="color:#7D1A2E;">B2B SaaS Platform · Live in Production</div>
+        <div class="wk-tag" style="color:#7D1A2E;">B2B SaaS platform · Live in production</div>
         <h2 class="wk-title" style="color:#111009;">Rewrote the pitch.<br><em style="color:#7D1A2E;">Rebuilt the page.</em></h2>
-        <p class="wk-desc" style="color:rgba(17,16,9,.55);">CliquePrize wasn't connecting with their target users. We rebuilt the landing page's IA and UX writing around 4 core questions every SMB owner actually asks.</p>
+        <p class="wk-desc" style="color:rgba(17,16,9,.55);">CliquePrize wasn’t connecting with their target users. We rebuilt the landing page’s IA and UX writing around 4 core questions every SMB owner actually asks.</p>
         <div class="wk-metrics" style="border-top-color:rgba(17,16,9,.1);">
-          <div><div class="wk-stat-n" style="color:#111009;">24%</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">CTR Lift</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">24%</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">CTR lift</div></div>
           <div><div class="wk-stat-n" style="color:#111009;">15+</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Components</div></div>
-          <div><div class="wk-stat-n" style="color:#111009;">60%</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Faster Handoff</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">60%</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Faster handoff</div></div>
         </div>
-        <span class="wk-cta" style="background:#7D1A2E;color:#fff;">Explore Case Study ↗</span>
+        <span class="wk-cta" style="background:#7D1A2E;color:#fff;">View case study →</span>
       </div>
     </a>
 
@@ -232,36 +236,35 @@ body {
     <!-- OPSIQ -->
     <a class="wk-card reveal" data-cats="all b2b ai" href="opsiq.html" style="background:#fff;border:1px solid rgba(26,29,179,0.15);">
       <div class="wk-visual">
-        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="OpsIQ AI dashboard walkthrough video" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4" style="width:100%;height:100%;object-fit:cover;" poster="assets/posters/opsiq-dashboard-walkthrough-hero.jpg"></video>
       </div>
       <div class="wk-body">
-        <div class="wk-tag" style="color:#1A1DB3;">AI Dashboard [NDA] · Client Project</div>
-        <h2 class="wk-title" style="color:#111009;">Small businesses had the data.<br><em style="color:#3B6FD4;">They couldn't use it.</em></h2>
-        <p class="wk-desc" style="color:rgba(17,16,9,.55);">AI-powered ops dashboard turning fragmented SMB data into one clear view and one next move. Research-led, systems-built.</p>
+        <div class="wk-tag" style="color:#1A1DB3;">AI dashboard [NDA] · Client project</div>
+        <h2 class="wk-title" style="color:#111009;">Small businesses had the data.<br><em style="color:#3B6FD4;">They couldn’t use it.</em></h2>
+        <p class="wk-desc" style="color:rgba(17,16,9,.55);">We built a dashboard that turns scattered small business data into one clear next move.</p>
         <div class="wk-metrics" style="border-top-color:rgba(17,16,9,.1);">
-          <div><div class="wk-stat-n" style="color:#111009;">4</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Person Team</div></div>
+          <div><div class="wk-stat-n" style="color:#111009;">4</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Person team</div></div>
           <div><div class="wk-stat-n" style="color:#111009;">15+</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Screens</div></div>
-          <div><div class="wk-stat-n" style="color:#111009;">AI</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Powered</div></div>
         </div>
-        <span class="wk-cta" style="background:#1A1DB3;color:#fff;">Explore Case Study ↗</span>
+        <span class="wk-cta" style="background:#1A1DB3;color:#fff;">View case study →</span>
       </div>
     </a>
 
     <!-- FREETOWN VILLAGE -->
     <a class="wk-card reveal" data-cats="all b2c" href="freetown-village.html" style="background:#fff;border:1px solid rgba(139,58,26,0.15);">
       <div class="wk-visual">
-        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Freetown village/Landing Page_hero.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video aria-label="Freetown Village platform landing page walkthrough" loop muted playsinline preload="none" class="wk-vid lazy-vid" data-src="assets/Freetown village/Landing Page_hero.mp4" style="width:100%;height:100%;object-fit:cover;" poster="assets/posters/landing-page-hero.jpg"></video>
       </div>
       <div class="wk-body">
-        <div class="wk-tag" style="color:#8B3A1A;">UX Research · Visual Design</div>
+        <div class="wk-tag" style="color:#8B3A1A;">UX research · Visual design</div>
         <h2 class="wk-title">A 40-year museum, <em style="color:#D4845A;">invisible to Gen Z.</em></h2>
         <p class="wk-desc">Led research and prototype for a platform helping young Black Americans find cultural grounding through interactive storytelling.</p>
         <div class="wk-metrics">
           <div><div class="wk-stat-n">92%</div><div class="wk-stat-l">Recommend</div></div>
-          <div><div class="wk-stat-n">3</div><div class="wk-stat-l">Core Features</div></div>
+          <div><div class="wk-stat-n">3</div><div class="wk-stat-l">Core features</div></div>
           <div><div class="wk-stat-n">2025</div><div class="wk-stat-l">Project</div></div>
         </div>
-        <span class="wk-cta" style="background:#D4845A;color:#fff;">Explore Case Study ↗</span>
+        <span class="wk-cta" style="background:#D4845A;color:#fff;">View case study →</span>
       </div>
     </a>
 
@@ -269,37 +272,37 @@ body {
 
     <!-- HAVELLS -->
     <a class="wk-card reveal" data-cats="all b2c hardware" href="havells.html">
-      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#6B0008 0%,#BA151B 100%);">
-        <img src="assets/Havells Logo.png" alt="Havells" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;">
+      <div class="wk-visual-brand" style="background:#BA151B;">
+        <img src="assets/Havells Logo.png" alt="Havells" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;" width="351" height="240" loading="lazy" decoding="async">
       </div>
       <div class="wk-body">
-        <div class="wk-tag">User Research · Industrial Design</div>
+        <div class="wk-tag">User research · Industrial design</div>
         <h2 class="wk-title">I spent a semester in Indian kitchens. <em style="color:#BA151B;">Then redesigned the fan.</em></h2>
-        <p class="wk-desc">50+ field studies across 8 states, 150+ concepts iterated, and 2 prototypes accepted by Havells' CXD team for further development.</p>
+        <p class="wk-desc">50+ field studies across 8 states, 150+ concepts iterated, and 2 prototypes accepted by Havells’ CXD team for further development.</p>
         <div class="wk-metrics">
-          <div><div class="wk-stat-n">50+</div><div class="wk-stat-l">Field Studies</div></div>
+          <div><div class="wk-stat-n">50+</div><div class="wk-stat-l">Field studies</div></div>
           <div><div class="wk-stat-n">150+</div><div class="wk-stat-l">Concepts</div></div>
           <div><div class="wk-stat-n">2/10+</div><div class="wk-stat-l">Accepted</div></div>
         </div>
-        <span class="wk-cta" style="background:#BA151B;color:#fff;">View Case Study ↗</span>
+        <span class="wk-cta" style="background:#BA151B;color:#fff;">View case study →</span>
       </div>
     </a>
 
     <!-- ACCENTURE -->
     <a class="wk-card reveal" data-cats="all b2c hardware" href="accenture.html">
-      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#2E0050 0%,#7B2FBE 100%);">
-        <img src="assets/accenture.png" alt="Accenture" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;">
+      <div class="wk-visual-brand" style="background:#7B2FBE;">
+        <img src="assets/accenture.png" alt="Accenture" style="max-width:52%;max-height:40%;object-fit:contain;position:relative;z-index:1;" width="2000" height="527" loading="lazy" decoding="async">
       </div>
       <div class="wk-body">
-        <div class="wk-tag">Industrial Design · Urban Mobility</div>
-        <h2 class="wk-title">I designed for a mobility future <em style="color:#7B2FBE;">that didn't exist yet.</em></h2>
+        <div class="wk-tag">Industrial design · Urban mobility</div>
+        <h2 class="wk-title">I designed for a mobility future <em style="color:#7B2FBE;">that didn’t exist yet.</em></h2>
         <p class="wk-desc">Accenture-partnered brief at BESIGN: 50+ interviews, 25+ AI-assisted concepts, shortlisted in top 10 from the cohort.</p>
         <div class="wk-metrics">
           <div><div class="wk-stat-n">50+</div><div class="wk-stat-l">Interviews</div></div>
           <div><div class="wk-stat-n">Top 10</div><div class="wk-stat-l">Shortlisted</div></div>
-          <div><div class="wk-stat-n">SDG 11</div><div class="wk-stat-l">Focus Area</div></div>
+          <div><div class="wk-stat-n">SDG 11</div><div class="wk-stat-l">Focus area</div></div>
         </div>
-        <span class="wk-cta" style="background:#7B2FBE;color:#fff;">View Case Study ↗</span>
+        <span class="wk-cta" style="background:#7B2FBE;color:#fff;">View case study →</span>
       </div>
     </a>
 
@@ -307,19 +310,19 @@ body {
 
     <!-- CANVAS -->
     <a class="wk-card reveal" data-cats="all b2c" href="canvas.html">
-      <div class="wk-visual-brand" style="background:linear-gradient(135deg,#6B0000 0%,#CC0000 100%);">
-        <img src="assets/canvas-white.png" alt="Canvas" style="max-width:48%;max-height:52%;object-fit:contain;position:relative;z-index:1;">
+      <div class="wk-visual-brand" style="background:#CC0000;">
+        <img src="assets/canvas-white.png" alt="Canvas" style="max-width:48%;max-height:52%;object-fit:contain;position:relative;z-index:1;" width="600" height="165" loading="lazy" decoding="async">
       </div>
       <div class="wk-body">
-        <div class="wk-tag">User Research · AI Integration</div>
-        <h2 class="wk-title">Integrating AI into the <em style="color:#B30000;">world's most-used LMS.</em></h2>
+        <div class="wk-tag">User research · AI integration</div>
+        <h2 class="wk-title">Integrating AI into the <em style="color:#B30000;">world’s most-used LMS.</em></h2>
         <p class="wk-desc">Research and design for integrating AI features into Canvas, the learning management system used by millions of students worldwide.</p>
         <div class="wk-metrics">
-          <div><div class="wk-stat-n">AI</div><div class="wk-stat-l">Integration</div></div>
-          <div><div class="wk-stat-n">User</div><div class="wk-stat-l">Research</div></div>
-          <div><div class="wk-stat-n">2024</div><div class="wk-stat-l">Project</div></div>
+          <div><div class="wk-stat-n">62%</div><div class="wk-stat-l">Faster task time</div></div>
+          <div><div class="wk-stat-n">30%</div><div class="wk-stat-l">Fewer clicks</div></div>
+          <div><div class="wk-stat-n">8+</div><div class="wk-stat-l">Educators tested</div></div>
         </div>
-        <span class="wk-cta" style="background:#B30000;color:#fff;">View Project ↗</span>
+        <span class="wk-cta" style="background:#B30000;color:#fff;">View case study →</span>
       </div>
     </a>
 
@@ -329,15 +332,15 @@ body {
         <video aria-label="TechGuy product suite hero walkthrough" loop muted playsinline preload="none" class="lazy-vid" poster="assets/TechGuy/Admin dashboard.png" data-src="assets/TechGuy/Techguy Hero page_hero.mp4"></video>
       </div>
       <div class="wk-body">
-        <div class="wk-tag" style="color:#405EAB;">UI/UX Design · Team Lead · 2021</div>
+        <div class="wk-tag" style="color:#405EAB;">UI/UX design · Team lead · 2021</div>
         <h2 class="wk-title" style="color:#111;">Three products.<br><em style="color:#405EAB;">One design language.</em></h2>
         <p class="wk-desc" style="color:rgba(17,16,9,.55);">Led a 4-person team designing 3 products simultaneously for an on-demand electronics repair platform: customer app, technician app, and operations dashboard. Built on a shared design system.</p>
         <div class="wk-metrics" style="border-top-color:rgba(17,16,9,.1);">
-          <div><div class="wk-stat-n" style="color:#111;">3</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Products Shipped</div></div>
-          <div><div class="wk-stat-n" style="color:#111;">30%</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Faster Dev Cycles</div></div>
-          <div><div class="wk-stat-n" style="color:#111;">4</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Person Team</div></div>
+          <div><div class="wk-stat-n" style="color:#111;">3</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Products shipped</div></div>
+          <div><div class="wk-stat-n" style="color:#111;">30%</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Faster dev cycles</div></div>
+          <div><div class="wk-stat-n" style="color:#111;">4</div><div class="wk-stat-l" style="color:rgba(17,16,9,.45);">Person team</div></div>
         </div>
-        <span class="wk-cta" style="background:#405EAB;color:#fff;">View Case Study ↗</span>
+        <span class="wk-cta" style="background:#405EAB;color:#fff;">View case study →</span>
       </div>
     </a>
 
@@ -400,7 +403,7 @@ document.querySelectorAll('.work-tab').forEach(tab => {
       const v = e.target;
       if (e.isIntersecting) {
         loadVideo(v);
-        const play = () => v.play().catch(() => {});
+        const play = () => { if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; v.play().catch(() => {}); };
         if (v.readyState >= 2) play();
         else {
           v.addEventListener('loadeddata', play, { once: true });
@@ -420,7 +423,7 @@ document.querySelectorAll('.work-tab').forEach(tab => {
   const scrollObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       const v = e.target;
-      if (e.isIntersecting) v.play().catch(() => {});
+      if (e.isIntersecting) { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) v.play().catch(() => {}); }
       else v.pause();
     });
   }, { threshold: 0.35, rootMargin: '0px' });
@@ -440,5 +443,7 @@ document.getElementById('navMobileClose').addEventListener('click', () => docume
 </script>
 
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>

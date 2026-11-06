@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>CliquePrize | Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
@@ -49,10 +50,10 @@ nav {
 }
 nav > * { pointer-events: auto; }
 .nav-logo {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 18px;
   letter-spacing: 0; text-decoration: none; color: var(--ink);
   justify-self: start;
-  padding: 10px 4px;
+  padding: 12px 4px;
   transition: opacity .2s;
 }
 .nav-logo:hover { opacity: .7; }
@@ -60,11 +61,11 @@ nav > * { pointer-events: auto; }
   position: relative;
   justify-self: center;
   display: flex; align-items: center; gap: 2px;
-  padding: 5px;
+  padding: 4px;
   border-radius: 100px;
   background: var(--glass-bg, rgba(255,255,255,0.62));
-  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
-  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
   box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
 }
@@ -84,7 +85,7 @@ nav > * { pointer-events: auto; }
   position: relative;
   z-index: 1;
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 18px;
+  padding: 12px 20px;
   min-height: 38px;
   border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
@@ -106,17 +107,17 @@ nav > * { pointer-events: auto; }
 .nav-cta {
   justify-self: end;
   background: var(--ink); color: var(--bg);
-  padding: 10px 20px; border-radius: 100px;
+  padding: 12px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px; font-weight: 500; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
   box-shadow: 0 4px 16px rgba(12,12,12,0.12);
 }
-.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-cta:hover { background: #2A2A28; }
 .nav-burger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  display: none; flex-direction: column; gap: 4px; cursor: pointer;
   padding: 8px; background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
   border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
   justify-self: end;
   box-shadow: 0 4px 16px rgba(80,76,68,0.08);
@@ -126,13 +127,13 @@ nav > * { pointer-events: auto; }
 }
 .nav-mobile {
   display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
-  backdrop-filter: blur(24px); z-index: 998;
+  backdrop-filter: none; z-index: 998;
   flex-direction: column; align-items: center; justify-content: center; gap: 36px;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: none;
   letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
 }
 .nav-mobile a:hover { color: var(--green); }
@@ -144,14 +145,14 @@ nav > * { pointer-events: auto; }
 /* ─── GLASS SYSTEM ─── */
 .glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
 .glass-badge {
   display: inline-flex; align-items: center;
-  padding: 9px 18px; border-radius: 100px;
+  padding: 8px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; font-weight: 600;
   color: rgba(12,12,12,0.72);
@@ -198,14 +199,14 @@ nav > * { pointer-events: auto; }
 .reveal-d4 { transition-delay: .4s; }
 
 /* ─── LIVE DOT ─── */
-.live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px rgba(34,197,94,.5); animation: lp 2s infinite; vertical-align: middle; }
+.live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22C55E; vertical-align: middle; }
 @keyframes lp { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
 
 /* ─── HERO BAND ─── */
 .cs-hero-band {
   width: 100%;
-  padding: 130px 56px 80px;
-  background: linear-gradient(160deg, #3D0A22 0%, #6B1535 55%, #9B1F45 100%);
+  padding: 132px 56px 80px;
+  background: #6B1535;
   margin-bottom: 0;
 }
 .cs-hero-inner {
@@ -213,13 +214,13 @@ nav > * { pointer-events: auto; }
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 .cs-hero-kicker {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: rgba(255,255,255,.72); margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
 }
 .cs-hero-h1 {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(31px, 4.68vw, 59px); line-height: .92; letter-spacing: 0; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(31px, 4.68vw, 59px); line-height: 1.05; letter-spacing: -0.02em; text-transform: none;
   color: #fff; margin-bottom: 28px;
 }
 .cs-hero-desc {
@@ -232,8 +233,8 @@ nav > * { pointer-events: auto; }
 }
 .cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
 .cs-hs:last-child { border-right: none; }
-.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
-.cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
+.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
+.cs-hs-l { font-size: 11px; letter-spacing: 0.01em; text-transform: none; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
 
 /* ─── CONTENT WRAPPER ─── */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
@@ -246,38 +247,38 @@ nav > * { pointer-events: auto; }
 }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
-.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-label { font-size: 11px; text-transform: none; letter-spacing: 0.01em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
 
 /* ─── SECTION ANATOMY ─── */
 .cs-section { margin-bottom: 96px; }
 .cs-sec-label {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: var(--muted); margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
 .cs-sec-label .n {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px;
   color: rgba(0,0,0,.15); letter-spacing: 0;
 }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .cs-sec-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-family: 'Lato', sans-serif; font-weight: 600;
   font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06;
-  letter-spacing: 0; text-transform: uppercase; margin-bottom: 28px;
+  letter-spacing: 0; text-transform: none; margin-bottom: 28px;
 }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.65); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
 
 /* ─── IMAGE CAPTION ─── */
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── IMAGE PLACEHOLDERS ─── */
 .img-ph {
   border-radius: 16px; border: 1px dashed rgba(0,0,0,.1);
   background: rgba(0,0,0,.02); padding: 56px 40px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; gap: 14px; margin: 32px 0;
+  text-align: center; gap: 16px; margin: 32px 0;
 }
 .img-ph.h-full { min-height: 520px; }
 .img-ph.h-large { min-height: 420px; }
@@ -285,16 +286,16 @@ nav > * { pointer-events: auto; }
 .img-ph.h-small { min-height: 200px; }
 .img-ph.h-xs { min-height: 140px; }
 .img-ph-ico { font-size: 40px; opacity: .2; }
-.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 4px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; }
+.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
 
 /* ─── SEC SPLIT ─── */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; margin-bottom: 0; }
 .sec-split-left { display: flex; flex-direction: column; gap: 20px; }
 .sec-split-right { position: relative; }
-.sec-split-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
-.sec-split-h { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 28px; line-height: .95; letter-spacing: 0; text-transform: uppercase; }
+.sec-split-label { font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; color: var(--muted); }
+.sec-split-h { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 28px; line-height: .95; letter-spacing: 0; text-transform: none; }
 .sec-split-body { font-size: 14px; line-height: 1.7; color: var(--muted); }
 
 /* ─── BEFORE/AFTER ─── */
@@ -302,12 +303,12 @@ nav > * { pointer-events: auto; }
 .ba-card { border-radius: 16px; padding: 32px; }
 .ba-red { background: rgba(201,58,82,.09); border: 1px solid rgba(201,58,82,.28); }
 .ba-green { background: rgba(125,26,46,.1); border: 1px solid rgba(125,26,46,.3); }
-.ba-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+.ba-label { font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; margin-bottom: 12px; }
 .ba-red .ba-label { color: #C93A52; }
 .ba-green .ba-label { color: var(--green); }
-.ba-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
+.ba-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .ba-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.ba-arrow { font-family: 'Lato', sans-serif; font-size: 22px; font-weight: 700; color: rgba(0,0,0,0.25); text-align: center; }
+.ba-arrow { font-family: 'Lato', sans-serif; font-size: 22px; font-weight: 600; color: rgba(0,0,0,0.25); text-align: center; }
 
 /* ─── CARDS ─── */
 .cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
@@ -317,8 +318,8 @@ nav > * { pointer-events: auto; }
   display: flex; flex-direction: column; gap: 12px; transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.16); }
-.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
-.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 15px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── TOOL CARD ─── */
@@ -332,7 +333,7 @@ nav > * { pointer-events: auto; }
 .ti-warm { background: rgba(255,150,80,.1); }
 .ti-blue { background: rgba(59,130,246,.1); }
 .ti-teal { background: rgba(20,184,166,.1); }
-.t-name { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 5px; }
+.t-name { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 16px; text-transform: none; letter-spacing: 0; margin-bottom: 4px; }
 .t-role { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
 /* ─── IMPACT ─── */
@@ -342,15 +343,15 @@ nav > * { pointer-events: auto; }
   transition: transform .25s, border-color .2s;
 }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.16); }
-.impact-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
-.impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
+.impact-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
+.impact-l { font-size: 12px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; font-weight: 500; }
 .in-g { color: var(--green); }
 .in-o { color: var(--green); }
 
 /* ─── LEARNINGS ─── */
 .learning {
-  background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 28px;
-  display: flex; gap: 18px; align-items: flex-start; margin-bottom: 2px; transition: border-color .2s;
+  background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px;
+  display: flex; gap: 20px; align-items: flex-start; margin-bottom: 2px; transition: border-color .2s;
 }
 .learning:hover { border-color: rgba(12,12,12,0.18); }
 .l-ico { display: none; }
@@ -367,18 +368,18 @@ nav > * { pointer-events: auto; }
 
 /* ─── PROC RAIL ─── */
 .proc-rail { display: flex; align-items: stretch; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 28px 0; }
-.proc-step { flex: 1; padding: 22px 18px; text-align: center; border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--white); transition: background .2s; }
+.proc-step { flex: 1; padding: 24px 20px; text-align: center; border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--white); transition: background .2s; }
 .proc-step:last-child { border-right: none; }
 .proc-step:hover { background: rgba(0,0,0,.02); }
 .proc-step-ico { display:flex; align-items:center; justify-content:center; height:28px; }
-.proc-step-label { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0; }
+.proc-step-label { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px; text-transform: none; letter-spacing: 0; }
 .proc-step-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
 .proc-step.active { background: rgba(0,0,0,.03); }
 .proc-step.active .proc-step-label { color: var(--ink); }
 
 /* ─── ANNO IMG ─── */
 .anno-img { margin: 28px 0; }
-.anno-cap { margin-top: 12px; padding: 14px 18px; background: var(--white); border: 1px solid var(--border); border-radius: 10px; display: flex; gap: 10px; align-items: flex-start; }
+.anno-cap { margin-top: 12px; padding: 16px 20px; background: var(--white); border: 1px solid var(--border); border-radius: 10px; display: flex; gap: 12px; align-items: flex-start; }
 .anno-cap-ico { font-size: 16px; flex-shrink: 0; opacity: .5; }
 .anno-cap-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
@@ -393,18 +394,18 @@ nav > * { pointer-events: auto; }
 /* ─── FOOTER CTA ─── */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
-.cs-footer.orange-foot { background: linear-gradient(160deg, #1A0612 0%, #3D0A22 60%, #5C1030 100%); }
-.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer.orange-foot { background: #3D0A22; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; letter-spacing: 0; text-transform: none; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
-.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
 .fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
-.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  nav { padding: 14px 24px; }
+  nav { padding: 16px 24px; }
   .cs-section { margin-bottom: 56px; }
   .nav-pill { display: none; }
   .nav-cta { display: none; }
@@ -458,6 +459,7 @@ nav > * { pointer-events: auto; }
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <!-- ─── NAV ─── -->
@@ -477,21 +479,23 @@ nav > * { pointer-events: auto; }
 </nav>
 
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">&#x2715;</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <!-- HERO BAND -->
 <div class="cs-hero-band">
   <div class="cs-hero-inner">
-    <div class="cs-hero-kicker"><span class="live-dot"></span> Product Design &middot; Live in Production</div>
+    <div class="cs-hero-kicker"><span class="live-dot"></span> Product design · Live in production</div>
     <h1 class="cs-hero-h1">Rewrote the pitch.<br>Rebuilt the page.</h1>
-    <p class="cs-hero-desc">CliquePrize wasn't connecting with their target users. I rebuilt the landing page's IA and UX writing around 4 core questions every SMB owner actually asks, driving a 24% lift in CTR.</p>
-    <video class="cs-hero-video vid-zoom lazy-vid" aria-label="CliquePrize redesigned landing page hero walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:40px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.45);" preload="none" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_hero.mp4"></video>
+    <p class="cs-hero-desc">CliquePrize wasn’t connecting with their target users. I rebuilt the landing page’s IA and UX writing around 4 core questions every SMB owner actually asks, driving a 24% lift in CTR.</p>
+    <video class="cs-hero-video vid-zoom lazy-vid" aria-label="CliquePrize redesigned landing page hero walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:40px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.45);" preload="none" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_hero.mp4" poster="assets/posters/full-redesigned-page-mobile-desktop-hero.jpg"></video>
   </div>
 </div>
 
@@ -501,8 +505,8 @@ nav > * { pointer-events: auto; }
 
   <!-- OVERVIEW META -->
   <div class="cs-overview cs-reveal" style="grid-template-columns:repeat(5,1fr);">
-    <div class="cs-ov-cell"><div class="cs-ov-label">Hired As</div><div class="cs-ov-val">UX Designer</div></div>
-    <div class="cs-ov-cell"><div class="cs-ov-label">Hats Worn</div><div class="cs-ov-val">PM &middot; Product Designer &middot; UX Writer &middot; Visual Designer</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Hired as</div><div class="cs-ov-val">UX Designer</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">Hats worn</div><div class="cs-ov-val">PM &middot; Product Designer &middot; UX Writer &middot; Visual Designer</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Team</div><div class="cs-ov-val">Rhea &middot; Software Engineers &middot; CEO</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Timeline</div><div class="cs-ov-val">Nov to Dec 2025 &middot; 6 weeks</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Tools</div><div class="cs-ov-val">Figma, Adobe XD, Competitive Research</div></div>
@@ -510,17 +514,17 @@ nav > * { pointer-events: auto; }
 
   <!-- THE GOAL -->
   <div class="cs-reveal" style="margin-bottom:80px;">
-    <div style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:12px;">The Goal <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight:500;letter-spacing: 0.01em;text-transform: none;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:12px;">The goal <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
     <div style="background:var(--green-bg);border:1px solid rgba(125,26,46,.2);border-radius:18px;overflow:hidden;">
       <div style="padding:32px 36px 28px;">
-        <p style="font-size:18px;line-height:1.65;color:var(--ink);max-width:680px;margin:0 0 28px;font-weight:500;">Redesign the CliquePrize landing page so potential users could feel the product's sophistication and be compelled to act. The brief was a design ask. The underlying need was a CTR problem.</p>
+        <p style="font-size:18px;line-height:1.65;color:var(--ink);max-width:680px;margin:0 0 28px;font-weight:500;">Redesign the CliquePrize landing page so potential users could feel the product’s sophistication and be compelled to act. The brief was a design ask. The underlying need was a CTR problem.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(125,26,46,.15);padding-top:24px;">
           <div style="padding-right:28px;border-right:1px solid rgba(125,26,46,.15);">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">The Brief</div>
+            <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--green);margin-bottom:8px;">The brief</div>
             <p style="font-size:13px;line-height:1.6;color:rgba(0,0,0,.6);margin:0;">Redesign the landing page. No user data, no success metric, no clear direction provided.</p>
           </div>
           <div style="padding-left:28px;">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">The Constraint</div>
+            <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--green);margin-bottom:8px;">The constraint</div>
             <p style="font-size:13px;line-height:1.6;color:rgba(0,0,0,.6);margin:0;">6 weeks. Early-stage startup. No existing user base to test with.</p>
           </div>
         </div>
@@ -534,36 +538,36 @@ nav > * { pointer-events: auto; }
     <h2 class="cs-sec-title">THE BRIEF CALLED FOR A REDESIGN. I STARTED WITH RESEARCH.</h2>
     <p class="cs-body" style="margin-bottom:28px;">Brief: redesign the landing page. No user data. No success metric. No direction. Before a single screen in Figma, I made the case for a research-first approach.</p>
     <figure style="margin:0 0 20px;">
-      <img src="assets/CliquePrize/Original Landing Page.png" alt="Original CliquePrize landing page" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.12);border:1px solid var(--border);">
-      <figcaption class="img-caption">The original landing page: "Reach. Nurture. Convert." spoke to no one in particular</figcaption>
+      <img src="assets/CliquePrize/Original Landing Page.png" alt="Original CliquePrize landing page" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.12);border:1px solid var(--border);" width="1482" height="798" loading="lazy" decoding="async">
+      <figcaption class="img-caption">The original landing page: “Reach. Nurture. Convert.” spoke to no one in particular</figcaption>
     </figure>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 24px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 24px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <div style="width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;"></div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);">Research Push</div>
+          <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--green);">Research push</div>
         </div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:14px;text-transform:uppercase;letter-spacing: 0;margin-bottom:8px;">1 week. I found the users myself.</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:14px;text-transform: none;letter-spacing: 0;margin-bottom:8px;">1 week. I found the users myself.</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Early-stage startup with no existing user base. I asked for one week before opening Figma. Ran competitive analysis, observed the live page, and recruited SMB owners from my own network for informal sessions.</p>
       </div>
-      <div style="background:var(--green-bg);border:1px solid rgba(125,26,46,.2);border-radius:14px;padding:22px 24px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <div style="background:var(--green-bg);border:1px solid rgba(125,26,46,.2);border-radius:14px;padding:24px 24px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <div style="width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;"></div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);">Key Insight</div>
+          <div style="font-size:10px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--green);">Key insight</div>
         </div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:14px;text-transform:uppercase;letter-spacing: 0;margin-bottom:8px;">The problem wasn't aesthetic. It was linguistic.</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">The page wasn't speaking to the right person. SMB owners couldn't see themselves in the story. Not because the product was weak, but because every word was written for someone else.</p>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:14px;text-transform: none;letter-spacing: 0;margin-bottom:8px;">The problem wasn’t aesthetic. It was linguistic.</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">The page wasn’t speaking to the right person. SMB owners couldn’t see themselves in the story. Not because the product was weak, but because every word was written for someone else.</p>
       </div>
     </div>
   </div>
 
   <!-- 01 RESEARCH & DISCOVERY -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">01</span> Research &amp; Discovery</div>
-    <h2 class="cs-sec-title">From Finding the SMBs to SMB's Findings.</h2>
+    <div class="cs-sec-label"><span class="n">01</span> Research &amp; discovery</div>
+    <h2 class="cs-sec-title">From finding the SMBs to the SMBs’ findings.</h2>
 
     <!-- Research Methods -->
-    <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:12px;">Research Methods</div>
+    <div style="font-size:11px;font-weight:600;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-bottom:12px;">Research methods</div>
     <div class="proc-rail" style="margin-bottom:48px;">
       <div class="proc-step">
         <div class="proc-step-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="#7D1A2E" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"/></svg></div>
@@ -577,48 +581,48 @@ nav > * { pointer-events: auto; }
       </div>
       <div class="proc-step active">
         <div class="proc-step-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="#7D1A2E" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"/></svg></div>
-        <div class="proc-step-label">Competitive Analysis</div>
+        <div class="proc-step-label">Competitive analysis</div>
         <div class="proc-step-sub">RafflePress &amp; ViralSweep as messaging lenses</div>
       </div>
     </div>
 
     <!-- Primary Research -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:10px;">Primary Research <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Primary research <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
     <p class="cs-body" style="margin-bottom:20px;">Observational sessions on the live page showed where attention dropped. Interviews with SMB owners revealed what language they actually used when talking about their own businesses, and how far the page was from meeting them there.</p>
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:48px;display:flex;gap:16px;align-items:flex-start;">
-      <div style="font-family:'Lato',sans-serif;font-size:37px;color:var(--green);line-height:.65;flex-shrink:0;opacity:.5;">"</div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:48px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-family:'Lato',sans-serif;font-size:37px;color:var(--green);line-height:.65;flex-shrink:0;opacity:.5;">“</div>
       <div>
-        <p style="font-family:'Lato',sans-serif;font-size:14px;font-style:normal;color:var(--ink);line-height:1.65;margin-bottom:10px;">I don't need an overly complex explanation of what something does. Just explain what you do and how I can use it.</p>
-        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">SMB Owner, research interview 2025</div>
+        <p style="font-family:'Lato',sans-serif;font-size:14px;font-style:normal;color:var(--ink);line-height:1.65;margin-bottom:12px;">I don’t need an overly complex explanation of what something does. Just explain what you do and how I can use it.</p>
+        <div style="font-size:11px;font-weight:600;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">SMB owner, research interview 2025</div>
       </div>
     </div>
 
     <!-- Secondary Research -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:10px;">Secondary Research <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:12px;">Secondary research <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
     <!-- Competitive analysis image -->
     <figure style="margin:0 0 20px;">
       <div style="background:#fafaf8;border-radius:14px;padding:16px;border:1px solid rgba(0,0,0,.06);">
-        <img src="assets/CliquePrize/Competitive Analysis, Annotated.png" alt="Annotated competitive analysis" style="width:100%;border-radius:10px;display:block;box-shadow:0 4px 16px rgba(0,0,0,.06);">
+        <img src="assets/CliquePrize/Competitive Analysis, Annotated.png" alt="Annotated competitive analysis" style="width:100%;border-radius:10px;display:block;box-shadow:0 4px 16px rgba(0,0,0,.06);" width="1675" height="822" loading="lazy" decoding="async">
       </div>
-      <figcaption class="img-caption">Competitive analysis: RafflePress, ViralSweep, and CliquePrize. My note on the original: "Is this $29 per giveaway? Per what?" The copy assumed knowledge SMB owners didn't have.</figcaption>
+      <figcaption class="img-caption">Competitive analysis: RafflePress, ViralSweep, and CliquePrize. My note on the original: “Is this $29 per giveaway? Per what?” The copy assumed knowledge SMB owners didn’t have.</figcaption>
     </figure>
 
     <!-- 3 findings in horizontal row -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px;">
       <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:8px;">Finding 01</div>
-        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">The hero needs the core use case</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">"Grow Your Email List" converts immediately. "Reach. Nurture. Convert." requires translation the visitor shouldn't have to do.</p>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:13px;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:8px;">Finding 01</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">The hero needs the core use case</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">“Grow Your Email List” converts immediately. “Reach. Nurture. Convert.” requires translation the visitor shouldn’t have to do.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:8px;">Finding 02</div>
-        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">Show the product from the customer's perspective</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:13px;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:8px;">Finding 02</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Show the product from the customer’s perspective</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">RafflePress shows the giveaway widget: what the customer experiences. CliquePrize showed the admin panel. Wrong perspective, wrong audience signal.</p>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:8px;">Finding 03</div>
-        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;">Both competitors surface value before pricing</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:13px;text-transform: none;letter-spacing: 0.01em;color:var(--green);margin-bottom:8px;">Finding 03</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Both competitors surface value before pricing</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0;">CliquePrize had no pricing on the homepage at all. A critical trust gap for SMBs evaluating a new tool.</p>
       </div>
     </div>
@@ -626,96 +630,96 @@ nav > * { pointer-events: auto; }
 
   <!-- 02 INFORMATION ARCHITECTURE -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">02</span> Information Architecture</div>
+    <div class="cs-sec-label"><span class="n">02</span> Information architecture</div>
     <h2 class="cs-sec-title">I restructured the page around four questions.</h2>
 
-    <div style="background:var(--green-bg);border:1px solid rgba(125,26,46,.2);border-radius:12px;padding:18px 24px;margin-bottom:28px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:6px;">Pivotal Reframe</div>
+    <div style="background:var(--green-bg);border:1px solid rgba(125,26,46,.2);border-radius:12px;padding:20px 24px;margin-bottom:28px;">
+      <div style="font-size:11px;font-weight: 600;letter-spacing: 0.01em;text-transform: none;color:var(--green);margin-bottom:8px;">Pivotal reframe</div>
       <p style="font-size:14px;color:var(--ink);line-height:1.6;margin:0;">The original copy assumed the user already understood the product. Every headline was written for someone who had already bought in. I flipped it: write for the SMB owner who has never heard of CliquePrize, and make the value land in the first five seconds.</p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:40px;">
       <div style="padding:28px 24px;border-right:1px solid var(--border);">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;color:rgba(17,16,9,.06);line-height:1;margin-bottom:8px;">Q1</div>
-        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;">"What is this?"</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;color:rgba(17,16,9,.06);line-height:1;margin-bottom:8px;">Q1</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;">“What is this?”</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.5;">Hero headline answers immediately in plain language. No jargon, no features.</div>
-        <div style="margin-top:14px;font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.08em;">&rarr; Hero</div>
+        <div style="margin-top:16px;font-size:11px;font-weight:600;color:var(--green);text-transform: none;letter-spacing: 0.01em;">&rarr; Hero</div>
       </div>
       <div style="padding:28px 24px;border-right:1px solid var(--border);background:var(--green-bg);">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;color:rgba(217,79,24,.1);line-height:1;margin-bottom:8px;">Q2</div>
-        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;">"Why do I need this?"</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;color:rgba(217,79,24,.1);line-height:1;margin-bottom:8px;">Q2</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;">“Why do I need this?”</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.5;">User pain first, features second. Consequences before capabilities.</div>
-        <div style="margin-top:14px;font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.08em;">&rarr; Problem Section</div>
+        <div style="margin-top:16px;font-size:11px;font-weight:600;color:var(--green);text-transform: none;letter-spacing: 0.01em;">→ Problem section</div>
       </div>
       <div style="padding:28px 24px;border-right:1px solid var(--border);">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;color:rgba(17,16,9,.06);line-height:1;margin-bottom:8px;">Q3</div>
-        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;">"Why CliquePrize?"</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;color:rgba(17,16,9,.06);line-height:1;margin-bottom:8px;">Q3</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;">“Why CliquePrize?”</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.5;">Social proof, trust signals, differentiators, moved up from after pricing.</div>
-        <div style="margin-top:14px;font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.08em;">&rarr; Features + Proof</div>
+        <div style="margin-top:16px;font-size:11px;font-weight:600;color:var(--green);text-transform: none;letter-spacing: 0.01em;">→ Features + proof</div>
       </div>
       <div style="padding:28px 24px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;color:rgba(17,16,9,.06);line-height:1;margin-bottom:8px;">Q4</div>
-        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;">"What does it cost?"</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;color:rgba(17,16,9,.06);line-height:1;margin-bottom:8px;">Q4</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;">“What does it cost?”</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.5;">Pricing last, after the user has a reason to care. Renamed tiers, clear feature diff.</div>
-        <div style="margin-top:14px;font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.08em;">&rarr; Pricing</div>
+        <div style="margin-top:16px;font-size:11px;font-weight:600;color:var(--green);text-transform: none;letter-spacing: 0.01em;">&rarr; Pricing</div>
       </div>
     </div>
 
     <figure style="margin:0;">
-      <img src="assets/CliquePrize/Wireframes, Restructured Page IA.png" alt="Wireframes showing restructured page information architecture" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);">
+      <img src="assets/CliquePrize/Wireframes, Restructured Page IA.png" alt="Wireframes showing restructured page information architecture" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);" width="1999" height="803" loading="lazy" decoding="async">
       <figcaption class="img-caption">Low Fidelity Wireframe</figcaption>
     </figure>
   </div>
 
   <!-- 03 DESIGN SYSTEM -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">03</span> Design System</div>
+    <div class="cs-sec-label"><span class="n">03</span> Design system</div>
     <h2 class="cs-sec-title">Starting the design system.</h2>
     <p class="cs-body">Before designing the landing page, I built the component library. CliquePrize has three distinct user types: Contestants, Sponsors, and Publishers. Each has different needs, trust signals, and entry points. Building a shared component language first meant the landing page could scale to serve all three without rebuilding from scratch each time. 15+ components: buttons, cards, inputs, nav, pricing tables, and mobile UI, all documented with states, specs, and three separate colour token sets for dev handoff.</p>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:32px;">
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;color:var(--green);line-height:1;margin-bottom:4px;">15+</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;color:var(--green);line-height:1;margin-bottom:4px;">15+</div>
         <div style="font-size:13px;color:var(--muted);">Components: buttons, cards, inputs, nav, pricing, mobile UI</div>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;color:var(--green);line-height:1;margin-bottom:4px;">3</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;color:var(--green);line-height:1;margin-bottom:4px;">3</div>
         <div style="font-size:13px;color:var(--muted);">User types with separate colour tokens: Contestants, Sponsors, Publishers</div>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:37px;color:var(--green);line-height:1;margin-bottom:4px;">60%</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:37px;color:var(--green);line-height:1;margin-bottom:4px;">60%</div>
         <div style="font-size:13px;color:var(--muted);">Faster dev handoff: every component documented with states and specs</div>
       </div>
     </div>
 
     <figure style="margin:0;">
-      <img src="assets/CliquePrize/Design System, Typography, Colour & Components.png" alt="Design system, typography, colour tokens, and components" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);">
+      <img src="assets/CliquePrize/Design System, Typography, Colour & Components.png" alt="Design system, typography, colour tokens, and components" style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.1);border:1px solid var(--border);" width="1600" height="960" loading="lazy" decoding="async">
       <figcaption class="img-caption">The full design system: typography, colour tokens, and 15+ components built before touching the page</figcaption>
     </figure>
   </div>
 
   <!-- 04 VISUAL REDESIGN -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">04</span> Visual Redesign</div>
+    <div class="cs-sec-label"><span class="n">04</span> Visual redesign</div>
     <h2 class="cs-sec-title">Redesigned to fit the product and the people it was built for.</h2>
     <p class="cs-body">I rewrote and redesigned the landing page from the ground up, not to make it look better, but to make it match the product it was selling and the users it was selling to.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;">
       <div>
-        <figure style="margin:0 0 10px;">
-          <img src="assets/CliquePrize/Original Landing Page.png" alt="Original landing page" style="width:100%;border-radius:14px;display:block;box-shadow:0 8px 28px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.08);">
+        <figure style="margin:0 0 12px;">
+          <img src="assets/CliquePrize/Original Landing Page.png" alt="Original landing page" style="width:100%;border-radius:14px;display:block;box-shadow:0 8px 28px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.08);" width="1482" height="798" loading="lazy" decoding="async">
         </figure>
         <div style="display:flex;align-items:flex-start;gap:8px;">
-          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#C93A52;flex-shrink:0;padding-top:1px;">Before</span>
+          <span style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#C93A52;flex-shrink:0;padding-top:1px;">Before</span>
           <span style="font-size:12px;color:var(--muted);line-height:1.5;">Cluttered layout, generic stock imagery, tagline-first copy, no clear audience</span>
         </div>
       </div>
       <div>
-        <figure style="margin:0 0 10px;">
-          <img src='assets/CliquePrize/Redesigned, clean, "The Digital Promotions App for Brick-and-Mortar Growth".png' alt="Redesigned landing page" style="width:100%;border-radius:14px;display:block;box-shadow:0 8px 28px rgba(0,0,0,.1);border:1px solid rgba(125,26,46,.15);">
+        <figure style="margin:0 0 12px;">
+          <img src='assets/CliquePrize/Redesigned, clean, "The Digital Promotions App for Brick-and-Mortar Growth".png' alt="Redesigned landing page" width="2940" height="1602" loading="lazy" decoding="async" style="width:100%;border-radius:14px;display:block;box-shadow:0 8px 28px rgba(0,0,0,.1);border:1px solid rgba(125,26,46,.15);">
         </figure>
         <div style="display:flex;align-items:flex-start;gap:8px;">
-          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);flex-shrink:0;padding-top:1px;">After</span>
+          <span style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);flex-shrink:0;padding-top:1px;">After</span>
           <span style="font-size:12px;color:var(--muted);line-height:1.5;">Clean hierarchy, benefit-led headline, app screenshots at the right scale, clear call to action</span>
         </div>
       </div>
@@ -725,22 +729,22 @@ nav > * { pointer-events: auto; }
 
   <!-- 05 UX WRITING -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">05</span> UX Writing & Feature Work</div>
+    <div class="cs-sec-label"><span class="n">05</span> UX writing &amp; feature work</div>
     <h2 class="cs-sec-title">Highlights of the changes made.</h2>
-    <p class="cs-body" style="margin-bottom:40px;">The work went beyond copy edits - each change was grounded in competitive analysis, user research, or usability findings. Here's what changed and why.</p>
+    <p class="cs-body" style="margin-bottom:40px;">The work went beyond copy edits - each change was grounded in competitive analysis, user research, or usability findings. Here’s what changed and why.</p>
 
     <!-- Change 01: Pricing Transparency -->
     <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:40px;background:var(--white);">
       <div style="padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--green);white-space:nowrap;">Change 01</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:16px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);line-height:1.1;">Pricing Transparency</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--green);white-space:nowrap;">Change 01</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:16px;text-transform: none;letter-spacing: 0;color:var(--ink);line-height:1.1;">Pricing transparency</div>
       </div>
-      <img src="assets/CliquePrize/Pricing.png" alt="Pricing section" style="width:100%;display:block;">
-      <div style="padding:20px 24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:10px;">
+      <img src="assets/CliquePrize/Pricing.png" alt="Pricing section" style="width:100%;display:block;" width="1513" height="853" loading="lazy" decoding="async">
+      <div style="padding:20px 24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:12px;">
         <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Hidden pricing is a trust-killer for price-sensitive SMBs. Transparent tiers let users self-qualify on budget without needing a sales call.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#C93A52;">Before</span><span style="font-size:12px;color:var(--muted);">No pricing on homepage</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);">After</span><span style="font-size:12px;color:var(--muted);">Starter / Growth / Pro visible upfront</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#C93A52;">Before</span><span style="font-size:12px;color:var(--muted);">No pricing on homepage</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);">After</span><span style="font-size:12px;color:var(--muted);">Starter / Growth / Pro visible upfront</span></div>
         </div>
       </div>
     </div>
@@ -748,24 +752,24 @@ nav > * { pointer-events: auto; }
     <!-- Change 02: Comparison Table -->
     <div style="border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:40px;background:var(--white);">
       <div style="padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--green);white-space:nowrap;">Change 02</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:16px;text-transform:uppercase;letter-spacing: 0;color:var(--ink);line-height:1.1;">Comparison Table</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--green);white-space:nowrap;">Change 02</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:16px;text-transform: none;letter-spacing: 0;color:var(--ink);line-height:1.1;">Comparison table</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
         <div style="position:relative;">
-          <img src="assets/CliquePrize/comparision table before.png" alt="Comparison table before" style="width:100%;display:block;">
-          <div style="position:absolute;top:12px;left:12px;background:rgba(201,58,82,.9);color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:20px;">Before</div>
+          <img src="assets/CliquePrize/comparision table before.png" alt="Comparison table before" style="width:100%;display:block;" width="475" height="450" loading="lazy" decoding="async">
+          <div style="position:absolute;top:12px;left:12px;background:rgba(201,58,82,.9);color:#fff;font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;padding:4px 12px;border-radius:20px;">Before</div>
         </div>
         <div style="position:relative;border-left:1px solid var(--border);">
-          <img src="assets/CliquePrize/comparision table after.png" alt="Comparison table after" style="width:100%;display:block;">
-          <div style="position:absolute;top:12px;left:12px;background:rgba(125,26,46,.9);color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:20px;">After</div>
+          <img src="assets/CliquePrize/comparision table after.png" alt="Comparison table after" style="width:100%;display:block;" width="614" height="706" loading="lazy" decoding="async">
+          <div style="position:absolute;top:12px;left:12px;background:rgba(125,26,46,.9);color:#fff;font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;padding:4px 12px;border-radius:20px;">After</div>
         </div>
       </div>
-      <div style="padding:20px 24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:10px;">
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">SMB owners compare 3–5 tools before committing. I built the table to surface CliquePrize's unique edges — like geo-targeting — honestly, without overpromising on feature parity.</p>
+      <div style="padding:20px 24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:12px;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">SMB owners compare 3–5 tools before committing. I built the table to surface CliquePrize’s unique edges — like geo-targeting — honestly, without overpromising on feature parity.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#C93A52;">Before</span><span style="font-size:12px;color:var(--muted);">No comparison context</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);">After</span><span style="font-size:12px;color:var(--muted);">Side-by-side table with honest parity signals</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:#C93A52;">Before</span><span style="font-size:12px;color:var(--muted);">No comparison context</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--green);">After</span><span style="font-size:12px;color:var(--muted);">Side-by-side table with honest parity signals</span></div>
         </div>
       </div>
     </div>
@@ -775,10 +779,10 @@ nav > * { pointer-events: auto; }
 
   <!-- AS SEEN LIVE -->
   <div class="cs-section cs-reveal">
-    <div style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px;">As Seen Live <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
-    <video aria-label="CliquePrize component system walkthrough" loop muted playsinline style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.12);" class="lazy-vid" preload="none" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_web.mp4"></video>
-    <div style="text-align:center;margin-top:14px;">
-      <a href="https://cliqueprize.com" target="_blank" style="font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;">See Live ↗</a>
+    <div style="font-size:11px;font-weight:500;letter-spacing: 0.01em;text-transform: none;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px;">As seen live <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <video aria-label="CliquePrize component system walkthrough" loop muted playsinline style="width:100%;border-radius:14px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.12);" class="lazy-vid" preload="none" data-src="assets/CliquePrize/Full redesigned page, mobile + desktop_web.mp4" poster="assets/posters/full-redesigned-page-mobile-desktop-web.jpg"></video>
+    <div style="text-align:center;margin-top:16px;">
+      <a href="https://cliqueprize.com" target="_blank" style="font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;" rel="noopener noreferrer">See Live ↗</a>
     </div>
   </div>
 
@@ -790,22 +794,22 @@ nav > * { pointer-events: auto; }
     <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:16px;margin-bottom:32px;align-items:stretch;">
       <div style="display:flex;flex-direction:column;gap:12px;">
         <div style="background:var(--green-bg);border:1px solid rgba(217,79,24,.15);border-radius:16px;padding:24px;flex:1;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:41px;color:var(--green);line-height:1;">24%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:41px;color:var(--green);line-height:1;">24%</div>
           <div style="font-size:13px;color:var(--muted);margin-top:4px;">CTR increase</div>
         </div>
         <div style="background:var(--green-bg);border:1px solid rgba(217,79,24,.15);border-radius:16px;padding:24px;flex:1;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:41px;color:var(--green);line-height:1;">18%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:41px;color:var(--green);line-height:1;">18%</div>
           <div style="font-size:13px;color:var(--muted);margin-top:4px;">App download lift</div>
         </div>
         <div style="background:var(--green-bg);border:1px solid rgba(125,26,46,.15);border-radius:16px;padding:24px;flex:1;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:41px;color:var(--green);line-height:1;">60%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:41px;color:var(--green);line-height:1;">60%</div>
           <div style="font-size:13px;color:var(--muted);margin-top:4px;">Faster dev handoff</div>
         </div>
       </div>
       <div style="background:#3D0D18;border-radius:16px;padding:36px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-20px;left:24px;font-family:'Lato',sans-serif;font-size:125px;font-weight:700;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;">"</div>
+        <div style="position:absolute;top:-20px;left:24px;font-family:'Lato',sans-serif;font-size:125px;font-weight: 600;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;">“</div>
         <div style="font-family:'Lato',sans-serif;font-size:16px;font-style:normal;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:20px;position:relative;">She took ownership across the full design process, from the design system to the homepage redesign, with a strong focus on clarity, usability, and user-centered messaging. She was <strong style="color:#fff;font-style:normal;">detail-oriented</strong>, <strong style="color:#fff;font-style:normal;">easy to collaborate with</strong>, demonstrated a <strong style="color:#fff;font-style:normal;">strong product mindset</strong>, and knows how to <strong style="color:#fff;font-style:normal;">work closely with engineers</strong>.</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.1em;position:relative;">Rob Salerno, CEO</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65);text-transform: none;letter-spacing: 0.01em;position:relative;">Rob Salerno, CEO</div>
       </div>
     </div>
 
@@ -817,7 +821,7 @@ nav > * { pointer-events: auto; }
     <h2 class="cs-sec-title">What I took away.</h2>
     <div class="learning cs-reveal">
       <div class="l-ico"></div>
-      <div class="l-text"><strong>The most important design decision wasn't visual, it was insisting on research first.</strong> The brief assumed aesthetics. The research revealed a language problem. That reframe shaped everything.</div>
+      <div class="l-text"><strong>The most important design decision wasn’t visual, it was insisting on research first.</strong> The brief assumed aesthetics. The research revealed a language problem. That reframe shaped everything.</div>
     </div>
   </div>
 
@@ -836,22 +840,22 @@ nav > * { pointer-events: auto; }
   <!-- NEXT PROJECTS -->
   <div style="padding:48px 0 0;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
-      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;">View all 8 &#x2197;</a>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 16px;border-radius:100px;transition:color .2s,border-color .2s;">View all 8 &#x2197;</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div onclick="window.location='draggit.html'" style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome Extension</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
+      <a href="draggit.html" style="display:block;text-decoration:none;color:inherit;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome extension</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Solo built &amp; shipped. A Chrome extension that fixes a daily LinkedIn UX pain.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&rarr;</span>
-      </div>
-      <div onclick="window.location='opsiq.html'" style="background:rgba(59,111,212,.06);border:1px solid rgba(59,111,212,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(59,111,212,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,111,212,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#7EB8FF;margin-bottom:12px;">AI Dashboard [NDA]</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">OpsIQ</div>
-        <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses had the data. They couldn't use it. We built the tool that changes that.</p>
+      </a>
+      <a href="opsiq.html" style="display:block;text-decoration:none;color:inherit;background:rgba(59,111,212,.06);border:1px solid rgba(59,111,212,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(59,111,212,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,111,212,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#7EB8FF;margin-bottom:12px;">AI dashboard [NDA]</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">OpsIQ</div>
+        <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses had the data. They couldn’t use it. We built the tool that changes that.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&rarr;</span>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -893,12 +897,14 @@ document.querySelectorAll('.vid-zoom').forEach(function(el) {
 });
 </script>
 <footer class="footer-bar">
-  <span>© 2025 Rhea Mittal</span>
-  <span>Made with love and energy drinks ✨</span>
+  <span>© 2026 Rhea Mittal</span>
+  <span>Made with love and energy drinks</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
 
 <script src="scripts/lazy-vid.js"></script>
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>

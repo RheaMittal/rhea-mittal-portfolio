@@ -31,7 +31,14 @@
     }
   }
 
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   function tryPlay(v) {
+    if (reduceMotion.matches) {
+      /* Reduced motion: show the first frame and let the viewer choose to play */
+      v.setAttribute('controls', '');
+      return;
+    }
     var play = function () {
       v.play().catch(function () {});
     };

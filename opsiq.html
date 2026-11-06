@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>OpsIQ | Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
@@ -49,10 +50,10 @@ nav {
 }
 nav > * { pointer-events: auto; }
 .nav-logo {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 18px;
   letter-spacing: 0; text-decoration: none; color: var(--ink);
   justify-self: start;
-  padding: 10px 4px;
+  padding: 12px 4px;
   transition: opacity .2s;
 }
 .nav-logo:hover { opacity: .7; }
@@ -60,11 +61,11 @@ nav > * { pointer-events: auto; }
   position: relative;
   justify-self: center;
   display: flex; align-items: center; gap: 2px;
-  padding: 5px;
+  padding: 4px;
   border-radius: 100px;
   background: var(--glass-bg, rgba(255,255,255,0.62));
-  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
-  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
   box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
 }
@@ -84,7 +85,7 @@ nav > * { pointer-events: auto; }
   position: relative;
   z-index: 1;
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 18px;
+  padding: 12px 20px;
   min-height: 38px;
   border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
@@ -106,17 +107,17 @@ nav > * { pointer-events: auto; }
 .nav-cta {
   justify-self: end;
   background: var(--ink); color: var(--bg);
-  padding: 10px 20px; border-radius: 100px;
+  padding: 12px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px; font-weight: 500; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
   box-shadow: 0 4px 16px rgba(12,12,12,0.12);
 }
-.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-cta:hover { background: #2A2A28; }
 .nav-burger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  display: none; flex-direction: column; gap: 4px; cursor: pointer;
   padding: 8px; background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
   border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
   justify-self: end;
   box-shadow: 0 4px 16px rgba(80,76,68,0.08);
@@ -126,13 +127,13 @@ nav > * { pointer-events: auto; }
 }
 .nav-mobile {
   display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
-  backdrop-filter: blur(24px); z-index: 998;
+  backdrop-filter: none; z-index: 998;
   flex-direction: column; align-items: center; justify-content: center; gap: 36px;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: none;
   letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
 }
 .nav-mobile a:hover { color: var(--green); }
@@ -144,14 +145,14 @@ nav > * { pointer-events: auto; }
 /* ─── GLASS SYSTEM ─── */
 .glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
 .glass-badge {
   display: inline-flex; align-items: center;
-  padding: 9px 18px; border-radius: 100px;
+  padding: 8px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; font-weight: 600;
   color: rgba(12,12,12,0.72);
@@ -193,11 +194,11 @@ nav > * { pointer-events: auto; }
 /* ─── HERO BAND ─── */
 .cs-hero-band {
   width: 100%;
-  padding-top: 130px;
+  padding-top: 132px;
   padding-bottom: 80px;
   padding-left: 56px;
   padding-right: 56px;
-  background: linear-gradient(160deg, #050616 0%, #0A0C3A 60%, #111480 100%);
+  background: #0A0C3A;
   margin-bottom: 0;
 }
 .cs-hero-inner {
@@ -209,15 +210,15 @@ nav > * { pointer-events: auto; }
   text-align: center;
 }
 .cs-hero-kicker {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: rgba(255,255,255,.72);
   margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
 }
 .cs-hero-h1 {
-  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-family: 'Lato', sans-serif; font-weight: 600;
   font-size: clamp(31px, 4.68vw, 59px);
-  line-height: .92; letter-spacing: 0; text-transform: uppercase;
+  line-height: 1.05; letter-spacing: -0.02em; text-transform: none;
   color: #fff; margin-bottom: 28px;
 }
 .cs-hero-desc {
@@ -232,8 +233,8 @@ nav > * { pointer-events: auto; }
 }
 .cs-hs { padding: 24px 32px; border-right: 1px solid rgba(255,255,255,.08); }
 .cs-hs:last-child { border-right: none; }
-.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
-.cs-hs-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
+.cs-hs-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 31px; letter-spacing: 0; color: #fff; line-height: 1; }
+.cs-hs-l { font-size: 11px; letter-spacing: 0.01em; text-transform: none; color: rgba(255,255,255,.3); margin-top: 4px; font-weight: 500; }
 
 /* ─── CONTENT ─── */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
@@ -246,24 +247,24 @@ nav > * { pointer-events: auto; }
 }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
-.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-label { font-size: 11px; text-transform: none; letter-spacing: 0.01em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
 
 /* ─── SECTIONS ─── */
 .cs-section { margin-bottom: 96px; }
 
 .cs-sec-label {
-  font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none;
   color: var(--muted); margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
-.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
 .cs-sec-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-family: 'Lato', sans-serif; font-weight: 600;
   font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06;
-  letter-spacing: 0; text-transform: uppercase;
+  letter-spacing: 0; text-transform: none;
   margin-bottom: 28px;
 }
 
@@ -271,7 +272,7 @@ nav > * { pointer-events: auto; }
 .cs-body + .cs-body { margin-top: -8px; }
 
 /* ─── IMAGE CAPTION ─── */
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; letter-spacing: 0; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.5; text-align: center; letter-spacing: 0; }
 
 /* ─── IMAGE PLACEHOLDER ─── */
 .img-ph {
@@ -280,7 +281,7 @@ nav > * { pointer-events: auto; }
   background: rgba(0,0,0,.02);
   padding: 56px 40px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; gap: 14px;
+  text-align: center; gap: 16px;
   margin: 32px 0;
 }
 .img-ph.h-full { min-height: 520px; }
@@ -289,16 +290,16 @@ nav > * { pointer-events: auto; }
 .img-ph.h-small { min-height: 200px; }
 .img-ph.h-xs { min-height: 140px; }
 .img-ph-ico { font-size: 40px; opacity: .2; }
-.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 4px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; }
+.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.38); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.22); line-height: 1.65; max-width: 460px; }
 
 /* ─── SECTION SPLIT ─── */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; margin-bottom: 0; }
 .sec-split-left { display: flex; flex-direction: column; gap: 20px; }
 .sec-split-right { position: relative; }
-.sec-split-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
-.sec-split-h { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 28px; line-height: .95; letter-spacing: 0; text-transform: uppercase; }
+.sec-split-label { font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; color: var(--muted); }
+.sec-split-h { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 28px; line-height: .95; letter-spacing: 0; text-transform: none; }
 .sec-split-body { font-size: 14px; line-height: 1.7; color: var(--muted); }
 
 /* ─── BEFORE / AFTER ─── */
@@ -306,12 +307,12 @@ nav > * { pointer-events: auto; }
 .ba-card { border-radius: 16px; padding: 32px; }
 .ba-red { background: rgba(201,58,82,.06); border: 1px solid rgba(201,58,82,.2); }
 .ba-green { background: var(--green-bg); border: 1px solid rgba(39,194,100,.2); }
-.ba-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; }
+.ba-label { font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; margin-bottom: 12px; }
 .ba-red .ba-label { color: #C93A52; }
 .ba-green .ba-label { color: var(--green); }
-.ba-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
+.ba-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .ba-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.ba-arrow { font-family: 'Lato', sans-serif; font-size: 25px; font-weight: 700; color: var(--border); text-align: center; }
+.ba-arrow { font-family: 'Lato', sans-serif; font-size: 25px; font-weight: 600; color: var(--border); text-align: center; }
 
 /* ─── CARDS ─── */
 .cards-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
@@ -323,8 +324,8 @@ nav > * { pointer-events: auto; }
   transition: border-color .2s;
 }
 .c-card:hover { border-color: rgba(0,0,0,.15); }
-.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
-.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 15px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── TOOL CARD ─── */
@@ -340,7 +341,7 @@ nav > * { pointer-events: auto; }
 .ti-warm { background: rgba(255,150,80,.1); }
 .ti-blue { background: rgba(59,130,246,.1); }
 .ti-teal { background: rgba(20,184,166,.1); }
-.t-name { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 5px; }
+.t-name { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 16px; text-transform: none; letter-spacing: 0; margin-bottom: 4px; }
 .t-role { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
 /* ─── IMPACT ROW ─── */
@@ -351,8 +352,8 @@ nav > * { pointer-events: auto; }
   transition: transform .25s, border-color .2s;
 }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.15); }
-.impact-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
-.impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
+.impact-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; }
+.impact-l { font-size: 12px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; font-weight: 500; }
 .in-g { color: var(--green); }
 .in-o { color: var(--orange); }
 
@@ -360,8 +361,8 @@ nav > * { pointer-events: auto; }
 .learnings { display: flex; flex-direction: column; gap: 2px; }
 .learning {
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 14px; padding: 22px 28px;
-  display: flex; gap: 18px; align-items: flex-start;
+  border-radius: 14px; padding: 24px 28px;
+  display: flex; gap: 20px; align-items: flex-start;
   margin-bottom: 2px; transition: border-color .2s;
 }
 .learning:hover { border-color: rgba(12,12,12,.18); }
@@ -372,12 +373,12 @@ nav > * { pointer-events: auto; }
 /* ─── FOOTER CTA ─── */
 .cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); }
 .cs-footer-inner { padding: 64px 56px; text-align: center; position: relative; }
-.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; letter-spacing: 0; text-transform: none; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; }
-.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
 .fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
-.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
 
 /* ─── SCROLL REVEAL ─── */
@@ -418,9 +419,9 @@ nav > * { pointer-events: auto; }
 .step-row { display: grid; grid-template-columns: 60px 1fr; border-bottom: 1px solid var(--border); background: var(--white); transition: background .2s; }
 .step-row:last-child { border-bottom: none; }
 .step-row:hover { background: rgba(0,0,0,.015); }
-.step-num-col { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); font-family: 'Lato', sans-serif; font-weight: 900; font-size: 16px; color: rgba(0,0,0,.12); padding: 24px 0; }
+.step-num-col { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); font-family: 'Lato', sans-serif; font-weight: 600; font-size: 16px; color: rgba(0,0,0,.12); padding: 24px 0; }
 .step-content { padding: 24px 28px; }
-.step-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 6px; }
+.step-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 15px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .step-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ─── INSIGHT ROW ─── */
@@ -429,18 +430,18 @@ nav > * { pointer-events: auto; }
   border-radius: 16px; padding: 32px 36px; margin: 16px 0;
   display: flex; gap: 24px; align-items: flex-start;
 }
-.ins-num { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; line-height: 1; letter-spacing: 0; color: rgba(0,0,0,.06); flex-shrink: 0; min-width: 48px; margin-top: -4px; }
-.ins-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; margin-bottom: 8px; }
+.ins-num { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; line-height: 1; letter-spacing: 0; color: rgba(0,0,0,.06); flex-shrink: 0; min-width: 48px; margin-top: -4px; }
+.ins-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .ins-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
 /* ─── RESPONSIVE ─── */
 @media(max-width: 900px) {
-  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
+  nav { padding: 16px 24px; display: flex; justify-content: space-between; }
   .cs-section { margin-bottom: 56px; }
   .nav-pill { display: none; }
   .nav-cta { display: none; }
   .nav-burger { display: flex; }
-  .cs-hero-band { padding-top: 110px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
+  .cs-hero-band { padding-top: 112px; padding-left: 20px; padding-right: 20px; padding-bottom: 64px; }
   .cs-content { padding: 0 20px 100px; }
   .cs-overview { grid-template-columns: 1fr 1fr; }
   .cs-ov-cell:nth-child(2) { border-right: none; }
@@ -488,6 +489,7 @@ nav > * { pointer-events: auto; }
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <!-- ─── NAV ─── -->
@@ -506,28 +508,30 @@ nav > * { pointer-events: auto; }
   </button>
 </nav>
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">✕</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <!-- HERO BAND -->
 <div class="cs-hero-band">
   <div class="cs-hero-inner">
     <div class="cs-hero-kicker">
       <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#7EB8FF;vertical-align:middle;margin-right:8px;"></span>
-      Product Design · Team of 4 · Client Project · 2025
+      Product design · Team of 4 · Client project · 2025
     </div>
-    <h1 class="cs-hero-h1">Small businesses<br>had the data.<br>They couldn't use it.</h1>
-    <p class="cs-hero-desc">An AI-powered ops dashboard that turns fragmented SMB data into one clear view and one next move.</p>
-    <div style="margin-top:16px;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.15);padding:9px 18px;border-radius:100px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7);">
-      🔒 Company name &amp; details changed for NDA
+    <h1 class="cs-hero-h1">Small businesses<br>had the data.<br>They couldn’t use it.</h1>
+    <p class="cs-hero-desc">An ops dashboard that turns fragmented small business data into one clear view and one next move.</p>
+    <div style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.15);padding:8px 12px;border-radius:8px;font-size:13px;font-weight:500;text-transform: none;letter-spacing: 0.01em;color:rgba(255,255,255,.7);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;display:block;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Company name &amp; details changed for the NDA
     </div>
     <!-- product demo video -->
-    <video class="vid-zoom lazy-vid" aria-label="OpsIQ AI dashboard hero walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:40px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);" preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4"></video>
+    <video class="vid-zoom lazy-vid" aria-label="OpsIQ AI dashboard hero walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:40px auto 0;box-shadow:0 24px 64px rgba(0,0,0,.5);" preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_hero.mp4" poster="assets/posters/opsiq-dashboard-walkthrough-hero.jpg"></video>
   </div>
 </div>
 
@@ -536,7 +540,7 @@ nav > * { pointer-events: auto; }
 
   <!-- OVERVIEW META -->
   <div class="cs-overview cs-reveal">
-    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">Product Designer · Design System · UX Writing · Business Strategy</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">My role</div><div class="cs-ov-val">Product Designer · Design System · UX Writing · Business Strategy</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Team</div><div class="cs-ov-val">4 Designers + CEO of the Company</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Platform</div><div class="cs-ov-val">Web SaaS · SMB Operations Dashboard</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Tools</div><div class="cs-ov-val">Figma · Miro · FigJam</div></div>
@@ -544,26 +548,26 @@ nav > * { pointer-events: auto; }
 
   <!-- HATS I WORE -->
   <div class="cs-reveal" style="margin-bottom:80px;">
-    <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:20px;">Hired as Product Designer. Wore these hats.</div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
-      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">UX Researcher</div>
+    <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-bottom:20px;">Hired as product designer. Wore these hats.</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:20px 16px;">
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:#3B6FD4;">UX researcher</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Semi-structured SMB interviews, affinity + empathy mapping</p>
       </div>
-      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">Product Designer</div>
+      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:20px 16px;">
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:#3B6FD4;">Product designer</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Dashboard UX, metric cards, edit mode, AI Insight layer</p>
       </div>
-      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">Design Systems</div>
+      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:20px 16px;">
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:#3B6FD4;">Design systems</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Built the full component library: cards, states, navigation</p>
       </div>
-      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">UX Writer</div>
+      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:20px 16px;">
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:#3B6FD4;">UX writer</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">Dashboard copy, alerts, onboarding, pricing tier names</p>
       </div>
-      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:18px 16px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:12px;text-transform:uppercase;letter-spacing: 0;color:#3B6FD4;">Business Strategy</div>
+      <div style="background:rgba(59,111,212,.07);border:1px solid rgba(59,111,212,.18);border-radius:14px;padding:20px 16px;">
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:12px;text-transform: none;letter-spacing: 0;color:#3B6FD4;">Business strategy</div>
         <p style="font-size:12px;color:#666;line-height:1.45;margin-top:4px;">3 paid tiers, technical feasibility, pitch deck narrative</p>
       </div>
     </div>
@@ -571,26 +575,26 @@ nav > * { pointer-events: auto; }
 
   <!-- SECTION 01 - THE PROBLEM -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">01</span> The Problem</div>
+    <div class="cs-sec-label"><span class="n">01</span> The problem</div>
     <h2 class="cs-sec-title">7 tabs. No clarity.</h2>
     <!-- text + laptop image side by side -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:40px;">
       <div>
-        <p style="font-size:16px;line-height:1.8;color: rgba(0,0,0,.65);">SMB founders weren't failing to collect data. They were drowning in it. HubSpot, ClickUp, Slack, spreadsheets: each told a different story. None told the whole one. The problem wasn't access to data. It was the inability to act on it.</p>
+        <p style="font-size:16px;line-height:1.8;color: rgba(0,0,0,.65);">SMB founders weren’t failing to collect data. They were drowning in it. HubSpot, ClickUp, Slack, spreadsheets: each told a different story. None told the whole one. The problem wasn’t access to data. It was the inability to act on it.</p>
       </div>
       <figure style="margin:0;">
-        <img src="assets/ABC Company/Fragmented tool landscape, from pitch deck.png" alt="Fragmented tool landscape, multiple tabs open" style="width:100%;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.18);">
+        <img src="assets/ABC Company/Fragmented tool landscape, from pitch deck.png" alt="Fragmented tool landscape, multiple tabs open" style="width:100%;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.18);" width="1920" height="1080" loading="lazy" decoding="async">
         <figcaption class="img-caption">A typical SMB tool stack: seven apps, seven logins, no single source of truth</figcaption>
       </figure>
     </div>
     <!-- stats row -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;">
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:14px;padding:28px 24px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:44px;color:#3B6FD4;line-height:1;margin-bottom:6px;">66%</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:44px;color:#3B6FD4;line-height:1;margin-bottom:8px;">66%</div>
         <div style="font-size:14px;color:rgba(0,0,0,.6);line-height:1.5;">of SMB founders feel overwhelmed by disconnected tools</div>
       </div>
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:14px;padding:28px 24px;">
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:44px;color:#3B6FD4;line-height:1;margin-bottom:6px;">34%</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:44px;color:#3B6FD4;line-height:1;margin-bottom:8px;">34%</div>
         <div style="font-size:14px;color:rgba(0,0,0,.6);line-height:1.5;">of managers lack time to analyze the data they already have</div>
       </div>
     </div>
@@ -600,7 +604,7 @@ nav > * { pointer-events: auto; }
       <div>
         <div style="font-size:13px;font-weight:600;color:#0C0C0C;">SMB Founder</div>
         <div style="font-size:12px;color:rgba(12,12,12,.4);margin-top:1px;">Interview Participant · U.S.-based · $250K to $1M revenue</div>
-        <p style="font-size:12px;line-height:1.7;color:rgba(12,12,12,.7);margin:12px 0 0;font-family:'Lato',sans-serif;font-style:normal;">"Without someone looking at this for me, these tools are just a waste of money."</p>
+        <p style="font-size:12px;line-height:1.7;color:rgba(12,12,12,.7);margin:12px 0 0;font-family:'Lato',sans-serif;font-style:normal;">“Without someone looking at this for me, these tools are just a waste of money.”</p>
       </div>
     </div>
   </div>
@@ -609,78 +613,78 @@ nav > * { pointer-events: auto; }
 
   <!-- SECTION 02 - RESEARCH & DISCOVERY -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">02</span> Research &amp; Discovery</div>
+    <div class="cs-sec-label"><span class="n">02</span> Research &amp; discovery</div>
     <h2 class="cs-sec-title">I talked to real founders first.</h2>
     <p class="cs-body">Before opening Figma, we conducted qualitative discovery research: a semi-structured interview with a U.S.-based SMB founder generating $250K to $1M annually. We followed with secondary research: business blogs, industry publications, and internal documents from the client. Findings were synthesized through affinity mapping and empathy mapping to surface the clearest pain points.</p>
 
     <!-- Research process pills -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0 40px;">
       <div style="background:rgba(59,111,212,.06);border:1px solid rgba(59,111,212,.12);border-radius:14px;padding:24px;">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#3B6FD4;font-weight:600;margin-bottom:12px;">Primary Research</div>
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#3B6FD4;font-weight:600;margin-bottom:12px;">Primary research</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;">1 semi-structured interview · U.S. SMB founder · $250K to $1M revenue · Affinity + empathy mapping</p>
       </div>
       <div style="background:rgba(59,111,212,.06);border:1px solid rgba(59,111,212,.12);border-radius:14px;padding:24px;">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#3B6FD4;font-weight:600;margin-bottom:12px;">Secondary Research</div>
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#3B6FD4;font-weight:600;margin-bottom:12px;">Secondary research</div>
         <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;">Industry publications · Business blogs · Internal documents · Goal: validate assumptions and build a complete picture of SMB operational pain</p>
       </div>
     </div>
 
     <!-- What we heard: real SMB quotes -->
-    <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px;">What we heard: direct quotes</div>
+    <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-bottom:16px;">What we heard: direct quotes</div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
       <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:8px;left:16px;font-family:'Lato',sans-serif;font-size:48px;color:rgba(59,111,212,.12);line-height:1;pointer-events:none;">"</div>
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#3B6FD4;font-weight:600;margin-bottom:10px;position:relative;">Visibility</div>
-        <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:normal;margin:0 0 12px;position:relative;">I know the numbers, but I can't track everything at once.</p>
+        <div style="position:absolute;top:8px;left:16px;font-family:'Lato',sans-serif;font-size:48px;color:rgba(59,111,212,.12);line-height:1;pointer-events:none;">“</div>
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#3B6FD4;font-weight:600;margin-bottom:12px;position:relative;">Visibility</div>
+        <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:normal;margin:0 0 12px;position:relative;">I know the numbers, but I can’t track everything at once.</p>
         <div style="font-size:11px;color:rgba(12,12,12,.35);position:relative;">SMB Founder · Interview</div>
       </div>
       <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:8px;left:16px;font-family:'Lato',sans-serif;font-size:48px;color:rgba(59,111,212,.12);line-height:1;pointer-events:none;">"</div>
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#3B6FD4;font-weight:600;margin-bottom:10px;position:relative;">Proactivity</div>
-        <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:normal;margin:0 0 12px;position:relative;">I forgot we usually run an October campaign... it was too late.</p>
+        <div style="position:absolute;top:8px;left:16px;font-family:'Lato',sans-serif;font-size:48px;color:rgba(59,111,212,.12);line-height:1;pointer-events:none;">“</div>
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#3B6FD4;font-weight:600;margin-bottom:12px;position:relative;">Proactivity</div>
+        <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:normal;margin:0 0 12px;position:relative;">I forgot we usually run an October campaign… it was too late.</p>
         <div style="font-size:11px;color:rgba(12,12,12,.35);position:relative;">SMB Founder · Interview</div>
       </div>
       <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:8px;left:16px;font-family:'Lato',sans-serif;font-size:48px;color:rgba(59,111,212,.12);line-height:1;pointer-events:none;">"</div>
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#3B6FD4;font-weight:600;margin-bottom:10px;position:relative;">Direction</div>
+        <div style="position:absolute;top:8px;left:16px;font-family:'Lato',sans-serif;font-size:48px;color:rgba(59,111,212,.12);line-height:1;pointer-events:none;">“</div>
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#3B6FD4;font-weight:600;margin-bottom:12px;position:relative;">Direction</div>
         <p style="font-size:12px;color:rgba(12,12,12,.7);line-height:1.7;font-family:'Lato',sans-serif;font-style:normal;margin:0 0 12px;position:relative;">Without someone looking at this, these tools are a waste of money.</p>
         <div style="font-size:11px;color:rgba(12,12,12,.35);position:relative;">SMB Founder · Interview</div>
       </div>
     </div>
 
     <!-- Sarah persona card -->
-    <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px;">The person we designed for</div>
+    <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin-bottom:16px;">The person we designed for</div>
     <div style="background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06);">
       <div style="display:grid;grid-template-columns:220px 1fr;">
         <!-- Left: photo + name -->
-        <div style="background:linear-gradient(160deg,#EBF0FA 0%,#D6E4FF 100%);padding:32px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;">
-          <img src="assets/ABC Company/Sarah.png" alt="Sarah" style="width:96px;height:96px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(59,111,212,.2);">
+        <div style="background:#D6E4FF;padding:32px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;">
+          <img src="assets/ABC Company/Sarah.png" alt="Sarah" style="width:96px;height:96px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,.08);" width="1920" height="1080" loading="lazy" decoding="async">
           <div>
-            <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;letter-spacing: 0;color:#0C0C0C;">Sarah</div>
+            <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:17px;letter-spacing: 0;color:#0C0C0C;">Sarah</div>
             <div style="font-size:12px;color:rgba(12,12,12,.5);margin-top:2px;">SMB Founder, Age 34</div>
             <div style="font-size:12px;color:#3B6FD4;margin-top:4px;">4-person media company</div>
           </div>
           <div style="font-family:'Lato',sans-serif;font-style:normal;font-size:13px;color:rgba(12,12,12,.55);line-height:1.6;margin-top:4px;position:relative;">
-            <span style="position:absolute;top:-8px;left:-4px;font-family:'Lato',sans-serif;font-size:36px;color:rgba(59,111,212,.18);line-height:1;pointer-events:none;">"</span>
+            <span style="position:absolute;top:-8px;left:-4px;font-family:'Lato',sans-serif;font-size:36px;color:rgba(59,111,212,.18);line-height:1;pointer-events:none;">“</span>
             <span style="position:relative;">Without someone looking at this for me, these tools are just a waste of money.</span>
           </div>
         </div>
         <!-- Right: goals + pain points -->
         <div style="padding:32px 36px;display:grid;grid-template-columns:1fr 1fr;gap:32px;">
           <div>
-            <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#3B6FD4;font-weight:600;margin-bottom:14px;">Goals</div>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:#3B6FD4;flex-shrink:0;margin-top:6px;"></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">See complete business health at a glance</span></li>
-              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:#3B6FD4;flex-shrink:0;margin-top:6px;"></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Catch issues before they become a crisis</span></li>
-              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:#3B6FD4;flex-shrink:0;margin-top:6px;"></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Scale without operational chaos</span></li>
+            <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#3B6FD4;font-weight:600;margin-bottom:16px;">Goals</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+              <li style="display:flex;gap:12px;align-items:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:#3B6FD4;flex-shrink:0;margin-top:8px;"></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">See complete business health at a glance</span></li>
+              <li style="display:flex;gap:12px;align-items:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:#3B6FD4;flex-shrink:0;margin-top:8px;"></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Catch issues before they become a crisis</span></li>
+              <li style="display:flex;gap:12px;align-items:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:#3B6FD4;flex-shrink:0;margin-top:8px;"></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Scale without operational chaos</span></li>
             </ul>
           </div>
           <div>
-            <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#3B6FD4;font-weight:600;margin-bottom:14px;">Pain Points</div>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="flex-shrink:0;margin-top:1px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/></svg></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;font-style:normal;">"I know the numbers, but I can't track everything at once"</span></li>
-              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="flex-shrink:0;margin-top:1px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.008ZM4.5 9.75A.75.75 0 0 1 5.25 9h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V9.75Z"/></svg></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Missed opportunities from lack of visibility</span></li>
-              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="flex-shrink:0;margin-top:1px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Z"/></svg></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Constantly reactive instead of proactive</span></li>
+            <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#3B6FD4;font-weight:600;margin-bottom:16px;">Pain points</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+              <li style="display:flex;gap:12px;align-items:flex-start;"><span style="flex-shrink:0;margin-top:1px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/></svg></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;font-style:normal;">“I know the numbers, but I can’t track everything at once”</span></li>
+              <li style="display:flex;gap:12px;align-items:flex-start;"><span style="flex-shrink:0;margin-top:1px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.008ZM4.5 9.75A.75.75 0 0 1 5.25 9h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V9.75Z"/></svg></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Missed opportunities from lack of visibility</span></li>
+              <li style="display:flex;gap:12px;align-items:flex-start;"><span style="flex-shrink:0;margin-top:1px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Z"/></svg></span><span style="font-size:13px;color:rgba(12,12,12,.7);line-height:1.5;">Constantly reactive instead of proactive</span></li>
             </ul>
           </div>
         </div>
@@ -690,8 +694,8 @@ nav > * { pointer-events: auto; }
     <!-- User testing image -->
     <div style="margin-top:32px;">
       <figure style="margin:0;">
-        <img src="assets/ABC Company/User Testing Interface.jpg" alt="User testing session" style="width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);">
-        <figcaption class="img-caption">Usability testing validating the dashboard's core navigation flow</figcaption>
+        <img src="assets/ABC Company/User Testing Interface.jpg" alt="User testing session" style="width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);" width="1800" height="1363" loading="lazy" decoding="async">
+        <figcaption class="img-caption">Usability testing validating the dashboard’s core navigation flow</figcaption>
       </figure>
     </div>
   </div>
@@ -700,28 +704,28 @@ nav > * { pointer-events: auto; }
 
   <!-- SECTION 03 - THE SOLUTION -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">03</span> The Solution</div>
+    <div class="cs-sec-label"><span class="n">03</span> The solution</div>
     <h2 class="cs-sec-title">One dashboard. One next move.</h2>
-    <p class="cs-body">Three needs from research became the product's core promise: see your data, understand what changed, know what to do next.</p>
+    <p class="cs-body">Three needs from research became the product’s core promise: see your data, understand what changed, know what to do next.</p>
 
     <!-- Dashboard full-width video -->
-    <video class="vid-zoom lazy-vid" aria-label="OpsIQ dashboard feature walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:32px auto 40px;box-shadow:0 24px 64px rgba(0,0,0,.4);" preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4"></video>
+    <video class="vid-zoom lazy-vid" aria-label="OpsIQ dashboard feature walkthrough" loop muted playsinline style="width:65%;border-radius:20px;display:block;margin:32px auto 40px;box-shadow:0 24px 64px rgba(0,0,0,.4);" preload="none" data-src="assets/ABC Company/OpsIQ Dashboard Walkthrough_web.mp4" poster="assets/posters/opsiq-dashboard-walkthrough-web.jpg"></video>
 
     <!-- 3 columns: Visualize / Analyze / Act -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:16px;padding:28px 24px;">
         <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z"/></svg></div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Visualize</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:17px;text-transform: none;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Visualize</div>
         <p style="font-size:13px;color:rgba(0,0,0,.6);line-height:1.65;margin:0;">Connect any tool in 2 clicks. All business metrics in one real-time view: revenue, tasks, pipeline.</p>
       </div>
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:16px;padding:28px 24px;">
         <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Z"/></svg></div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Analyze</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:17px;text-transform: none;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Analyze</div>
         <p style="font-size:13px;color:rgba(0,0,0,.6);line-height:1.65;margin:0;">AI Insight mode surfaces what changed and why. Proactive alerts mean catching issues before they become crises.</p>
       </div>
       <div style="background:rgba(59,111,212,0.07);border:1px solid rgba(59,111,212,0.15);border-radius:16px;padding:28px 24px;">
         <div style="margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.257a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .906-.143Z"/></svg></div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:17px;text-transform:uppercase;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Act</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:17px;text-transform: none;color:#3B6FD4;letter-spacing: 0;margin-bottom:8px;">Act</div>
         <p style="font-size:13px;color:rgba(0,0,0,.6);line-height:1.65;margin:0;">AI recommends a specific next move. Not just data: direction. The dashboard tells you what to do next.</p>
       </div>
     </div>
@@ -731,9 +735,9 @@ nav > * { pointer-events: auto; }
 
   <!-- SECTION 04 - MY ROLE -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">04</span> My Role</div>
+    <div class="cs-sec-label"><span class="n">04</span> My role</div>
     <h2 class="cs-sec-title">The screens. The system. The words.</h2>
-    <p class="cs-body">As product designer on a team of four working directly with the company's CEO, I owned the dashboard screens, built the design system, wrote all UX copy, and co-led the pitch narrative.</p>
+    <p class="cs-body">As product designer on a team of four working directly with the company’s CEO, I owned the dashboard screens, built the design system, wrote all UX copy, and co-led the pitch narrative.</p>
 
     <div class="cards-g2" style="margin-top:32px;">
       <div class="insight-card">
@@ -741,16 +745,16 @@ nav > * { pointer-events: auto; }
         <p style="font-size:13px;color:#666;margin-top:8px;">Metric card system, edit mode, alert notifications, and the AI Insight layer. Designed for a founder with 10 minutes, not an hour.</p>
       </div>
       <div class="insight-card">
-        <strong>Design System</strong>
+        <strong>Design system</strong>
         <p style="font-size:13px;color:#666;margin-top:8px;">Full component library: cards, states, badges, navigation, two-step tool onboarding. Visual consistency across all views.</p>
       </div>
       <div class="insight-card">
         <strong>UX Writing</strong>
-        <p style="font-size:13px;color:#666;margin-top:8px;">All dashboard labels, alert copy, onboarding microcopy, and pricing tier names. "See Everything / Understand Everything / Predict Everything". Each name is a value proposition.</p>
+        <p style="font-size:13px;color:#666;margin-top:8px;">All dashboard labels, alert copy, onboarding microcopy, and pricing tier names. “See Everything / Understand Everything / Predict Everything”. Each name is a value proposition.</p>
       </div>
       <div class="insight-card">
         <strong>Pitch Storytelling</strong>
-        <p style="font-size:13px;color:#666;margin-top:8px;">Co-led the narrative arc: opened with the founder's story, grounded it in data, presented the product as a direct answer to each pain point.</p>
+        <p style="font-size:13px;color:#666;margin-top:8px;">Co-led the narrative arc: opened with the founder’s story, grounded it in data, presented the product as a direct answer to each pain point.</p>
       </div>
     </div>
 
@@ -760,30 +764,30 @@ nav > * { pointer-events: auto; }
 
   <!-- SECTION 06 - WHAT I LEARNED -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">06</span> What I Learned</div>
+    <div class="cs-sec-label"><span class="n">06</span> What I learned</div>
     <h2 class="cs-sec-title">Same thing. Different thing.</h2>
     <div class="learnings">
       <div class="learning">
         <div class="l-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/></svg></div>
-        <div class="l-text"><strong>Lead with pain, not personas.</strong> Anchoring every decision to something a real founder said made trade-offs much easier. "Would this solve the October campaign problem?" is a better design filter than "is this on-brand?"</div>
+        <div class="l-text"><strong>Lead with pain, not personas.</strong> Anchoring every decision to something a real founder said made trade-offs much easier. “Would this solve the October campaign problem?” is a better design filter than “is this on-brand?”</div>
       </div>
       <div class="learning">
         <div class="l-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z"/></svg></div>
-        <div class="l-text"><strong>UX writing is product strategy.</strong> Naming the pricing tiers "See Everything / Understand Everything / Predict Everything" reframed the table as a capability ladder. Each name is a value proposition in itself.</div>
+        <div class="l-text"><strong>UX writing is product strategy.</strong> Naming the pricing tiers “See Everything / Understand Everything / Predict Everything” reframed the table as a capability ladder. Each name is a value proposition in itself.</div>
       </div>
       <div class="learning">
         <div class="l-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"/></svg></div>
-        <div class="l-text"><strong>What I'd do differently.</strong> I'd validate the AI Insight layer with more SMB users earlier. We made reasonable assumptions about what "recommended actions" should look like, but phrasing and priority should come from founders who've lived with HubSpot for years.</div>
+        <div class="l-text"><strong>What I’d do differently.</strong> I’d validate the AI Insight layer with more SMB users earlier. We made reasonable assumptions about what “recommended actions” should look like, but phrasing and priority should come from founders who’ve lived with HubSpot for years.</div>
       </div>
       <div class="learning">
         <div class="l-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="#3B6FD4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z"/></svg></div>
-        <div class="l-text"><strong>Designing for scrutiny makes work better.</strong> Every decision had to survive a CEO and three other designers. That friction forced me to articulate what I built and why. A habit I'll carry everywhere.</div>
+        <div class="l-text"><strong>Designing for scrutiny makes work better.</strong> Every decision had to survive a CEO and three other designers. That friction forced me to articulate what I built and why. A habit I’ll carry everywhere.</div>
       </div>
     </div>
   </div>
 
   <!-- FOOTER CTA -->
-  <div class="cs-footer cs-reveal" style="background:linear-gradient(160deg,#07091A 0%,#0F1A2E 60%,#1A2B4A 100%);">
+  <div class="cs-footer cs-reveal" style="background:#0F1A2E;">
     <div class="cs-footer-inner">
       <h3 class="cs-footer-title">Designed for more than<br>what was asked.</h3>
       <p class="cs-footer-sub">Research-led. Systems-built. Shipped with the CEO in the room.</p>
@@ -797,20 +801,20 @@ nav > * { pointer-events: auto; }
   <!-- VIEW MORE PROJECTS -->
   <div style="margin-top:48px;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
-      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='var(--ink)';this.style.borderColor='rgba(0,0,0,.25)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 16px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='var(--ink)';this.style.borderColor='rgba(0,0,0,.25)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all 8 ↗</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div onclick="window.location='draggit.html'" style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome Extension</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
+      <a href="draggit.html" style="display:block;text-decoration:none;color:inherit;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome extension</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Solo built &amp; shipped. A Chrome extension that fixes a daily LinkedIn UX pain.</p>
-      </div>
-      <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+      </a>
+      <a href="cliqueprize.html" style="display:block;text-decoration:none;color:inherit;background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#C4566A;margin-bottom:12px;">B2B SaaS platform</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language. We rebuilt it.</p>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -854,12 +858,14 @@ document.querySelectorAll('.vid-zoom').forEach(function(v) {
 });
 </script>
 <footer class="footer-bar">
-  <span>© 2025 Rhea Mittal</span>
-  <span>Made with love and energy drinks ✨</span>
+  <span>© 2026 Rhea Mittal</span>
+  <span>Made with love and energy drinks</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
 
 <script src="scripts/lazy-vid.js"></script>
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>

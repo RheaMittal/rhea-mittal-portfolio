@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>TechGuy | Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
 
@@ -24,10 +25,10 @@ nav {
 }
 nav > * { pointer-events: auto; }
 .nav-logo {
-  font-family: 'Lato', sans-serif; font-weight: 900; font-size: 18px;
+  font-family: 'Lato', sans-serif; font-weight: 600; font-size: 18px;
   letter-spacing: 0; text-decoration: none; color: var(--ink);
   justify-self: start;
-  padding: 10px 4px;
+  padding: 12px 4px;
   transition: opacity .2s;
 }
 .nav-logo:hover { opacity: .7; }
@@ -35,11 +36,11 @@ nav > * { pointer-events: auto; }
   position: relative;
   justify-self: center;
   display: flex; align-items: center; gap: 2px;
-  padding: 5px;
+  padding: 4px;
   border-radius: 100px;
   background: var(--glass-bg, rgba(255,255,255,0.62));
-  backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
-  -webkit-backdrop-filter: var(--glass-blur, blur(22px) saturate(1.5));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border, rgba(255,255,255,0.85));
   box-shadow: var(--glass-shadow, 0 10px 36px rgba(80,76,68,0.10), 0 1px 0 rgba(255,255,255,0.9) inset, 0 0 0 1px rgba(0,0,0,0.04));
 }
@@ -59,7 +60,7 @@ nav > * { pointer-events: auto; }
   position: relative;
   z-index: 1;
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 18px;
+  padding: 12px 20px;
   min-height: 38px;
   border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
@@ -81,17 +82,17 @@ nav > * { pointer-events: auto; }
 .nav-cta {
   justify-self: end;
   background: var(--ink); color: var(--bg);
-  padding: 10px 20px; border-radius: 100px;
+  padding: 12px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px; font-weight: 500; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
   box-shadow: 0 4px 16px rgba(12,12,12,0.12);
 }
-.nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(12,12,12,0.16); }
+.nav-cta:hover { background: #2A2A28; }
 .nav-burger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  display: none; flex-direction: column; gap: 4px; cursor: pointer;
   padding: 8px; background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
   border: 1px solid rgba(255,255,255,0.85); border-radius: 12px;
   justify-self: end;
   box-shadow: 0 4px 16px rgba(80,76,68,0.08);
@@ -101,13 +102,13 @@ nav > * { pointer-events: auto; }
 }
 .nav-mobile {
   display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.96);
-  backdrop-filter: blur(24px); z-index: 998;
+  backdrop-filter: none; z-index: 998;
   flex-direction: column; align-items: center; justify-content: center; gap: 36px;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(28px, 6.24vw, 50px); text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(28px, 6.24vw, 50px); text-transform: none;
   letter-spacing: 0; color: var(--ink); text-decoration: none; transition: color .2s;
 }
 .nav-mobile a:hover { color: var(--green); }
@@ -119,14 +120,14 @@ nav > * { pointer-events: auto; }
 /* ─── GLASS SYSTEM ─── */
 .glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
 .glass-badge {
   display: inline-flex; align-items: center;
-  padding: 9px 18px; border-radius: 100px;
+  padding: 8px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; font-weight: 600;
   color: rgba(12,12,12,0.72);
@@ -169,12 +170,12 @@ nav > * { pointer-events: auto; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
@@ -213,13 +214,13 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 .reveal-d3 { transition-delay: .3s; }
 
 /* HERO */
-.cs-hero-band { width: 100%; padding: 130px 56px 60px; background: linear-gradient(160deg, #0E1830 0%, #152340 60%, #1A2E50 100%); }
+.cs-hero-band { width: 100%; padding: 132px 56px 60px; background: #152340; }
 .cs-hero-inner { max-width: 888px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.cs-hero-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-.cs-hero-h1 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: clamp(31px, 4.68vw, 59px); line-height: .92; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 28px; }
+.cs-hero-kicker { font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none; color: rgba(255,255,255,.55); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.cs-hero-h1 { font-family: 'Lato', sans-serif; font-weight: 600; font-size: clamp(31px, 4.68vw, 59px); line-height: 1.05; letter-spacing: -0.02em; text-transform: none; color: #fff; margin-bottom: 28px; }
 .cs-hero-desc { font-size: 17px; line-height: 1.75; color: rgba(255,255,255,.72); max-width: 600px; text-align: center; margin-bottom: 0; }
 .cs-hero-video-wrap { width: 100%; max-width: 1100px; margin: 56px auto 0; overflow: hidden; border-radius: 16px 16px 0 0; }
-.cs-hero-video-wrap video { width: 100%; height: auto; display: block; border-radius: 16px 16px 0 0; box-shadow: 0 8px 60px rgba(64,94,171,0.3); object-fit: cover; object-position: center; background: transparent; }
+.cs-hero-video-wrap video { width: 100%; height: auto; display: block; border-radius: 16px 16px 0 0; box-shadow: 0 8px 40px rgba(0,0,0,0.24); object-fit: cover; object-position: center; background: transparent; }
 
 /* CONTENT */
 .cs-content { max-width: 1000px; margin: 0 auto; padding: 0 56px 140px; }
@@ -228,18 +229,18 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 .cs-overview { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 56px 0 80px; }
 .cs-ov-cell { padding: 28px 32px; border-right: 1px solid var(--border); background: var(--white); }
 .cs-ov-cell:last-child { border-right: none; }
-.cs-ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+.cs-ov-label { font-size: 11px; text-transform: none; letter-spacing: 0.01em; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .cs-ov-val { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.45; }
 
 /* SECTION */
 .cs-section { margin-bottom: 96px; }
-.cs-sec-label { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
+.cs-sec-label { font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.cs-sec-label .n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px; color: rgba(0,0,0,.15); letter-spacing: 0; }
 .cs-sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.cs-sec-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06; letter-spacing: 0; text-transform: uppercase; margin-bottom: 28px; }
+.cs-sec-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: clamp(22px, 2.73vw, 34px); line-height: 1.06; letter-spacing: 0; text-transform: none; margin-bottom: 28px; }
 .cs-body { font-size: 16px; line-height: 1.8; color: rgba(0,0,0,.65); max-width: 720px; margin-bottom: 24px; }
 .cs-body + .cs-body { margin-top: -8px; }
-.img-caption { font-size: 12px; color: var(--muted); margin-top: 10px; text-align: center; letter-spacing: .03em; }
+.img-caption { font-size: 12px; color: var(--muted); margin-top: 12px; text-align: center; letter-spacing: .03em; }
 
 /* SPLITS */
 .sec-split { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; }
@@ -252,8 +253,8 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 .cards-g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
 .c-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; transition: border-color .2s; }
 .c-card:hover { border-color: rgba(0,0,0,.18); }
-.c-card-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
-.c-card-t { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); }
+.c-card-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0; color: rgba(0,0,0,.06); line-height: 1; }
+.c-card-t { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 15px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 .c-card-b { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* CALLOUT */
@@ -264,8 +265,8 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 .impact-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 32px 0; }
 .impact-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; text-align: center; transition: transform .25s, border-color .2s; }
 .impact-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,.18); }
-.impact-n { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; color: var(--accent); }
-.impact-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
+.impact-n { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 44px; letter-spacing: 0; line-height: 1; margin-bottom: 8px; color: var(--accent); }
+.impact-l { font-size: 12px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; font-weight: 500; }
 
 /* LEARNINGS */
 .learning { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; display: flex; flex-direction: column; gap: 4px; margin-bottom: 2px; transition: border-color .2s; }
@@ -274,11 +275,11 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 .l-text strong { color: var(--ink); font-weight: 600; }
 
 /* IMG PLACEHOLDER */
-.img-ph { border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02); padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; margin: 32px 0; }
+.img-ph { border-radius: 16px; border: 1px dashed rgba(0,0,0,.1); background: rgba(0,0,0,.02); padding: 56px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; margin: 32px 0; }
 .img-ph.h-large { min-height: 420px; }
 .img-ph.h-medium { min-height: 300px; }
-.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.3); }
+.img-ph-badge { background: rgba(0,0,0,.06); color: rgba(0,0,0,.4); padding: 4px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; text-transform: none; }
+.img-ph-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: 0; color: rgba(0,0,0,.3); }
 .img-ph-desc { font-size: 13px; color: rgba(0,0,0,.2); line-height: 1.65; max-width: 460px; }
 
 /* COMPANY ROW */
@@ -296,52 +297,52 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
 /* SERVICE FLOWCHART */
 .svc-flow { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin: 28px 0 40px; }
-.svc-flow-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 28px; text-align: center; }
+.svc-flow-label { font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; color: var(--muted); margin-bottom: 28px; text-align: center; }
 .svc-flow-row { display: grid; grid-template-columns: 1fr 72px 1fr 72px 1fr; align-items: center; gap: 0; }
 .svc-node { border-radius: 16px; padding: 24px 20px; text-align: center; }
 .svc-node.customer { background: var(--accent-bg); border: 1px solid var(--accent-border); }
 .svc-node.operations { background: rgba(64,94,171,0.14); border: 1px solid rgba(64,94,171,0.28); }
 .svc-node.technician { background: var(--accent-bg); border: 1px solid var(--accent-border); }
-.svc-node-icon { font-size: 26px; margin-bottom: 10px; }
-.svc-node-name { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); margin-bottom: 4px; }
-.svc-node-sub { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.svc-node-icon { font-size: 26px; margin-bottom: 12px; }
+.svc-node-name { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 4px; }
+.svc-node-sub { font-size: 10px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; }
 .svc-node-detail { margin-top: 12px; font-size: 11px; color: rgba(12,12,12,0.5); line-height: 1.55; }
-.svc-connector { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 0 2px; }
-.svc-conn-label { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0; white-space: nowrap; text-align: center; }
+.svc-connector { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 2px; }
+.svc-conn-label { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: none; letter-spacing: 0; white-space: nowrap; text-align: center; }
 .svc-conn-label.muted { color: var(--muted); }
 .svc-arrow { display: flex; align-items: center; width: 100%; }
 .svc-line { flex: 1; height: 2px; background: var(--accent-border); }
-.svc-arrowhead { font-size: 12px; color: var(--accent); font-weight: 700; }
+.svc-arrowhead { font-size: 12px; color: var(--accent); font-weight: 600; }
 .svc-flow-bottom { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: center; }
-.svc-vendor { background: rgba(0,0,0,.02); border: 1px dashed rgba(0,0,0,.1); border-radius: 14px; padding: 16px 28px; text-align: center; display: flex; align-items: center; gap: 14px; }
+.svc-vendor { background: rgba(0,0,0,.02); border: 1px dashed rgba(0,0,0,.1); border-radius: 14px; padding: 16px 28px; text-align: center; display: flex; align-items: center; gap: 16px; }
 .svc-vendor-icon { font-size: 20px; opacity: .4; }
-.svc-vendor-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
+.svc-vendor-label { font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; font-weight: 600; }
 .svc-vendor-desc { font-size: 11px; color: rgba(0,0,0,.35); margin-top: 2px; }
 
 /* SAID VS OBSERVED */
 /* SVO single card */
 .svo-single { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
-.svo-user-tag { display: flex; align-items: center; gap: 8px; background: var(--accent-bg); border-bottom: 1px solid var(--accent-border); padding: 10px 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); grid-column: 1 / -1; }
+.svo-user-tag { display: flex; align-items: center; gap: 8px; background: var(--accent-bg); border-bottom: 1px solid var(--accent-border); padding: 12px 20px; font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; color: var(--accent); grid-column: 1 / -1; }
 .svo-user-tag img { width: 16px; height: 16px; object-fit: contain; opacity: 0.75; }
-.svo-quote-block { padding: 22px 24px; border-right: 1px solid var(--border); background: var(--white); }
-.svo-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 12px; }
+.svo-quote-block { padding: 24px 24px; border-right: 1px solid var(--border); background: var(--white); }
+.svo-col-label { font-size: 10px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; color: var(--muted); margin-bottom: 12px; }
 .svo-quote { font-size: 14px; line-height: 1.7; color: rgba(0,0,0,.65); margin: 0; font-style: normal; }
-.svo-obs-block { padding: 22px 24px; background: var(--bg); }
+.svo-obs-block { padding: 24px 24px; background: var(--bg); }
 .svo-obs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .svo-obs-list li { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.6; padding-left: 16px; position: relative; }
 .svo-obs-list li::before { content: '▸'; position: absolute; left: 0; font-size: 8px; top: 5px; color: var(--accent); }
-.svo-highlight { background: rgba(64,94,171,0.12); color: var(--accent); font-weight: 700; padding: 1px 5px; border-radius: 4px; font-style: normal; }
+.svo-highlight { background: rgba(64,94,171,0.12); color: var(--accent); font-weight: 600; padding: 1px 4px; border-radius: 4px; font-style: normal; }
 
 /* KEY FINDINGS */
 .kf-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 28px 0; }
 .kf-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 24px 28px; display: flex; flex-direction: column; }
-.kf-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.kf-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .kf-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--accent-bg); border: 1px solid var(--accent-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .kf-icon img { width: 16px; height: 16px; object-fit: contain; opacity: 0.75; }
-.kf-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.kf-tag { font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; color: var(--accent); }
 .kf-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
 .kf-list li { font-size: 13px; color: rgba(0,0,0,.6); line-height: 1.6; padding-left: 16px; position: relative; }
-.kf-list li::before { content: '·'; position: absolute; left: 4px; color: var(--accent); font-weight: 700; font-size: 16px; line-height: 1.2; }
+.kf-list li::before { content: '·'; position: absolute; left: 4px; color: var(--accent); font-weight: 600; font-size: 16px; line-height: 1.2; }
 
 /* VIDEO ZOOM */
 .vid-zoom { display: block; transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), max-width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-radius 0.8s ease; }
@@ -353,44 +354,44 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 .flow-viewer.interactive { cursor: grab; }
 .flow-viewer.interactive.dragging { cursor: grabbing; }
 .flow-viewer img { display: block; width: 100%; height: auto; transform-origin: top left; transition: transform 0.2s ease; user-select: none; pointer-events: none; }
-.flow-viewer-hint { text-align: center; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-top: 10px; }
-.flow-viewer-controls { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-.flow-btn { background: var(--white); border: 1px solid var(--border); border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer; transition: border-color .2s, color .2s; }
+.flow-viewer-hint { text-align: center; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0.01em; margin-top: 12px; }
+.flow-viewer-controls { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+.flow-btn { background: var(--white); border: 1px solid var(--border); border-radius: 100px; padding: 8px 16px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer; transition: border-color .2s, color .2s; }
 .flow-btn:hover { border-color: var(--accent-border); color: var(--accent); }
 
 /* SOLUTION SECTIONS */
 .sol-section { margin-bottom: 56px; }
 .sol-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.sol-tag { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border); padding: 6px 14px; border-radius: 100px; }
+.sol-tag { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0.01em; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border); padding: 8px 16px; border-radius: 100px; }
 .sol-tag img { width: 14px; height: 14px; object-fit: contain; opacity: 0.8; }
-.sol-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 17px; text-transform: uppercase; letter-spacing: 0; color: var(--ink); margin-bottom: 20px; }
+.sol-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; color: var(--ink); margin-bottom: 20px; }
 .sol-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 16px 0; }
 .sol-features.single-col { grid-template-columns: repeat(3, 1fr); }
-.sol-feature { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+.sol-feature { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 20px 20px; display: flex; flex-direction: column; gap: 8px; }
 .sol-feature-title { font-size: 13px; font-weight: 600; color: var(--ink); }
 .sol-feature-text { font-size: 13px; color: rgba(0,0,0,.62); line-height: 1.6; }
 
 /* FOOTER */
-.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); background: linear-gradient(160deg, #0E1830 0%, #152340 60%, #1A2E50 100%); }
+.cs-footer { border-radius: 22px; overflow: hidden; margin-top: 80px; border: 1px solid var(--border); background: #152340; }
 .cs-footer-inner { padding: 64px 56px; text-align: center; }
-.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 41px; letter-spacing: 0; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.cs-footer-title { font-family: 'Lato', sans-serif; font-weight: 600; font-size: 41px; letter-spacing: 0; text-transform: none; color: #fff; margin-bottom: 12px; }
 .cs-footer-sub { color: rgba(255,255,255,.4); font-size: 16px; margin-bottom: 32px; }
 .cs-footer-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
+.fb-primary { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,.35); color: #fff; display:inline-flex; align-items:center; gap:8px; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, border-color .2s; }
 .fb-primary:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
-.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
+.fb-ghost { display:inline-flex; align-items:center; gap:8px; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65); background: transparent; padding: 16px 32px; border-radius: 100px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, color .2s; }
 .fb-ghost:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.9); }
 
 .footer-bar { border-top: 1px solid var(--border); padding: 20px 56px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--muted); }
 
 /* RESPONSIVE */
 @media(max-width:900px) {
-  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
+  nav { padding: 16px 24px; display: flex; justify-content: space-between; }
   .cs-section { margin-bottom: 56px; }
   .nav-pill { display: none; }
   .nav-cta { display: none; }
   .nav-burger { display: flex; }
-  .cs-hero-band { padding: 110px 20px 0; }
+  .cs-hero-band { padding: 112px 20px 0; }
   .cs-content { padding: 0 20px 100px; }
   .cs-overview { grid-template-columns: 1fr 1fr; }
   .cs-ov-cell:nth-child(2) { border-right: none; }
@@ -407,7 +408,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
   .impact-row { grid-template-columns: 1fr 1fr; }
   .cs-footer-inner { padding: 40px 24px; }
   .cs-footer-title { font-size: 28px; }
-  .footer-bar { padding: 16px 20px; flex-direction: column; gap: 6px; text-align: center; }
+  .footer-bar { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
 }
 @media(max-width:768px) {
   .pain-cards { grid-template-columns: 1fr; }
@@ -446,6 +447,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <!-- ─── NAV ─── -->
@@ -464,23 +466,25 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
   </button>
 </nav>
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">&#x2715;</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <!-- HERO -->
 <div class="cs-hero-band">
   <div class="cs-hero-inner">
-    <div class="cs-hero-kicker">UI/UX Design &middot; Team Lead &middot; Customer &middot; Technician &middot; Operations</div>
+    <div class="cs-hero-kicker">UI/UX design · Team lead · Customer · Technician · Operations</div>
     <h1 class="cs-hero-h1">Three products.<br>One design language.</h1>
     <p class="cs-hero-desc">TechGuy is a B2C electronics repair startup. Everything from customer bookings to engineer job management ran on WhatsApp. We researched, designed, and shipped three connected interfaces from scratch.</p>
   </div>
   <div class="cs-hero-video-wrap">
-    <video class="cs-hero-video vid-zoom lazy-vid" aria-label="TechGuy product suite hero — three products, one design system" loop muted playsinline style="width:65%;border-radius:16px 16px 0 0;display:block;margin:0 auto;box-shadow:0 -4px 60px rgba(64,94,171,0.25);" preload="none" data-src="assets/TechGuy/Techguy Hero page_hero.mp4"></video>
+    <video class="cs-hero-video vid-zoom lazy-vid" aria-label="TechGuy product suite hero — three products, one design system" loop muted playsinline style="width:65%;border-radius:16px 16px 0 0;display:block;margin:0 auto;box-shadow:0 -4px 40px rgba(0,0,0,0.2);" preload="none" data-src="assets/TechGuy/Techguy Hero page_hero.mp4" poster="assets/posters/techguy-hero-page-hero.jpg"></video>
   </div>
 </div>
 
@@ -489,7 +493,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
   <!-- OVERVIEW -->
   <div class="cs-overview cs-reveal">
-    <div class="cs-ov-cell"><div class="cs-ov-label">My Role</div><div class="cs-ov-val">Founding Product Designer &amp; Team Lead</div></div>
+    <div class="cs-ov-cell"><div class="cs-ov-label">My role</div><div class="cs-ov-val">Founding Product Designer &amp; Team Lead</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Team</div><div class="cs-ov-val">3 designers &middot; Software engineers &middot; CEO</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Timeline</div><div class="cs-ov-val">2021 &middot; 6 months</div></div>
     <div class="cs-ov-cell"><div class="cs-ov-label">Deliverables</div><div class="cs-ov-val">Customer Portal &middot; Technician App &middot; Operations Dashboard &middot; Design System</div></div>
@@ -497,10 +501,10 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
   <!-- 00 THE COMPANY -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">00</span> The Company</div>
+    <div class="cs-sec-label"><span class="n">00</span> The company</div>
     <div class="company-row">
       <div class="company-avatar" style="padding:0;overflow:hidden;background:transparent;border:none;">
-        <img src="assets/TechGuy/techguy mascot.png" alt="TechGuy mascot" style="width:100%;height:100%;object-fit:contain;border-radius:16px;">
+        <img src="assets/TechGuy/techguy mascot.png" alt="TechGuy mascot" style="width:100%;height:100%;object-fit:contain;border-radius:16px;" width="298" height="472" loading="lazy" decoding="async">
       </div>
       <div>
         <h2 class="cs-sec-title" style="margin-bottom:12px;">At-home electronics repair, on demand.</h2>
@@ -518,17 +522,17 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
     <div class="pain-cards">
       <div class="pain-card">
-        <div class="pain-icon"><img src="assets/TechGuy/engineer.png" alt="Technician"></div>
+        <div class="pain-icon"><img src="assets/TechGuy/engineer.png" alt="Technician" width="512" height="512" loading="lazy" decoding="async"></div>
         <div class="pain-title">Personal and professional chats mixed</div>
         <p class="pain-body">Technicians managed 20+ customer conversations in the same app as personal messages. A client update could get buried in seconds. No separation, no way to prioritise.</p>
       </div>
       <div class="pain-card">
-        <div class="pain-icon"><img src="assets/TechGuy/Customer.png" alt="Customer"></div>
+        <div class="pain-icon"><img src="assets/TechGuy/Customer.png" alt="Customer" width="225" height="225" loading="lazy" decoding="async"></div>
         <div class="pain-title">Unsaved contacts, impossible to find anyone</div>
         <p class="pain-body">Finding a specific customer meant scrolling through partially-remembered names. Operations kept a contact list by hand that never stayed current.</p>
       </div>
       <div class="pain-card">
-        <div class="pain-icon"><img src="assets/TechGuy/Admin Icon.png" alt="Operations"></div>
+        <div class="pain-icon"><img src="assets/TechGuy/Admin Icon.png" alt="Operations" width="512" height="512" loading="lazy" decoding="async"></div>
         <div class="pain-title">No view of where any job stood</div>
         <p class="pain-body">Tracking a single job required reading across three separate threads: customers, technicians, and vendors. One missed message could delay an entire repair.</p>
       </div>
@@ -537,19 +541,19 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
   <!-- GOAL -->
   <div class="cs-section cs-reveal" style="margin-top:0;">
-    <div class="cs-sec-label">The Goal</div>
-    <h2 class="cs-sec-title" style="font-family:'Lato',sans-serif;font-weight: 900;font-size:clamp(28px, 3.9vw, 44px);text-transform:uppercase;letter-spacing: 0;color:var(--ink);margin-bottom:32px;">Simplify workflows. Build something no one needs a manual for.</h2>
+    <div class="cs-sec-label">The goal</div>
+    <h2 class="cs-sec-title" style="font-family:'Lato',sans-serif;font-weight: 600;font-size:clamp(28px, 3.9vw, 44px);text-transform: none;letter-spacing: 0;color:var(--ink);margin-bottom:32px;">Simplify workflows. Build something no one needs a manual for.</h2>
     <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:20px;padding:36px 40px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:16px;">Goal</div>
+      <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--accent);margin-bottom:16px;">Goal</div>
       <p style="font-size:clamp(17px,2.2vw,21px);font-weight:600;color:var(--ink);line-height:1.55;margin:0 0 36px;">Design purpose-built interfaces for customers, technicians, and operations that simplify day-to-day workflows and feel intuitive enough to use from day one, with no training required.</p>
       <div style="height:1px;background:var(--accent-border);margin-bottom:32px;"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
         <div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">Simplify</div>
+          <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--accent);margin-bottom:12px;">Simplify</div>
           <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">Replace fragmented WhatsApp chaos with structured, role-specific workflows. Each user type sees only what they need, when they need it.</p>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:12px;">Intuitive</div>
+          <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--accent);margin-bottom:12px;">Intuitive</div>
           <p style="font-size:14px;line-height:1.75;color:rgba(12,12,12,0.62);margin:0;">A customer on mobile tracking a repair, a technician in the field updating a job, an operations lead assigning tickets from a desk. All different contexts. All obvious to use.</p>
         </div>
       </div>
@@ -558,26 +562,26 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
   <!-- 02 USER RESEARCH -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">02</span> User Research</div>
+    <div class="cs-sec-label"><span class="n">02</span> User research</div>
     <h2 class="cs-sec-title">10+ conversations. Three completely different stories.</h2>
     <p class="cs-body">We spoke with 10+ users across all three types, at least 3 per group. Rather than asking what people wanted, we asked them to complete real tasks on the existing WhatsApp-based system. That is where the real story started.</p>
 
     <!-- Secondary research: system flow -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">Secondary Research <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:12px;">Secondary research <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
     <figure style="margin:0 0 40px;">
-      <img src="assets/TechGuy/Techguy service flow.png" alt="TechGuy service flow diagram" style="width:100%;border-radius:16px;display:block;border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.07);">
+      <img src="assets/TechGuy/Techguy service flow.png" alt="TechGuy service flow diagram" style="width:100%;border-radius:16px;display:block;border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.07);" width="2048" height="879" loading="lazy" decoding="async">
       <figcaption class="img-caption">Full service flow mapped before any screens were designed</figcaption>
     </figure>
 
     <!-- Interviews: said vs observed -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">What they said vs what we observed <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:12px;">What they said vs what we observed <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
     <div class="svo-single" style="margin:0 0 16px;">
-      <div class="svo-user-tag"><img src="assets/TechGuy/engineer.png" alt="">Technician</div>
+      <div class="svo-user-tag"><img src="assets/TechGuy/engineer.png" alt="" width="512" height="512" loading="lazy" decoding="async">Technician</div>
       <div class="svo-quote-block">
         <div class="svo-col-label">What they said</div>
-        <p class="svo-quote">"WhatsApp is easy. I don't think there's really a problem with how it works for us."</p>
+        <p class="svo-quote">“WhatsApp is easy. I don’t think there’s really a problem with how it works for us.”</p>
       </div>
       <div class="svo-obs-block">
         <div class="svo-col-label">What we observed</div>
@@ -591,18 +595,18 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
     <!-- Turning point: visually prominent -->
     <div style="background:linear-gradient(135deg,rgba(64,94,171,0.1) 0%,rgba(64,94,171,0.05) 100%);border:1px solid var(--accent-border);border-radius:16px;padding:28px 32px;margin:24px 0 0;">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:12px;">The Turning Point</div>
-      <p style="font-size:17px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 10px;">People adapt to broken systems without realising it.</p>
+      <div style="font-size:10px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--accent);margin-bottom:12px;">The turning point</div>
+      <p style="font-size:17px;font-weight:600;color:var(--ink);line-height:1.6;margin:0 0 12px;">People adapt to broken systems without realising it.</p>
       <p style="font-size:14px;color:rgba(12,12,12,0.65);line-height:1.75;margin:0;">Everyone said WhatsApp was fine. Until we sat with them. Watching an operations team member spend <strong style="color:var(--ink);">4 minutes scrolling</strong> to find a single customer update changed everything. What interviews miss, observation reveals.</p>
     </div>
 
     <!-- Key findings -->
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:10px;">Key Findings <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
+    <div style="font-size:11px;font-weight: 600;text-transform: none;letter-spacing: 0.01em;color:var(--muted);margin:40px 0 16px;display:flex;align-items:center;gap:12px;">Key findings <span style="flex:1;height:1px;background:var(--border);display:block;"></span></div>
 
     <div class="kf-grid">
       <div class="kf-card">
         <div class="kf-header">
-          <div class="kf-icon"><img src="assets/TechGuy/Customer.png" alt="Customer"></div>
+          <div class="kf-icon"><img src="assets/TechGuy/Customer.png" alt="Customer" width="225" height="225" loading="lazy" decoding="async"></div>
           <div class="kf-tag">Customer</div>
         </div>
         <ul class="kf-list">
@@ -613,18 +617,18 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
       </div>
       <div class="kf-card">
         <div class="kf-header">
-          <div class="kf-icon"><img src="assets/TechGuy/engineer.png" alt="Technician"></div>
+          <div class="kf-icon"><img src="assets/TechGuy/engineer.png" alt="Technician" width="512" height="512" loading="lazy" decoding="async"></div>
           <div class="kf-tag">Technician</div>
         </div>
         <ul class="kf-list">
           <li>Context-switching between personal and work chats created measurable delays</li>
-          <li>Normalised friction; they didn't realise the time loss until we measured it</li>
+          <li>Normalised friction; they didn’t realise the time loss until we measured it</li>
           <li>Needed a dedicated work space, not another WhatsApp conversation</li>
         </ul>
       </div>
       <div class="kf-card">
         <div class="kf-header">
-          <div class="kf-icon"><img src="assets/TechGuy/Admin Icon.png" alt="Operations"></div>
+          <div class="kf-icon"><img src="assets/TechGuy/Admin Icon.png" alt="Operations" width="512" height="512" loading="lazy" decoding="async"></div>
           <div class="kf-tag">Operations</div>
         </div>
         <ul class="kf-list">
@@ -645,7 +649,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
     <div class="flow-viewer-wrap">
       <div class="flow-viewer" id="flowViewer">
-        <img src="assets/TechGuy/TechGuy Appflow.jpg" id="flowImg" alt="TechGuy complete app flow diagram" draggable="false">
+        <img src="assets/TechGuy/TechGuy Appflow.jpg" id="flowImg" alt="TechGuy complete app flow diagram" draggable="false" width="1800" height="1246" loading="lazy" decoding="async">
       </div>
       <div class="flow-viewer-controls">
         <button class="flow-btn" id="flowZoomIn">+ Zoom in</button>
@@ -658,14 +662,14 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
   <!-- 04 FINAL DESIGN -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">04</span> Final Design</div>
+    <div class="cs-sec-label"><span class="n">04</span> Final design</div>
     <h2 class="cs-sec-title">Three interfaces. One connected service.</h2>
     <p class="cs-body">Each product was designed for a specific user context. Not three separate tools, one service ecosystem where an action in one interface automatically flows to the next.</p>
 
     <!-- Customer -->
     <div class="sol-section">
       <div class="sol-header">
-        <span class="sol-tag"><img src="assets/TechGuy/Customer.png" alt="">Customer &middot; Mobile App</span>
+        <span class="sol-tag"><img src="assets/TechGuy/Customer.png" alt="" width="225" height="225" loading="lazy" decoding="async">Customer · Mobile app</span>
       </div>
       <div class="sol-title">Repair tracking and trust-building from the first tap.</div>
       <div class="sol-features">
@@ -681,13 +685,13 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
         <figure style="margin:0;">
           <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
-            <img src="assets/TechGuy/Customer testimonial.png" alt="Customer app testimonials screen" style="width:100%;height:auto;display:block;">
+            <img src="assets/TechGuy/Customer testimonial.png" alt="Customer app testimonials screen" style="width:100%;height:auto;display:block;" width="1800" height="981" loading="lazy" decoding="async">
           </div>
           <figcaption class="img-caption">Testimonials at the booking stage</figcaption>
         </figure>
         <figure style="margin:0;">
           <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
-            <img src="assets/TechGuy/Customer Live tracking.png" alt="Customer app live tracking screen" style="width:100%;height:auto;display:block;">
+            <img src="assets/TechGuy/Customer Live tracking.png" alt="Customer app live tracking screen" style="width:100%;height:auto;display:block;" width="2686" height="1596" loading="lazy" decoding="async">
           </div>
           <figcaption class="img-caption">Live repair status tracking</figcaption>
         </figure>
@@ -697,7 +701,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
     <!-- Technician -->
     <div class="sol-section">
       <div class="sol-header">
-        <span class="sol-tag"><img src="assets/TechGuy/engineer.png" alt="">Technician &middot; Mobile App</span>
+        <span class="sol-tag"><img src="assets/TechGuy/engineer.png" alt="" width="512" height="512" loading="lazy" decoding="async">Technician · Mobile app</span>
       </div>
       <div class="sol-title">Everything they need. None of the noise.</div>
       <div class="sol-features">
@@ -721,13 +725,13 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;">
         <figure style="margin:0;">
           <div style="border-radius:28px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.08);">
-            <img src="assets/TechGuy/Engineer personal metrics and live feed.png" alt="Technician personal metrics and live feed" style="width:112%;margin-left:-6%;height:auto;display:block;">
+            <img src="assets/TechGuy/Engineer personal metrics and live feed.png" alt="Technician personal metrics and live feed" style="width:112%;margin-left:-6%;height:auto;display:block;" width="375" height="814" loading="lazy" decoding="async">
           </div>
           <figcaption class="img-caption">Personal metrics and live ticket feed</figcaption>
         </figure>
         <figure style="margin:0;">
           <div style="border-radius:28px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.08);">
-            <img src="assets/TechGuy/Engineer in app client info.png" alt="Technician in-app client info screen" style="width:112%;margin-left:-6%;height:auto;display:block;">
+            <img src="assets/TechGuy/Engineer in app client info.png" alt="Technician in-app client info screen" style="width:112%;margin-left:-6%;height:auto;display:block;" width="373" height="810" loading="lazy" decoding="async">
           </div>
           <figcaption class="img-caption">In-app client info and job details</figcaption>
         </figure>
@@ -737,7 +741,7 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
     <!-- Operations -->
     <div class="sol-section">
       <div class="sol-header">
-        <span class="sol-tag"><img src="assets/TechGuy/Admin Icon.png" alt="">Operations &middot; Dashboard</span>
+        <span class="sol-tag"><img src="assets/TechGuy/Admin Icon.png" alt="" width="512" height="512" loading="lazy" decoding="async">Operations &middot; Dashboard</span>
       </div>
       <div class="sol-title">One screen for everything that used to need fifteen tabs.</div>
       <div class="sol-features single-col">
@@ -747,15 +751,15 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
         </div>
         <div class="sol-feature">
           <div class="sol-feature-title">Ticket assignment</div>
-          <div class="sol-feature-text">Workload visible before assigning. See who's free and who's already at capacity.</div>
+          <div class="sol-feature-text">Workload visible before assigning. See who’s free and who’s already at capacity.</div>
         </div>
         <div class="sol-feature">
           <div class="sol-feature-title">Live status overview</div>
-          <div class="sol-feature-text">Every job's status across the board, with urgent tickets clearly differentiated from routine ones.</div>
+          <div class="sol-feature-text">Every job’s status across the board, with urgent tickets clearly differentiated from routine ones.</div>
         </div>
       </div>
       <figure style="margin:20px 0 0;">
-        <img src="assets/TechGuy/Admin dashboard.png" alt="Operations dashboard" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);">
+        <img src="assets/TechGuy/Admin dashboard.png" alt="Operations dashboard" style="width:100%;border-radius:14px;display:block;border:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,.08);" width="1916" height="986" loading="lazy" decoding="async">
         <figcaption class="img-caption">Operations dashboard with unified ticket management and technician assignment</figcaption>
       </figure>
     </div>
@@ -770,27 +774,27 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
       <!-- Stats column -->
       <div style="display:flex;flex-direction:column;gap:12px;">
         <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;padding:24px;flex:1;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:41px;color:var(--accent);line-height:1;">20%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:41px;color:var(--accent);line-height:1;">20%</div>
           <div style="font-size:13px;color:var(--muted);margin-top:4px;">Task completion uplift</div>
         </div>
         <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;padding:24px;flex:1;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:41px;color:var(--accent);line-height:1;">30%</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:41px;color:var(--accent);line-height:1;">30%</div>
           <div style="font-size:13px;color:var(--muted);margin-top:4px;">Faster design-to-dev cycles</div>
         </div>
         <div style="background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:16px;padding:24px;flex:1;">
-          <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:41px;color:var(--accent);line-height:1;">3</div>
+          <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:41px;color:var(--accent);line-height:1;">3</div>
           <div style="font-size:13px;color:var(--muted);margin-top:4px;">Products shipped across all user types</div>
         </div>
       </div>
       <!-- CEO quote column -->
       <div style="background:#0D1830;border-radius:16px;padding:36px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-20px;left:24px;font-family:'Lato',sans-serif;font-size:125px;font-weight: 700;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;">"</div>
+        <div style="position:absolute;top:-20px;left:24px;font-family:'Lato',sans-serif;font-size:125px;font-weight: 600;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;">“</div>
         <p style="font-family:'Lato',sans-serif;font-size:16px;font-style:normal;color:rgba(255,255,255,.7);line-height:1.65;margin:0 0 24px;position:relative;">Rhea is an <strong style="color:#fff;font-style:normal;">extremely hard-working and passionate</strong> designer. She <strong style="color:#fff;font-style:normal;">involved herself immensely</strong> in her work and is also a <strong style="color:#fff;font-style:normal;">very good listener</strong> which enables her to <strong style="color:#fff;font-style:normal;">understand the required content in depth</strong>.</p>
         <div style="display:flex;align-items:center;gap:12px;position:relative;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif;font-weight: 900;font-size:13px;color:#fff;flex-shrink:0;">GM</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif;font-weight: 600;font-size:13px;color:#fff;flex-shrink:0;">GM</div>
           <div>
             <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.9);">Garv Mulchandani</div>
-            <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;">CEO, TechGuy</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform: none;letter-spacing: 0.01em;margin-top:2px;">CEO, TechGuy</div>
           </div>
         </div>
       </div>
@@ -800,17 +804,17 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
 
   <!-- 06 REFLECTION -->
   <div class="cs-section cs-reveal">
-    <div class="cs-sec-label"><span class="n">06</span> What I'd do differently</div>
-    <h2 class="cs-sec-title">What I'd build differently today.</h2>
+    <div class="cs-sec-label"><span class="n">06</span> What I’d do differently</div>
+    <h2 class="cs-sec-title">What I’d build differently today.</h2>
     <p class="cs-body">This was 2021, and I have learned a lot since then. Looking back with four years of experience, two things stand out clearly.</p>
 
     <div class="learning">
       <div style="margin-bottom:12px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#8B5CF6" aria-hidden="true"><path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75ZM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 0 1-1.875-1.875V8.625ZM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 0 1 3 19.875v-6.75Z"/></svg></div>
-      <div class="l-text"><strong>More visualisation in the operations dashboard.</strong> The operations role communicates with the highest number of people simultaneously: customers, technicians, and vendors. The dashboard handled this, but it was primarily list-based. Today I'd push for richer data visualisation, technician workload as a chart, vendor lead times over time, ticket volume by day. Operations needs to see patterns, not just lists. A list tells you what is happening. A chart tells you why it keeps happening.</div>
+      <div class="l-text"><strong>More visualisation in the operations dashboard.</strong> The operations role communicates with the highest number of people simultaneously: customers, technicians, and vendors. The dashboard handled this, but it was primarily list-based. Today I’d push for richer data visualisation, technician workload as a chart, vendor lead times over time, ticket volume by day. Operations needs to see patterns, not just lists. A list tells you what is happening. A chart tells you why it keeps happening.</div>
     </div>
     <div class="learning">
       <div style="margin-bottom:12px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#8B5CF6" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"/></svg></div>
-      <div class="l-text"><strong>AI-assisted planning for operations and technicians.</strong> For operations: smart ticket assignment based on each technician's current job locations, active ticket count, and how far existing repairs have progressed. For technicians: an AI-assisted daily schedule that clusters jobs by area, prioritises by urgency, and adapts as tickets update throughout the day. These are the natural next step for a service platform at this scale.</div>
+      <div class="l-text"><strong>AI-assisted planning for operations and technicians.</strong> For operations: smart ticket assignment based on each technician’s current job locations, active ticket count, and how far existing repairs have progressed. For technicians: an AI-assisted daily schedule that clusters jobs by area, prioritises by urgency, and adapts as tickets update throughout the day. These are the natural next step for a service platform at this scale.</div>
     </div>
   </div>
 
@@ -829,22 +833,22 @@ body { background: var(--bg); color: var(--ink); font-family: 'Open Sans', syste
   <!-- VIEW MORE -->
   <div style="padding:48px 0 80px;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);">View more projects</div>
-      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all &#x2197;</a>
+      <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:var(--muted);">View more projects</div>
+      <a href="work.html" style="font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 16px;border-radius:100px;transition:color .2s,border-color .2s;" onmouseenter="this.style.color='#0C0C0C';this.style.borderColor='rgba(0,0,0,.2)'" onmouseleave="this.style.color='';this.style.borderColor=''">View all &#x2197;</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div onclick="window.location='draggit.html'" style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome Extension</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
+      <a href="draggit.html" style="display:block;text-decoration:none;color:inherit;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(37,99,235,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(37,99,235,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#2563EB;margin-bottom:12px;">LinkedIn Chrome extension</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">Draggit</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">I noticed a friction. I built the fix.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&#x2192;</span>
-      </div>
-      <div onclick="window.location='cliqueprize.html'" style="background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#C4566A;margin-bottom:12px;">B2B SaaS Platform</div>
-        <div style="font-family:'Lato',sans-serif;font-weight: 900;font-size:25px;text-transform:uppercase;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
+      </a>
+      <a href="cliqueprize.html" style="display:block;text-decoration:none;color:inherit;background:rgba(125,26,46,.06);border:1px solid rgba(125,26,46,.12);border-radius:20px;padding:36px 40px;cursor:pointer;transition:border-color .2s,transform .2s;" onmouseenter="this.style.borderColor='rgba(125,26,46,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,26,46,.12)';this.style.transform='translateY(0)'">
+        <div style="font-size:11px;text-transform: none;letter-spacing: 0.01em;color:#C4566A;margin-bottom:12px;">B2B SaaS platform</div>
+        <div style="font-family:'Lato',sans-serif;font-weight: 600;font-size:25px;text-transform: none;letter-spacing: 0;color:#0C0C0C;margin-bottom:8px;">CliquePrize</div>
         <p style="font-size:13px;color:rgba(12,12,12,.5);line-height:1.5;margin:0 0 20px;">Small businesses deserved a landing page that spoke their language.</p>
         <span style="font-size:20px;color:rgba(12,12,12,.3);">&#x2192;</span>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -1021,5 +1025,7 @@ document.getElementById('navMobileClose').addEventListener('click', () => docume
 
 <script src="scripts/lazy-vid.js"></script>
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>

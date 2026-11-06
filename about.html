@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F4F0">
 <title>About: Rhea Mittal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/design-system.css">
 <style>
 /* ─── RESET & BASE ─── */
@@ -15,12 +16,12 @@
 html { scroll-behavior: smooth; }
 
 :root {
-  --glass-bg: rgba(255,255,255,0.55);
-  --glass-bg-strong: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.8);
-  --glass-edge: rgba(0,0,0,0.06);
-  --glass-blur: blur(18px) saturate(1.45);
-  --glass-shadow: 0 8px 28px rgba(80,76,68,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --glass-bg: rgba(245,244,240,0.94);
+  --glass-bg-strong: #FFFFFF;
+  --glass-border: rgba(12,12,12,0.08);
+  --glass-edge: rgba(12,12,12,0.04);
+  --glass-blur: none;
+  --glass-shadow: 0 2px 8px rgba(80,76,68,0.06);
 
   --bg: #F5F4F0;
   --ink: #0C0C0C;
@@ -52,14 +53,14 @@ body {
 /* ─── GLASS SYSTEM ─── */
 .glass, .glass-badge, .hero-chip, .work-tab, .proj-tab {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), 0 0 0 1px var(--glass-edge);
 }
 .glass-badge {
   display: inline-flex; align-items: center;
-  padding: 9px 18px; border-radius: 100px;
+  padding: 8px 20px; border-radius: 100px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px; font-weight: 600;
   color: rgba(12,12,12,0.72);
@@ -112,18 +113,18 @@ body {
 }
 
 .hero-kicker {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .14em;
+  font-size: 11px; text-transform: none; letter-spacing: 0.01em;
   color: var(--muted); margin-bottom: 28px;
   display: flex; align-items: center; gap: 12px;
 }
 
 .hero-h1 {
   font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: clamp(34px, 4.68vw, 62px);
-  line-height: .92; letter-spacing: 0; text-transform: uppercase;
+  font-weight: 600; font-size: clamp(34px, 4.68vw, 62px);
+  line-height: .92; letter-spacing: 0; text-transform: none;
   margin-bottom: 24px;
 }
-.hero-h1 em { font-style: italic; font-weight: 900; color: var(--green); }
+.hero-h1 em { font-style: normal; font-weight: 600; color: var(--green); }
 
 .hero-bio {
   font-size: 17px; line-height: 1.85; color: var(--muted);
@@ -176,35 +177,34 @@ body {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 12px;
-  background: linear-gradient(135deg, #ECEAE4 0%, #D8D4CA 100%);
+  background: #D8D4CA;
 }
 .hero-photo-ph-ico { font-size: 64px; opacity: .3; }
-.hero-photo-ph-txt { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); opacity: .6; }
+.hero-photo-ph-txt { font-size: 13px; letter-spacing: 0.01em; text-transform: none; color: var(--muted); opacity: .6; }
 
 /* Floating stat pills */
 .hero-float {
   position: absolute; bottom: 40px; left: -20px;
-  display: flex; flex-direction: column; gap: 10px;
+  display: flex; flex-direction: column; gap: 12px;
 }
 .hero-pill {
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 100px; padding: 10px 20px;
-  display: flex; align-items: center; gap: 10px;
+  border-radius: 100px; padding: 12px 20px;
+  display: flex; align-items: center; gap: 12px;
   font-size: 13px; font-weight: 500; color: var(--ink);
   box-shadow: 0 4px 24px rgba(0,0,0,.09);
 }
 .hero-pill-dot {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 6px rgba(29,168,85,.5);
-  animation: lp 2s infinite; flex-shrink: 0;
+    flex-shrink: 0;
 }
 @keyframes lp { 0%,100%{opacity:1}50%{opacity:.35} }
 
 /* ─── SECTION LABEL ─── */
 .sec-label {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .14em;
-  color: var(--muted); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  font-size: 11px; text-transform: none; letter-spacing: 0.01em;
+  color: var(--muted); margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
 }
 .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
@@ -225,10 +225,10 @@ body {
 
 .ach-h2 {
   font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: clamp(31px, 3.9vw, 50px);
-  line-height: 1; letter-spacing: 0; text-transform: uppercase;
+  font-weight: 600; font-size: clamp(31px, 3.9vw, 50px);
+  line-height: 1; letter-spacing: 0; text-transform: none;
 }
-.ach-h2 em { font-style: italic; font-weight: 900; color: var(--green); }
+.ach-h2 em { font-style: normal; font-weight: 600; color: var(--green); }
 
 .ach-sub {
   font-size: 15px; color: var(--muted); max-width: 280px;
@@ -278,7 +278,7 @@ body {
   display: block;
   transition: transform .5s ease;
 }
-.col-item:hover .col-img { transform: scale(1.06); }
+.col-item:hover .col-img { transform: scale(1.02); }
 
 /* Logo tiles — centered mark on a cream card, never crop-cropped */
 .col-img-wrap.is-logo {
@@ -293,7 +293,7 @@ body {
   padding: 40px 36px;
   box-sizing: border-box;
 }
-.col-item:hover .col-img-wrap.is-logo .col-img { transform: scale(1.04); }
+.col-item:hover .col-img-wrap.is-logo .col-img { transform: scale(1.02); }
 
 /* SETH Lab — tile matches the logo's light baby-blue ground */
 .col-img-wrap.is-logo.is-seth {
@@ -310,7 +310,7 @@ body {
 }
 .col-item:hover .col-img-photo {
   opacity: 1;
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 .col-item:hover .col-img-wrap.has-photo .col-img { transform: none; }
 .col-item:hover .col-img-wrap.has-photo .col-overlay {
@@ -322,7 +322,7 @@ body {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 8px; color: var(--muted);
-  font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+  font-size: 12px; text-transform: none; letter-spacing: 0.01em;
   transition: transform .5s ease;
 }
 .col-ph-ico { font-size: 32px; opacity: .35; }
@@ -331,11 +331,11 @@ body {
 /* Visible caption below image */
 .col-caption-below { padding: 0 4px; }
 .col-caption-tag {
-  font-size: 10px; text-transform: uppercase; letter-spacing: .13em;
+  font-size: 10px; text-transform: none; letter-spacing: 0.01em;
   color: var(--muted); margin-bottom: 4px;
 }
 .col-caption-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-family: 'Lato', sans-serif; font-weight: 600;
   font-size: 13px; color: var(--ink); line-height: 1.2;
 }
 
@@ -352,13 +352,13 @@ body {
 .col-item:hover .col-overlay { opacity: 1; }
 
 .col-ov-tag {
-  font-size: 10px; text-transform: uppercase; letter-spacing: .12em;
-  color: rgba(255,255,255,.4); margin-bottom: 6px;
+  font-size: 10px; text-transform: none; letter-spacing: 0.01em;
+  color: rgba(255,255,255,.4); margin-bottom: 8px;
 }
 .col-ov-title {
   font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: 14px; color: #fff;
-  line-height: 1.2; margin-bottom: 6px;
+  font-weight: 600; font-size: 14px; color: #fff;
+  line-height: 1.2; margin-bottom: 8px;
 }
 .col-ov-desc {
   font-size: 12px; color: rgba(255,255,255,.6);
@@ -381,7 +381,7 @@ body {
 }
 
 .quotes-kicker {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .14em;
+  font-size: 11px; text-transform: none; letter-spacing: 0.01em;
   color: rgba(255,255,255,.65); margin-bottom: 48px;
 }
 
@@ -398,8 +398,8 @@ body {
   border-radius: 16px;
   position: relative;
   background: rgba(255,255,255,.08);
-  backdrop-filter: blur(18px) saturate(1.45);
-  -webkit-backdrop-filter: blur(18px) saturate(1.45);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   box-shadow: 0 8px 28px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.12);
   transition: background .3s, transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s, border-color .3s;
   z-index: 1;
@@ -437,7 +437,7 @@ body {
 
 .q-author {
   font-size: 12px; color: rgba(255,255,255,.6);
-  text-transform: uppercase; letter-spacing: .1em;
+  text-transform: none; letter-spacing: 0.01em;
   position: relative; z-index: 1;
 }
 
@@ -454,17 +454,17 @@ body {
 
 .journey-h2 {
   font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: clamp(31px, 3.9vw, 50px);
-  line-height: 1; letter-spacing: 0; text-transform: uppercase;
+  font-weight: 600; font-size: clamp(31px, 3.9vw, 50px);
+  line-height: 1; letter-spacing: 0; text-transform: none;
   margin-bottom: 12px;
 }
-.journey-h2 em { font-style: italic; font-weight: 900; color: var(--green); }
+.journey-h2 em { font-style: normal; font-weight: 600; color: var(--green); }
 
 .journey-sub { font-size: 16px; color: var(--muted); max-width: 440px; line-height: 1.75; }
 .resume-link-pill {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: 24px;
-  padding: 10px 24px; border-radius: 100px;
+  padding: 12px 24px; border-radius: 100px;
   background: var(--ink); color: var(--bg);
   font-size: 13px; font-weight: 600; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
@@ -497,21 +497,21 @@ body {
 
 .acc-num {
   font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: 12px;
-  color: var(--muted); letter-spacing: .05em;
+  font-weight: 600; font-size: 12px;
+  color: var(--muted); letter-spacing: 0.01em;
   transition: color .2s;
 }
 .acc-item.open .acc-num { color: rgba(255,255,255,.3); }
 
 .acc-title {
   font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: 20px; letter-spacing: 0;
+  font-weight: 600; font-size: 20px; letter-spacing: 0;
   color: var(--ink); transition: color .2s;
 }
 .acc-item.open .acc-title { color: #fff; }
 
 .acc-meta {
-  font-size: 13px; color: var(--muted); margin-top: 3px;
+  font-size: 13px; color: var(--muted); margin-top: 4px;
   transition: color .2s;
 }
 .acc-item.open .acc-meta { color: rgba(255,255,255,.4); }
@@ -565,7 +565,7 @@ body {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 8px; color: var(--muted);
-  font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+  font-size: 11px; text-transform: none; letter-spacing: 0.01em;
   border: 1.5px dashed var(--border);
 }
 .acc-img-ph-ico { font-size: 24px; opacity: .4; }
@@ -596,10 +596,10 @@ body {
 
 .beyond-h2 {
   font-family: 'Lato', sans-serif;
-  font-weight: 900; font-size: clamp(31px, 3.9vw, 50px);
-  line-height: 1; letter-spacing: 0; text-transform: uppercase;
+  font-weight: 600; font-size: clamp(31px, 3.9vw, 50px);
+  line-height: 1; letter-spacing: 0; text-transform: none;
 }
-.beyond-h2 em { font-style: italic; font-weight: 900; color: var(--green); }
+.beyond-h2 em { font-style: normal; font-weight: 600; color: var(--green); }
 
 .beyond-intro { font-size: 16px; color: var(--muted); line-height: 1.8; }
 
@@ -629,16 +629,16 @@ body {
   width: 100%; height: 100%;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 10px;
+  gap: 12px;
 }
 .beyond-ph-ico { font-size: 36px; opacity: .35; }
 
 .beyond-label {
   position: absolute; bottom: 16px; left: 16px;
   background: rgba(12,12,12,.7); color: #fff;
-  padding: 5px 12px; border-radius: 100px;
+  padding: 4px 12px; border-radius: 100px;
   font-size: 12px; font-weight: 500;
-  backdrop-filter: blur(8px);
+  backdrop-filter: none;
 }
 
 /* ──────────────────────────────────
@@ -649,15 +649,15 @@ body {
   padding: 120px 0 80px;
 }
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
-.contact-kicker { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.contact-kicker { font-size: 11px; font-weight: 500; letter-spacing: 0.01em; text-transform: none; color: var(--muted); margin-bottom: 20px; }
 .contact-h {
-  font-family: 'Lato', sans-serif; font-weight: 900;
-  font-size: clamp(31px, 4.29vw, 56px); letter-spacing: 0; text-transform: uppercase;
+  font-family: 'Lato', sans-serif; font-weight: 600;
+  font-size: clamp(31px, 4.29vw, 56px); letter-spacing: 0; text-transform: none;
   line-height: .92; margin-bottom: 32px;
 }
-.contact-h em { font-style: italic; font-weight: 900; color: var(--green); }
+.contact-h em { font-style: normal; font-weight: 600; color: var(--green); }
 .contact-email {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center; gap: 12px;
   font-size: 17px; font-weight: 500; color: var(--ink);
   text-decoration: none; border-bottom: 1px solid var(--border);
   padding-bottom: 4px;
@@ -668,13 +668,13 @@ body {
 .contact-socials { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 32px; }
 .social-row {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 24px; border-bottom: 1px solid var(--border);
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
   text-decoration: none; color: var(--ink);
   background: var(--white);
   transition: background .2s, padding-left .2s;
 }
 .social-row:last-child { border-bottom: none; }
-.social-row:hover { background: #F0EFE9; padding-left: 30px; }
+.social-row:hover { background: #F0EFE9; padding-left: 32px; }
 .social-row-name { font-size: 14px; font-weight: 500; }
 .social-row-arrow { font-size: 18px; color: var(--muted); transition: transform .2s, color .2s; }
 .social-row:hover .social-row-arrow { transform: translate(3px,-3px); color: var(--ink); }
@@ -688,7 +688,7 @@ body {
 /* ── COLLAGE LIGHTBOX (matched to Playground .lightbox) ── */
 .col-lb {
   position: fixed; inset: 0; z-index: 900;
-  background: rgba(6,6,6,.97); backdrop-filter: blur(20px);
+  background: rgba(6,6,6,.97); backdrop-filter: none;
   display: flex; align-items: stretch;
   opacity: 0; pointer-events: none;
   transition: opacity .4s cubic-bezier(.25,.46,.45,.94);
@@ -728,13 +728,13 @@ body {
 }
 .col-lb-close:hover { background: rgba(255,255,255,.2); }
 .col-lb-tag {
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: .12em; color: rgba(255,255,255,.45); margin-bottom: 16px;
+  font-size: 11px; font-weight: 600; text-transform: none;
+  letter-spacing: 0.01em; color: rgba(255,255,255,.45); margin-bottom: 16px;
 }
 .col-lb-title {
-  font-family: 'Lato', sans-serif; font-weight: 900;
+  font-family: 'Lato', sans-serif; font-weight: 600;
   font-size: clamp(22px, 2.34vw, 34px); line-height: .95; letter-spacing: 0;
-  text-transform: uppercase; margin: 0 0 20px; color: #fff;
+  text-transform: none; margin: 0 0 20px; color: #fff;
 }
 .col-lb-body {
   font-size: 15px; line-height: 1.85; color: rgba(255,255,255,.55);
@@ -742,11 +742,11 @@ body {
 }
 .col-lb-link {
   display: none;
-  align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+  align-items: center; gap: 12px;
+  font-size: 13px; font-weight: 600; text-transform: none; letter-spacing: 0.01em;
   color: #fff; text-decoration: none;
   border: 1px solid rgba(255,255,255,.2);
-  padding: 14px 24px; border-radius: 12px;
+  padding: 16px 24px; border-radius: 12px;
   transition: background .2s, border-color .2s;
   width: fit-content;
 }
@@ -756,7 +756,7 @@ body {
 .col-overlay .card-link {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: 16px;
-  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+  font-size: 12px; font-weight: 600; text-transform: none; letter-spacing: 0.01em;
   color: #fff; text-decoration: none;
   border: 1px solid rgba(255,255,255,.35);
   padding: 8px 16px; border-radius: 100px; width: fit-content;
@@ -789,7 +789,7 @@ body {
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px) {
-  nav { padding: 14px 24px; display: flex; justify-content: space-between; }
+  nav { padding: 16px 24px; display: flex; justify-content: space-between; }
   .nav-pill { display: none; }
   .nav-cta { display: none; }
   .nav-burger { display: flex; }
@@ -837,6 +837,7 @@ body {
 <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ─── NAV ─── -->
 <nav>
@@ -855,13 +856,15 @@ body {
 </nav>
 
 <div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navMobileClose">✕</button>
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">✕</button>
   <a href="work.html">Work</a>
 <a href="playground.html">Play</a>
   <a href="about.html">About</a>
   <a href="assets/Rhea Mittal_Resume_Product Designer.pdf" download>Resume</a>
 
 </div>
+<main id="main" tabindex="-1">
+
 
 <div class="page">
 
@@ -870,24 +873,24 @@ body {
   ────────────────────────────────── -->
   <section class="hero-about">
     <div class="hero-left">
-      <p class="hero-kicker fade-up fd1">MS-HCI · Indiana University · Product Designer</p>
-      <h1 class="hero-h1 fade-up fd2">Hi, I'm<br><em>Rhea.</em></h1>
-      <p class="hero-bio fade-up fd3">From pretty early on in my career I believed that designers are everywhere, and what that means to me is that you don't stop being a designer when you close your laptop. You don't stop observing, noticing friction, asking why things are the way they are. Being a designer is a personality trait. It's how I move through the world, not just how I work in it.</p>
+      <p class="hero-kicker fade-up fd1">MS-HCI · Indiana University · Product designer</p>
+      <h1 class="hero-h1 fade-up fd2">Hi, I’m<br><em>Rhea.</em></h1>
+      <p class="hero-bio fade-up fd3">From pretty early on in my career I believed that designers are everywhere, and what that means to me is that you don’t stop being a designer when you close your laptop. You don’t stop observing, noticing friction, asking why things are the way they are. Being a designer is a personality trait. It’s how I move through the world, not just how I work in it.</p>
       <div class="hero-tags fade-up fd4">
-        <span class="hero-tag">UX Research</span>
-        <span class="hero-tag">Product Design</span>
-        <span class="hero-tag">Design Systems</span>
-        <span class="hero-tag">Vibe Coding</span>
-        <span class="hero-tag">Motion Graphics</span>
-        <span class="hero-tag">3D Modelling</span>
+        <span class="hero-tag">UX research</span>
+        <span class="hero-tag">Product design</span>
+        <span class="hero-tag">Design systems</span>
+        <span class="hero-tag">Vibe coding</span>
+        <span class="hero-tag">Motion graphics</span>
+        <span class="hero-tag">3D modelling</span>
       </div>
     </div>
 
     <div class="hero-right">
       <div class="hero-photo-wrap">
-        <img src="assets/Hero Image Landing Image.jpg" alt="Rhea Mittal at Jaguar 5K marathon" class="hero-photo">
+        <img src="assets/Hero Image Landing Image.jpg" alt="Rhea Mittal at Jaguar 5K marathon" class="hero-photo" width="857" height="1100" fetchpriority="high" decoding="async">
       </div>
-      <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Open Sans',sans-serif;">Always open to exploring</div>
+      <div style="text-align:center;margin-top:12px;font-size:11px;letter-spacing: 0.01em;text-transform: none;color:var(--muted);font-family:'Open Sans',sans-serif;">Always open to exploring</div>
     </div>
   </section>
 
@@ -895,10 +898,10 @@ body {
        2. ACHIEVEMENTS / COLLAGE
   ────────────────────────────────── -->
   <section class="achievements reveal">
-    <div class="sec-label">Communities &amp; Milestones</div>
+    <div class="sec-label">Communities &amp; milestones</div>
     <div class="ach-header">
       <div>
-        <h2 class="ach-h2">Things I've<br>been part <em>of.</em></h2>
+        <h2 class="ach-h2">Things I’ve<br>been part <em>of.</em></h2>
       </div>
       <p class="ach-sub">Click any card to learn the full story.</p>
     </div>
@@ -906,98 +909,98 @@ body {
     <div class="collage">
 
       <!-- Card 1: Open Doors -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+      <div class="col-item" role="button" tabindex="0" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./Open Doors — Junior Portfolio Showcase.png"
-        data-tag="Newsletter Feature"
+        data-tag="Newsletter feature"
         data-title="Open Doors, Junior Portfolio Showcase"
         data-body="I was featured on the Open Doors newsletter Junior Portfolio Showcase, a write-up of my B2B-focused portfolio and how I present work I have shipped."
         data-link="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal"
         data-link-label="Read the feature">
         <div class="col-img-wrap is-logo has-photo">
-          <img class="col-img" src="assets/About Me/Thingspart of./Open Doors logo.png" alt="Open Doors logo">
-          <img class="col-img-photo" src="assets/About Me/Thingspart of./Open Doors — Junior Portfolio Showcase.png" alt="" aria-hidden="true">
+          <img class="col-img" src="assets/About Me/Thingspart of./Open Doors logo.png" alt="Open Doors logo" width="200" height="200" loading="lazy" decoding="async">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./Open Doors — Junior Portfolio Showcase.png" alt="" aria-hidden="true" width="1024" height="793" loading="lazy" decoding="async">
           <div class="col-overlay">
-            <div class="col-ov-tag">Newsletter Feature</div>
+            <div class="col-ov-tag">Newsletter feature</div>
             <div class="col-ov-title">Open Doors, Junior Portfolio Showcase</div>
             <div class="col-ov-desc">I was featured on the Open Doors newsletter Junior Portfolio Showcase, a write-up of my B2B-focused portfolio and how I present work I have shipped.</div>
-            <a href="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal" target="_blank" rel="noopener" class="card-link" onclick="event.stopPropagation();">Read the feature ↗</a>
+            <a href="https://blog.opendoorscareers.com/p/junior-portfolio-showcase-rhea-mittal" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation();">Read the feature ↗</a>
           </div>
         </div>
         <div class="col-caption-below">
-          <div class="col-caption-tag">Newsletter Feature</div>
+          <div class="col-caption-tag">Newsletter feature</div>
           <div class="col-caption-title">Open Doors, Junior Portfolio Showcase</div>
         </div>
       </div>
 
       <!-- Card 2: SIGCHI -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+      <div class="col-item" role="button" tabindex="0" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png"
-        data-tag="Club Leadership"
+        data-tag="Club leadership"
         data-title="SIGCHI, Creative Lead, Srishti Chapter"
         data-body="I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter's online presence and community engagement.">
         <div class="col-img-wrap is-logo has-photo">
-          <img class="col-img" src="assets/About Me/Thingspart of./SIGCHI logo.png" alt="SIGCHI logo">
-          <img class="col-img-photo" src="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png" alt="" aria-hidden="true">
+          <img class="col-img" src="assets/About Me/Thingspart of./SIGCHI logo.png" alt="SIGCHI logo" width="400" height="300" loading="lazy" decoding="async">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./SIGCHI — Creative Lead, Srishti Chapter.png" alt="" aria-hidden="true" width="498" height="456" loading="lazy" decoding="async">
           <div class="col-overlay">
-            <div class="col-ov-tag">Club Leadership</div>
+            <div class="col-ov-tag">Club leadership</div>
             <div class="col-ov-title">SIGCHI, Creative Lead, Srishti Chapter</div>
-            <div class="col-ov-desc">I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter's online presence and community engagement.</div>
+            <div class="col-ov-desc">I led social media design for the Srishti SIGCHI Chapter, creating visual content for Instagram, X, and LinkedIn to grow the chapter’s online presence and community engagement.</div>
           </div>
         </div>
         <div class="col-caption-below">
-          <div class="col-caption-tag">Club Leadership</div>
+          <div class="col-caption-tag">Club leadership</div>
           <div class="col-caption-title">SIGCHI, Creative Lead</div>
         </div>
       </div>
 
       <!-- Card 3: SETH Lab -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+      <div class="col-item" role="button" tabindex="0" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./SETH Lab.png"
         data-tile="seth"
-        data-tag="Research Lab · Indiana University"
+        data-tag="Research lab · Indiana University"
         data-title="SETH Lab"
         data-body="I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.">
         <div class="col-img-wrap is-logo is-seth has-photo">
-          <img class="col-img" src="assets/About Me/Thingspart of./SETH Lab logo.png" alt="SETH Lab logo">
-          <img class="col-img-photo" src="assets/About Me/Thingspart of./SETH Lab.png" alt="" aria-hidden="true">
+          <img class="col-img" src="assets/About Me/Thingspart of./SETH Lab logo.png" alt="SETH Lab logo" width="446" height="375" loading="lazy" decoding="async">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./SETH Lab.png" alt="" aria-hidden="true" width="514" height="366" loading="lazy" decoding="async">
           <div class="col-overlay">
-            <div class="col-ov-tag">Research Lab · Indiana University</div>
+            <div class="col-ov-tag">Research lab · Indiana University</div>
             <div class="col-ov-title">SETH Lab</div>
             <div class="col-ov-desc">I spent a year doing deep qualitative research on empathic design, extracting insights from complex sources, supporting a literature review, and learning how to listen to users at a research level.</div>
           </div>
         </div>
         <div class="col-caption-below">
-          <div class="col-caption-tag">Research Lab · Indiana University</div>
+          <div class="col-caption-tag">Research lab · Indiana University</div>
           <div class="col-caption-title">SETH Lab</div>
         </div>
       </div>
 
       <!-- Card 4: ADGE Podcast -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+      <div class="col-item" role="button" tabindex="0" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png"
-        data-tag="Podcast Guest · Unlearning by Design"
+        data-tag="Podcast guest · Unlearning by Design"
         data-title="Aedge Podcast, Adeptic Creative Labs"
         data-body="In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field."
         data-link="https://open.spotify.com/episode/5V7jU9nmPiRuxOOwyHTLnU?si=FHtexDBWSWu-kobsyZh_FA"
         data-link-label="Listen on Spotify">
         <div class="col-img-wrap is-logo has-photo">
-          <img class="col-img" src="assets/About Me/Thingspart of./Adeptic logo.png" alt="Adeptic Creative Labs logo">
-          <img class="col-img-photo" src="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png" alt="" aria-hidden="true">
+          <img class="col-img" src="assets/About Me/Thingspart of./Adeptic logo.png" alt="Adeptic Creative Labs logo" width="971" height="501" loading="lazy" decoding="async">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./Aedge Podcast — Adeptic Creative Labs.png" alt="" aria-hidden="true" width="1376" height="1366" loading="lazy" decoding="async">
           <div class="col-overlay">
-            <div class="col-ov-tag">Podcast Guest · Unlearning by Design</div>
+            <div class="col-ov-tag">Podcast guest · Unlearning by Design</div>
             <div class="col-ov-title">Aedge Podcast, Adeptic Creative Labs</div>
-            <div class="col-ov-desc">In my third year of my Bachelor's, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field.</div>
-            <a href="https://open.spotify.com/episode/5V7jU9nmPiRuxOOwyHTLnU?si=FHtexDBWSWu-kobsyZh_FA" target="_blank" rel="noopener" class="card-link" onclick="event.stopPropagation();">Listen on Spotify ↗</a>
+            <div class="col-ov-desc">In my third year of my Bachelor’s, I was invited as a guest to talk about my design journey, growth as a practitioner, and why I chose HCI, at a time when design was just starting to gain recognition as a career field.</div>
+            <a href="https://open.spotify.com/episode/5V7jU9nmPiRuxOOwyHTLnU?si=FHtexDBWSWu-kobsyZh_FA" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation();">Listen on Spotify ↗</a>
           </div>
         </div>
         <div class="col-caption-below">
-          <div class="col-caption-tag">Podcast Guest</div>
+          <div class="col-caption-tag">Podcast guest</div>
           <div class="col-caption-title">Aedge Podcast, Adeptic Creative Labs</div>
         </div>
       </div>
 
       <!-- Card 5: Medium Blog -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+      <div class="col-item" role="button" tabindex="0" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./Medium Blog.png"
         data-tag="Writing"
         data-title="Medium Blog"
@@ -1005,13 +1008,13 @@ body {
         data-link="https://medium.com/@rheamittal0401"
         data-link-label="Read on Medium">
         <div class="col-img-wrap is-logo has-photo">
-          <img class="col-img" src="assets/About Me/Thingspart of./Medium logo.png" alt="Medium logo">
-          <img class="col-img-photo" src="assets/About Me/Thingspart of./Medium Blog.png" alt="" aria-hidden="true">
+          <img class="col-img" src="assets/About Me/Thingspart of./Medium logo.png" alt="Medium logo" width="1440" height="462" loading="lazy" decoding="async">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./Medium Blog.png" alt="" aria-hidden="true" width="1488" height="1346" loading="lazy" decoding="async">
           <div class="col-overlay">
             <div class="col-ov-tag">Writing</div>
             <div class="col-ov-title">Medium Blog</div>
-            <div class="col-ov-desc">I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It's my space to think out loud.</div>
-            <a href="https://medium.com/@rheamittal0401" target="_blank" rel="noopener" class="card-link" onclick="event.stopPropagation();">Read on Medium ↗</a>
+            <div class="col-ov-desc">I write about design curiosity, systems, cognitive biases, and the small frictions that shape how people experience the world. It’s my space to think out loud.</div>
+            <a href="https://medium.com/@rheamittal0401" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation();">Read on Medium ↗</a>
           </div>
         </div>
         <div class="col-caption-below">
@@ -1021,22 +1024,22 @@ body {
       </div>
 
       <!-- Card 6: The Period Society -->
-      <div class="col-item" onclick="openColLb(this)" style="cursor:pointer;"
+      <div class="col-item" role="button" tabindex="0" onclick="openColLb(this)" style="cursor:pointer;"
         data-img="assets/About Me/Thingspart of./The Period Society — Bangalore.png"
-        data-tag="Non-Profit · Product Designer"
+        data-tag="Nonprofit · Product designer"
         data-title="The Period Society, Bangalore"
         data-body="I designed for a non-profit working to remove stigma around menstruation, creating their Myths and Facts campaign and social media content supporting sanitary napkin distribution drives in rural Maharashtra.">
         <div class="col-img-wrap is-logo has-photo">
-          <img class="col-img" src="assets/About Me/Thingspart of./The Period Society logo.png" alt="The Period Society logo">
-          <img class="col-img-photo" src="assets/About Me/Thingspart of./The Period Society — Bangalore.png" alt="" aria-hidden="true">
+          <img class="col-img" src="assets/About Me/Thingspart of./The Period Society logo.png" alt="The Period Society logo" width="200" height="200" loading="lazy" decoding="async">
+          <img class="col-img-photo" src="assets/About Me/Thingspart of./The Period Society — Bangalore.png" alt="" aria-hidden="true" width="1480" height="1420" loading="lazy" decoding="async">
           <div class="col-overlay">
-            <div class="col-ov-tag">Non-Profit · Product Designer</div>
+            <div class="col-ov-tag">Nonprofit · Product designer</div>
             <div class="col-ov-title">The Period Society, Bangalore</div>
             <div class="col-ov-desc">I designed for a non-profit working to remove stigma around menstruation, creating their Myths and Facts campaign and social media content supporting sanitary napkin distribution drives in rural Maharashtra.</div>
           </div>
         </div>
         <div class="col-caption-below">
-          <div class="col-caption-tag">Non-Profit · Product Designer</div>
+          <div class="col-caption-tag">Nonprofit · Product designer</div>
           <div class="col-caption-title">The Period Society, Bangalore</div>
         </div>
       </div>
@@ -1053,19 +1056,19 @@ body {
     <div class="quotes-grid">
 
       <div class="quote-card reveal" style="transition-delay:.1s;">
-        <div class="q-mark">"</div>
+        <div class="q-mark">“</div>
         <p class="q-text">Design is not just what it looks like and feels like. Design is how it works.</p>
         <div class="q-author">Steve Jobs</div>
       </div>
 
       <div class="quote-card reveal" style="transition-delay:.2s;">
-        <div class="q-mark">"</div>
+        <div class="q-mark">“</div>
         <p class="q-text">The faster we make our ideas tangible, the sooner we will be able to evaluate them, refine them, and zero in on the best solution.</p>
         <div class="q-author">Tim Brown (Change by Design)</div>
       </div>
 
       <div class="quote-card reveal" style="transition-delay:.3s;">
-        <div class="q-mark">"</div>
+        <div class="q-mark">“</div>
         <p class="q-text">Being in a curiosity mindset means being fascinated by your customers and their reactions.</p>
         <div class="q-author">Jake Knapp (Sprint)</div>
       </div>
@@ -1093,7 +1096,7 @@ body {
           <div class="acc-left">
             <span class="acc-num">01</span>
             <div>
-              <div class="acc-title">Bachelor's in Design</div>
+              <div class="acc-title">Bachelor’s in Design</div>
               <div class="acc-meta">Srishti Institute of Art, Design and Technology · Bangalore, India</div>
             </div>
           </div>
@@ -1102,11 +1105,11 @@ body {
         <div class="acc-body">
           <div class="acc-inner">
             <div class="acc-tag">Foundation</div>
-            <p class="acc-desc">Srishti was beautifully chaotic, and exactly what I needed. My degree was genuinely transdisciplinary. I didn't just learn to design interfaces. I designed through the lens of transport design, public space, filmmaking, game design, fabric, and code. The variety wasn't random; it cemented something that became core to how I work: design is everywhere. Not just on screens, not just in products, everywhere. I left with a portfolio and a philosophy.</p>
+            <p class="acc-desc">Srishti was beautifully chaotic, and exactly what I needed. My degree was genuinely transdisciplinary. I didn’t just learn to design interfaces. I designed through the lens of transport design, public space, filmmaking, game design, fabric, and code. The variety wasn’t random; it cemented something that became core to how I work: design is everywhere. Not just on screens, not just in products, everywhere. I left with a portfolio and a philosophy.</p>
             <div class="acc-imgs cols-3">
-              <img src="assets/About Me/HowIgothere/Bachelor's/1000029828.JPG" alt="Srishti studio work" class="fit-mid">
-              <img src="assets/About Me/HowIgothere/Bachelor's/Presentation.png" alt="Srishti presentation" class="fit-upper">
-              <img src="assets/About Me/HowIgothere/Bachelor's/Product sketching.jpg" alt="Srishti product sketching" class="fit-mid">
+              <img src="assets/About Me/HowIgothere/Bachelor's/1000029828.JPG" alt="Srishti studio work" class="fit-mid" width="1600" height="1200" loading="lazy" decoding="async">
+              <img src="assets/About Me/HowIgothere/Bachelor's/Presentation.png" alt="Srishti presentation" class="fit-upper" width="890" height="1370" loading="lazy" decoding="async">
+              <img src="assets/About Me/HowIgothere/Bachelor's/Product sketching.jpg" alt="Srishti product sketching" class="fit-mid" width="1800" height="1273" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1127,11 +1130,11 @@ body {
         <div class="acc-body">
           <div class="acc-inner">
             <div class="acc-tag" style="background:#EEF3FF;color:#3B6FD4;">Exchange · France</div>
-            <p class="acc-desc">A semester in France changed how I see scale. I worked on a partnership project with Accenture, explored transport design across different cities, and navigated a culture and language completely outside my comfort zone. Collaborating with people from entirely different backgrounds, genuinely being out of my depth, accelerated my growth in ways a classroom never could. I came back with a more global lens, a sharper ability to adapt, and a deep belief that the best design thinking happens when you're somewhere unfamiliar.</p>
+            <p class="acc-desc">A semester in France changed how I see scale. I worked on a partnership project with Accenture, explored transport design across different cities, and navigated a culture and language completely outside my comfort zone. Collaborating with people from entirely different backgrounds, genuinely being out of my depth, accelerated my growth in ways a classroom never could. I came back with a more global lens, a sharper ability to adapt, and a deep belief that the best design thinking happens when you’re somewhere unfamiliar.</p>
             <div class="acc-imgs cols-3">
-              <img src="assets/About Me/HowIgothere/Exchange Program/1000014950.JPG" alt="BESIGN exchange presentation" class="fit-upper">
-              <img src="assets/About Me/HowIgothere/Exchange Program/Ethnographic Research in Public.jpg" alt="BESIGN exchange ethnographic research" class="fit-mid">
-              <img src="assets/About Me/HowIgothere/Exchange Program/Screenshot 2026-03-10 at 7.39.00 PM.jpg" alt="Arduino prototyping during exchange" class="fit-contain">
+              <img src="assets/About Me/HowIgothere/Exchange Program/1000014950.JPG" alt="BESIGN exchange presentation" class="fit-upper" width="576" height="1024" loading="lazy" decoding="async">
+              <img src="assets/About Me/HowIgothere/Exchange Program/Ethnographic Research in Public.jpg" alt="BESIGN exchange ethnographic research" class="fit-mid" width="1350" height="1800" loading="lazy" decoding="async">
+              <img src="assets/About Me/HowIgothere/Exchange Program/Screenshot 2026-03-10 at 7.39.00 PM.jpg" alt="Arduino prototyping during exchange" class="fit-contain" width="1008" height="1578" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1154,9 +1157,9 @@ body {
             <div class="acc-tag" style="background:var(--green-bg);color:var(--green);">recently graduated</div>
             <p class="acc-desc">Indiana pushed me into research properly: how to ask better questions, conduct rigorous qualitative studies, and communicate design decisions to people from completely different disciplines. But equally valuable was everything outside the classroom: building and shipping live projects with AI tools, winning a hackathon, attending CES, spending time in the SETH Lab doing deep qualitative work. I came in knowing how to design. I left knowing how to think.</p>
             <div class="acc-imgs cols-3">
-              <img src="assets/About Me/HowIgothere/Masters/IMG_8732.JPG" alt="Working at Indiana University" class="fit-mid">
-              <img src="assets/About Me/HowIgothere/Masters/View recent photos 2.png" alt="HCI class presentation" class="fit-mid">
-              <img src="assets/salesforce/screenshots/capstone-event-1.jpg" alt="Salesforce People's Choice Award at IU Capstone Event" class="fit-mid">
+              <img src="assets/About Me/HowIgothere/Masters/IMG_8732.JPG" alt="Working at Indiana University" class="fit-mid" width="1800" height="1350" loading="lazy" decoding="async">
+              <img src="assets/About Me/HowIgothere/Masters/View recent photos 2.png" alt="HCI class presentation" class="fit-mid" width="1179" height="1273" loading="lazy" decoding="async">
+              <img src="assets/salesforce/screenshots/capstone-event-1.jpg" alt="Salesforce People's Choice Award at IU Capstone Event" class="fit-mid" width="1838" height="1326" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1178,27 +1181,27 @@ body {
 
     <div class="beyond-grid">
       <div class="beyond-item">
-        <img src="assets/About Me/Beyond Design/Crochet Business.png" alt="Crochet" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="assets/About Me/Beyond Design/Crochet Business.png" alt="Crochet" style="width:100%;height:100%;object-fit:cover;display:block;" width="548" height="570" loading="lazy" decoding="async">
         <div class="beyond-label">Crochet & Making</div>
       </div>
       <div class="beyond-item">
-        <img src="assets/About Me/Beyond Design/Travel.jpg" alt="Travel" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="assets/About Me/Beyond Design/Travel.jpg" alt="Travel" style="width:100%;height:100%;object-fit:cover;display:block;" width="1080" height="1920" loading="lazy" decoding="async">
         <div class="beyond-label">Travel</div>
       </div>
       <div class="beyond-item">
-        <img src="assets/About Me/Beyond Design/Adventure Sports.JPG" alt="Adventure Sports" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="assets/About Me/Beyond Design/Adventure Sports.JPG" alt="Adventure Sports" style="width:100%;height:100%;object-fit:cover;display:block;" width="1800" height="1200" loading="lazy" decoding="async">
         <div class="beyond-label">Adventure Sports</div>
       </div>
       <div class="beyond-item">
-        <img src="assets/About Me/Beyond Design/Reading.jpg" alt="Reading" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="assets/About Me/Beyond Design/Reading.jpg" alt="Reading" style="width:100%;height:100%;object-fit:cover;display:block;" width="1172" height="1420" loading="lazy" decoding="async">
         <div class="beyond-label">Reading</div>
       </div>
       <div class="beyond-item">
-        <img src="assets/About Me/Beyond Design/Formula 1.jpg" alt="Formula 1" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="assets/About Me/Beyond Design/Formula 1.jpg" alt="Formula 1" style="width:100%;height:100%;object-fit:cover;display:block;" width="1179" height="1120" loading="lazy" decoding="async">
         <div class="beyond-label">Formula 1</div>
       </div>
       <div class="beyond-item">
-        <img src="assets/About Me/Beyond Design/Music.jpeg" alt="Music" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="assets/About Me/Beyond Design/Music.jpeg" alt="Music" style="width:100%;height:100%;object-fit:cover;display:block;" width="1200" height="1800" loading="lazy" decoding="async">
         <div class="beyond-label">Music</div>
       </div>
     </div>
@@ -1213,27 +1216,27 @@ body {
 <section class="contact-section reveal">
   <div class="contact-inner">
     <div class="contact-left">
-      <div class="contact-kicker">Open to full-time roles · Indianapolis → Everywhere</div>
-      <h2 class="contact-h">Got an idea?<br><em>Let's chat.</em></h2>
+      <div class="contact-kicker">Open to full-time roles · Indianapolis → anywhere</div>
+      <h2 class="contact-h">Got an idea?<br><em>Let’s chat.</em></h2>
       <a href="mailto:rheamittal0401@gmail.com" class="contact-email">
         rheamittal0401@gmail.com ↗
       </a>
     </div>
     <div class="contact-right">
       <div class="contact-socials">
-        <a href="https://www.linkedin.com/in/rhea-mittal/" target="_blank" class="social-row">
+        <a href="https://www.linkedin.com/in/rhea-mittal/" target="_blank" class="social-row" rel="noopener noreferrer">
           <span class="social-row-name">LinkedIn</span>
           <span class="social-row-arrow">↗</span>
         </a>
-        <a href="https://github.com/RheaMittal" target="_blank" class="social-row">
+        <a href="https://github.com/RheaMittal" target="_blank" class="social-row" rel="noopener noreferrer">
           <span class="social-row-name">GitHub</span>
           <span class="social-row-arrow">↗</span>
         </a>
-        <a href="https://medium.com/@rheamittal0401" target="_blank" class="social-row">
+        <a href="https://medium.com/@rheamittal0401" target="_blank" class="social-row" rel="noopener noreferrer">
           <span class="social-row-name">Medium</span>
           <span class="social-row-arrow">↗</span>
         </a>
-        <a href="https://www.behance.net/rheadmittal" target="_blank" class="social-row">
+        <a href="https://www.behance.net/rheadmittal" target="_blank" class="social-row" rel="noopener noreferrer">
           <span class="social-row-name">Behance</span>
           <span class="social-row-arrow">↗</span>
         </a>
@@ -1242,8 +1245,8 @@ body {
   </div>
 </section>
 <footer class="footer-bar">
-  <span>© 2025 Rhea Mittal</span>
-  <span>Made with love and energy drinks ✨</span>
+  <span>© 2026 Rhea Mittal</span>
+  <span>Made with love and energy drinks</span>
   <a href="work.html" style="color:inherit;text-decoration:none;">← Back to Work</a>
 </footer>
 </div>
@@ -1258,7 +1261,7 @@ body {
     <div class="col-lb-tag" id="colLbTag"></div>
     <h2 class="col-lb-title" id="colLbTitle"></h2>
     <p class="col-lb-body" id="colLbBody"></p>
-    <a href="#" target="_blank" rel="noopener" class="col-lb-link" id="colLbLink">View ↗</a>
+    <a href="#" target="_blank" rel="noopener noreferrer" class="col-lb-link" id="colLbLink">View ↗</a>
   </div>
 </div>
 
@@ -1325,5 +1328,7 @@ document.getElementById('navMobileClose').addEventListener('click', () => {
 </script>
 
 <script src="scripts/nav-pill.js" defer></script>
+</main>
+<script src="scripts/a11y.js" defer></script>
 </body>
 </html>
